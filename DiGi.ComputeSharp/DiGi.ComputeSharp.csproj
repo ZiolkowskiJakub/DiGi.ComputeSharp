@@ -12,7 +12,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Legacy\**" />
+    <EmbeddedResource Remove="Legacy\**" />
+    <None Remove="Legacy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="ComputeSharp" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Spatial\Enums\" />
   </ItemGroup>
 
 </Project>
