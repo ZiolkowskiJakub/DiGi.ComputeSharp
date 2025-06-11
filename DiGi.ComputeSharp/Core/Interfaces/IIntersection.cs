@@ -1,10 +1,10 @@
 ﻿namespace DiGi.ComputeSharp.Core.Interfaces
 {
-    public interface IIntersection
+    public interface IIntersection : IResult
     {
     }
 
-    public interface IIntersection<TGeometry> where TGeometry : IGeometry
+    public interface IIntersection<TGeometry> : IIntersection where TGeometry : IGeometry
     {
     }
 }

@@ -53,13 +53,13 @@ namespace DiGi.ComputeSharp.Planar.Classes
                 return false;
             }
 
-            double dx = X - coordinate.X;
+            float dx = X - coordinate.X;
             if (dx < -tolerance || dx > tolerance)
             {
                 return false;
             }
 
-            double dy = Y - coordinate.Y;
+            float dy = Y - coordinate.Y;
             if (dy < -tolerance || dy > tolerance)
             {
                 return false;
@@ -214,7 +214,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
                 return false;
             }
 
-            if (!line.IsBounded())
+            if (!line.Bounded.ToBool())
             {
                 return true;
             }

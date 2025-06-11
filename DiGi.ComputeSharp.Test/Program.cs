@@ -4,12 +4,8 @@
 //using DiGi.ComputeSharp.Legacy.Classes;
 //using DiGi.ComputeSharp.Legacy.Classes.Result;
 //using DiGi.ComputeSharp.Legacy.Constans;
-using DiGi.ComputeSharp;
-using DiGi.ComputeSharp.Core;
+using DiGi.ComputeSharp.Core.Classes;
 using DiGi.ComputeSharp.Spatial.Classes;
-using DiGi.ComputeSharp.Spatial.Interfaces;
-using System;
-using System.Collections.Generic;
 
 
 #region LEGACY
@@ -135,35 +131,51 @@ using System.Collections.Generic;
 #endregion
 
 
-Coordinate3 point3 = new Coordinate3();
-
-bool isNaN = point3.IsNaN();
-
-Coordinate3 point4 = new Coordinate3();
+//Line3 line_1 = new Line3(0, 0, 0, 10, 0, 0);
+//Line3 line_2 = new Line3(1, -1, 0, 1, 1, 0);
 
 
-Line3 line_1 = new Line3(0, 0, 0, 10, 0, 0);
-Line3 line_2 = new Line3(1, -1, 0, 1, 1, 0);
+//Line3Intersection line3Intersection = DiGi.ComputeSharp.Spatial.Create.Line3Intersection(line_1, line_2, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
 
 
-Line3Intersection line3Intersection = DiGi.ComputeSharp.Spatial.Create.Line3Intersection(line_1, line_2, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
+//Coordinate3 coordinate3 = line3Intersection.Point_1;
+
+//IEnumerable<Line3Intersection> line3Intersections = DiGi.ComputeSharp.Spatial.Create.Line3Intersections(line_1, [line_2], DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
+
+//foreach (Line3Intersection line3Intersection_Temp in line3Intersections)
+//{
+//    IGeometry3[] geometries = line3Intersection_Temp.GetIntersectionGeometries();
+//    if(geometries != null && geometries.Length != 0)
+//    {
+//        foreach(IGeometry3 geometry3 in geometries)
+//        {
+//            Console.WriteLine(string.Format("{0}", geometry3.ToString()));
+//        }
+//    }
+//}
+
+Triangle3 triangle3_1;
+Triangle3 triangle3_2;
+Triangle3Intersection triangle3Intersection;
+
+//triangle3_1 = new Triangle3(true, 2, 2, 0, 2, 8, 0, 8, 2, 0);
+//triangle3_2 = new Triangle3(true, 4, 4, 0, 4, 9, 0, 9, 4, 0);
+//triangle3Intersection = DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(triangle3_1, triangle3_2, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
+
+//triangle3_1 = new Triangle3(true, 2, 2, 0, 2, 8, 0, 8, 2, 0);
+//triangle3_2 = new Triangle3(true, 5, 5, 0, 4, 9, 0, 9, 4, 0);
+//triangle3Intersection = DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(triangle3_1, triangle3_2, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
+
+//triangle3_1 = new Triangle3(true, 1, 1, 0, 1, 6, 0, 6, 1, 0);
+//triangle3_2 = new Triangle3(true, 0, 5, 0, 5, 0, 0, 5, 5, 0);
+//triangle3Intersection = DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(triangle3_1, triangle3_2, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
 
 
-Coordinate3 coordinate3 = line3Intersection.Point_1;
+Triangle3 triangle3 = new Triangle3(new Bool(true), 0, 0, 0, 0, 10, 0, 10, 0, 0);
+Line3 line3 = new Line3(4, 4, 0, 11, 11, 0);
 
-IEnumerable<Line3Intersection> line3Intersections = DiGi.ComputeSharp.Spatial.Create.Line3Intersections(line_1, [line_2], DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
+Triangulation3 triangulation3 = DiGi.ComputeSharp.Spatial.Create.Triangulation3(triangle3, line3, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
 
-foreach (Line3Intersection line3Intersection_Temp in line3Intersections)
-{
-    IGeometry3[] geometries = line3Intersection_Temp.GetIntersectionGeometries();
-    if(geometries != null && geometries.Length != 0)
-    {
-        foreach(IGeometry3 geometry3 in geometries)
-        {
-            Console.WriteLine(string.Format("{0}", geometry3.ToString()));
-        }
-    }
-}
 
 Console.WriteLine(string.Format("Finished: {0}", true ));
 

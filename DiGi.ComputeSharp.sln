@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiGi.ComputeSharp", "DiGi.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiGi.ComputeSharp.Test", "DiGi.ComputeSharp.Test\DiGi.ComputeSharp.Test.csproj", "{05B89DA3-865B-4F07-8B73-E2E88D236B60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiGi.ComputeSharp.Geometry", "DiGi.ComputeSharp.Geometry\DiGi.ComputeSharp.Geometry.csproj", "{8D303F9C-170C-47E3-9CCB-A3258E34734A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{05B89DA3-865B-4F07-8B73-E2E88D236B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05B89DA3-865B-4F07-8B73-E2E88D236B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05B89DA3-865B-4F07-8B73-E2E88D236B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D303F9C-170C-47E3-9CCB-A3258E34734A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D303F9C-170C-47E3-9CCB-A3258E34734A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D303F9C-170C-47E3-9CCB-A3258E34734A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D303F9C-170C-47E3-9CCB-A3258E34734A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,81 +1,88 @@
-﻿using DiGi.ComputeSharp.Spatial.Classes;
+﻿using DiGi.ComputeSharp.Planar.Classes;
+using DiGi.ComputeSharp.Spatial.Classes;
 
 namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Query
     {
-        internal static void Sort(Triangle3 triangle_1, Triangle3 triangle_2, Coordinate3 coordinate_1, Coordinate3 coordinate_2, Coordinate3 coordinate_3, Coordinate3 coordinate_4, Coordinate3 coordinate_5, Coordinate3 coordinate_6, out Coordinate3 result_1, out Coordinate3 result_2, out Coordinate3 result_3, out Coordinate3 result_4, out Coordinate3 result_5, out Coordinate3 result_6)
+        internal static void Sort(Plane plane, ref Coordinate3 point_1, ref Coordinate3 point_2, ref Coordinate3 point_3, ref Coordinate3 point_4, ref Coordinate3 point_5, ref Coordinate3 point_6)
         {
-            result_1 = new Coordinate3();
-            result_2 = new Coordinate3();
-            result_3 = new Coordinate3();
-            result_4 = new Coordinate3();
-            result_5 = new Coordinate3();
-            result_6 = new Coordinate3();
+            Coordinate2 point2D_1 = plane.Convert_Point(point_1), 
+                point2D_2 = plane.Convert_Point(point_2), 
+                point2D_3 = plane.Convert_Point(point_3), 
+                point2D_4 = plane.Convert_Point(point_4), 
+                point2D_5 = plane.Convert_Point(point_5), 
+                point2D_6 = plane.Convert_Point(point_6);
 
-            Coordinate3 next = new Coordinate3();
+            Coordinate2 centroid = Planar.Query.Centroid(point2D_1, point2D_2, point2D_3, point2D_4, point2D_5, point2D_6);
 
-            if (!TryGetNext(triangle_1, triangle_2, next, coordinate_1, coordinate_2, coordinate_3, coordinate_4, coordinate_5, coordinate_6, out next, out result_1, out result_2, out result_3, out result_4, out result_5, out result_6) || next.IsNaN())
-            {
-                return;
-            }
+            Coordinate2 vector_1 = new Coordinate2(centroid, point2D_1), 
+                vector_2 = new Coordinate2(centroid, point2D_2), 
+                vector_3 = new Coordinate2(centroid, point2D_3), 
+                vector_4 = new Coordinate2(centroid, point2D_4), 
+                vector_5 = new Coordinate2(centroid, point2D_5), 
+                vector_6 = new Coordinate2(centroid, point2D_6);
 
-            coordinate_1 = result_1;
-            coordinate_2 = result_2;
-            coordinate_3 = result_3;
-            coordinate_4 = result_4;
-            coordinate_5 = result_5;
-            coordinate_6 = result_6;
+            int index_1 = 1, 
+                index_2 = 2, 
+                index_3 = 3, 
+                index_4 = 4, 
+                index_5 = 5, 
+                index_6 = 6;
 
-            if (!TryGetNext(triangle_1, triangle_2, next, coordinate_1, coordinate_2, coordinate_3, coordinate_4, coordinate_5, coordinate_6, out next, out result_1, out result_2, out result_3, out result_4, out result_5, out result_6) || next.IsNaN())
-            {
-                return;
-            }
+            Planar.Modify.SwapIfCrossProductNegative(ref index_1, ref index_2, vector_1, vector_2);
+            Planar.Modify.SwapIfCrossProductNegative(ref index_1, ref index_3, vector_1, vector_3);
+            Planar.Modify.SwapIfCrossProductNegative(ref index_1, ref index_4, vector_1, vector_4);
+            Planar.Modify.SwapIfCrossProductNegative(ref index_1, ref index_5, vector_1, vector_5);
+            Planar.Modify.SwapIfCrossProductNegative(ref index_1, ref index_6, vector_1, vector_6);
 
-            coordinate_1 = result_1;
-            coordinate_2 = result_2;
-            coordinate_3 = result_3;
-            coordinate_4 = result_4;
-            coordinate_5 = result_5;
-            coordinate_6 = result_6;
+            Planar.Modify.SwapIfCrossProductNegative(ref index_2, ref index_3, 
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_2),
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_3));
+            Planar.Modify.SwapIfCrossProductNegative(ref index_2, ref index_4, 
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_2), 
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_4));
+            Planar.Modify.SwapIfCrossProductNegative(ref index_2, ref index_5, 
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_2), 
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_5));
+            Planar.Modify.SwapIfCrossProductNegative(ref index_2, ref index_6, 
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_2),
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_6));
 
-            if (!TryGetNext(triangle_1, triangle_2, next, coordinate_1, coordinate_2, coordinate_3, coordinate_4, coordinate_5, coordinate_6, out next, out result_1, out result_2, out result_3, out result_4, out result_5, out result_6) || next.IsNaN())
-            {
-                return;
-            }
+            Planar.Modify.SwapIfCrossProductNegative(ref index_3, ref index_4, 
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_3),
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_4));
+            Planar.Modify.SwapIfCrossProductNegative(ref index_3, ref index_5, 
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_3),
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_5));
+            Planar.Modify.SwapIfCrossProductNegative(ref index_3, ref index_6, 
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_3),
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_6));
 
-            coordinate_1 = result_1;
-            coordinate_2 = result_2;
-            coordinate_3 = result_3;
-            coordinate_4 = result_4;
-            coordinate_5 = result_5;
-            coordinate_6 = result_6;
+            Planar.Modify.SwapIfCrossProductNegative(ref index_4, ref index_5, 
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_4),
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_5));
+            Planar.Modify.SwapIfCrossProductNegative(ref index_4, ref index_6, 
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_4),
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_6));
 
-            if (!TryGetNext(triangle_1, triangle_2, next, coordinate_1, coordinate_2, coordinate_3, coordinate_4, coordinate_5, coordinate_6, out next, out result_1, out result_2, out result_3, out result_4, out result_5, out result_6) || next.IsNaN())
-            {
-                return;
-            }
+            Planar.Modify.SwapIfCrossProductNegative(ref index_5, ref index_6, 
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_5),
+                Planar.Query.Coordinate2(ref vector_1, ref vector_2, ref vector_3, ref vector_4, ref vector_5, ref vector_6, index_6));
 
-            coordinate_1 = result_1;
-            coordinate_2 = result_2;
-            coordinate_3 = result_3;
-            coordinate_4 = result_4;
-            coordinate_5 = result_5;
-            coordinate_6 = result_6;
+            Coordinate3 point_1_Temp = point_1,
+                point_2_Temp = point_2,
+                point_3_Temp = point_3,
+                point_4_Temp = point_4,
+                point_5_Temp = point_5,
+                point_6_Temp = point_6;
 
-            if (!TryGetNext(triangle_1, triangle_2, next, coordinate_1, coordinate_2, coordinate_3, coordinate_4, coordinate_5, coordinate_6, out next, out result_1, out result_2, out result_3, out result_4, out result_5, out result_6) || next.IsNaN())
-            {
-                return;
-            }
-
-            coordinate_1 = result_1;
-            coordinate_2 = result_2;
-            coordinate_3 = result_3;
-            coordinate_4 = result_4;
-            coordinate_5 = result_5;
-            coordinate_6 = result_6;
-
-            TryGetNext(triangle_1, triangle_2, next, coordinate_1, coordinate_2, coordinate_3, coordinate_4, coordinate_5, coordinate_6, out next, out result_1, out result_2, out result_3, out result_4, out result_5, out result_6);
+            point_1 = Coordinate3(ref point_1_Temp, ref point_2_Temp, ref point_3_Temp, ref point_4_Temp, ref point_5_Temp, ref point_6_Temp, index_1);
+            point_2 = Coordinate3(ref point_1_Temp, ref point_2_Temp, ref point_3_Temp, ref point_4_Temp, ref point_5_Temp, ref point_6_Temp, index_2);
+            point_3 = Coordinate3(ref point_1_Temp, ref point_2_Temp, ref point_3_Temp, ref point_4_Temp, ref point_5_Temp, ref point_6_Temp, index_3);
+            point_4 = Coordinate3(ref point_1_Temp, ref point_2_Temp, ref point_3_Temp, ref point_4_Temp, ref point_5_Temp, ref point_6_Temp, index_4);
+            point_5 = Coordinate3(ref point_1_Temp, ref point_2_Temp, ref point_3_Temp, ref point_4_Temp, ref point_5_Temp, ref point_6_Temp, index_5);
+            point_6 = Coordinate3(ref point_1_Temp, ref point_2_Temp, ref point_3_Temp, ref point_4_Temp, ref point_5_Temp, ref point_6_Temp, index_6);
         }
     }
 

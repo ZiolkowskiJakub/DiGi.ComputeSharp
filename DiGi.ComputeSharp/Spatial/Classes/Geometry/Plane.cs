@@ -1,6 +1,5 @@
 ﻿using DiGi.ComputeSharp.Planar.Classes;
 using DiGi.ComputeSharp.Spatial.Interfaces;
-using System.Numerics;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
@@ -9,6 +8,13 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         public readonly Coordinate3 AxisY;
         public readonly Coordinate3 Normal;
         public readonly Coordinate3 Origin;
+
+        public Plane()
+        {
+            AxisY = new Coordinate3();
+            Normal = new Coordinate3();
+            Origin = new Coordinate3();
+        }
 
         public Plane(Coordinate3 origin, Coordinate3 normal, Coordinate3 axisY)
         {
@@ -21,7 +27,13 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             Normal = normal;
             Origin = origin;
-            AxisY = normal.CrossProduct(normal.X == 0 && normal.Y == 0 ? new Coordinate3(1, 0, 0) : new Coordinate3(normal.Y, -normal.X, 0)).GetNormalized();
+
+            Coordinate3 axisX = new Coordinate3(normal.Y, -normal.X, 0);
+            if(normal.X == 0 && normal.Y == 0)
+            {
+                axisX = new Coordinate3(1, 0, 0);
+            }
+            AxisY = normal.CrossProduct(axisX).GetNormalized();
         }
 
         public Line3 Convert_Line(Line2 line)
@@ -63,12 +75,12 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public Triangle2 Convert_Triangle(Triangle3 triangle)
         {
-            return new Triangle2(triangle.IsSolid(), Convert_Point(triangle.Point_1), Convert_Point(triangle.Point_2), Convert_Point(triangle.Point_3));
+            return new Triangle2(triangle.Solid, Convert_Point(triangle.Point_1), Convert_Point(triangle.Point_2), Convert_Point(triangle.Point_3));
         }
 
         public Triangle3 Convert_Triangle(Triangle2 triangle)
         {
-            return new Triangle3(triangle.IsSolid(), Convert_Point(triangle.Point_1), Convert_Point(triangle.Point_2), Convert_Point(triangle.Point_3));
+            return new Triangle3(triangle.Solid, Convert_Point(triangle.Point_1), Convert_Point(triangle.Point_2), Convert_Point(triangle.Point_3));
         }
 
         public Coordinate2 Convert_Vector(Coordinate3 vector)
@@ -140,7 +152,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public Line3 Project(Line3 line)
         {
-            return new Line3(line.IsBounded(), GetClosestPoint(line.Start), GetClosestPoint(line.End));
+            return new Line3(line.Bounded, GetClosestPoint(line.Start), GetClosestPoint(line.End));
         }
 
         public Triangle3 Project(Triangle3 triangle3)

@@ -1,4 +1,5 @@
-﻿using DiGi.ComputeSharp.Spatial.Interfaces;
+﻿using DiGi.ComputeSharp.Core.Classes;
+using DiGi.ComputeSharp.Spatial.Interfaces;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
@@ -7,11 +8,11 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         public readonly Coordinate3 Point_1;
         public readonly Coordinate3 Point_2;
         public readonly Coordinate3 Point_3;
-        public readonly int Solid;
+        public readonly Bool Solid;
         
         public Triangle3()
         {
-            Solid = 1;
+            Solid = new Bool(false);
             Point_1 = new Coordinate3();
             Point_2 = new Coordinate3();
             Point_3 = new Coordinate3();
@@ -24,15 +25,31 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Point_3 = point_3;
         }
 
-        public Triangle3(bool solid, Coordinate3 point_1, Coordinate3 point_2, Coordinate3 point_3)
+        public Triangle3(Triangle3 triangle3)
         {
-            Solid = solid ? 1 : 0;
+            Solid = triangle3.Solid;
+            Point_1 = triangle3.Point_1;
+            Point_2 = triangle3.Point_2;
+            Point_3 = triangle3.Point_3;
+        }
+
+        public Triangle3(Bool solid, Coordinate3 point_1, Coordinate3 point_2, Coordinate3 point_3)
+        {
+            Solid = solid;
             Point_1 = point_1;
             Point_2 = point_2;
             Point_3 = point_3;
         }
 
-        public double GetApproximatePerimeter()
+        public Triangle3(Bool solid, float x_1, float y_1, float z_1, float x_2, float y_2, float z_2, float x_3, float y_3, float z_3)
+        {
+            Solid = solid;
+            Point_1 = new Coordinate3(x_1, y_1, z_1);
+            Point_2 = new Coordinate3(x_2, y_2, z_2);
+            Point_3 = new Coordinate3(x_3, y_3, z_3);
+        }
+
+        public float GetApproximatePerimeter()
         {
             return Point_1.GetApproximateDistance(Point_2) + Point_2.GetApproximateDistance(Point_3) + Point_3.GetApproximateDistance(Point_1);
         }
@@ -56,6 +73,34 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate3(centroidX, centroidY, centroidZ);
         }
 
+        public float GetEquilateralityFactor()
+        {
+            if (IsNaN())
+            {
+                return 0;
+            }
+
+            float length_1 = GetLine(0).GetSquaredLength();
+            float length_2 = GetLine(1).GetSquaredLength();
+            float length_3 = GetLine(2).GetSquaredLength();
+
+            float mean = (length_1 + length_2 + length_3) / 3f;
+
+            float length = length_1;
+
+            if (length_2 < length)
+            {
+                length = length_2;
+            }
+
+            if (length_3 < length)
+            {
+                length = length_3;
+            }
+
+            return length / mean;
+        }
+
         public Triangle3 GetInversed()
         {
             return new Triangle3(Point_3, Point_2, Point_1);
@@ -66,13 +111,13 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             switch (index)
             {
                 case 0:
-                    return new Line3(true, Point_1, Point_2);
+                    return new Line3(new Bool(true), Point_1, Point_2);
 
                 case 1:
-                    return new Line3(true, Point_2, Point_3);
+                    return new Line3(new Bool(true), Point_2, Point_3);
 
                 case 2:
-                    return new Line3(true, Point_3, Point_1);
+                    return new Line3(new Bool(true), Point_3, Point_1);
             }
 
             return new Line3();
@@ -222,8 +267,8 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                     return point.Substract(Point_1).GetSquaredLength() <= squaredTolerance;
                 }
                 // If the triangle is a line (A, B, C are collinear)
-                Coordinate3 closestOnLine = new Line3(true, Point_1, Point_2).GetClosestPoint(point); // Assuming A-B defines the primary line
-                double distSq = point.Substract(closestOnLine).GetSquaredLength();
+                Coordinate3 closestOnLine = new Line3(new Bool(true), Point_1, Point_2).GetClosestPoint(point); // Assuming A-B defines the primary line
+                float distSq = point.Substract(closestOnLine).GetSquaredLength();
                 return distSq <= squaredTolerance;
             }
 
@@ -237,7 +282,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             float signedDistance = ap.DotProduct(unitNormal);
 
             // Check if the point is within the plane tolerance
-            if (Math.Abs(signedDistance) > tolerance)
+            if (Core.Query.Abs(signedDistance) > tolerance)
             {
                 return false; // Point is too far from the triangle's plane
             }
@@ -249,28 +294,28 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             // We're working in the plane of the triangle, so we can flatten it to 2D for barycentric calculation if needed,
             // or keep it in 3D using the dot product method. The 3D dot product method is more general.
 
-            double dot00 = ab.DotProduct(ab); // |AB|^2
-            double dot01 = ab.DotProduct(ac); // AB . AC
-            double dot02 = ab.DotProduct(ap); // AB . AP
-            double dot11 = ac.DotProduct(ac); // |AC|^2
-            double dot12 = ac.DotProduct(ap); // AC . AP
+            float dot00 = ab.DotProduct(ab); // |AB|^2
+            float dot01 = ab.DotProduct(ac); // AB . AC
+            float dot02 = ab.DotProduct(ap); // AB . AP
+            float dot11 = ac.DotProduct(ac); // |AC|^2
+            float dot12 = ac.DotProduct(ap); // AC . AP
 
-            double invDenom = 1.0 / (dot00 * dot11 - dot01 * dot01); // 1 / (2 * Area_parallelogram)^2
+            float invDenom = 1.0f / (dot00 * dot11 - dot01 * dot01); // 1 / (2 * Area_parallelogram)^2
                                                                      // If denominator is zero or near-zero, it means the triangle is degenerate (collinear vertices),
                                                                      // which should have been caught by the normalLength check above. However, for robustness:
-            if (double.IsInfinity(invDenom) || double.IsNaN(invDenom))
+            if (!Core.Query.IsValid(invDenom))
             {
                 // This case should ideally be handled by the normalLength check.
                 // If it slips through, fall back to line check.
-                Coordinate3 closestOnLine = new Line3(true, Point_1, Point_2).GetClosestPoint(point);
-                double distSq = point.Substract(closestOnLine).GetSquaredLength();
+                Coordinate3 closestOnLine = new Line3(new Bool(true), Point_1, Point_2).GetClosestPoint(point);
+                float distSq = point.Substract(closestOnLine).GetSquaredLength();
                 return distSq <= squaredTolerance;
             }
 
 
-            double u = (dot11 * dot02 - dot01 * dot12) * invDenom;
-            double v = (dot00 * dot12 - dot01 * dot02) * invDenom;
-            double w = 1.0 - u - v; // The third barycentric coordinate
+            float u = (dot11 * dot02 - dot01 * dot12) * invDenom;
+            float v = (dot00 * dot12 - dot01 * dot02) * invDenom;
+            float w = 1.0f - u - v; // The third barycentric coordinate
 
             // Apply tolerance to barycentric coordinates
             // If u, v, w are all within [0-tolerance, 1+tolerance], the point is considered inside.
@@ -281,32 +326,34 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             return isInside2D;
         }
-
+        
         public bool IsNaN()
         {
             return Point_1.IsNaN() || Point_1.IsNaN() || Point_3.IsNaN();
-        }
-        
-        public bool IsSolid()
-        {
-            return Solid == 1;
         }
 
         public bool On(Coordinate3 point, float tolerance)
         {
 
-            if(IsSolid())
+            if(Solid.ToBool())
             {
                 return Inside(point, tolerance);
             }
             else
             {
-                for (int i = 0; i < 3; i++)
+                if (GetLine(0).On(point, tolerance))
                 {
-                    if (GetLine(i).On(point, tolerance))
-                    {
-                        return true;
-                    }
+                    return true;
+                }
+                
+                if (GetLine(1).On(point, tolerance))
+                {
+                    return true;
+                }
+
+                if (GetLine(2).On(point, tolerance))
+                {
+                    return true;
                 }
             }
 

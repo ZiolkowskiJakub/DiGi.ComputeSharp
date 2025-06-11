@@ -5,7 +5,7 @@ namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Create
     {
-        
+
         public static IEnumerable<Line3Intersection> Line3Intersections(Line3 line, IEnumerable<Line3> lines, float tolerance)
         {
             if (line.IsNaN() || lines == null || lines.Count() == 0)

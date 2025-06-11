@@ -1,4 +1,5 @@
-﻿using DiGi.ComputeSharp.Planar.Interfaces;
+﻿using DiGi.ComputeSharp.Core.Classes;
+using DiGi.ComputeSharp.Planar.Interfaces;
 
 namespace DiGi.ComputeSharp.Planar.Classes
 {
@@ -7,32 +8,25 @@ namespace DiGi.ComputeSharp.Planar.Classes
         public readonly Coordinate2 Point_1;
         public readonly Coordinate2 Point_2;
         public readonly Coordinate2 Point_3;
-        public readonly int Solid;
+        public readonly Bool Solid;
         
         public Triangle2()
         {
-            Solid = 1;
+            Solid = new Bool(false);
             Point_1 = new Coordinate2();
             Point_2 = new Coordinate2();
             Point_3 = new Coordinate2();
         }
 
-        public Triangle2(Coordinate2 point_1, Coordinate2 point_2, Coordinate2 point_3)
+        public Triangle2(Bool solid, Coordinate2 point_1, Coordinate2 point_2, Coordinate2 point_3)
         {
+            Solid = solid;
             Point_1 = point_1;
             Point_2 = point_2;
             Point_3 = point_3;
         }
 
-        public Triangle2(bool solid, Coordinate2 point_1, Coordinate2 point_2, Coordinate2 point_3)
-        {
-            Solid = solid ? 1 : 0;
-            Point_1 = point_1;
-            Point_2 = point_2;
-            Point_3 = point_3;
-        }
-
-        public double GetApproximatePerimeter()
+        public float GetApproximatePerimeter()
         {
             return Point_1.GetApproximateDistance(Point_2) + Point_2.GetApproximateDistance(Point_3) + Point_3.GetApproximateDistance(Point_1);
         }
@@ -59,7 +53,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public Triangle2 GetInversed()
         {
-            return new Triangle2(Point_3, Point_2, Point_1);
+            return new Triangle2(Solid, Point_3, Point_2, Point_1);
         }
 
         public Line2 GetLine(int index)
@@ -67,13 +61,13 @@ namespace DiGi.ComputeSharp.Planar.Classes
             switch (index)
             {
                 case 0:
-                    return new Line2(true, Point_1, Point_2);
+                    return new Line2(new Bool(true), Point_1, Point_2);
 
                 case 1:
-                    return new Line2(true, Point_2, Point_3);
+                    return new Line2(new Bool(true), Point_2, Point_3);
 
                 case 2:
-                    return new Line2(true, Point_3, Point_1);
+                    return new Line2(new Bool(true), Point_3, Point_1);
             }
 
             return new Line2();
@@ -138,7 +132,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public Triangle2 GetMoved(Coordinate2 vector)
         {
-            return new Triangle2(Point_1.GetMoved(vector), Point_2.GetMoved(vector), Point_3.GetMoved(vector));
+            return new Triangle2(Solid, Point_1.GetMoved(vector), Point_2.GetMoved(vector), Point_3.GetMoved(vector));
         }
 
         public bool InRange(Coordinate2 point, float tolerance)
@@ -176,16 +170,11 @@ namespace DiGi.ComputeSharp.Planar.Classes
         {
             return Point_1.IsNaN() || Point_1.IsNaN() || Point_3.IsNaN();
         }
-        
-        public bool IsSolid()
-        {
-            return Solid == 1;
-        }
 
         public bool On(Coordinate2 point, float tolerance)
         {
 
-            if(IsSolid())
+            if(Solid.ToBool())
             {
                 return Inside(point, tolerance);
             }

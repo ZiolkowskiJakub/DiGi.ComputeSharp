@@ -1,56 +1,43 @@
-﻿using DiGi.ComputeSharp.Planar.Interfaces;
+﻿using DiGi.ComputeSharp.Core.Classes;
+using DiGi.ComputeSharp.Planar.Interfaces;
 
 namespace DiGi.ComputeSharp.Planar.Classes
 {
     public readonly struct Line2 : IGeometry2
     {
-        public readonly int Bounded;
+        public readonly Bool Bounded;
         public readonly Coordinate2 End;
         public readonly Coordinate2 Start;
 
         public Line2()
         {
-            Bounded = 0;
+            Bounded = new Bool(false);
             End = new Coordinate2();
             Start = new Coordinate2();
         }
 
         public Line2(float x_1, float y_1, float x_2, float y_2)
         {
-            Bounded = 1;
+            Bounded = new Bool(true);
             End = new Coordinate2(x_1, y_1);
             Start = new Coordinate2(x_2, y_2);
         }
 
-        public Line2(bool bounded, float x_1, float y_1, float x_2, float y_2)
+        public Line2(Bool bounded, float x_1, float y_1, float x_2, float y_2)
         {
-            Bounded = bounded ? 1 : 0;
+            Bounded = bounded;
             End = new Coordinate2(x_1, y_1);
             Start = new Coordinate2(x_2, y_2);
         }
 
         public Line2(Coordinate2 start, Coordinate2 end)
         {
-            Bounded = 1;
+            Bounded = new Bool(true);
             Start = start;
             End = end;
         }
 
-        public Line2(bool bounded, Coordinate2 start, Coordinate2 end)
-        {
-            Bounded = bounded ? 1 : 0;
-            Start = start;
-            End = end;
-        }
-
-        private Line2(int bounded, float x_1, float y_1, float z_1, float x_2, float y_2, float z_2)
-        {
-            Bounded = bounded;
-            End = new Coordinate2(x_1, y_1);
-            Start = new Coordinate2(x_2, y_2);
-        }
-        
-        private Line2(int bounded, Coordinate2 start, Coordinate2 end)
+        public Line2(Bool bounded, Coordinate2 start, Coordinate2 end)
         {
             Bounded = bounded;
             Start = start;
@@ -64,7 +51,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public float GetApproximateLength()
         {
-            if (IsBounded())
+            if (Bounded.ToBool())
             {
                 return float.PositiveInfinity;
             }
@@ -162,7 +149,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public float GetSquaredLength()
         {
-            if(IsBounded())
+            if(Bounded.ToBool())
             {
                 return float.PositiveInfinity;
             }
@@ -182,7 +169,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
                 return false;
             }
 
-            if (!IsBounded() || !line.IsBounded())
+            if (!Bounded.ToBool() || !line.Bounded.ToBool())
             {
                 return true;
             }
@@ -208,7 +195,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
                 return false;
             }
 
-            if (!IsBounded())
+            if (!Bounded.ToBool())
             {
                 return true;
             }
@@ -220,11 +207,6 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
             return (minA.X - tolerance <= maxB.X && maxA.X + tolerance >= minB.X) &&
                     (minA.Y - tolerance <= maxB.Y && maxA.Y + tolerance >= minB.Y);
-        }
-
-        public bool IsBounded()
-        {
-            return Bounded == 1;
         }
 
         public bool IsNaN()

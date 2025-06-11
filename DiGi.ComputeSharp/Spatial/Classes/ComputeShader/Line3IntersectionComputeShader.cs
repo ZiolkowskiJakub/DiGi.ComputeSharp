@@ -6,14 +6,13 @@ namespace DiGi.ComputeSharp.Spatial.Classes
     [GeneratedComputeShaderDescriptor]
     public readonly partial struct Line3IntersectionComputeShader : IComputeShader
     {
-        public readonly int ThreadsCount = -1;
-        
-        public readonly float Tolerance = Core.Constans.Tolerance.Distance;
-
         public readonly Line3 Line;
         public readonly ReadWriteBuffer<Line3Intersection> LineIntersections;
         public readonly ReadOnlyBuffer<Line3> Lines;
+        public readonly int ThreadsCount = -1;
 
+        public readonly float Tolerance = Core.Constans.Tolerance.Distance;
+        
         public Line3IntersectionComputeShader(GraphicsDevice graphicsDevice, Line3 line, IEnumerable<Line3> lines)
         {
             Line = line;
@@ -56,7 +55,6 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public void Execute()
         {
-
             int count = Lines.Length;
 
             int start = 0;

@@ -1,58 +1,43 @@
 ﻿using DiGi.ComputeSharp.Spatial.Interfaces;
-using System.ComponentModel.DataAnnotations;
-using System.Drawing;
+using DiGi.ComputeSharp.Core.Classes;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
     public readonly struct Line3 : IGeometry3
     {
-        public readonly int Bounded;
+        public readonly Bool Bounded;
         public readonly Coordinate3 End;
         public readonly Coordinate3 Start;
 
         public Line3()
         {
-            Bounded = 0;
+            Bounded = new Bool(false);
             End = new Coordinate3();
             Start = new Coordinate3();
         }
 
         public Line3(float x_1, float y_1, float z_1, float x_2, float y_2, float z_2)
         {
-            Bounded = 1;
+            Bounded = new Bool(true);
             End = new Coordinate3(x_1, y_1, z_1);
             Start = new Coordinate3(x_2, y_2, z_2);
         }
 
-        public Line3(bool bounded, float x_1, float y_1, float z_1, float x_2, float y_2, float z_2)
+        public Line3(Bool bounded, float x_1, float y_1, float z_1, float x_2, float y_2, float z_2)
         {
-            Bounded = bounded ? 1 : 0;
+            Bounded = bounded;
             End = new Coordinate3(x_1, y_1, z_1);
             Start = new Coordinate3(x_2, y_2, z_2);
         }
 
         public Line3(Coordinate3 start, Coordinate3 end)
         {
-            Bounded = 1;
+            Bounded = new Bool(true);
             Start = start;
             End = end;
         }
 
-        public Line3(bool bounded, Coordinate3 start, Coordinate3 end)
-        {
-            Bounded = bounded ? 1 : 0;
-            Start = start;
-            End = end;
-        }
-
-        private Line3(int bounded, float x_1, float y_1, float z_1, float x_2, float y_2, float z_2)
-        {
-            Bounded = bounded;
-            End = new Coordinate3(x_1, y_1, z_1);
-            Start = new Coordinate3(x_2, y_2, z_2);
-        }
-        
-        private Line3(int bounded, Coordinate3 start, Coordinate3 end)
+        public Line3(Bool bounded, Coordinate3 start, Coordinate3 end)
         {
             Bounded = bounded;
             Start = start;
@@ -66,7 +51,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public float GetApproximateLength()
         {
-            if (IsBounded())
+            if (Bounded.ToBool())
             {
                 return float.PositiveInfinity;
             }
@@ -176,7 +161,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public float GetSquaredLength()
         {
-            if(IsBounded())
+            if(Bounded.ToBool())
             {
                 return float.PositiveInfinity;
             }
@@ -196,7 +181,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 return false;
             }
 
-            if (!IsBounded() || !line3.IsBounded())
+            if (!Bounded.ToBool() || !line3.Bounded.ToBool())
             {
                 return true;
             }
@@ -223,7 +208,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 return false;
             }
 
-            if (!IsBounded())
+            if (!Bounded.ToBool())
             {
                 return true;
             }
@@ -236,11 +221,6 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return (minA.X - tolerance <= maxB.X && maxA.X + tolerance >= minB.X) &&
                     (minA.Y - tolerance <= maxB.Y && maxA.Y + tolerance >= minB.Y) &&
                     (minA.Z - tolerance <= maxB.Z && maxA.Z + tolerance >= minB.Z);
-        }
-
-        public bool IsBounded()
-        {
-            return Bounded == 1;
         }
 
         public bool IsNaN()

@@ -1,4 +1,5 @@
-﻿using DiGi.ComputeSharp.Spatial.Classes;
+﻿using DiGi.ComputeSharp.Core.Classes;
+using DiGi.ComputeSharp.Spatial.Classes;
 
 namespace DiGi.ComputeSharp.Spatial
 {
@@ -26,8 +27,8 @@ namespace DiGi.ComputeSharp.Spatial
 
             float denominator = a * c - b * b;
 
-            bool bounded_1 = line_1.IsBounded();
-            bool bounded_2 = line_2.IsBounded();
+            bool bounded_1 = line_1.Bounded.ToBool();
+            bool bounded_2 = line_2.Bounded.ToBool();
 
             float squaredTolerance = tolerance * tolerance;
 
@@ -49,63 +50,40 @@ namespace DiGi.ComputeSharp.Spatial
 
                         if(bounded_1 && bounded_2)
                         {
-                            Coordinate3 coordinate_1 = new Coordinate3();
-                            Coordinate3 coordinate_2 = new Coordinate3();
-                            Coordinate3 coordinate_3 = new Coordinate3();
-                            Coordinate3 coordinate_4 = new Coordinate3();
+                            Coordinate3 point_1 = new Coordinate3();
+                            Coordinate3 point_2 = new Coordinate3();
 
-                            int count = 0;
                             if (line_2.On(line_1.Start, tolerance))
                             {
-                                coordinate_1 = line_1.Start;
-                                count++;
+                                Modify.Add(ref point_1, ref point_2, line_1.Start, tolerance);
                             }
 
                             if (line_2.On(line_1.End, tolerance))
                             {
-                                coordinate_2 = line_1.End;
-                                count++;
+                                Modify.Add(ref point_1, ref point_2, line_1.End, tolerance);
                             }
 
                             if (line_1.On(line_2.Start, tolerance))
                             {
-                                coordinate_3 = line_2.Start;
-                                count++;
+                                Modify.Add(ref point_1, ref point_2, line_2.Start, tolerance);
                             }
-
 
                             if (line_1.On(line_2.End, tolerance))
                             {
-                                coordinate_4 = line_2.End;
-                                count++;
+                                Modify.Add(ref point_1, ref point_2, line_2.End, tolerance);
                             }
 
-                            switch (count)
+                            if (point_1.IsNaN())
                             {
-                                case 0:
-                                    return new Line3Intersection();
-
-                                case 1:
-                                    if(Query.TryGetFirst(coordinate_1, coordinate_2, coordinate_3, coordinate_4, out Coordinate3 coordinate))
-                                    {
-                                        return new Line3Intersection(coordinate);
-                                    }
-                                    break;
-
-                                default:
-                                    if (Query.TryGetExtreme(coordinate_1, coordinate_2, coordinate_3, coordinate_4, out Coordinate3 resultCoordinate_1, out Coordinate3 resultCoordinate_2))
-                                    {
-                                        if(resultCoordinate_1.AlmostEquals(resultCoordinate_2, tolerance))
-                                        {
-                                            return new Line3Intersection(resultCoordinate_1.GetCentroid(resultCoordinate_2));
-                                        }
-                                        else
-                                        {
-                                            return new Line3Intersection(new Line3(true, resultCoordinate_1, resultCoordinate_2));
-                                        }
-                                    }
-                                    break;
+                                return new Line3Intersection();
                             }
+
+                            if(point_2.IsNaN())
+                            {
+                                return new Line3Intersection(point_1);
+                            }
+
+                            return new Line3Intersection(new Line3(new Bool(true), point_1, point_2));
                         }
 
                         if(bounded_1)
@@ -167,37 +145,64 @@ namespace DiGi.ComputeSharp.Spatial
             Line3 line_Temp;
 
             line3Intersection = Line3Intersection(line, triangle.GetLine(0), tolerance);
-            line_Temp = !line3Intersection.Point_2.IsNaN() ? new Line3(line3Intersection.Point_1, line3Intersection.Point_2) : new Line3();
+            line_Temp = new Line3();
+            if(!line3Intersection.Point_2.IsNaN())
+            {
+                line_Temp = new Line3(line3Intersection.Point_1, line3Intersection.Point_2);
+            }
+
             if (!line_Temp.IsNaN())
             {
                 return new Line3Intersection(line_Temp);
             }
 
-            Coordinate3 point_1 = !line3Intersection.Point_1.IsNaN() ? line3Intersection.Point_1 : new Coordinate3();
+            Coordinate3 point_1 = new Coordinate3();
+            if(!line3Intersection.Point_1.IsNaN())
+            {
+                point_1 = line3Intersection.Point_1;
+            }
 
             line3Intersection = Line3Intersection(line, triangle.GetLine(1), tolerance);
-            line_Temp = !line3Intersection.Point_2.IsNaN() ? new Line3(line3Intersection.Point_1, line3Intersection.Point_2) : new Line3();
+            line_Temp = new Line3();
+            if (!line3Intersection.Point_2.IsNaN())
+            {
+                line_Temp = new Line3(line3Intersection.Point_1, line3Intersection.Point_2);
+            }
+
             if (!line_Temp.IsNaN())
             {
                 return new Line3Intersection(line_Temp);
             }
 
-            Coordinate3 point_2 = !line3Intersection.Point_1.IsNaN() ? line3Intersection.Point_1 : new Coordinate3();
+            Coordinate3 point_2 = new Coordinate3();
+            if(!line3Intersection.Point_1.IsNaN())
+            {
+                point_2 = line3Intersection.Point_1;
+            }
 
             line3Intersection = Line3Intersection(line, triangle.GetLine(2), tolerance);
-            line_Temp = !line3Intersection.Point_2.IsNaN() ? new Line3(line3Intersection.Point_1, line3Intersection.Point_2) : new Line3();
+            line_Temp = new Line3();
+            if (!line3Intersection.Point_2.IsNaN())
+            {
+                line_Temp = new Line3(line3Intersection.Point_1, line3Intersection.Point_2);
+            }
+
             if (!line_Temp.IsNaN())
             {
                 return new Line3Intersection(line_Temp);
             }
 
-            Coordinate3 point_3 = !line3Intersection.Point_1.IsNaN() ? line3Intersection.Point_1 : new Coordinate3();
+            Coordinate3 point_3 = new Coordinate3();
+            if(!line3Intersection.Point_1.IsNaN())
+            {
+                point_3 = line3Intersection.Point_1;
+            }
 
-            bool solid = triangle.IsSolid();
+            bool solid = triangle.Solid.ToBool();
 
             bool notNaN_1 = !point_1.IsNaN();
             bool notNaN_2 = !point_2.IsNaN();
-            bool notNaN_3 = point_3.IsNaN();
+            bool notNaN_3 = !point_3.IsNaN();
 
             if (!solid && !notNaN_1 && !notNaN_2 && !notNaN_3)
             {
@@ -206,32 +211,37 @@ namespace DiGi.ComputeSharp.Spatial
 
             if (notNaN_1 && notNaN_2)
             {
-                return new Line3Intersection(solid, point_1, point_2);
+                return new Line3Intersection(triangle.Solid, point_1, point_2);
             }
 
             if (notNaN_2 && notNaN_3)
             {
-                return new Line3Intersection(solid, point_2, point_3);
+                return new Line3Intersection(triangle.Solid, point_2, point_3);
             }
 
             if (notNaN_3 && notNaN_1)
             {
-                return new Line3Intersection(solid, point_3, point_1);
+                return new Line3Intersection(triangle.Solid, point_3, point_1);
             }
 
-            if (notNaN_1)
+            if(!solid)
             {
-                return new Line3Intersection(point_1);
-            }
+                if (notNaN_1)
+                {
+                    return new Line3Intersection(point_1);
+                }
 
-            if (notNaN_2)
-            {
-                return new Line3Intersection(point_2);
-            }
+                if (notNaN_2)
+                {
+                    return new Line3Intersection(point_2);
+                }
 
-            if (notNaN_3)
-            {
-                return new Line3Intersection(point_3);
+                if (notNaN_3)
+                {
+                    return new Line3Intersection(point_3);
+                }
+
+                return new Line3Intersection();
             }
 
             Coordinate3 vector_1 = new Coordinate3(triangle.Point_1, triangle.Point_2);
@@ -245,7 +255,46 @@ namespace DiGi.ComputeSharp.Spatial
 
             if (factor >= -tolerance && factor <= tolerance)
             {
-                return new Line3Intersection();
+                Coordinate3 start = new Coordinate3();
+                if(triangle.Inside(line.Start, tolerance))
+                {
+                    start = line.Start;
+                }
+                else if(triangle.Inside(line.End, tolerance))
+                {
+                    start = line.End;
+                }
+
+                if (start.IsNaN())
+                {
+                    return new Line3Intersection();
+                }
+
+                Coordinate3 end = new Coordinate3();
+                if(notNaN_1)
+                {
+                    end = point_1;
+                }
+                else if(notNaN_2)
+                {
+                    end = point_2;
+                }
+                else if(notNaN_3)
+                {
+                    end = point_3;
+                }
+
+                if (start.IsNaN())
+                {
+                    return new Line3Intersection();
+                }
+
+                if(start.AlmostEquals(end, tolerance))
+                {
+                    return new Line3Intersection(triangle.Solid, start.GetCentroid(end));
+                }
+
+                return new Line3Intersection(triangle.Solid, start, end);
             }
 
             factor = 1.0f / factor;
