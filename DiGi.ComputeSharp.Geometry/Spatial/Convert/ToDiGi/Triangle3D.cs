@@ -1,7 +1,7 @@
 ﻿using DiGi.ComputeSharp.Spatial.Classes;
 using DiGi.Geometry.Spatial.Classes;
 
-namespace DiGi.ComputeSharp.Geometry
+namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Convert
     {
