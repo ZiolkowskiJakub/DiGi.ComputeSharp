@@ -5,7 +5,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Convert
     {
-        public static List<Triangle3> ToComputeSharp(this IEnumerable<Triangle3D> triangle3Ds)
+        public static List<Triangle3> ToComputeSharp(this IEnumerable<Triangle3D> triangle3Ds, bool solid)
         {
             if (triangle3Ds == null)
             {
@@ -15,16 +15,16 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             List<Triangle3> result = new List<Triangle3>();
             foreach (Triangle3D triangle3D in triangle3Ds)
             {
-                result.Add(ToComputeSharp(triangle3D));
+                result.Add(ToComputeSharp(triangle3D, solid));
             }
 
 
             return result;
         }
 
-        public static List<Triangle3> ToComputeSharp(this Mesh3D mesh3D)
+        public static List<Triangle3> ToComputeSharp(this Mesh3D mesh3D, bool solid)
         {
-            return ToComputeSharp(mesh3D?.GetTriangles());
+            return ToComputeSharp(mesh3D?.GetTriangles(), solid);
         }
     }
 }
