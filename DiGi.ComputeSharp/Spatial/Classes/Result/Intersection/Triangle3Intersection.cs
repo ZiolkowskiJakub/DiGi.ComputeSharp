@@ -1,5 +1,6 @@
 ﻿using DiGi.ComputeSharp.Core.Classes;
 using DiGi.ComputeSharp.Spatial.Interfaces;
+using System.Net.Http.Headers;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
@@ -136,10 +137,42 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             if (Point_5.IsNaN())
             {
-                return [new Triangle3(Solid, Point_1, Point_2, Point_3), new Triangle3(Solid, Point_2, Point_3, Point_4)];
+                if (Solid.ToBool())
+                {
+                    return [new Triangle3(Solid, Point_1, Point_2, Point_3), new Triangle3(Solid, Point_1, Point_3, Point_4)];
+                }
+                else
+                {
+                    Bool @bool = new Bool(true);
+
+                    return [new Line3(@bool, Point_1, Point_2), new Line3(@bool, Point_2, Point_3), new Line3(@bool, Point_3, Point_4), new Line3(@bool, Point_4, Point_1)];
+                }
             }
 
-            return null;
+            if (Point_6.IsNaN())
+            {
+                if (Solid.ToBool())
+                {
+                    return [new Triangle3(Solid, Point_1, Point_2, Point_3), new Triangle3(Solid, Point_1, Point_3, Point_4), new Triangle3(Solid, Point_1, Point_4, Point_5)];
+                }
+                else
+                {
+                    Bool @bool = new Bool(true);
+
+                    return [new Line3(@bool, Point_1, Point_2), new Line3(@bool, Point_2, Point_3), new Line3(@bool, Point_3, Point_4), new Line3(@bool, Point_4, Point_5), new Line3(@bool, Point_5, Point_1)];
+                }
+            }
+
+            if (Solid.ToBool())
+            {
+                return [new Triangle3(Solid, Point_1, Point_2, Point_3), new Triangle3(Solid, Point_3, Point_4, Point_5), new Triangle3(Solid, Point_1, Point_5, Point_6), new Triangle3(Solid, Point_1, Point_3, Point_5)];
+            }
+            else
+            {
+                Bool @bool = new Bool(true);
+
+                return [new Line3(@bool, Point_1, Point_2), new Line3(@bool, Point_2, Point_3), new Line3(@bool, Point_3, Point_4), new Line3(@bool, Point_4, Point_5), new Line3(@bool, Point_5, Point_6), new Line3(@bool, Point_6, Point_1)];
+            }
         }
 
         public bool IsNaN()

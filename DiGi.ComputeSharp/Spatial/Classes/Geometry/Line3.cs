@@ -77,7 +77,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             float t = pointToLineVector.DotProduct(lineVector) / lengthSquared;
 
-            if (true)
+            if (Bounded.ToBool())
             {
                 if(t > 1.0f)
                 {
@@ -93,16 +93,33 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return Start.Add(lineVector.Multiply(t));
         }
 
-        public Coordinate3 GetDirection()
+        public Coordinate3 GetDirection(float tolerance)
         {
-            return new Coordinate3(Start, End).GetNormalized();
+            return new Coordinate3(Start, End).GetNormalized(tolerance);
         }
-        
+
+        public float GetDistance(Coordinate3 point, float tolerance)
+        {
+            return GetClosestPoint(point).GetDistance(point, tolerance);
+        }
+
         public Line3 GetInversed()
         {
             return new Line3(Bounded, End, Start);
         }
-        
+
+        public float GetLength(float tolerance)
+        {
+            float squaredLength = GetSquaredLength();
+
+            if (!Core.Query.IsValid(squaredLength))
+            {
+                return squaredLength;
+            }
+
+            return Core.Query.Sqrt(squaredLength, tolerance);
+        }
+
         public Coordinate3 GetMax()
         {
             float x = Start.X;
@@ -230,9 +247,9 @@ namespace DiGi.ComputeSharp.Spatial.Classes
        
         public bool On(Coordinate3 point, float tolerance)
         {
-            return GetSquaredDistance(point) <= tolerance * tolerance;
+            return GetSquaredDistance(point) <= tolerance;
         }
-
+        
         public Coordinate3 Project(Coordinate3 point)
         {
             return GetClosestPoint(point);

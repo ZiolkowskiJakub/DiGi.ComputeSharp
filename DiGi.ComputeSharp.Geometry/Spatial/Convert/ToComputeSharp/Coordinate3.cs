@@ -12,7 +12,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 return new Coordinate3();
             }
 
-            return new Coordinate3(System.Convert.ToSingle(point3D.X), System.Convert.ToSingle(point3D.Y), System.Convert.ToSingle(point3D.X));
+            return new Coordinate3(System.Convert.ToSingle(point3D.X), System.Convert.ToSingle(point3D.Y), System.Convert.ToSingle(point3D.Z));
         }
 
         public static Coordinate3 ToComputeSharp(this Vector3D vetcor3D)
@@ -22,7 +22,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 return new Coordinate3();
             }
 
-            return new Coordinate3(System.Convert.ToSingle(vetcor3D.X), System.Convert.ToSingle(vetcor3D.Y), System.Convert.ToSingle(vetcor3D.X));
+            return new Coordinate3(System.Convert.ToSingle(vetcor3D.X), System.Convert.ToSingle(vetcor3D.Y), System.Convert.ToSingle(vetcor3D.Z));
         }
     }
 }

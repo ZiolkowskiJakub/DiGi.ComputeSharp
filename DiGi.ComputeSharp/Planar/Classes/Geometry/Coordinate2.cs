@@ -162,10 +162,20 @@ namespace DiGi.ComputeSharp.Planar.Classes
         {
             return new Coordinate2((X + point.X) / 2, (Y + point.Y) / 2);
         }
+
+        public float GetDistance(Coordinate2 point, float tolerance)
+        {
+            return new Coordinate2(this, point).GetLength(tolerance);
+        }
         
         public Coordinate2 GetInversed()
         {
             return new Coordinate2(-X, -Y);
+        }
+
+        public float GetLength(float tolerance)
+        {
+            return Core.Query.Sqrt(GetSquaredLength(), tolerance);
         }
         
         public Coordinate2 GetMoved(Coordinate2 vector)
@@ -173,11 +183,11 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return Add(vector);
         }
 
-        public Coordinate2 GetNormalized()
+        public Coordinate2 GetNormalized(float tolerance)
         {
-            float squaredlength = GetSquaredLength();
+            float length = GetLength(tolerance);
 
-            return new Coordinate2(X / squaredlength, Y / squaredlength);
+            return new Coordinate2(X / length, Y / length);
         }
 
         public float GetSquaredDistance(Coordinate2 coordinate)

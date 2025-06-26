@@ -31,6 +31,11 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return Point_1.GetApproximateDistance(Point_2) + Point_2.GetApproximateDistance(Point_3) + Point_3.GetApproximateDistance(Point_1);
         }
 
+        public float GetPerimeter(float tolerance)
+        {
+            return Point_1.GetDistance(Point_2, tolerance) + Point_2.GetDistance(Point_3, tolerance) + Point_3.GetDistance(Point_1, tolerance);
+        }
+
         public float GetArea()
         {
             float result = 0.5f * ((Point_2.X - Point_1.X) * (Point_3.Y - Point_1.Y) - (Point_2.Y - Point_1.Y) * (Point_3.X - Point_1.X));

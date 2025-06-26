@@ -54,14 +54,14 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return Point_1.GetApproximateDistance(Point_2) + Point_2.GetApproximateDistance(Point_3) + Point_3.GetApproximateDistance(Point_1);
         }
 
-        public float GetArea()
+        public float GetArea(float tolerance)
         {
-            if(IsNaN())
+            if (IsNaN())
             {
                 return float.NaN;
             }
 
-            return GetPlane().Convert_Triangle(this).GetArea();
+            return GetPlane(tolerance).Convert_Triangle(this, tolerance).GetArea();
         }
 
         public Coordinate3 GetCentroid()
@@ -207,14 +207,19 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Triangle3(Point_1.GetMoved(vector), Point_2.GetMoved(vector), Point_3.GetMoved(vector));
         }
 
-        public Coordinate3 GetNormal()
+        public Coordinate3 GetNormal(float tolerance)
         {
-            return new Coordinate3(Point_1, Point_2).CrossProduct(new Coordinate3(Point_1, Point_3)).GetNormalized();
+            return new Coordinate3(Point_1, Point_2).CrossProduct(new Coordinate3(Point_1, Point_3)).GetNormalized(tolerance);
+        }
+
+        public float GetPerimeter(float tolerance)
+        {
+            return Point_1.GetDistance(Point_2, tolerance) + Point_2.GetDistance(Point_3, tolerance) + Point_3.GetDistance(Point_1, tolerance);
         }
         
-        public Plane GetPlane()
+        public Plane GetPlane(float tolerance)
         {
-            return new Plane(Point_1, GetNormal());
+            return new Plane(Point_1, GetNormal(tolerance), tolerance);
         }
 
         public bool InRange(Coordinate3 point, float tolerance)
@@ -254,26 +259,26 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Coordinate3 crossProduct = ab.CrossProduct(ac);
             float squaredLength = crossProduct.GetSquaredLength();
 
-            float squaredTolerance = tolerance * tolerance;
+            //float squaredTolerance = tolerance * tolerance;
 
             // Handle degenerate triangles (area is zero, points are collinear)
-            if (squaredLength <= squaredTolerance) // Use a small epsilon for robustness against near-zero length
+            if (squaredLength <= tolerance) // Use a small epsilon for robustness against near-zero length
             {
                 // If the triangle is degenerate (a line or a point), check if the point lies on that line/point within tolerance.
                 // This is a simplified check for a 3D line.
                 // If the triangle is a point (A=B=C), check distance to A.
-                if (ab.GetSquaredLength() <= squaredTolerance && ac.GetSquaredLength() <= squaredTolerance)
+                if (ab.GetSquaredLength() <= tolerance && ac.GetSquaredLength() <= tolerance)
                 {
-                    return point.Substract(Point_1).GetSquaredLength() <= squaredTolerance;
+                    return point.Substract(Point_1).GetSquaredLength() <= tolerance;
                 }
                 // If the triangle is a line (A, B, C are collinear)
                 Coordinate3 closestOnLine = new Line3(new Bool(true), Point_1, Point_2).GetClosestPoint(point); // Assuming A-B defines the primary line
                 float distSq = point.Substract(closestOnLine).GetSquaredLength();
-                return distSq <= squaredTolerance;
+                return distSq <= tolerance;
             }
 
             // Normalize the normal vector
-            Coordinate3 unitNormal = crossProduct.GetNormalized();
+            Coordinate3 unitNormal = crossProduct.GetNormalized(tolerance);
 
             // Calculate the signed distance from point P to the plane of the triangle
             // The plane equation is: N . (X - A) = 0
@@ -309,7 +314,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 // If it slips through, fall back to line check.
                 Coordinate3 closestOnLine = new Line3(new Bool(true), Point_1, Point_2).GetClosestPoint(point);
                 float distSq = point.Substract(closestOnLine).GetSquaredLength();
-                return distSq <= squaredTolerance;
+                return distSq <= tolerance;
             }
 
 

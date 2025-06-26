@@ -1,6 +1,4 @@
-﻿
-
-using ComputeSharp;
+﻿using ComputeSharp;
 using DiGi.ComputeSharp.Spatial.Classes;
 
 namespace DiGi.ComputeSharp.Spatial

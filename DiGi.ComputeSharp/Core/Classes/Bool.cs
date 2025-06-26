@@ -6,7 +6,7 @@
 
         public Bool(bool value)
         {
-            this.Value = value ? 0 : 1;
+            this.Value = value ? 1 : 0;
         }
 
         public Bool(int value)

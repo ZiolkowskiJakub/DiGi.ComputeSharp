@@ -1,4 +1,5 @@
-﻿using DiGi.ComputeSharp.Spatial.Interfaces;
+﻿using DiGi.ComputeSharp.Planar.Classes;
+using DiGi.ComputeSharp.Spatial.Interfaces;
 using System.Diagnostics.CodeAnalysis;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
@@ -193,10 +194,20 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             return new Coordinate3((X + point.X) / 2, (Y + point.Y) / 2, (Z + point.Z) / 2);
         }
-        
+
+        public float GetDistance(Coordinate3 point, float tolerance)
+        {
+            return new Coordinate3(this, point).GetLength(tolerance);
+        }
+
         public Coordinate3 GetInversed()
         {
             return new Coordinate3(-X, -Y, -Z);
+        }
+
+        public float GetLength(float tolerance)
+        {
+            return Core.Query.Sqrt(GetSquaredLength(), tolerance);
         }
         
         public Coordinate3 GetMoved(Coordinate3 vector)
@@ -204,11 +215,11 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return Add(vector);
         }
 
-        public Coordinate3 GetNormalized()
+        public Coordinate3 GetNormalized(float tolerance)
         {
-            float squaredlength = GetSquaredLength();
+            float length = GetLength(tolerance);
 
-            return new Coordinate3(X / squaredlength, Y / squaredlength, Z / squaredlength);
+            return new Coordinate3(X / length, Y / length, Z / length);
         }
 
         public float GetSquaredDistance(Coordinate3 coordinate)

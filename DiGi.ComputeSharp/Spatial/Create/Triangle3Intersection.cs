@@ -89,7 +89,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Triangle3Intersection(solid, point_1, point_2, point_3);
             }
 
-            Query.Sort(triangle_1.GetPlane(), ref point_1, ref point_2, ref point_3, ref point_4, ref point_5, ref point_6);
+            Query.Sort(triangle_1.GetPlane(tolerance), ref point_1, ref point_2, ref point_3, ref point_4, ref point_5, ref point_6, tolerance);
 
             return new Triangle3Intersection(solid, point_1, point_2, point_3, point_4, point_5, point_6);
         }

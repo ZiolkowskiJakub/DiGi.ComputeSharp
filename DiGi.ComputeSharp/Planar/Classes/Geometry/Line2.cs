@@ -93,9 +93,9 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return Start.Add(lineVector.Multiply(t));
         }
 
-        public Coordinate2 GetDirection()
+        public Coordinate2 GetDirection(float tolerance)
         {
-            return new Coordinate2(Start, End).GetNormalized();
+            return new Coordinate2(Start, End).GetNormalized(tolerance);
         }
         
         public Line2 GetInversed()
@@ -157,6 +157,18 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return Start.GetSquaredDistance(End);
         }
 
+        public float GetLength(float tolerance)
+        {
+            float squaredLength = GetSquaredLength();
+
+            if(!Core.Query.IsValid(squaredLength))
+            {
+                return squaredLength;
+            }
+
+            return Core.Query.Sqrt(squaredLength, tolerance);
+        }
+
         public Coordinate2 GetVector()
         {
             return new Coordinate2(Start, End);
@@ -216,7 +228,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
        
         public bool On(Coordinate2 point, float tolerance)
         {
-            return GetSquaredDistance(point) <= tolerance * tolerance;
+            return GetSquaredDistance(point) <= tolerance;
         }
 
         public Coordinate2 Project(Coordinate2 point)
