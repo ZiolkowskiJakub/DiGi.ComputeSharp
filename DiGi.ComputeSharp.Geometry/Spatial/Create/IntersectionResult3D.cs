@@ -7,7 +7,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Create
     {
-        public static IntersectionResult3D IntersectionResult3D(this Mesh3D mesh3D, IEnumerable<Mesh3D> mesh3Ds, bool solid, float tolerance = Core.Constans.Tolerance.Distance)
+        public static IntersectionResult3D IntersectionResult3D(this Mesh3D mesh3D, IEnumerable<Mesh3D> mesh3Ds, bool solid, double tolerance = Core.Constans.Tolerance.Distance)
         {
             if (mesh3D == null || mesh3Ds == null)
             {
@@ -48,7 +48,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                     continue;
                 }
 
-                foreach(IGeometry3 geometry3 in geometry3s)
+                foreach (IGeometry3 geometry3 in geometry3s)
                 {
                     IGeometry3D geometry3D = null;
                     if (geometry3 is Coordinate3)
@@ -58,13 +58,13 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                     else if (geometry3 is Line3)
                     {
                         Line3 line3 = (Line3)geometry3;
-                        if(line3.Bounded.ToBool())
+                        if (line3.Bounded.ToBool())
                         {
-                            geometry3D = Convert.ToDiGi_Line3D(line3);
+                            geometry3D = Convert.ToDiGi(line3);
                         }
                         else
                         {
-                            geometry3D = Convert.ToDiGi(line3);
+                            geometry3D = Convert.ToDiGi_Line3D(line3);
                         }
                     }
                     else if (geometry3 is Triangle3)
@@ -85,7 +85,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
         
         }
 
-        public static IntersectionResult3D IntersectionResult3D_CPU(this Mesh3D mesh3D, IEnumerable<Mesh3D> mesh3Ds, bool solid, float tolerance = Core.Constans.Tolerance.Distance)
+        public static IntersectionResult3D IntersectionResult3D_CPU(this Mesh3D mesh3D, IEnumerable<Mesh3D> mesh3Ds, bool solid, double tolerance = Core.Constans.Tolerance.Distance)
         {
             if(mesh3D == null || mesh3Ds == null || mesh3Ds.Count() == 0)
             {

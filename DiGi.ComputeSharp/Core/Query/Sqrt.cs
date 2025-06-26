@@ -2,11 +2,11 @@
 {
     public static partial class Query
     {
-        public static float Sqrt(float value, float tolerance)
+        public static double Sqrt(double value, double tolerance)
         {
             if (value < 0)
             {
-                return float.NaN;
+                return double.NaN;
             }
 
             if (value == 0 || value == 1)
@@ -14,10 +14,10 @@
                 return value;
             }
 
-            float result = value / 2f;
+            double result = value / 2f;
             while (Abs(result * result - value) > tolerance)
             {
-                float temp = (result + value / result) / 2f;
+                double temp = (result + value / result) / 2f;
                 if(temp == result)
                 {
                     break;

@@ -6,8 +6,8 @@ namespace DiGi.ComputeSharp.Planar
     {
         internal static Coordinate2 Centroid(Coordinate2 point_1, Coordinate2 point_2, Coordinate2 point_3, Coordinate2 point_4, Coordinate2 point_5, Coordinate2 point_6)
         {
-            float x = 0;
-            float y = 0;
+            double x = 0;
+            double y = 0;
 
             bool isNaN = true;
 
@@ -72,7 +72,7 @@ namespace DiGi.ComputeSharp.Planar
                 return new Coordinate2();
             }
 
-            return new Coordinate2(x / (float)count, y / (float)count);
+            return new Coordinate2(x / (double)count, y / (double)count);
         }
     }
 

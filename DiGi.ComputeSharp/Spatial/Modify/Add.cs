@@ -4,7 +4,7 @@ namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Modify
     {
-        public static bool Add(ref Coordinate3 point_1, ref Coordinate3 point_2, Coordinate3 point, float tolerance)
+        public static bool Add(ref Coordinate3 point_1, ref Coordinate3 point_2, Coordinate3 point, double tolerance)
         {
             if(point.IsNaN())
             {
@@ -34,7 +34,7 @@ namespace DiGi.ComputeSharp.Spatial
             return false;
         }
 
-        public static bool Add(ref Coordinate3 point_1, ref Coordinate3 point_2, ref Coordinate3 point_3, ref Coordinate3 point_4, ref Coordinate3 point_5, ref Coordinate3 point_6, Coordinate3 point, float tolerance)
+        public static bool Add(ref Coordinate3 point_1, ref Coordinate3 point_2, ref Coordinate3 point_3, ref Coordinate3 point_4, ref Coordinate3 point_5, ref Coordinate3 point_6, Coordinate3 point, double tolerance)
         {
             if (point.IsNaN())
             {
@@ -104,7 +104,7 @@ namespace DiGi.ComputeSharp.Spatial
             return false;
         }
 
-        public static bool Add(ref Coordinate3 point_1, ref Coordinate3 point_2, ref Coordinate3 point_3, ref Coordinate3 point_4, ref Coordinate3 point_5, ref Coordinate3 point_6, Line3Intersection line3Intersection, float tolerance)
+        public static bool Add(ref Coordinate3 point_1, ref Coordinate3 point_2, ref Coordinate3 point_3, ref Coordinate3 point_4, ref Coordinate3 point_5, ref Coordinate3 point_6, Line3Intersection line3Intersection, double tolerance)
         {
             if (line3Intersection.Point_1.IsNaN())
             {

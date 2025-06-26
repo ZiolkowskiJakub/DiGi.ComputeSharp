@@ -2,11 +2,11 @@
 {
     public static partial class Query
     {
-        public static float Round(float value, float tolerance)
+        public static double Round(double value, double tolerance)
         {
-            float scaled = value / tolerance;
+            double scaled = value / tolerance;
 
-            float roundedScaled = scaled >= 0 ? (int)(scaled + 0.5f) : (int)(scaled - 0.5f);
+            double roundedScaled = scaled >= 0 ? (int)(scaled + 0.5f) : (int)(scaled - 0.5f);
 
             return roundedScaled * tolerance;
         }

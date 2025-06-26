@@ -6,7 +6,7 @@ namespace DiGi.ComputeSharp.Spatial
     public static partial class Create
     {
         
-        public static Triangulation3 Triangulation3(Triangle3 triangle, Coordinate3 point, float tolerance)
+        public static Triangulation3 Triangulation3(Triangle3 triangle, Coordinate3 point, double tolerance)
         {
             if(!triangle.InRange(point, tolerance))
             {
@@ -56,7 +56,7 @@ namespace DiGi.ComputeSharp.Spatial
             return new Triangulation3(new Triangle3(triangle.Solid, triangle.Point_1, triangle.Point_2, point), new Triangle3(triangle.Solid, triangle.Point_2, triangle.Point_3, point), new Triangle3(triangle.Solid, triangle.Point_3, triangle.Point_1, point));
         }
 
-        public static Triangulation3 Triangulation3(Triangle3 triangle, Line3 line, float tolerance)
+        public static Triangulation3 Triangulation3(Triangle3 triangle, Line3 line, double tolerance)
         {
             if (!triangle.InRange(line, tolerance))
             {
@@ -189,16 +189,16 @@ namespace DiGi.ComputeSharp.Spatial
                     triangle_2_3 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, triangle.Point_3);
                 }
 
-                float factor_Temp;
+                double factor_Temp;
 
-                float factor_1 = triangle_1_2.GetEquilateralityFactor();
+                double factor_1 = triangle_1_2.GetEquilateralityFactor();
                 factor_Temp = triangle_1_3.GetEquilateralityFactor();
                 if (factor_1 > factor_Temp)
                 {
                     factor_1 = factor_Temp;
                 }
 
-                float factor_2 = triangle_2_2.GetEquilateralityFactor();
+                double factor_2 = triangle_2_2.GetEquilateralityFactor();
                 factor_Temp = triangle_2_3.GetEquilateralityFactor();
                 if (factor_2 > factor_Temp)
                 {
@@ -364,15 +364,15 @@ namespace DiGi.ComputeSharp.Spatial
                 }
             }
 
-            float factor_1_Temp = triangle_4_1.GetEquilateralityFactor();
+            double factor_1_Temp = triangle_4_1.GetEquilateralityFactor();
 
-            float factor_Temp_Temp = triangle_5_1.GetEquilateralityFactor();
+            double factor_Temp_Temp = triangle_5_1.GetEquilateralityFactor();
             if (factor_1_Temp > factor_Temp_Temp)
             {
                 factor_1_Temp = factor_Temp_Temp;
             }
 
-            float factor_2_Temp = triangle_4_2.GetEquilateralityFactor();
+            double factor_2_Temp = triangle_4_2.GetEquilateralityFactor();
 
             factor_Temp_Temp = triangle_5_2.GetEquilateralityFactor();
             if (factor_2_Temp > factor_Temp_Temp)

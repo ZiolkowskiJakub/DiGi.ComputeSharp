@@ -7,7 +7,7 @@ namespace DiGi.ComputeSharp.Spatial
     public static partial class Create
     {
         
-        public static Line3Intersection Line3Intersection(Line3 line_1, Line3 line_2, float tolerance)
+        public static Line3Intersection Line3Intersection(Line3 line_1, Line3 line_2, double tolerance)
         {
             if (!line_1.InRange(line_2, tolerance))
             {
@@ -20,25 +20,25 @@ namespace DiGi.ComputeSharp.Spatial
 
             Coordinate3 r = line_1.Start.Substract(line_2.Start); // Vector from a point on L2 to a point on L1
 
-            float a = d1.DotProduct(d1); // squared magnitude of d1
-            float b = d1.DotProduct(d2); // dot product of d1 and d2
-            float c = d2.DotProduct(d2); // squared magnitude of d2
-            float d = d1.DotProduct(r);  // dot product of d1 and r
-            float e = d2.DotProduct(r);  // dot product of d2 and r
+            double a = d1.DotProduct(d1); // squared magnitude of d1
+            double b = d1.DotProduct(d2); // dot product of d1 and d2
+            double c = d2.DotProduct(d2); // squared magnitude of d2
+            double d = d1.DotProduct(r);  // dot product of d1 and r
+            double e = d2.DotProduct(r);  // dot product of d2 and r
 
-            float denominator = a * c - b * b;
+            double denominator = a * c - b * b;
 
             bool bounded_1 = line_1.Bounded.ToBool();
             bool bounded_2 = line_2.Bounded.ToBool();
 
-            //float squaredTolerance = tolerance * tolerance;
+            //double squaredTolerance = tolerance * tolerance;
 
             // Check for parallel or coincident lines
             if (denominator >= -tolerance && denominator <= tolerance)
             {
                 Coordinate3 crossProduct = d1.CrossProduct(d2);
 
-                float squaredLength = crossProduct.GetSquaredLength();
+                double squaredLength = crossProduct.GetSquaredLength();
 
                 if (squaredLength <= tolerance || Core.Query.Sqrt(squaredLength, tolerance) <= tolerance)
                 {
@@ -116,13 +116,13 @@ namespace DiGi.ComputeSharp.Spatial
 
             // Calculate parameters s and t for the points of closest approach
             // (Using s and t for the parameters to avoid confusion with the method parameters)
-            float s = (b * e - c * d) / denominator; // Parameter for Line 1
-            float t = (a * e - b * d) / denominator; // Parameter for Line 2 (Note: This is the 'u' in the formula)
+            double s = (b * e - c * d) / denominator; // Parameter for Line 1
+            double t = (a * e - b * d) / denominator; // Parameter for Line 2 (Note: This is the 'u' in the formula)
 
             Coordinate3 intersectionPoint_1 = line_1.Start.Add(d1.Multiply(s));
             Coordinate3 intersectionPoint_2 = line_2.Start.Add(d2.Multiply(t));
 
-            float squaredDistance = intersectionPoint_1.GetSquaredDistance(intersectionPoint_2);
+            double squaredDistance = intersectionPoint_1.GetSquaredDistance(intersectionPoint_2);
 
             // Check if the lines actually intersect (distance between closest points is zero)
             if (squaredDistance <= tolerance || Core.Query.Sqrt(squaredDistance, tolerance) <= tolerance)
@@ -142,7 +142,7 @@ namespace DiGi.ComputeSharp.Spatial
             return new Line3Intersection();
         }
         
-        public static Line3Intersection Line3Intersection(Line3 line, Triangle3 triangle, float tolerance)
+        public static Line3Intersection Line3Intersection(Line3 line, Triangle3 triangle, double tolerance)
         {
             if(!line.InRange(triangle, tolerance))
             {
@@ -261,7 +261,7 @@ namespace DiGi.ComputeSharp.Spatial
 
             Coordinate3 crossProduct = direction.CrossProduct(vector_2);
 
-            float factor = vector_1.DotProduct(crossProduct);
+            double factor = vector_1.DotProduct(crossProduct);
 
             if (factor >= -tolerance && factor <= tolerance)
             {
@@ -307,48 +307,11 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Line3Intersection(triangle.Solid, start, end);
             }
 
-            //factor = 1.0f / factor;
-
-            //Coordinate3 vector;
-
-            //Coordinate3 origin = line.Start;
-
-            //vector = new Coordinate3(triangle.Point_1, origin);
-
-            //float factor_1 = factor * vector.DotProduct(crossProduct);
-            //if (factor_1 < -tolerance || factor_1 > 1.0 + tolerance)
-            //{
-            //    return new Line3Intersection();
-            //}
-
-            //vector = vector.CrossProduct(vector_1);
-            //double factor_2 = factor * direction.DotProduct(vector);
-            //if (factor_2 < -tolerance || factor_1 + factor_2 > 1.0 + tolerance)
-            //{
-            //    return new Line3Intersection();
-            //}
-
-            //factor = factor * vector_2.DotProduct(vector);
-
-            //if (factor < tolerance)
-            //{
-            //    return new Line3Intersection();
-            //}
-
-            //Coordinate3 intersectionPoint = origin.Add(direction.Multiply(factor));
-
-            //if (line.On(intersectionPoint, tolerance))
-            //{
-            //    return new Line3Intersection(intersectionPoint);
-            //}
-
-            //return new Line3Intersection();
-
             Coordinate3 ab = new Coordinate3(triangle.Point_1, triangle.Point_2);
             Coordinate3 ac = new Coordinate3(triangle.Point_1, triangle.Point_3);
             Coordinate3 normal = ab.CrossProduct(ac);
 
-            float denominator = normal.DotProduct(direction);
+            double denominator = normal.DotProduct(direction);
 
             // If denominator is close to 0, line is parallel to the triangle's plane
             if (Core.Query.Abs(denominator) < tolerance)
@@ -356,34 +319,32 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Line3Intersection();
             }
 
-            float t = normal.DotProduct(triangle.Point_1.Substract(line.Start)) / denominator;
+            double t = normal.DotProduct(triangle.Point_1.Substract(line.Start)) / denominator;
             Coordinate3 intersectionPoint = line.Start.Add(direction.Multiply(t));
-
-            // Optional: if treating line as segment, check if t in [0,1]
-            //if (t <  - tolerance || t > 1.0f + tolerance)
-            //{
-            //    return new Line3Intersection();
-            //}
+            if(!line.On(intersectionPoint, tolerance))
+            {
+                return new Line3Intersection();
+            }
 
             // Barycentric coordinate check
             Coordinate3 ap = new Coordinate3(triangle.Point_1, intersectionPoint);
 
-            float d00 = ab.DotProduct(ab);
-            float d01 = ab.DotProduct(ac);
-            float d11 = ac.DotProduct(ac);
-            float d20 = ap.DotProduct(ab);
-            float d21 = ap.DotProduct(ac);
+            double d00 = ab.DotProduct(ab);
+            double d01 = ab.DotProduct(ac);
+            double d11 = ac.DotProduct(ac);
+            double d20 = ap.DotProduct(ab);
+            double d21 = ap.DotProduct(ac);
 
-            float denom = d00 * d11 - d01 * d01;
+            double denom = d00 * d11 - d01 * d01;
             if (Core.Query.Abs(denom) < tolerance)
             {
                 return new Line3Intersection();
             }
 
-            float u = (d11 * d20 - d01 * d21) / denom;
-            float v = (d00 * d21 - d01 * d20) / denom;
+            double u = (d11 * d20 - d01 * d21) / denom;
+            double v = (d00 * d21 - d01 * d20) / denom;
 
-            if(u >= 0 && v >= 0 && (u + v) <= 1)
+            if (u >= 0 && v >= 0 && (u + v) <= 1)
             {
                 return new Line3Intersection(intersectionPoint);
             }

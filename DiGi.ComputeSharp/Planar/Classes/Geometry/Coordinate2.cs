@@ -6,16 +6,16 @@ namespace DiGi.ComputeSharp.Planar.Classes
     unsafe
     public readonly struct Coordinate2 : IGeometry2
     {
-        public readonly float X;
-        public readonly float Y;
+        public readonly double X;
+        public readonly double Y;
 
         public Coordinate2()
         {
-            X = float.NaN;
-            Y = float.NaN;
+            X = double.NaN;
+            Y = double.NaN;
         }
 
-        public Coordinate2(float x, float y)
+        public Coordinate2(double x, double y)
         {
             X = x;
             Y = y;
@@ -38,7 +38,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return new Coordinate2(X + coordinate.X, Y + coordinate.Y);
         }
 
-        public bool AlmostEquals(Coordinate2 coordinate, float tolerance)
+        public bool AlmostEquals(Coordinate2 coordinate, double tolerance)
         {
             bool isNaN_1 = IsNaN();
             bool isNaN_2 = coordinate.IsNaN();
@@ -53,13 +53,13 @@ namespace DiGi.ComputeSharp.Planar.Classes
                 return false;
             }
 
-            float dx = X - coordinate.X;
+            double dx = X - coordinate.X;
             if (dx < -tolerance || dx > tolerance)
             {
                 return false;
             }
 
-            float dy = Y - coordinate.Y;
+            double dy = Y - coordinate.Y;
             if (dy < -tolerance || dy > tolerance)
             {
                 return false;
@@ -68,7 +68,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return true;
         }
 
-        public float CrossProduct(Coordinate2 vector)
+        public double CrossProduct(Coordinate2 vector)
         {
             return X * vector.Y - Y * vector.X;
         }
@@ -78,12 +78,12 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return new Coordinate2(X / coordinate.X, Y / coordinate.Y);
         }
 
-        public Coordinate2 Divide(float factor)
+        public Coordinate2 Divide(double factor)
         {
             return new Coordinate2(X / factor, Y / factor);
         }
 
-        public float DotProduct(Coordinate2 vector)
+        public double DotProduct(Coordinate2 vector)
         {
             return X * vector.X + Y * vector.Y;
         }
@@ -116,28 +116,28 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return false;
         }
         
-        public float GetApproximateDistance(Coordinate2 point)
+        public double GetApproximateDistance(Coordinate2 point)
         {
-            float dx = point.X - X;
+            double dx = point.X - X;
             if (dx < 0)
             {
                 dx = -dx;
             }
 
-            float dy = point.Y - Y;
+            double dy = point.Y - Y;
             if (dy < 0)
             {
                 dy = -dy;
             }
 
-            float max = dx;
+            double max = dx;
 
             if (dy > max)
             {
                 max = dy;
             }
 
-            float min = dx;
+            double min = dx;
 
             if (dy < min)
             {
@@ -148,7 +148,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return 0.96043387f * max + 0.39782473f * min;
         }
 
-        public float GetApproximateLength()
+        public double GetApproximateLength()
         {
             return new Coordinate2(0, 0).GetApproximateDistance(this);
         }
@@ -163,7 +163,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return new Coordinate2((X + point.X) / 2, (Y + point.Y) / 2);
         }
 
-        public float GetDistance(Coordinate2 point, float tolerance)
+        public double GetDistance(Coordinate2 point, double tolerance)
         {
             return new Coordinate2(this, point).GetLength(tolerance);
         }
@@ -173,7 +173,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return new Coordinate2(-X, -Y);
         }
 
-        public float GetLength(float tolerance)
+        public double GetLength(double tolerance)
         {
             return Core.Query.Sqrt(GetSquaredLength(), tolerance);
         }
@@ -183,27 +183,27 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return Add(vector);
         }
 
-        public Coordinate2 GetNormalized(float tolerance)
+        public Coordinate2 GetNormalized(double tolerance)
         {
-            float length = GetLength(tolerance);
+            double length = GetLength(tolerance);
 
             return new Coordinate2(X / length, Y / length);
         }
 
-        public float GetSquaredDistance(Coordinate2 coordinate)
+        public double GetSquaredDistance(Coordinate2 coordinate)
         {
-            float dx = coordinate.X - X;
-            float dy = coordinate.Y - Y;
+            double dx = coordinate.X - X;
+            double dy = coordinate.Y - Y;
 
             return (dx * dx) + (dy * dy);
         }
 
-        public float GetSquaredLength()
+        public double GetSquaredLength()
         {
             return X * X + Y * Y;
         }
 
-        public bool InRange(Triangle2 triangle, float tolerance)
+        public bool InRange(Triangle2 triangle, double tolerance)
         {
             if (IsNaN() || triangle.IsNaN())
             {
@@ -217,7 +217,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
                 Y - tolerance <= max.Y && Y + tolerance >= min.Y;
         }
 
-        public bool InRange(Line2 line, float tolerance)
+        public bool InRange(Line2 line, double tolerance)
         {
             if (line.IsNaN())
             {
@@ -251,16 +251,16 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return new Coordinate2(X * coordinate.X, Y * coordinate.Y);
         }
 
-        public Coordinate2 Multiply(float factor)
+        public Coordinate2 Multiply(double factor)
         {
             return new Coordinate2(X * factor, Y * factor);
         }
 
         public Coordinate2 Project(Coordinate2 coordinate)
         {
-            float squaredLength = GetSquaredLength();
+            double squaredLength = GetSquaredLength();
 
-            float scalarProjection = coordinate.DotProduct(this) * squaredLength;
+            double scalarProjection = coordinate.DotProduct(this) * squaredLength;
 
             return Multiply(scalarProjection);
         }

@@ -2,7 +2,7 @@
 {
     public static partial class Query
     {
-        public static float Abs(float value)
+        public static double Abs(double value)
         {
             return value < 0 ? -value : value;
         }

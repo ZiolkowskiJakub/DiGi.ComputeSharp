@@ -4,12 +4,12 @@ namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Create
     {
-        public static Triangle3Intersection Triangle3Intersection(Triangle3 triangle, Line3 line, float tolerance)
+        public static Triangle3Intersection Triangle3Intersection(Triangle3 triangle, Line3 line, double tolerance)
         {
             return new Triangle3Intersection(Line3Intersection(line, triangle, tolerance));
         }
 
-        public static Triangle3Intersection Triangle3Intersection(Triangle3 triangle_1, Triangle3 triangle_2, float tolerance)
+        public static Triangle3Intersection Triangle3Intersection(Triangle3 triangle_1, Triangle3 triangle_2, double tolerance)
         {
             if(!triangle_1.InRange(triangle_2, tolerance))
             {

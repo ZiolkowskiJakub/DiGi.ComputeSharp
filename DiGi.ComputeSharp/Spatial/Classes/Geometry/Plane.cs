@@ -24,7 +24,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Origin = origin;
         }
 
-        public Plane(Coordinate3 origin, Coordinate3 normal, float tolerance)
+        public Plane(Coordinate3 origin, Coordinate3 normal, double tolerance)
         {
             Normal = normal;
             Origin = origin;
@@ -37,17 +37,17 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             AxisY = normal.CrossProduct(axisX).GetNormalized(tolerance);
         }
 
-        public Line3 Convert_Line(Line2 line, float tolerance)
+        public Line3 Convert_Line(Line2 line, double tolerance)
         {
             return new Line3(Convert_Point(line.Start, tolerance), Convert_Point(line.End, tolerance));
         }
 
-        public Line2 Convert_Line(Line3 line, float tolerance)
+        public Line2 Convert_Line(Line3 line, double tolerance)
         {
             return new Line2(Convert_Point(line.Start, tolerance), Convert_Point(line.End, tolerance));
         }
 
-        public Coordinate2 Convert_Point(Coordinate3 point, float tolerance)
+        public Coordinate2 Convert_Point(Coordinate3 point, double tolerance)
         {
             if (point.IsNaN())
             {
@@ -59,7 +59,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate2(GetAxisX(tolerance).DotProduct(vector), AxisY.DotProduct(vector));
         }
 
-        public Coordinate3 Convert_Point(Coordinate2 point, float tolerance)
+        public Coordinate3 Convert_Point(Coordinate2 point, double tolerance)
         {
             if (point.IsNaN())
             {
@@ -74,17 +74,17 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate3(Origin.X + u.X + v.X, Origin.Y + u.Y + v.Y, Origin.Z + u.Z + v.Z);
         }
 
-        public Triangle2 Convert_Triangle(Triangle3 triangle, float tolerance)
+        public Triangle2 Convert_Triangle(Triangle3 triangle, double tolerance)
         {
             return new Triangle2(triangle.Solid, Convert_Point(triangle.Point_1, tolerance), Convert_Point(triangle.Point_2, tolerance), Convert_Point(triangle.Point_3, tolerance));
         }
 
-        public Triangle3 Convert_Triangle(Triangle2 triangle, float tolerance)
+        public Triangle3 Convert_Triangle(Triangle2 triangle, double tolerance)
         {
             return new Triangle3(triangle.Solid, Convert_Point(triangle.Point_1, tolerance), Convert_Point(triangle.Point_2, tolerance), Convert_Point(triangle.Point_3, tolerance));
         }
 
-        public Coordinate2 Convert_Vector(Coordinate3 vector, float tolerance)
+        public Coordinate2 Convert_Vector(Coordinate3 vector, double tolerance)
         {
             if (vector.IsNaN())
             {
@@ -94,7 +94,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate2(GetAxisX(tolerance).DotProduct(vector), AxisY.DotProduct(vector));
         }
 
-        public Coordinate3 Convert_Vector(Coordinate2 vector, float tolerance)
+        public Coordinate3 Convert_Vector(Coordinate2 vector, double tolerance)
         {
             if (vector.IsNaN())
             {
@@ -109,24 +109,24 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate3(u.X + v.X, u.Y + v.Y, u.Z + v.Z);
         }
         
-        public float GetApproximateDistance(Coordinate3 point)
+        public double GetApproximateDistance(Coordinate3 point)
         {
             return point.GetApproximateDistance(GetClosestPoint(point));
         }
 
-        public Coordinate3 GetAxisX(float tolerance)
+        public Coordinate3 GetAxisX(double tolerance)
         {
             return AxisY.CrossProduct(Normal).GetNormalized(tolerance);
         }
 
         public Coordinate3 GetClosestPoint(Coordinate3 point)
         {
-            float factor = point.DotProduct(Normal) - Normal.DotProduct(Origin);
+            double factor = point.DotProduct(Normal) - Normal.DotProduct(Origin);
 
             return new Coordinate3(point.X - (Normal.X * factor), point.Y - (Normal.Y * factor), point.Z - (Normal.Z * factor));
         }
 
-        public float GetDistance(Coordinate3 point, float tolerance)
+        public double GetDistance(Coordinate3 point, double tolerance)
         {
             return GetClosestPoint(point).GetDistance(point, tolerance);
         }
@@ -141,7 +141,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Plane(Origin.GetMoved(vector), Normal, AxisY);
         }
 
-        public float GetSquaredDistance(Coordinate3 point)
+        public double GetSquaredDistance(Coordinate3 point)
         {
             return point.GetSquaredDistance(GetClosestPoint(point));
         }
@@ -151,7 +151,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return AxisY.IsNaN() || Normal.IsNaN() || Origin.IsNaN();
         }
 
-        public bool On(Coordinate3 point, float tolerance)
+        public bool On(Coordinate3 point, double tolerance)
         {
             return GetSquaredDistance(point) <= tolerance;
         }
@@ -171,7 +171,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Triangle3(GetClosestPoint(triangle3.Point_1), GetClosestPoint(triangle3.Point_2), GetClosestPoint(triangle3.Point_3));
         }
 
-        public Plane Project(Plane plane, float tolerance)
+        public Plane Project(Plane plane, double tolerance)
         {
             return new Plane(Project(plane.Origin), Normal.Project(plane.Normal).GetNormalized(tolerance), AxisY.Project(plane.AxisY).GetNormalized(tolerance));
         }

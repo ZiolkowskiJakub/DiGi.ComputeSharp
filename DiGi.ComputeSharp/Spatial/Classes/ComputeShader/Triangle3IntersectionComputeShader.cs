@@ -7,69 +7,70 @@ namespace DiGi.ComputeSharp.Spatial.Classes
     [RequiresDoublePrecisionSupport]
     public readonly partial struct Triangle3IntersectionComputeShader : IComputeShader
     {
-        public readonly Triangle3 Triangle;
-        public readonly ReadWriteBuffer<Triangle3Intersection> TriangleIntersections;
-        public readonly ReadOnlyBuffer<Triangle3> Triangles;
-        public readonly int ThreadsCount = -1;
-
-        public readonly float Tolerance = Core.Constans.Tolerance.Distance;
+        private readonly double tolerance = Core.Constans.Tolerance.Distance;
+        private readonly int threadsCount = -1;
         
+        private readonly Triangle3 triangle;
+        private readonly ReadOnlyBuffer<Triangle3> triangles;
+
+        public readonly ReadWriteBuffer<Triangle3Intersection> TriangleIntersections;
+
         public Triangle3IntersectionComputeShader(GraphicsDevice graphicsDevice, Triangle3 triangle, IEnumerable<Triangle3> triangles)
         {
-            Triangle = triangle;
+            this.triangle = triangle;
 
             if (graphicsDevice != null)
             {
-                Triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+                this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
                 TriangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[triangles.Count()]);
             }
         }
 
-        public Triangle3IntersectionComputeShader(GraphicsDevice graphicsDevice, Triangle3 triangle, IEnumerable<Triangle3> triangles, float tolerance, int threadsCount = -1)
+        public Triangle3IntersectionComputeShader(GraphicsDevice graphicsDevice, Triangle3 triangle, IEnumerable<Triangle3> triangles, double tolerance, int threadsCount = -1)
         {
-            ThreadsCount = threadsCount;
+            this.threadsCount = threadsCount;
 
-            Triangle = triangle;
-            Tolerance = tolerance;
+            this.triangle = triangle;
+            this.tolerance = tolerance;
 
             if (graphicsDevice != null)
             {
-                Triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+                this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
                 TriangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[triangles.Count()]);
             }
         }
 
         public Triangle3IntersectionComputeShader(Triangle3 triangle, ReadOnlyBuffer<Triangle3> triangles, ReadWriteBuffer<Triangle3Intersection> triangleIntersections)
         {
-            Triangle = triangle;
-            Triangles = triangles;
+            this.triangle = triangle;
+            this.triangles = triangles;
             TriangleIntersections = triangleIntersections;
         }
 
-        public Triangle3IntersectionComputeShader(Triangle3 triangle, ReadOnlyBuffer<Triangle3> triangles, ReadWriteBuffer<Triangle3Intersection> triangleIntersections, float tolerance, int threadsCount = -1)
+        public Triangle3IntersectionComputeShader(Triangle3 triangle, ReadOnlyBuffer<Triangle3> triangles, ReadWriteBuffer<Triangle3Intersection> triangleIntersections, double tolerance, int threadsCount = -1)
         {
-            ThreadsCount = threadsCount;
+            this.threadsCount = threadsCount;
 
-            Triangle = triangle;
-            Triangles = triangles;
+            this.triangle = triangle;
+            this.triangles = triangles;
             TriangleIntersections = triangleIntersections;
-            Tolerance = tolerance;
+            this.tolerance = tolerance;
         }
 
         public void Execute()
         {
-            int count = Triangles.Length;
+            int count = triangles.Length;
 
             int start = 0;
             int end = 0;
-            if (ThreadsCount < 1)
+            if (threadsCount < 1)
             {
                 start = 0;
                 end = count;
             }
             else
             {
-                int length = (count / ThreadsCount) + 1;
+                int length = (count / threadsCount) + 1;
 
                 int index = ThreadIds.X;
 
@@ -79,7 +80,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             for (int i = start; i < end; i++)
             {
-                TriangleIntersections[i] = Create.Triangle3Intersection(Triangle, Triangles[i], Tolerance);
+                TriangleIntersections[i] = Create.Triangle3Intersection(triangle, triangles[i], tolerance);
             }
         }
     }

@@ -6,7 +6,7 @@ namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Query
     {
-        internal static void Sort_Old(Plane plane, ref Coordinate3 point_1, ref Coordinate3 point_2, ref Coordinate3 point_3, ref Coordinate3 point_4, ref Coordinate3 point_5, ref Coordinate3 point_6, float tolerance)
+        internal static void Sort_Old(Plane plane, ref Coordinate3 point_1, ref Coordinate3 point_2, ref Coordinate3 point_3, ref Coordinate3 point_4, ref Coordinate3 point_5, ref Coordinate3 point_6, double tolerance)
         {
             Coordinate2 point2D_1 = plane.Convert_Point(point_1, tolerance), 
                 point2D_2 = plane.Convert_Point(point_2, tolerance), 
@@ -86,7 +86,7 @@ namespace DiGi.ComputeSharp.Spatial
             point_6 = Coordinate3(ref point_1_Temp, ref point_2_Temp, ref point_3_Temp, ref point_4_Temp, ref point_5_Temp, ref point_6_Temp, index_6);
         }
 
-        internal static void Sort(Plane plane, ref Coordinate3 point_1, ref Coordinate3 point_2, ref Coordinate3 point_3, ref Coordinate3 point_4, ref Coordinate3 point_5, ref Coordinate3 point_6, float tolerance)
+        internal static void Sort(Plane plane, ref Coordinate3 point_1, ref Coordinate3 point_2, ref Coordinate3 point_3, ref Coordinate3 point_4, ref Coordinate3 point_5, ref Coordinate3 point_6, double tolerance)
         {
             Coordinate2 point2D_1 = plane.Convert_Point(point_1, tolerance),
                 point2D_2 = plane.Convert_Point(point_2, tolerance),
@@ -160,20 +160,20 @@ namespace DiGi.ComputeSharp.Spatial
 
         internal static int CompareClockwise(Coordinate2 a, Coordinate2 b, Coordinate2 c)
         {
-            float ax = a.X - c.X;
-            float ay = a.Y - c.Y;
-            float bx = b.X - c.X;
-            float by = b.Y - c.Y;
+            double ax = a.X - c.X;
+            double ay = a.Y - c.Y;
+            double bx = b.X - c.X;
+            double by = b.Y - c.Y;
 
             // Check which side of the vector b is with respect to a
-            float cross = ax * by - ay * bx;
+            double cross = ax * by - ay * bx;
 
             if (cross < 0) return -1;  // a is clockwise from b
             if (cross > 0) return 1;   // a is counter-clockwise from b
 
             // If colinear, sort by distance to center (closer first)
-            float da = ax * ax + ay * ay;
-            float db = bx * bx + by * by;
+            double da = ax * ax + ay * ay;
+            double db = bx * bx + by * by;
             return da < db ? -1 : (da > db ? 1 : 0);
         }
     }

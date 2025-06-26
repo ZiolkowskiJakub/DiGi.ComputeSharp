@@ -16,14 +16,14 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Start = new Coordinate3();
         }
 
-        public Line3(float x_1, float y_1, float z_1, float x_2, float y_2, float z_2)
+        public Line3(double x_1, double y_1, double z_1, double x_2, double y_2, double z_2)
         {
             Bounded = new Bool(true);
             End = new Coordinate3(x_1, y_1, z_1);
             Start = new Coordinate3(x_2, y_2, z_2);
         }
 
-        public Line3(Bool bounded, float x_1, float y_1, float z_1, float x_2, float y_2, float z_2)
+        public Line3(Bool bounded, double x_1, double y_1, double z_1, double x_2, double y_2, double z_2)
         {
             Bounded = bounded;
             End = new Coordinate3(x_1, y_1, z_1);
@@ -44,16 +44,16 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             End = end;
         }
 
-        public float GetApproximateDistance(Coordinate3 point)
+        public double GetApproximateDistance(Coordinate3 point)
         {
             return GetClosestPoint(point).GetApproximateDistance(point);
         }
 
-        public float GetApproximateLength()
+        public double GetApproximateLength()
         {
             if (Bounded.ToBool())
             {
-                return float.PositiveInfinity;
+                return double.PositiveInfinity;
             }
 
             return Start.GetApproximateDistance(End);
@@ -69,13 +69,13 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Coordinate3 lineVector = GetVector();
             Coordinate3 pointToLineVector = point.Substract(Start);
 
-            float lengthSquared = lineVector.GetSquaredLength();
+            double lengthSquared = lineVector.GetSquaredLength();
             if (lengthSquared == 0.0)
             {
                 return Start;
             }
 
-            float t = pointToLineVector.DotProduct(lineVector) / lengthSquared;
+            double t = pointToLineVector.DotProduct(lineVector) / lengthSquared;
 
             if (Bounded.ToBool())
             {
@@ -93,12 +93,12 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return Start.Add(lineVector.Multiply(t));
         }
 
-        public Coordinate3 GetDirection(float tolerance)
+        public Coordinate3 GetDirection(double tolerance)
         {
             return new Coordinate3(Start, End).GetNormalized(tolerance);
         }
 
-        public float GetDistance(Coordinate3 point, float tolerance)
+        public double GetDistance(Coordinate3 point, double tolerance)
         {
             return GetClosestPoint(point).GetDistance(point, tolerance);
         }
@@ -108,9 +108,9 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Line3(Bounded, End, Start);
         }
 
-        public float GetLength(float tolerance)
+        public double GetLength(double tolerance)
         {
-            float squaredLength = GetSquaredLength();
+            double squaredLength = GetSquaredLength();
 
             if (!Core.Query.IsValid(squaredLength))
             {
@@ -122,19 +122,19 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public Coordinate3 GetMax()
         {
-            float x = Start.X;
+            double x = Start.X;
             if (x < End.X)
             {
                 x = End.X;
             }
 
-            float y = Start.Y;
+            double y = Start.Y;
             if (y < End.Y)
             {
                 y = End.Y;
             }
 
-            float z = Start.Z;
+            double z = Start.Z;
             if (z < End.Z)
             {
                 z = End.Z;
@@ -145,19 +145,19 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public Coordinate3 GetMin()
         {
-            float x = Start.X;
+            double x = Start.X;
             if (x > End.X)
             {
                 x = End.X;
             }
 
-            float y = Start.Y;
+            double y = Start.Y;
             if (y > End.Y)
             {
                 y = End.Y;
             }
 
-            float z = Start.Z;
+            double z = Start.Z;
             if (z > End.Z)
             {
                 z = End.Z;
@@ -171,16 +171,16 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Line3(Bounded, End.GetMoved(vector), Start.GetMoved(vector));
         }
 
-        public float GetSquaredDistance(Coordinate3 point)
+        public double GetSquaredDistance(Coordinate3 point)
         {
             return GetClosestPoint(point).GetSquaredDistance(point);
         }
 
-        public float GetSquaredLength()
+        public double GetSquaredLength()
         {
             if(Bounded.ToBool())
             {
-                return float.PositiveInfinity;
+                return double.PositiveInfinity;
             }
 
             return Start.GetSquaredDistance(End);
@@ -191,7 +191,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate3(Start, End);
         }
 
-        public bool InRange(Line3 line3, float tolerance)
+        public bool InRange(Line3 line3, double tolerance)
         {
             if (IsNaN() || line3.IsNaN())
             {
@@ -213,12 +213,12 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                     (minA.Z - tolerance <= maxB.Z && maxA.Z + tolerance >= minB.Z);
         }
 
-        public bool InRange(Coordinate3 point, float tolerance)
+        public bool InRange(Coordinate3 point, double tolerance)
         {
             return point.InRange(this, tolerance);
         }
 
-        public bool InRange(Triangle3 triangle3, float tolerance)
+        public bool InRange(Triangle3 triangle3, double tolerance)
         {
             if (IsNaN() || triangle3.IsNaN())
             {
@@ -245,7 +245,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return Start.IsNaN() || End.IsNaN();
         }
        
-        public bool On(Coordinate3 point, float tolerance)
+        public bool On(Coordinate3 point, double tolerance)
         {
             return GetSquaredDistance(point) <= tolerance;
         }

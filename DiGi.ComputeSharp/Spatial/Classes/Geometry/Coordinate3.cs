@@ -7,18 +7,18 @@ namespace DiGi.ComputeSharp.Spatial.Classes
     unsafe
     public readonly struct Coordinate3 : IGeometry3
     {
-        public readonly float X;
-        public readonly float Y;
-        public readonly float Z;
+        public readonly double X;
+        public readonly double Y;
+        public readonly double Z;
 
         public Coordinate3()
         {
-            X = float.NaN;
-            Y = float.NaN;
-            Z = float.NaN;
+            X = double.NaN;
+            Y = double.NaN;
+            Z = double.NaN;
         }
 
-        public Coordinate3(float x, float y, float z)
+        public Coordinate3(double x, double y, double z)
         {
             X = x;
             Y = y;
@@ -44,7 +44,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate3(X + coordinate.X, Y + coordinate.Y, Z + coordinate.Z);
         }
 
-        public bool AlmostEquals(Coordinate3 coordinate, float tolerance)
+        public bool AlmostEquals(Coordinate3 coordinate, double tolerance)
         {
             bool isNaN_1 = IsNaN();
             bool isNaN_2 = coordinate.IsNaN();
@@ -59,19 +59,19 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 return false;
             }
 
-            float dx = X - coordinate.X;
+            double dx = X - coordinate.X;
             if (dx < -tolerance || dx > tolerance)
             {
                 return false;
             }
 
-            float dy = Y - coordinate.Y;
+            double dy = Y - coordinate.Y;
             if (dy < -tolerance || dy > tolerance)
             {
                 return false;
             }
 
-            float dz = Z - coordinate.Z;
+            double dz = Z - coordinate.Z;
             if (dz < -tolerance || dz > tolerance)
             {
                 return false;
@@ -93,12 +93,12 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate3(X / coordinate.X, Y / coordinate.Y, Z / coordinate.Z);
         }
 
-        public Coordinate3 Divide(float factor)
+        public Coordinate3 Divide(double factor)
         {
             return new Coordinate3(X / factor, Y / factor, Z / factor);
         }
 
-        public float DotProduct(Coordinate3 vector)
+        public double DotProduct(Coordinate3 vector)
         {
             return X * vector.X + Y * vector.Y + Z * vector.Z;
         }
@@ -131,27 +131,27 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return false;
         }
         
-        public float GetApproximateDistance(Coordinate3 point)
+        public double GetApproximateDistance(Coordinate3 point)
         {
-            float dx = point.X - X;
+            double dx = point.X - X;
             if (dx < 0)
             {
                 dx = -dx;
             }
 
-            float dy = point.Y - Y;
+            double dy = point.Y - Y;
             if (dy < 0)
             {
                 dy = -dy;
             }
 
-            float dz = point.Z - Z;
+            double dz = point.Z - Z;
             if (dz < 0)
             {
                 dz = -dz;
             }
 
-            float max = dx;
+            double max = dx;
 
             if (dy > max)
             {
@@ -163,7 +163,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 max = dz;
             }
 
-            float min = dx;
+            double min = dx;
 
             if (dy < min)
             {
@@ -175,12 +175,12 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 min = dz;
             }
 
-            float mid = dx + dy + dz - max - min;
+            double mid = dx + dy + dz - max - min;
 
             return 0.937562f * max + 0.392485f * mid + 0.286079f * min;
         }
 
-        public float GetApproximateLength()
+        public double GetApproximateLength()
         {
             return new Coordinate3(0, 0, 0).GetApproximateDistance(this);
         }
@@ -195,7 +195,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate3((X + point.X) / 2, (Y + point.Y) / 2, (Z + point.Z) / 2);
         }
 
-        public float GetDistance(Coordinate3 point, float tolerance)
+        public double GetDistance(Coordinate3 point, double tolerance)
         {
             return new Coordinate3(this, point).GetLength(tolerance);
         }
@@ -205,7 +205,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate3(-X, -Y, -Z);
         }
 
-        public float GetLength(float tolerance)
+        public double GetLength(double tolerance)
         {
             return Core.Query.Sqrt(GetSquaredLength(), tolerance);
         }
@@ -215,28 +215,28 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return Add(vector);
         }
 
-        public Coordinate3 GetNormalized(float tolerance)
+        public Coordinate3 GetNormalized(double tolerance)
         {
-            float length = GetLength(tolerance);
+            double length = GetLength(tolerance);
 
             return new Coordinate3(X / length, Y / length, Z / length);
         }
 
-        public float GetSquaredDistance(Coordinate3 coordinate)
+        public double GetSquaredDistance(Coordinate3 coordinate)
         {
-            float dx = coordinate.X - X;
-            float dy = coordinate.Y - Y;
-            float dz = coordinate.Z - Z;
+            double dx = coordinate.X - X;
+            double dy = coordinate.Y - Y;
+            double dz = coordinate.Z - Z;
 
             return (dx * dx) + (dy * dy) + (dz * dz);
         }
 
-        public float GetSquaredLength()
+        public double GetSquaredLength()
         {
             return X * X + Y * Y + Z * Z;
         }
 
-        public bool InRange(Triangle3 triangle, float tolerance)
+        public bool InRange(Triangle3 triangle, double tolerance)
         {
             if (IsNaN() || triangle.IsNaN())
             {
@@ -251,7 +251,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 Z - tolerance <= max.Z && Z + tolerance >= min.Z;
         }
 
-        public bool InRange(Line3 line, float tolerance)
+        public bool InRange(Line3 line, double tolerance)
         {
             if (line.IsNaN())
             {
@@ -286,16 +286,16 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate3(X * coordinate.X, Y * coordinate.Y, Z * coordinate.Z);
         }
 
-        public Coordinate3 Multiply(float factor)
+        public Coordinate3 Multiply(double factor)
         {
             return new Coordinate3(X * factor, Y * factor, Z * factor);
         }
 
         public Coordinate3 Project(Coordinate3 coordinate)
         {
-            float squaredLength = GetSquaredLength();
+            double squaredLength = GetSquaredLength();
 
-            float scalarProjection = coordinate.DotProduct(this) * squaredLength;
+            double scalarProjection = coordinate.DotProduct(this) * squaredLength;
 
             return Multiply(scalarProjection);
         }

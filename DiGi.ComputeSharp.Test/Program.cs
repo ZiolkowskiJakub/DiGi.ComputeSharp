@@ -4,6 +4,7 @@
 //using DiGi.ComputeSharp.Legacy.Classes;
 //using DiGi.ComputeSharp.Legacy.Classes.Result;
 //using DiGi.ComputeSharp.Legacy.Constans;
+using ComputeSharp;
 using DiGi.ComputeSharp.Core.Classes;
 using DiGi.ComputeSharp.Spatial.Classes;
 
@@ -107,7 +108,7 @@ using DiGi.ComputeSharp.Spatial.Classes;
 
 //Parallel.For(0, lines.Count, i => 
 //{
-//    float distance_Min = float.MaxValue;
+//    double distance_Min = double.MaxValue;
 
 //    foreach (Triangle3 triangle in triangles)
 //    {
@@ -154,9 +155,9 @@ using DiGi.ComputeSharp.Spatial.Classes;
 //    }
 //}
 
-Triangle3 triangle3_1;
-Triangle3 triangle3_2;
-Triangle3Intersection triangle3Intersection;
+//Triangle3 triangle3_1;
+//Triangle3 triangle3_2;
+//Triangle3Intersection triangle3Intersection;
 
 //triangle3_1 = new Triangle3(true, 2, 2, 0, 2, 8, 0, 8, 2, 0);
 //triangle3_2 = new Triangle3(true, 4, 4, 0, 4, 9, 0, 9, 4, 0);
@@ -171,11 +172,19 @@ Triangle3Intersection triangle3Intersection;
 //triangle3Intersection = DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(triangle3_1, triangle3_2, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
 
 
-Triangle3 triangle3 = new Triangle3(new Bool(true), 0, 0, 0, 0, 10, 0, 10, 0, 0);
-Line3 line3 = new Line3(4, 4, 0, 11, 11, 0);
+//Triangle3 triangle3 = new Triangle3(new Bool(true), 0, 0, 0, 0, 10, 0, 10, 0, 0);
+//Line3 line3 = new Line3(4, 4, 0, 11, 11, 0);
 
-Triangulation3 triangulation3 = DiGi.ComputeSharp.Spatial.Create.Triangulation3(triangle3, line3, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
+//Triangulation3 triangulation3 = DiGi.ComputeSharp.Spatial.Create.Triangulation3(triangle3, line3, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
 
+Triangle3 triangle3_1 = new Triangle3(new DiGi.ComputeSharp.Core.Classes.Bool(true), -1, -1, 0, 10, 10, 0, 10, -10, 0);
+Triangle3 triangle3_2 = new Triangle3(new DiGi.ComputeSharp.Core.Classes.Bool(true), -1, -1, 1, 10, 10, 1, 10, -10, 1);
+Triangle3 triangle3_3 = new Triangle3(new DiGi.ComputeSharp.Core.Classes.Bool(true), -1, -1, 0, 10, 10, 0, 10, -10, 0);
+Line3 line3_1 = new Line3(0, 0, 0, 20, 0, 0);
+Line3 line3_2 = new Line3(0, 0, 1, 20, 0, 1);
+Line3 line3_3 = new Line3(0, 0, 2, 20, 0, 2);
+
+List<bool> intersects = DiGi.ComputeSharp.Spatial.Query.Intersect([line3_2, line3_1, line3_3], [triangle3_1, triangle3_2, triangle3_3], DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
 
 Console.WriteLine(string.Format("Finished: {0}", true ));
 

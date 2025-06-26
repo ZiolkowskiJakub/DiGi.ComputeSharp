@@ -20,7 +20,7 @@ namespace DiGi.ComputeSharp.Planar
                 return true;
             }
 
-            float crossProduct = vector_1.CrossProduct(vector_2);
+            double crossProduct = vector_1.CrossProduct(vector_2);
             if (crossProduct < 0)
             {
                 int temp = index_1;

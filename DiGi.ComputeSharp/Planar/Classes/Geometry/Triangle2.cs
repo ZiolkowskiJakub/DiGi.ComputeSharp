@@ -26,19 +26,19 @@ namespace DiGi.ComputeSharp.Planar.Classes
             Point_3 = point_3;
         }
 
-        public float GetApproximatePerimeter()
+        public double GetApproximatePerimeter()
         {
             return Point_1.GetApproximateDistance(Point_2) + Point_2.GetApproximateDistance(Point_3) + Point_3.GetApproximateDistance(Point_1);
         }
 
-        public float GetPerimeter(float tolerance)
+        public double GetPerimeter(double tolerance)
         {
             return Point_1.GetDistance(Point_2, tolerance) + Point_2.GetDistance(Point_3, tolerance) + Point_3.GetDistance(Point_1, tolerance);
         }
 
-        public float GetArea()
+        public double GetArea()
         {
-            float result = 0.5f * ((Point_2.X - Point_1.X) * (Point_3.Y - Point_1.Y) - (Point_2.Y - Point_1.Y) * (Point_3.X - Point_1.X));
+            double result = 0.5f * ((Point_2.X - Point_1.X) * (Point_3.Y - Point_1.Y) - (Point_2.Y - Point_1.Y) * (Point_3.X - Point_1.X));
 
             if (result < 0)
             {
@@ -50,8 +50,8 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public Coordinate2 GetCentroid()
         {
-            float centroidX = (Point_1.X + Point_2.X + Point_3.X) / 3.0f;
-            float centroidY = (Point_1.Y + Point_2.Y + Point_3.Y) / 3.0f;
+            double centroidX = (Point_1.X + Point_2.X + Point_3.X) / 3.0f;
+            double centroidY = (Point_1.Y + Point_2.Y + Point_3.Y) / 3.0f;
 
             return new Coordinate2(centroidX, centroidY);
         }
@@ -85,7 +85,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public Coordinate2 GetMax()
         {
-            float x = Point_1.X;
+            double x = Point_1.X;
             if (x < Point_2.X)
             {
                 x = Point_2.X;
@@ -96,7 +96,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
                 x = Point_3.X;
             }
 
-            float y = Point_1.Y;
+            double y = Point_1.Y;
             if (y < Point_2.Y)
             {
                 y = Point_2.Y;
@@ -111,7 +111,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public Coordinate2 GetMin()
         {
-            float x = Point_1.X;
+            double x = Point_1.X;
             if (x > Point_2.X)
             {
                 x = Point_2.X;
@@ -122,7 +122,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
                 x = Point_3.X;
             }
 
-            float y = Point_1.Y;
+            double y = Point_1.Y;
             if (y > Point_2.Y)
             {
                 y = Point_2.Y;
@@ -140,17 +140,17 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return new Triangle2(Solid, Point_1.GetMoved(vector), Point_2.GetMoved(vector), Point_3.GetMoved(vector));
         }
 
-        public bool InRange(Coordinate2 point, float tolerance)
+        public bool InRange(Coordinate2 point, double tolerance)
         {
             return point.InRange(this, tolerance);
         }
 
-        public bool InRange(Line2 line, float tolerance)
+        public bool InRange(Line2 line, double tolerance)
         {
             return line.InRange(this, tolerance);
         }
 
-        public bool InRange(Triangle2 triangle, float tolerance)
+        public bool InRange(Triangle2 triangle, double tolerance)
         {
             if (IsNaN() || triangle.IsNaN())
             {
@@ -166,7 +166,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
                     (minA.Y - tolerance <= maxB.Y && maxA.Y + tolerance >= minB.Y);
         }
 
-        public bool Inside(Coordinate2 point, float tolerance)
+        public bool Inside(Coordinate2 point, double tolerance)
         {
             throw new NotImplementedException();
         }
@@ -176,7 +176,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return Point_1.IsNaN() || Point_1.IsNaN() || Point_3.IsNaN();
         }
 
-        public bool On(Coordinate2 point, float tolerance)
+        public bool On(Coordinate2 point, double tolerance)
         {
 
             if(Solid.ToBool())

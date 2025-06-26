@@ -2,9 +2,9 @@
 {
     public static partial class Query
     {
-        public static bool IsValid(float value)
+        public static bool IsValid(double value)
         {
-            return value + 1.0f > value;
+            return value + 1.0 > value;
         }
     }
 }

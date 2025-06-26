@@ -41,7 +41,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Point_3 = point_3;
         }
 
-        public Triangle3(Bool solid, float x_1, float y_1, float z_1, float x_2, float y_2, float z_2, float x_3, float y_3, float z_3)
+        public Triangle3(Bool solid, double x_1, double y_1, double z_1, double x_2, double y_2, double z_2, double x_3, double y_3, double z_3)
         {
             Solid = solid;
             Point_1 = new Coordinate3(x_1, y_1, z_1);
@@ -49,16 +49,16 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Point_3 = new Coordinate3(x_3, y_3, z_3);
         }
 
-        public float GetApproximatePerimeter()
+        public double GetApproximatePerimeter()
         {
             return Point_1.GetApproximateDistance(Point_2) + Point_2.GetApproximateDistance(Point_3) + Point_3.GetApproximateDistance(Point_1);
         }
 
-        public float GetArea(float tolerance)
+        public double GetArea(double tolerance)
         {
             if (IsNaN())
             {
-                return float.NaN;
+                return double.NaN;
             }
 
             return GetPlane(tolerance).Convert_Triangle(this, tolerance).GetArea();
@@ -66,27 +66,27 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public Coordinate3 GetCentroid()
         {
-            float centroidX = (Point_1.X + Point_2.X + Point_3.X) / 3.0f;
-            float centroidY = (Point_1.Y + Point_2.Y + Point_3.Y) / 3.0f;
-            float centroidZ = (Point_1.Z + Point_2.Z + Point_3.Z) / 3.0f;
+            double centroidX = (Point_1.X + Point_2.X + Point_3.X) / 3.0f;
+            double centroidY = (Point_1.Y + Point_2.Y + Point_3.Y) / 3.0f;
+            double centroidZ = (Point_1.Z + Point_2.Z + Point_3.Z) / 3.0f;
 
             return new Coordinate3(centroidX, centroidY, centroidZ);
         }
 
-        public float GetEquilateralityFactor()
+        public double GetEquilateralityFactor()
         {
             if (IsNaN())
             {
                 return 0;
             }
 
-            float length_1 = GetLine(0).GetSquaredLength();
-            float length_2 = GetLine(1).GetSquaredLength();
-            float length_3 = GetLine(2).GetSquaredLength();
+            double length_1 = GetLine(0).GetSquaredLength();
+            double length_2 = GetLine(1).GetSquaredLength();
+            double length_3 = GetLine(2).GetSquaredLength();
 
-            float mean = (length_1 + length_2 + length_3) / 3f;
+            double mean = (length_1 + length_2 + length_3) / 3f;
 
-            float length = length_1;
+            double length = length_1;
 
             if (length_2 < length)
             {
@@ -130,7 +130,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public Coordinate3 GetMax()
         {
-            float x = Point_1.X;
+            double x = Point_1.X;
             if (x < Point_2.X)
             {
                 x = Point_2.X;
@@ -141,7 +141,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 x = Point_3.X;
             }
 
-            float y = Point_1.Y;
+            double y = Point_1.Y;
             if (y < Point_2.Y)
             {
                 y = Point_2.Y;
@@ -151,7 +151,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 y = Point_3.Y;
             }
 
-            float z = Point_1.Z;
+            double z = Point_1.Z;
             if (z < Point_2.Z)
             {
                 z = Point_2.Z;
@@ -167,7 +167,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public Coordinate3 GetMin()
         {
-            float x = Point_1.X;
+            double x = Point_1.X;
             if (x > Point_2.X)
             {
                 x = Point_2.X;
@@ -178,7 +178,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 x = Point_3.X;
             }
 
-            float y = Point_1.Y;
+            double y = Point_1.Y;
             if (y > Point_2.Y)
             {
                 y = Point_2.Y;
@@ -188,7 +188,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 y = Point_3.Y;
             }
 
-            float z = Point_1.Z;
+            double z = Point_1.Z;
             if (z > Point_2.Z)
             {
                 z = Point_2.Z;
@@ -207,32 +207,32 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Triangle3(Point_1.GetMoved(vector), Point_2.GetMoved(vector), Point_3.GetMoved(vector));
         }
 
-        public Coordinate3 GetNormal(float tolerance)
+        public Coordinate3 GetNormal(double tolerance)
         {
             return new Coordinate3(Point_1, Point_2).CrossProduct(new Coordinate3(Point_1, Point_3)).GetNormalized(tolerance);
         }
 
-        public float GetPerimeter(float tolerance)
+        public double GetPerimeter(double tolerance)
         {
             return Point_1.GetDistance(Point_2, tolerance) + Point_2.GetDistance(Point_3, tolerance) + Point_3.GetDistance(Point_1, tolerance);
         }
         
-        public Plane GetPlane(float tolerance)
+        public Plane GetPlane(double tolerance)
         {
             return new Plane(Point_1, GetNormal(tolerance), tolerance);
         }
 
-        public bool InRange(Coordinate3 point, float tolerance)
+        public bool InRange(Coordinate3 point, double tolerance)
         {
             return point.InRange(this, tolerance);
         }
 
-        public bool InRange(Line3 line3, float tolerance)
+        public bool InRange(Line3 line3, double tolerance)
         {
             return line3.InRange(this, tolerance);
         }
 
-        public bool InRange(Triangle3 triangle3, float tolerance)
+        public bool InRange(Triangle3 triangle3, double tolerance)
         {
             if (IsNaN() || triangle3.IsNaN())
             {
@@ -249,7 +249,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                     (minA.Z - tolerance <= maxB.Z && maxA.Z + tolerance >= minB.Z);
         }
 
-        public bool Inside(Coordinate3 point, float tolerance)
+        public bool Inside(Coordinate3 point, double tolerance)
         {
             // Vectors forming two sides of the triangle
             Coordinate3 ab = Point_2.Substract(Point_1);
@@ -257,9 +257,9 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             // Calculate the triangle's normal
             Coordinate3 crossProduct = ab.CrossProduct(ac);
-            float squaredLength = crossProduct.GetSquaredLength();
+            double squaredLength = crossProduct.GetSquaredLength();
 
-            //float squaredTolerance = tolerance * tolerance;
+            //double squaredTolerance = tolerance * tolerance;
 
             // Handle degenerate triangles (area is zero, points are collinear)
             if (squaredLength <= tolerance) // Use a small epsilon for robustness against near-zero length
@@ -273,7 +273,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 }
                 // If the triangle is a line (A, B, C are collinear)
                 Coordinate3 closestOnLine = new Line3(new Bool(true), Point_1, Point_2).GetClosestPoint(point); // Assuming A-B defines the primary line
-                float distSq = point.Substract(closestOnLine).GetSquaredLength();
+                double distSq = point.Substract(closestOnLine).GetSquaredLength();
                 return distSq <= tolerance;
             }
 
@@ -284,7 +284,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             // The plane equation is: N . (X - A) = 0
             // Distance = N . (P - A) / |N|
             Coordinate3 ap = point.Substract(Point_1);
-            float signedDistance = ap.DotProduct(unitNormal);
+            double signedDistance = ap.DotProduct(unitNormal);
 
             // Check if the point is within the plane tolerance
             if (Core.Query.Abs(signedDistance) > tolerance)
@@ -299,13 +299,13 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             // We're working in the plane of the triangle, so we can flatten it to 2D for barycentric calculation if needed,
             // or keep it in 3D using the dot product method. The 3D dot product method is more general.
 
-            float dot00 = ab.DotProduct(ab); // |AB|^2
-            float dot01 = ab.DotProduct(ac); // AB . AC
-            float dot02 = ab.DotProduct(ap); // AB . AP
-            float dot11 = ac.DotProduct(ac); // |AC|^2
-            float dot12 = ac.DotProduct(ap); // AC . AP
+            double dot00 = ab.DotProduct(ab); // |AB|^2
+            double dot01 = ab.DotProduct(ac); // AB . AC
+            double dot02 = ab.DotProduct(ap); // AB . AP
+            double dot11 = ac.DotProduct(ac); // |AC|^2
+            double dot12 = ac.DotProduct(ap); // AC . AP
 
-            float invDenom = 1.0f / (dot00 * dot11 - dot01 * dot01); // 1 / (2 * Area_parallelogram)^2
+            double invDenom = 1.0f / (dot00 * dot11 - dot01 * dot01); // 1 / (2 * Area_parallelogram)^2
                                                                      // If denominator is zero or near-zero, it means the triangle is degenerate (collinear vertices),
                                                                      // which should have been caught by the normalLength check above. However, for robustness:
             if (!Core.Query.IsValid(invDenom))
@@ -313,14 +313,14 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 // This case should ideally be handled by the normalLength check.
                 // If it slips through, fall back to line check.
                 Coordinate3 closestOnLine = new Line3(new Bool(true), Point_1, Point_2).GetClosestPoint(point);
-                float distSq = point.Substract(closestOnLine).GetSquaredLength();
+                double distSq = point.Substract(closestOnLine).GetSquaredLength();
                 return distSq <= tolerance;
             }
 
 
-            float u = (dot11 * dot02 - dot01 * dot12) * invDenom;
-            float v = (dot00 * dot12 - dot01 * dot02) * invDenom;
-            float w = 1.0f - u - v; // The third barycentric coordinate
+            double u = (dot11 * dot02 - dot01 * dot12) * invDenom;
+            double v = (dot00 * dot12 - dot01 * dot02) * invDenom;
+            double w = 1.0f - u - v; // The third barycentric coordinate
 
             // Apply tolerance to barycentric coordinates
             // If u, v, w are all within [0-tolerance, 1+tolerance], the point is considered inside.
@@ -337,7 +337,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return Point_1.IsNaN() || Point_1.IsNaN() || Point_3.IsNaN();
         }
 
-        public bool On(Coordinate3 point, float tolerance)
+        public bool On(Coordinate3 point, double tolerance)
         {
 
             if(Solid.ToBool())

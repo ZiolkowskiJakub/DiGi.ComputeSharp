@@ -16,14 +16,14 @@ namespace DiGi.ComputeSharp.Planar.Classes
             Start = new Coordinate2();
         }
 
-        public Line2(float x_1, float y_1, float x_2, float y_2)
+        public Line2(double x_1, double y_1, double x_2, double y_2)
         {
             Bounded = new Bool(true);
             End = new Coordinate2(x_1, y_1);
             Start = new Coordinate2(x_2, y_2);
         }
 
-        public Line2(Bool bounded, float x_1, float y_1, float x_2, float y_2)
+        public Line2(Bool bounded, double x_1, double y_1, double x_2, double y_2)
         {
             Bounded = bounded;
             End = new Coordinate2(x_1, y_1);
@@ -44,16 +44,16 @@ namespace DiGi.ComputeSharp.Planar.Classes
             End = end;
         }
 
-        public float GetApproximateDistance(Coordinate2 point)
+        public double GetApproximateDistance(Coordinate2 point)
         {
             return GetClosestPoint(point).GetApproximateDistance(point);
         }
 
-        public float GetApproximateLength()
+        public double GetApproximateLength()
         {
             if (Bounded.ToBool())
             {
-                return float.PositiveInfinity;
+                return double.PositiveInfinity;
             }
 
             return Start.GetApproximateDistance(End);
@@ -69,13 +69,13 @@ namespace DiGi.ComputeSharp.Planar.Classes
             Coordinate2 lineVector = GetVector();
             Coordinate2 pointToLineVector = point.Substract(Start);
 
-            float lengthSquared = lineVector.GetSquaredLength();
+            double lengthSquared = lineVector.GetSquaredLength();
             if (lengthSquared == 0.0)
             {
                 return Start;
             }
 
-            float t = pointToLineVector.DotProduct(lineVector) / lengthSquared;
+            double t = pointToLineVector.DotProduct(lineVector) / lengthSquared;
 
             if (true)
             {
@@ -93,7 +93,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return Start.Add(lineVector.Multiply(t));
         }
 
-        public Coordinate2 GetDirection(float tolerance)
+        public Coordinate2 GetDirection(double tolerance)
         {
             return new Coordinate2(Start, End).GetNormalized(tolerance);
         }
@@ -105,13 +105,13 @@ namespace DiGi.ComputeSharp.Planar.Classes
         
         public Coordinate2 GetMax()
         {
-            float x = Start.X;
+            double x = Start.X;
             if (x < End.X)
             {
                 x = End.X;
             }
 
-            float y = Start.Y;
+            double y = Start.Y;
             if (y < End.Y)
             {
                 y = End.Y;
@@ -122,13 +122,13 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public Coordinate2 GetMin()
         {
-            float x = Start.X;
+            double x = Start.X;
             if (x > End.X)
             {
                 x = End.X;
             }
 
-            float y = Start.Y;
+            double y = Start.Y;
             if (y > End.Y)
             {
                 y = End.Y;
@@ -142,24 +142,24 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return new Line2(Bounded, End.GetMoved(vector), Start.GetMoved(vector));
         }
 
-        public float GetSquaredDistance(Coordinate2 point)
+        public double GetSquaredDistance(Coordinate2 point)
         {
             return GetClosestPoint(point).GetSquaredDistance(point);
         }
 
-        public float GetSquaredLength()
+        public double GetSquaredLength()
         {
             if(Bounded.ToBool())
             {
-                return float.PositiveInfinity;
+                return double.PositiveInfinity;
             }
 
             return Start.GetSquaredDistance(End);
         }
 
-        public float GetLength(float tolerance)
+        public double GetLength(double tolerance)
         {
-            float squaredLength = GetSquaredLength();
+            double squaredLength = GetSquaredLength();
 
             if(!Core.Query.IsValid(squaredLength))
             {
@@ -174,7 +174,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return new Coordinate2(Start, End);
         }
 
-        public bool InRange(Line2 line, float tolerance)
+        public bool InRange(Line2 line, double tolerance)
         {
             if (IsNaN() || line.IsNaN())
             {
@@ -195,12 +195,12 @@ namespace DiGi.ComputeSharp.Planar.Classes
                     (minA.Y - tolerance <= maxB.Y && maxA.Y + tolerance >= minB.Y);
         }
 
-        public bool InRange(Coordinate2 point, float tolerance)
+        public bool InRange(Coordinate2 point, double tolerance)
         {
             return point.InRange(this, tolerance);
         }
 
-        public bool InRange(Triangle2 triangle, float tolerance)
+        public bool InRange(Triangle2 triangle, double tolerance)
         {
             if (IsNaN() || triangle.IsNaN())
             {
@@ -226,7 +226,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
             return Start.IsNaN() || End.IsNaN();
         }
        
-        public bool On(Coordinate2 point, float tolerance)
+        public bool On(Coordinate2 point, double tolerance)
         {
             return GetSquaredDistance(point) <= tolerance;
         }
