@@ -1,5 +1,7 @@
 ﻿using DiGi.ComputeSharp.Core.Classes;
+using DiGi.ComputeSharp.Planar.Classes;
 using DiGi.ComputeSharp.Spatial.Interfaces;
+using System.Drawing;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
@@ -222,9 +224,29 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Plane(Point_1, GetNormal(tolerance), tolerance);
         }
 
+        public bool InRange(double x, double y, double z, double tolerance)
+        {
+            if (IsNaN())
+            {
+                return false;
+            }
+
+            Coordinate3 min = GetMin();
+            Coordinate3 max = GetMax();
+
+            return x - tolerance <= max.X && x + tolerance >= min.X &&
+                y - tolerance <= max.Y && y + tolerance >= min.Y &&
+                z - tolerance <= max.Z && z + tolerance >= min.Z;
+        }
+
         public bool InRange(Coordinate3 point, double tolerance)
         {
-            return point.InRange(this, tolerance);
+            if(point.IsNaN())
+            {
+                return false;
+            }
+
+            return InRange(point.X, point.Y, point.Z, tolerance);
         }
 
         public bool InRange(Line3 line3, double tolerance)

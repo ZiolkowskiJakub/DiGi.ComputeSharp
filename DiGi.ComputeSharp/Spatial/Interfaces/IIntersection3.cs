@@ -2,6 +2,6 @@
 {
     public interface IIntersection3 : Core.Interfaces.IIntersection
     {
-        IGeometry3[] GetIntersectionGeometries();
+        IGeometry3[] GetIntersectionGeometries(bool? solid = null);
     }
 }

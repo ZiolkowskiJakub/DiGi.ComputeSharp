@@ -6,7 +6,7 @@ namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Query
     {
-        public static List<bool> Intersect(this GraphicsDevice graphicDevice, IEnumerable<Line3> line3s, ReadOnlyBuffer<Triangle3> triangle3s, double tolerance)
+        public static List<bool> Intersect(this GraphicsDevice graphicDevice, IEnumerable<Line3> line3s, ReadOnlyBuffer<Triangle3> triangle3s, bool includeStart, bool includeEnd, double tolerance)
         {
             if (line3s == null || triangle3s == null || triangle3s.Length == 0 || graphicDevice == null)
             {
@@ -14,16 +14,16 @@ namespace DiGi.ComputeSharp.Spatial
             }
 
             ReadOnlyBuffer<Line3> line3s_Temp = graphicDevice.AllocateReadOnlyBuffer(line3s.ToArray());
-            ReadWriteBuffer<float> result = graphicDevice.AllocateReadWriteBuffer<float>(line3s_Temp.Length);
+            ReadWriteBuffer<int> result = graphicDevice.AllocateReadWriteBuffer<int>(line3s_Temp.Length);
 
-            graphicDevice.For(line3s_Temp.Length, new Line3IntersectComputeShader(line3s_Temp, triangle3s, result));
+            graphicDevice.For(line3s_Temp.Length, new Line3IntersectComputeShader(line3s_Temp, triangle3s, result, includeStart, includeEnd));
 
-            return Core.Create.List(result).ConvertAll(x => x == 1.0f);
+            return Core.Create.List(result).ConvertAll(x => x != -1);
         }
 
-        public static bool Intersect(this GraphicsDevice graphicDevice, Line3 line3, ReadOnlyBuffer<Triangle3> triangle3s, double tolerance)
+        public static bool Intersect(this GraphicsDevice graphicDevice, Line3 line3, ReadOnlyBuffer<Triangle3> triangle3s, bool includeStart, bool includeEnd, double tolerance)
         {
-            List<bool> result = Intersect(graphicDevice, [line3], triangle3s, tolerance);
+            List<bool> result = Intersect(graphicDevice, [line3], triangle3s, includeStart, includeEnd, tolerance);
             if(result == null || result.Count == 0)
             {
                 return false;
@@ -32,7 +32,7 @@ namespace DiGi.ComputeSharp.Spatial
             return result[0];
         }
 
-        public static List<bool> Intersect(IEnumerable<Line3> line3s, IEnumerable<Triangle3> triangle3s, double tolerance)
+        public static List<bool> Intersect(IEnumerable<Line3> line3s, IEnumerable<Triangle3> triangle3s, bool includeStart, bool includeEnd, double tolerance)
         {
             if(line3s == null || triangle3s == null)
             {
@@ -47,10 +47,10 @@ namespace DiGi.ComputeSharp.Spatial
 
             ReadOnlyBuffer<Triangle3> triangle3s_Temp = graphicDevice.AllocateReadOnlyBuffer(triangle3s.ToArray());
 
-            return Intersect(graphicDevice, line3s, triangle3s_Temp, tolerance);
+            return Intersect(graphicDevice, line3s, triangle3s_Temp, includeStart, includeEnd, tolerance);
         }
 
-        public static bool Intersect(Line3 line3, IEnumerable<Triangle3> triangle3s, double tolerance)
+        public static bool Intersect(Line3 line3, IEnumerable<Triangle3> triangle3s, bool includeStart, bool includeEnd, double tolerance)
         {
             if (line3.IsNaN() || triangle3s == null)
             {
@@ -65,7 +65,7 @@ namespace DiGi.ComputeSharp.Spatial
 
             ReadOnlyBuffer<Triangle3> triangle3s_Temp = graphicDevice.AllocateReadOnlyBuffer(triangle3s.ToArray());
 
-            return Intersect(graphicDevice, line3, triangle3s_Temp, tolerance);
+            return Intersect(graphicDevice, line3, triangle3s_Temp, includeStart, includeEnd, tolerance);
         }
     }
 

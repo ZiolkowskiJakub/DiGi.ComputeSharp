@@ -177,14 +177,26 @@ using DiGi.ComputeSharp.Spatial.Classes;
 
 //Triangulation3 triangulation3 = DiGi.ComputeSharp.Spatial.Create.Triangulation3(triangle3, line3, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
 
-Triangle3 triangle3_1 = new Triangle3(new DiGi.ComputeSharp.Core.Classes.Bool(true), -1, -1, 0, 10, 10, 0, 10, -10, 0);
-Triangle3 triangle3_2 = new Triangle3(new DiGi.ComputeSharp.Core.Classes.Bool(true), -1, -1, 1, 10, 10, 1, 10, -10, 1);
-Triangle3 triangle3_3 = new Triangle3(new DiGi.ComputeSharp.Core.Classes.Bool(true), -1, -1, 0, 10, 10, 0, 10, -10, 0);
-Line3 line3_1 = new Line3(0, 0, 0, 20, 0, 0);
-Line3 line3_2 = new Line3(0, 0, 1, 20, 0, 1);
-Line3 line3_3 = new Line3(0, 0, 2, 20, 0, 2);
+//Triangle3 triangle3_1 = new Triangle3(new DiGi.ComputeSharp.Core.Classes.Bool(true), -1, -1, 0, 10, 10, 0, 10, -10, 0);
+//Triangle3 triangle3_2 = new Triangle3(new DiGi.ComputeSharp.Core.Classes.Bool(true), -1, -1, 1, 10, 10, 1, 10, -10, 1);
+//Triangle3 triangle3_3 = new Triangle3(new DiGi.ComputeSharp.Core.Classes.Bool(true), -1, -1, 0, 10, 10, 0, 10, -10, 0);
+//Line3 line3_1 = new Line3(0, 0, 0, 20, 0, 0);
+//Line3 line3_2 = new Line3(0, 0, 1, 20, 0, 1);
+//Line3 line3_3 = new Line3(0, 0, 2, 20, 0, 2);
 
-List<bool> intersects = DiGi.ComputeSharp.Spatial.Query.Intersect([line3_2, line3_1, line3_3], [triangle3_1, triangle3_2, triangle3_3], DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
+//List<bool> intersects = DiGi.ComputeSharp.Spatial.Query.Intersect([line3_2, line3_1, line3_3], [triangle3_1, triangle3_2, triangle3_3], true, true, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
+
+Triangle3 triangle3_1 = new Triangle3(new DiGi.ComputeSharp.Core.Classes.Bool(true), 0, 0, 0, 5, 5, 0, 5, 0, 0);
+
+Triangle3 triangle3_2 = new Triangle3(new DiGi.ComputeSharp.Core.Classes.Bool(true), 0, 0, 1, 10, 10, 1, 10, 0, 1);
+
+Coordinate3 coordinate3 = new Coordinate3(0, 0, 1);
+
+
+Triangle3Intersection triangle3Intersection = DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(triangle3_2, triangle3_1, coordinate3, true, false, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
+
+//bool intersect = triangle3_1.Inside(new Coordinate3(5, 5, 0), DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
+
 
 Console.WriteLine(string.Format("Finished: {0}", true ));
 

@@ -50,7 +50,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Point_2 = line.End;
         }
 
-        public IGeometry3[] GetIntersectionGeometries()
+        public IGeometry3[] GetIntersectionGeometries(bool? solid = null)
         {
             if (Point_1.IsNaN())
             {
@@ -62,7 +62,9 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 return [Point_1];
             }
 
-            if (Solid.ToBool())
+            bool solid_Temp = solid == null || !solid.HasValue ? Solid.ToBool() : solid.Value;
+
+            if (solid_Temp)
             {
                 return [new Line3(Point_1, Point_2)];
             }

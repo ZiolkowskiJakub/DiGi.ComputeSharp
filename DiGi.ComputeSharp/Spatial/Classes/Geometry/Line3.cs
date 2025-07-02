@@ -51,7 +51,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public double GetApproximateLength()
         {
-            if (Bounded.ToBool())
+            if (!Bounded.ToBool())
             {
                 return double.PositiveInfinity;
             }
@@ -178,7 +178,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public double GetSquaredLength()
         {
-            if(Bounded.ToBool())
+            if(!Bounded.ToBool())
             {
                 return double.PositiveInfinity;
             }

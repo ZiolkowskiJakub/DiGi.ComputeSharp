@@ -1,4 +1,5 @@
 ﻿using DiGi.ComputeSharp.Spatial.Classes;
+using System;
 
 namespace DiGi.ComputeSharp.Spatial
 {
@@ -92,6 +93,69 @@ namespace DiGi.ComputeSharp.Spatial
             Query.Sort(triangle_1.GetPlane(tolerance), ref point_1, ref point_2, ref point_3, ref point_4, ref point_5, ref point_6, tolerance);
 
             return new Triangle3Intersection(solid, point_1, point_2, point_3, point_4, point_5, point_6);
+        }
+
+        public static Triangle3Intersection Triangle3Intersection(Triangle3 triangle_1, Triangle3 triangle_2, Coordinate3 vector, bool frontSide, bool backSide, double tolerance)
+        {
+            if (triangle_1.IsNaN() || triangle_2.IsNaN())
+            {
+                return new Triangle3Intersection();
+            }
+
+            if(!frontSide && !backSide)
+            {
+                return Triangle3Intersection(triangle_1, triangle_2, tolerance);
+            }
+
+            Plane plane_1 = triangle_1.GetPlane(tolerance);
+            if (plane_1.IsNaN())
+            {
+                return new Triangle3Intersection();
+            }
+
+            Triangle3 triangle_Projected = plane_1.Project(triangle_2, vector, tolerance);
+            if (triangle_Projected.IsNaN())
+            {
+                return new Triangle3Intersection();
+            }
+
+            Triangle3Intersection triangle3Intersection = Triangle3Intersection(triangle_1, triangle_Projected, tolerance);
+            if (triangle3Intersection.IsNaN() || triangle3Intersection.Point_3.IsNaN())
+            {
+                return new Triangle3Intersection();
+            }
+
+            if(frontSide && backSide)
+            {
+                return triangle3Intersection;
+            }
+
+            Coordinate3 centroid = Query.Centroid(triangle3Intersection);
+            if (centroid.IsNaN())
+            {
+                return new Triangle3Intersection();
+            }
+
+            Plane plane_2 = triangle_2.GetPlane(tolerance);
+            if (plane_2.IsNaN())
+            {
+                return new Triangle3Intersection();
+            }
+
+            Coordinate3 centroid_Projected = plane_2.Project(centroid);
+            if(centroid_Projected.IsNaN() || centroid.GetDistance(centroid_Projected, tolerance) < tolerance)
+            {
+                return new Triangle3Intersection();
+            }
+
+            bool sameHalf = Query.SameHalf(vector, new Coordinate3(centroid_Projected, centroid), tolerance);
+
+            if((sameHalf && frontSide) || (!sameHalf && backSide))
+            {
+                return triangle3Intersection;
+            }
+                
+            return new Triangle3Intersection();
         }
     }
 }

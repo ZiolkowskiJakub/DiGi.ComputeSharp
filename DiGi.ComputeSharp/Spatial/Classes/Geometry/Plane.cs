@@ -1,6 +1,7 @@
 ﻿using DiGi.ComputeSharp.Core.Constans;
 using DiGi.ComputeSharp.Planar.Classes;
 using DiGi.ComputeSharp.Spatial.Interfaces;
+using System.Numerics;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
@@ -155,7 +156,64 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             return GetSquaredDistance(point) <= tolerance;
         }
-        
+
+        public Coordinate3 Project(Coordinate3 point, Coordinate3 vector, double tolerance)
+        {
+            double denom = vector.DotProduct(Normal);
+            if (Core.Query.Abs(denom) < tolerance)
+            {
+                return new Coordinate3();
+            }
+
+            double t = new Coordinate3(point, Origin).DotProduct(Normal) / denom;
+            return point.Add(vector.Multiply(t));
+        }
+
+        public Triangle3 Project(Triangle3 triangle, Coordinate3 vector, double tolerance)
+        {
+            Coordinate3 point_1 = Project(triangle.Point_1, vector, tolerance);
+            if(point_1.IsNaN())
+            {
+                return new Triangle3();
+            }
+
+            Coordinate3 point_2 = Project(triangle.Point_2, vector, tolerance);
+            if (point_2.IsNaN())
+            {
+                return new Triangle3();
+            }
+
+            Coordinate3 point_3 = Project(triangle.Point_3, vector, tolerance);
+            if (point_3.IsNaN())
+            {
+                return new Triangle3();
+            }
+
+            return new Triangle3(triangle.Solid, point_1, point_2, point_3);
+        }
+
+        public Line3 Project(Line3 line, Coordinate3 vector, double tolerance)
+        {
+            Coordinate3 start = Project(line.Start, vector, tolerance);
+            if(start.IsNaN())
+            {
+                return new Line3();
+            }
+
+            Coordinate3 end = Project(line.End, vector, tolerance);
+            if (end.IsNaN())
+            {
+                return new Line3();
+            }
+
+            return new Line3(line.Bounded, start, end);
+        }
+
+        public Plane Project(Plane plane, Coordinate3 vector, double tolerance)
+        {
+            return new Plane(Project(plane.Origin, vector, tolerance), Normal.Project(plane.Normal).GetNormalized(tolerance), AxisY.Project(plane.AxisY).GetNormalized(tolerance));
+        }
+
         public Coordinate3 Project(Coordinate3 point)
         {
             return GetClosestPoint(point);

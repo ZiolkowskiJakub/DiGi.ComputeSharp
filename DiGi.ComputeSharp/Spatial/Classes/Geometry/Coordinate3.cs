@@ -25,6 +25,13 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Z = z;
         }
 
+        public Coordinate3(double x_1, double y_1, double z_1, double x_2, double y_2, double z_2)
+        {
+            X = x_2 - x_1;
+            Y = y_2 - y_1;
+            Z = z_2 - z_1;
+        }
+
         public Coordinate3(Coordinate3 coordinate)
         {
             X = coordinate.X;
@@ -101,6 +108,11 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         public double DotProduct(Coordinate3 vector)
         {
             return X * vector.X + Y * vector.Y + Z * vector.Z;
+        }
+
+        public double DotProduct(double x, double y, double z)
+        {
+            return X * x + Y * y + Z * z;
         }
 
         public bool Equals(Coordinate3 coordinate)
@@ -197,7 +209,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public double GetDistance(Coordinate3 point, double tolerance)
         {
-            return new Coordinate3(this, point).GetLength(tolerance);
+            return new Coordinate3(X, Y, Z, point.X, point.Y, point.Z).GetLength(tolerance);
         }
 
         public Coordinate3 GetInversed()
@@ -238,17 +250,12 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public bool InRange(Triangle3 triangle, double tolerance)
         {
-            if (IsNaN() || triangle.IsNaN())
+            if(IsNaN())
             {
                 return false;
             }
 
-            Coordinate3 min = triangle.GetMin();
-            Coordinate3 max = triangle.GetMax();
-
-            return X - tolerance <= max.X && X + tolerance >= min.X &&
-                Y - tolerance <= max.Y && Y + tolerance >= min.Y &&
-                Z - tolerance <= max.Z && Z + tolerance >= min.Z;
+            return triangle.InRange(X, Y, Z, tolerance);
         }
 
         public bool InRange(Line3 line, double tolerance)
@@ -295,7 +302,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             double squaredLength = GetSquaredLength();
 
-            double scalarProjection = coordinate.DotProduct(this) * squaredLength;
+            double scalarProjection = coordinate.DotProduct(X, Y, Z) * squaredLength;
 
             return Multiply(scalarProjection);
         }

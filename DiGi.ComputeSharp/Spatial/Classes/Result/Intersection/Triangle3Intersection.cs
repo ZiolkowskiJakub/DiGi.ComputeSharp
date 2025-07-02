@@ -99,7 +99,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Solid = solid;
         }
 
-        public IGeometry3[] GetIntersectionGeometries()
+        public IGeometry3[] GetIntersectionGeometries(bool? solid = null)
         {
             if (Point_1.IsNaN())
             {
@@ -111,9 +111,11 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 return [Point_1];
             }
 
+            bool solid_Temp = solid == null || !solid.HasValue ? Solid.ToBool() : solid.Value;
+
             if (Point_3.IsNaN())
             {
-                if (Solid.ToBool())
+                if (solid_Temp)
                 {
                     return [new Line3(Point_1, Point_2)];
                 }
@@ -125,7 +127,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             if (Point_4.IsNaN())
             {
-                if (Solid.ToBool())
+                if (solid_Temp)
                 {
                     return [new Triangle3(Solid, Point_1, Point_2, Point_3)];
                 }
@@ -137,7 +139,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             if (Point_5.IsNaN())
             {
-                if (Solid.ToBool())
+                if (solid_Temp)
                 {
                     return [new Triangle3(Solid, Point_1, Point_2, Point_3), new Triangle3(Solid, Point_1, Point_3, Point_4)];
                 }
@@ -151,7 +153,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             if (Point_6.IsNaN())
             {
-                if (Solid.ToBool())
+                if (solid_Temp)
                 {
                     return [new Triangle3(Solid, Point_1, Point_2, Point_3), new Triangle3(Solid, Point_1, Point_3, Point_4), new Triangle3(Solid, Point_1, Point_4, Point_5)];
                 }
@@ -163,7 +165,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 }
             }
 
-            if (Solid.ToBool())
+            if (solid_Temp)
             {
                 return [new Triangle3(Solid, Point_1, Point_2, Point_3), new Triangle3(Solid, Point_3, Point_4, Point_5), new Triangle3(Solid, Point_1, Point_5, Point_6), new Triangle3(Solid, Point_1, Point_3, Point_5)];
             }
