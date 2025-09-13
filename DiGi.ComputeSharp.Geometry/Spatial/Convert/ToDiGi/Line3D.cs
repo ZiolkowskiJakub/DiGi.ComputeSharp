@@ -5,7 +5,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Convert
     {
-        public static Line3D ToDiGi_Line3D(this Line3? line3)
+        public static Line3D? ToDiGi_Line3D(this Line3? line3)
         {
             if (line3 == null || !line3.HasValue)
             {

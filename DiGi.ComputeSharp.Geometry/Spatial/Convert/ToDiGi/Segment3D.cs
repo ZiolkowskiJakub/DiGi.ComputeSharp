@@ -5,7 +5,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Convert
     {
-        public static Segment3D ToDiGi(this Line3? line3)
+        public static Segment3D? ToDiGi(this Line3? line3)
         {
             if (line3 == null || !line3.HasValue)
             {

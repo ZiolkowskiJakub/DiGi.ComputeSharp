@@ -1,5 +1,6 @@
 ﻿using ComputeSharp;
 using DiGi.ComputeSharp.Spatial.Classes;
+using DiGi.Core;
 using DiGi.Geometry.Planar;
 using DiGi.Geometry.Planar.Classes;
 using DiGi.Geometry.Planar.Interfaces;
@@ -11,7 +12,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Query
     {
-        public static List<List<IPolygonalFace3D>> Shading(this IEnumerable<IPolygonalFace3D> polygonalFace3Ds, Vector3D direction, double tolerance)
+        public static List<List<IPolygonalFace3D>?>? Shading(this IEnumerable<IPolygonalFace3D>? polygonalFace3Ds, Vector3D? direction, double tolerance)
         {
             if (polygonalFace3Ds == null || direction == null)
             {
@@ -24,10 +25,10 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 return null;
             }
 
-            List<Tuple<Triangle3D, int>> tuples = new List<Tuple<Triangle3D, int>>();
+            List<Tuple<Triangle3D, int>> tuples = [];
             for (int i = 0; i < count; i++)
             {
-                List<Triangle3D> triangle3Ds = polygonalFace3Ds.ElementAt(i)?.Triangulate(tolerance);
+                List<Triangle3D>? triangle3Ds = polygonalFace3Ds.ElementAt(i)?.Triangulate(tolerance);
                 if (triangle3Ds == null || triangle3Ds.Count == 0)
                 {
                     continue;
@@ -53,12 +54,16 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 
             graphicDevice.For(length, length, new Triangle3ShadingComputeShader(triangle3s, readWriteBuffer_Triangle3Intersection, direction.ToComputeSharp()));
 
-            List<Triangle3Intersection> triangle3Intersections = Core.Create.List(readWriteBuffer_Triangle3Intersection);
+            List<Triangle3Intersection>? triangle3Intersections = Core.Create.List(readWriteBuffer_Triangle3Intersection);
+            if(triangle3Intersections is null)
+            {
+                return null;
+            }
 
-            List<List<Triangle3D>> triangle3DsList = new List<List<Triangle3D>>();
+            List<List<Triangle3D>> triangle3DsList = [];
             for (int i = 0; i < length; i++)
             {
-                List<Triangle3D> triangle3Ds = new List<Triangle3D>();
+                List<Triangle3D> triangle3Ds = [];
                 for (int j = 0; j < length; j++)
                 {
                     Triangle3Intersection triangle3Intersection = triangle3Intersections[i * length + j];
@@ -67,7 +72,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                         continue;
                     }
 
-                    ComputeSharp.Spatial.Interfaces.IGeometry3[] geometries = triangle3Intersection.GetIntersectionGeometries();
+                    ComputeSharp.Spatial.Interfaces.IGeometry3[]? geometries = triangle3Intersection.GetIntersectionGeometries();
                     if (geometries == null)
                     {
                         continue;
@@ -75,9 +80,9 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 
                     foreach (ComputeSharp.Spatial.Interfaces.IGeometry3 geometry in geometries)
                     {
-                        if (geometry is Triangle3)
+                        if (geometry is Triangle3 triangle3 && Convert.ToDiGi(triangle3) is Triangle3D triangle3D)
                         {
-                            triangle3Ds.Add(Convert.ToDiGi((Triangle3)geometry));
+                            triangle3Ds.Add(triangle3D);
                         }
                     }
                 }
@@ -85,21 +90,21 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 triangle3DsList.Add(triangle3Ds);
             }
 
-            List<List<IPolygonalFace3D>> result = new List<List<IPolygonalFace3D>>();
+            List<List<IPolygonalFace3D>?> result = [];
             for (int i = count - 1; i >= 0; i--)
             {
                 IPolygonalFace3D polygonalFace3D = polygonalFace3Ds.ElementAt(i);
 
-                DiGi.Geometry.Spatial.Classes.Plane plane = polygonalFace3D?.Plane;
+                DiGi.Geometry.Spatial.Classes.Plane? plane = polygonalFace3D?.Plane;
                 if (plane == null)
                 {
                     result.Add(null);
                     continue;
                 }
 
-                List<Triangle3D> triangle3Ds = new List<Triangle3D>();
+                List<Triangle3D> triangle3Ds = [];
 
-                List<int> indexes = new List<int>();
+                List<int> indexes = [];
                 int index = tuples.FindLastIndex(x => x.Item2 == i);
                 while(index != -1)
                 {
@@ -122,11 +127,11 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                     continue;
                 }
 
-                List<Polygon2D> polygon2Ds = triangle3Ds.ConvertAll(x => plane.Convert(x)).Union();
+                List<Polygon2D>? polygon2Ds = triangle3Ds.ConvertAll(plane.Convert).FilterNulls().Union();
 
-                List<IPolygonalFace2D> polygonalFace2Ds = DiGi.Geometry.Planar.Create.PolygonalFace2Ds(polygon2Ds, tolerance);
+                List<IPolygonalFace2D>? polygonalFace2Ds = DiGi.Geometry.Planar.Create.PolygonalFace2Ds(polygon2Ds, tolerance);
 
-                result.Add(polygonalFace2Ds?.ConvertAll(x => plane.Convert(x)));
+                result.Add(polygonalFace2Ds?.ConvertAll(plane.Convert).FilterNulls());
             }
 
             result.Reverse();
@@ -134,7 +139,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             return result;
         }
 
-        public static List<List<IPolygonalFace3D>> Shading_CPU(this IEnumerable<IPolygonalFace3D> polygonalFace3Ds, Vector3D direction, double tolerance)
+        public static List<List<IPolygonalFace3D>?>? Shading_CPU(this IEnumerable<IPolygonalFace3D>? polygonalFace3Ds, Vector3D? direction, double tolerance)
         {
             if (polygonalFace3Ds == null || direction == null)
             {
@@ -147,10 +152,10 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 return null;
             }
 
-            List<Tuple<Triangle3D, int>> tuples = new List<Tuple<Triangle3D, int>>();
+            List<Tuple<Triangle3D, int>> tuples = [];
             for (int i = 0; i < count; i++)
             {
-                List<Triangle3D> triangle3Ds = polygonalFace3Ds.ElementAt(i)?.Triangulate(tolerance);
+                List<Triangle3D>? triangle3Ds = polygonalFace3Ds.ElementAt(i)?.Triangulate(tolerance);
                 if (triangle3Ds == null || triangle3Ds.Count == 0)
                 {
                     continue;
@@ -170,7 +175,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 
             int length = tuples.Count;
 
-            List<Triangle3Intersection> triangle3Intersections = new List<Triangle3Intersection>();
+            List<Triangle3Intersection> triangle3Intersections = [];
             for (int i =0; i < tuples.Count; i++)
             {
                 for (int j = 0; j < tuples.Count; j++)
@@ -179,10 +184,10 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 }
             }
 
-            List<List<Triangle3D>> triangle3DsList = new List<List<Triangle3D>>();
+            List<List<Triangle3D>> triangle3DsList = [];
             for (int i = 0; i < length; i++)
             {
-                List<Triangle3D> triangle3Ds = new List<Triangle3D>();
+                List<Triangle3D> triangle3Ds = [];
                 for (int j = 0; j < length; j++)
                 {
                     Triangle3Intersection triangle3Intersection = triangle3Intersections[i * length + j];
@@ -191,7 +196,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                         continue;
                     }
 
-                    ComputeSharp.Spatial.Interfaces.IGeometry3[] geometries = triangle3Intersection.GetIntersectionGeometries();
+                    ComputeSharp.Spatial.Interfaces.IGeometry3[]? geometries = triangle3Intersection.GetIntersectionGeometries();
                     if (geometries == null)
                     {
                         continue;
@@ -199,9 +204,9 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 
                     foreach (ComputeSharp.Spatial.Interfaces.IGeometry3 geometry in geometries)
                     {
-                        if (geometry is Triangle3)
+                        if (geometry is Triangle3 triangle3 && Convert.ToDiGi(triangle3) is Triangle3D triangle3D)
                         {
-                            triangle3Ds.Add(Convert.ToDiGi((Triangle3)geometry));
+                            triangle3Ds.Add(triangle3D);
                         }
                     }
                 }
@@ -209,21 +214,21 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 triangle3DsList.Add(triangle3Ds);
             }
 
-            List<List<IPolygonalFace3D>> result = new List<List<IPolygonalFace3D>>();
+            List<List<IPolygonalFace3D>?> result = [];
             for (int i = count - 1; i >= 0; i--)
             {
                 IPolygonalFace3D polygonalFace3D = polygonalFace3Ds.ElementAt(i);
 
-                DiGi.Geometry.Spatial.Classes.Plane plane = polygonalFace3D?.Plane;
+                DiGi.Geometry.Spatial.Classes.Plane? plane = polygonalFace3D?.Plane;
                 if (plane == null)
                 {
                     result.Add(null);
                     continue;
                 }
 
-                List<Triangle3D> triangle3Ds = new List<Triangle3D>();
+                List<Triangle3D> triangle3Ds = [];
 
-                List<int> indexes = new List<int>();
+                List<int> indexes = [];
                 int index = tuples.FindLastIndex(x => x.Item2 == i);
                 while (index != -1)
                 {
@@ -246,11 +251,11 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                     continue;
                 }
 
-                List<Polygon2D> polygon2Ds = triangle3Ds.ConvertAll(x => plane.Convert(x)).Union();
+                List<Polygon2D>? polygon2Ds = triangle3Ds.ConvertAll(plane.Convert).FilterNulls().Union();
 
-                List<IPolygonalFace2D> polygonalFace2Ds = DiGi.Geometry.Planar.Create.PolygonalFace2Ds(polygon2Ds, tolerance);
+                List<IPolygonalFace2D>? polygonalFace2Ds = DiGi.Geometry.Planar.Create.PolygonalFace2Ds(polygon2Ds, tolerance);
 
-                result.Add(polygonalFace2Ds?.ConvertAll(x => plane.Convert(x)));
+                result.Add(polygonalFace2Ds?.ConvertAll( plane.Convert).FilterNulls());
             }
 
             result.Reverse();

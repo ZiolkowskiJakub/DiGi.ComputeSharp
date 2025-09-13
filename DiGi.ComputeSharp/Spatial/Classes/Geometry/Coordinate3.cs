@@ -135,9 +135,9 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public override bool Equals([NotNullWhen(true)] object? obj)
         {
-            if(obj is Coordinate3)
+            if(obj is Coordinate3 coordinate3)
             {
-                return Equals((Coordinate3)obj);
+                return Equals(coordinate3);
             }
 
             return false;
@@ -317,6 +317,20 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return string.Format("[X:{0};Y:{1};Z:{2}]", X, Y, Z);
         }
 
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y, Z);
+        }
+
+        public static bool operator ==(Coordinate3 left, Coordinate3 right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Coordinate3 left, Coordinate3 right)
+        {
+            return !(left == right);
+        }
     }
 }
 

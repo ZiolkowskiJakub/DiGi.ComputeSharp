@@ -59,12 +59,12 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Triangle3Intersection(solid, pointIntersection_1, pointIntersection_2);
             }
 
-            Coordinate3 point_1 = new Coordinate3(),
-                point_2 = new Coordinate3(),
-                point_3 = new Coordinate3(),
-                point_4 = new Coordinate3(),
-                point_5 = new Coordinate3(),
-                point_6 = new Coordinate3();
+            Coordinate3 point_1 = new (),
+                point_2 = new (),
+                point_3 = new (),
+                point_4 = new (),
+                point_5 = new (),
+                point_6 = new ();
 
             Modify.Add(ref point_1, ref point_2, ref point_3, ref point_4, ref point_5, ref point_6, line3Intersection_1, tolerance);
             Modify.Add(ref point_1, ref point_2, ref point_3, ref point_4, ref point_5, ref point_6, line3Intersection_2, tolerance);

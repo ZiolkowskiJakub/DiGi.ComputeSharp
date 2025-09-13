@@ -99,7 +99,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Solid = solid;
         }
 
-        public IGeometry3[] GetIntersectionGeometries(bool? solid = null)
+        public IGeometry3[]? GetIntersectionGeometries(bool? solid = null)
         {
             if (Point_1.IsNaN())
             {

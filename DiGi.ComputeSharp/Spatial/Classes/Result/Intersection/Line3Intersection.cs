@@ -50,7 +50,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Point_2 = line.End;
         }
 
-        public IGeometry3[] GetIntersectionGeometries(bool? solid = null)
+        public IGeometry3[]? GetIntersectionGeometries(bool? solid = null)
         {
             if (Point_1.IsNaN())
             {

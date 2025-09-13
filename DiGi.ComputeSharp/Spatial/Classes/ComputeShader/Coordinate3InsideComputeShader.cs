@@ -16,24 +16,18 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public Coordinate3InsideComputeShader(GraphicsDevice graphicsDevice, IEnumerable<Coordinate3> points, IEnumerable<Triangle3> triangles)
         {
-            if (graphicsDevice != null)
-            {
-                this.points = graphicsDevice.AllocateReadOnlyBuffer(points.ToArray());
-                this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
-                Result = graphicsDevice.AllocateReadWriteBuffer<int>(this.points.Length);
-            }
+            this.points = graphicsDevice.AllocateReadOnlyBuffer(points.ToArray());
+            this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+            Result = graphicsDevice.AllocateReadWriteBuffer<int>(this.points.Length);
         }
 
         public Coordinate3InsideComputeShader(GraphicsDevice graphicsDevice, IEnumerable<Coordinate3> points, IEnumerable<Triangle3> triangles, double tolerance)
         {
             this.tolerance = tolerance;
 
-            if (graphicsDevice != null)
-            {
-                this.points = graphicsDevice.AllocateReadOnlyBuffer(points.ToArray());
-                this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
-                Result = graphicsDevice.AllocateReadWriteBuffer<int>(this.points.Length);
-            }
+            this.points = graphicsDevice.AllocateReadOnlyBuffer(points.ToArray());
+            this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+            Result = graphicsDevice.AllocateReadWriteBuffer<int>(this.points.Length);
         }
 
         public Coordinate3InsideComputeShader(ReadOnlyBuffer<Coordinate3> points, ReadOnlyBuffer<Triangle3> triangles, ReadWriteBuffer<int> result)

@@ -11,7 +11,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         private readonly int threadsCount = -1;
 
-        private readonly Line3 line;
+        private readonly Line3 line = new ();
         private readonly ReadOnlyBuffer<Line3> lines;
 
         public readonly ReadWriteBuffer<Line3Intersection> LineIntersections;
@@ -20,12 +20,8 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         public Line3IntersectionComputeShader(GraphicsDevice graphicsDevice, Line3 line, IEnumerable<Line3> lines)
         {
             this.line = line;
-
-            if (graphicsDevice != null)
-            {
-                this.lines = graphicsDevice.AllocateReadOnlyBuffer(lines.ToArray());
-                LineIntersections = graphicsDevice.AllocateReadWriteBuffer(new Line3Intersection[lines.Count()]);
-            }
+            this.lines = graphicsDevice.AllocateReadOnlyBuffer(lines.ToArray());
+            LineIntersections = graphicsDevice.AllocateReadWriteBuffer(new Line3Intersection[lines.Count()]);
         }
 
         public Line3IntersectionComputeShader(GraphicsDevice graphicsDevice, Line3 line, IEnumerable<Line3> lines, double tolerance, int threadsCount = -1)
@@ -35,11 +31,8 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             this.line = line;
 
-            if (graphicsDevice != null)
-            {
-                this.lines = graphicsDevice.AllocateReadOnlyBuffer(lines.ToArray());
-                LineIntersections = graphicsDevice.AllocateReadWriteBuffer(new Line3Intersection[lines.Count()]);
-            }
+            this.lines = graphicsDevice.AllocateReadOnlyBuffer(lines.ToArray());
+            LineIntersections = graphicsDevice.AllocateReadWriteBuffer(new Line3Intersection[lines.Count()]);
         }
 
         public Line3IntersectionComputeShader(Line3 line, ReadOnlyBuffer<Line3> lines, ReadWriteBuffer<Line3Intersection> lineIntersections)
@@ -65,8 +58,8 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             int count = lines.Length;
 
-            int start = 0;
-            int end = 0;
+            int start;
+            int end;
             if (threadsCount < 1)
             {
                 start = 0;

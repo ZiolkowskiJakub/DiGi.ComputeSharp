@@ -5,7 +5,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Convert
     {
-        public static Triangle3D ToDiGi(this Triangle3? triangle3)
+        public static Triangle3D? ToDiGi(this Triangle3? triangle3)
         {
             if(triangle3 == null || !triangle3.HasValue)
             {

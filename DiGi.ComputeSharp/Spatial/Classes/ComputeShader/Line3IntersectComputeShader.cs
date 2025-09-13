@@ -20,28 +20,22 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public Line3IntersectComputeShader(GraphicsDevice graphicsDevice, IEnumerable<Line3> lines, IEnumerable<Triangle3> triangles, bool includeStart, bool includeEnd)
         {
-            if (graphicsDevice != null)
-            {
-                this.lines = graphicsDevice.AllocateReadOnlyBuffer(lines.ToArray());
-                this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
-                Result = graphicsDevice.AllocateReadWriteBuffer<int>(this.lines.Length);
-                this.includeStart = includeStart;
-                this.includeEnd = includeEnd;
-            }
+            this.lines = graphicsDevice.AllocateReadOnlyBuffer(lines.ToArray());
+            this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+            Result = graphicsDevice.AllocateReadWriteBuffer<int>(this.lines.Length);
+            this.includeStart = includeStart;
+            this.includeEnd = includeEnd;
         }
 
         public Line3IntersectComputeShader(GraphicsDevice graphicsDevice, IEnumerable<Line3> lines, IEnumerable<Triangle3> triangles, bool includeStart, bool includeEnd, double tolerance)
         {
             this.tolerance = tolerance;
 
-            if (graphicsDevice != null)
-            {
-                this.lines = graphicsDevice.AllocateReadOnlyBuffer(lines.ToArray());
-                this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
-                Result = graphicsDevice.AllocateReadWriteBuffer<int>(this.lines.Length);
-                this.includeStart = includeStart;
-                this.includeEnd = includeEnd;
-            }
+            this.lines = graphicsDevice.AllocateReadOnlyBuffer(lines.ToArray());
+            this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+            Result = graphicsDevice.AllocateReadWriteBuffer<int>(this.lines.Length);
+            this.includeStart = includeStart;
+            this.includeEnd = includeEnd;
         }
 
         public Line3IntersectComputeShader(ReadOnlyBuffer<Line3> lines, ReadOnlyBuffer<Triangle3> triangles, ReadWriteBuffer<int> result, bool includeStart, bool includeEnd)

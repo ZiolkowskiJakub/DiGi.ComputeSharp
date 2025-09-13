@@ -4,7 +4,7 @@ namespace DiGi.ComputeSharp.Core
 {
     public static partial class Create
     {
-        public static List<T> List<T>(this global::ComputeSharp.Resources.Buffer<T> buffer, Func<T, bool> func = null) where T : unmanaged
+        public static List<T>? List<T>(this global::ComputeSharp.Resources.Buffer<T> buffer, Func<T?, bool>? func = null) where T : unmanaged
         {
             if (buffer == null)
             {
@@ -14,14 +14,14 @@ namespace DiGi.ComputeSharp.Core
             int length = buffer.Length;
             if (length == 0)
             {
-                return new List<T>();
+                return [];
             }
 
             T[] ts = new T[length];
 
             buffer.CopyTo(ts);
 
-            List<T> result = new List<T>();
+            List<T> result = [];
             for (int i = 0; i < length; i++)
             {
                 T t = ts[i];

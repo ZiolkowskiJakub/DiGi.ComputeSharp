@@ -5,7 +5,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Convert
     {
-        public static Point3D ToDiGi(this Coordinate3? coordinate3)
+        public static Point3D? ToDiGi(this Coordinate3? coordinate3)
         {
             if (coordinate3 == null || !coordinate3.HasValue)
             {

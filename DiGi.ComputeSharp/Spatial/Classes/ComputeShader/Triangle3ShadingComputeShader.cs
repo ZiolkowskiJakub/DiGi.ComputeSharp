@@ -19,13 +19,10 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             this.vector = vector;
 
-            if (graphicsDevice != null)
-            {
-                int count = triangles.Count();
+            int count = triangles.Count();
 
-                this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
-                TriangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[count * count]);
-            }
+            this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+            TriangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[count * count]);
         }
 
         public Triangle3ShadingComputeShader(GraphicsDevice graphicsDevice, IEnumerable<Triangle3> triangles, Coordinate3 vector, double tolerance)
@@ -34,13 +31,10 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             this.vector = vector;
 
-            if (graphicsDevice != null)
-            {
-                int count = triangles.Count();
+            int count = triangles.Count();
 
-                this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
-                TriangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[count * count]);
-            }
+            this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+            TriangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[count * count]);
         }
 
         public Triangle3ShadingComputeShader(ReadOnlyBuffer<Triangle3> triangles, ReadWriteBuffer<Triangle3Intersection> triangleIntersections, Coordinate3 vector)

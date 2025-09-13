@@ -5,7 +5,7 @@ namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Create
     {        
-        public static List<Coordinate3> Coordinate3s(Line3 line, LineAlignment lineAlignment, double distance, bool includeShorter, double tolerance)
+        public static List<Coordinate3>? Coordinate3s(Line3 line, LineAlignment lineAlignment, double distance, bool includeShorter, double tolerance)
         {
             double length = line.GetLength(tolerance);
             if(length < tolerance)
@@ -20,14 +20,14 @@ namespace DiGi.ComputeSharp.Spatial
 
             int count = Convert.ToInt32(Math.Truncate(length / distance));
 
-            List<Coordinate3> result = null;
+            List<Coordinate3> result;
 
             if (lineAlignment == LineAlignment.Start)
             {
                 Coordinate3 vector = line.GetDirection(tolerance).Multiply(distance);
                 Coordinate3 point = line.Start;
 
-                result = new List<Coordinate3>() { point };
+                result = [point];
                 
                 for (int i = 0; i < count; i++)
                 {
@@ -45,7 +45,7 @@ namespace DiGi.ComputeSharp.Spatial
                 Coordinate3 vector = line.GetDirection(tolerance).GetInversed().Multiply(distance);
                 Coordinate3 point = line.End;
 
-                result = new List<Coordinate3>() { point };
+                result = [point];
 
                 for (int i = 0; i < count; i++)
                 {
@@ -68,7 +68,7 @@ namespace DiGi.ComputeSharp.Spatial
                     point = point.GetMoved(vector.GetInversed().Multiply(0.5));
                 }
 
-                result = new List<Coordinate3>() { point };
+                result = [point];
 
                 for (int i = 1; i <= count; i++)
                 {

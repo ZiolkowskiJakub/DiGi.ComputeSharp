@@ -5,7 +5,7 @@ namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Query
     {
-        public static List<List<Triangle3>> Shading(this GraphicsDevice graphicDevice, ReadOnlyBuffer<Triangle3> triangle3s, Coordinate3 vector, double tolerance)
+        public static List<List<Triangle3>>? Shading(this GraphicsDevice graphicDevice, ReadOnlyBuffer<Triangle3> triangle3s, Coordinate3 vector)
         {
             if (triangle3s == null || graphicDevice == null)
             {
@@ -15,7 +15,7 @@ namespace DiGi.ComputeSharp.Spatial
             int length = triangle3s.Length;
             if (length == 0)
             {
-                return new List<List<Triangle3>>();
+                return [];
             }
 
 
@@ -23,12 +23,16 @@ namespace DiGi.ComputeSharp.Spatial
 
             graphicDevice.For(length, length, new Triangle3ShadingComputeShader(triangle3s, readWriteBuffer_Triangle3Intersection, vector));
 
-            List<Triangle3Intersection> triangle3Intersections = Core.Create.List(readWriteBuffer_Triangle3Intersection);
+            List<Triangle3Intersection>? triangle3Intersections = Core.Create.List(readWriteBuffer_Triangle3Intersection);
+            if(triangle3Intersections is null)
+            {
+                return [];
+            }
 
-            List<List<Triangle3>> result = new List<List<Triangle3>>();
+            List<List<Triangle3>> result = [];
             for (int i = 0; i < length; i++)
             {
-                List<Triangle3> triangle3s_Temp = new List<Triangle3>();
+                List<Triangle3> triangle3s_Temp = [];
                 for (int j = 0; j < length; j++)
                 {
                     Triangle3Intersection triangle3Intersection = triangle3Intersections[i * length + j];
@@ -37,7 +41,7 @@ namespace DiGi.ComputeSharp.Spatial
                         continue;
                     }
 
-                    Interfaces.IGeometry3[] geometries = triangle3Intersection.GetIntersectionGeometries();
+                    Interfaces.IGeometry3[]? geometries = triangle3Intersection.GetIntersectionGeometries();
                     if (geometries == null)
                     {
                         continue;
@@ -45,9 +49,9 @@ namespace DiGi.ComputeSharp.Spatial
 
                     foreach (Interfaces.IGeometry3 geometry in geometries)
                     {
-                        if (geometry is Triangle3)
+                        if (geometry is Triangle3 triangle3)
                         {
-                            triangle3s_Temp.Add((Triangle3)geometry);
+                            triangle3s_Temp.Add(triangle3);
                         }
                     }
                 }

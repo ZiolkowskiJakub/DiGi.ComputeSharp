@@ -19,11 +19,8 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             this.triangle = triangle;
 
-            if (graphicsDevice != null)
-            {
-                this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
-                TriangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[triangles.Count()]);
-            }
+            this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+            TriangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[triangles.Count()]);
         }
 
         public Triangle3IntersectionComputeShader(GraphicsDevice graphicsDevice, Triangle3 triangle, IEnumerable<Triangle3> triangles, double tolerance, int threadsCount = -1)
@@ -33,11 +30,8 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             this.triangle = triangle;
             this.tolerance = tolerance;
 
-            if (graphicsDevice != null)
-            {
-                this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
-                TriangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[triangles.Count()]);
-            }
+            this.triangles = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+            TriangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[triangles.Count()]);
         }
 
         public Triangle3IntersectionComputeShader(Triangle3 triangle, ReadOnlyBuffer<Triangle3> triangles, ReadWriteBuffer<Triangle3Intersection> triangleIntersections)
@@ -61,8 +55,8 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             int count = triangles.Length;
 
-            int start = 0;
-            int end = 0;
+            int start;
+            int end;
             if (threadsCount < 1)
             {
                 start = 0;

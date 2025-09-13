@@ -108,9 +108,9 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public override bool Equals([NotNullWhen(true)] object? obj)
         {
-            if(obj is Coordinate2)
+            if(obj is Coordinate2 coordinate2)
             {
-                return Equals((Coordinate2)obj);
+                return Equals(coordinate2);
             }
 
             return false;
@@ -273,6 +273,21 @@ namespace DiGi.ComputeSharp.Planar.Classes
         public override string ToString()
         {
             return string.Format("[X:{0};Y:{1}]", X, Y);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
+        }
+
+        public static bool operator ==(Coordinate2 left, Coordinate2 right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Coordinate2 left, Coordinate2 right)
+        {
+            return !(left == right);
         }
     }
 }
