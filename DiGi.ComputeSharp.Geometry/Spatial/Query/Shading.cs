@@ -12,7 +12,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Query
     {
-        public static List<List<IPolygonalFace3D>?>? Shading(this IEnumerable<IPolygonalFace3D>? polygonalFace3Ds, Vector3D? direction, double tolerance)
+        public static List<List<PolygonalFace3D>?>? Shading(this IEnumerable<IPolygonalFace3D>? polygonalFace3Ds, Vector3D? direction, double tolerance)
         {
             if (polygonalFace3Ds == null || direction == null)
             {
@@ -90,7 +90,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 triangle3DsList.Add(triangle3Ds);
             }
 
-            List<List<IPolygonalFace3D>?> result = [];
+            List<List<PolygonalFace3D>?> result = [];
             for (int i = count - 1; i >= 0; i--)
             {
                 IPolygonalFace3D polygonalFace3D = polygonalFace3Ds.ElementAt(i);
@@ -129,7 +129,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 
                 List<Polygon2D>? polygon2Ds = triangle3Ds.ConvertAll(plane.Convert).FilterNulls().Union();
 
-                List<IPolygonalFace2D>? polygonalFace2Ds = DiGi.Geometry.Planar.Create.PolygonalFace2Ds(polygon2Ds, tolerance);
+                List<PolygonalFace2D>? polygonalFace2Ds = DiGi.Geometry.Planar.Create.PolygonalFace2Ds(polygon2Ds, tolerance);
 
                 result.Add(polygonalFace2Ds?.ConvertAll(plane.Convert).FilterNulls());
             }
@@ -139,7 +139,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             return result;
         }
 
-        public static List<List<IPolygonalFace3D>?>? Shading_CPU(this IEnumerable<IPolygonalFace3D>? polygonalFace3Ds, Vector3D? direction, double tolerance)
+        public static List<List<PolygonalFace3D>?>? Shading_CPU(this IEnumerable<IPolygonalFace3D>? polygonalFace3Ds, Vector3D? direction, double tolerance)
         {
             if (polygonalFace3Ds == null || direction == null)
             {
@@ -214,7 +214,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 triangle3DsList.Add(triangle3Ds);
             }
 
-            List<List<IPolygonalFace3D>?> result = [];
+            List<List<PolygonalFace3D>?> result = [];
             for (int i = count - 1; i >= 0; i--)
             {
                 IPolygonalFace3D polygonalFace3D = polygonalFace3Ds.ElementAt(i);
@@ -253,7 +253,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 
                 List<Polygon2D>? polygon2Ds = triangle3Ds.ConvertAll(plane.Convert).FilterNulls().Union();
 
-                List<IPolygonalFace2D>? polygonalFace2Ds = DiGi.Geometry.Planar.Create.PolygonalFace2Ds(polygon2Ds, tolerance);
+                List<PolygonalFace2D>? polygonalFace2Ds = DiGi.Geometry.Planar.Create.PolygonalFace2Ds(polygon2Ds, tolerance);
 
                 result.Add(polygonalFace2Ds?.ConvertAll( plane.Convert).FilterNulls());
             }
