@@ -1,6 +1,6 @@
 ﻿namespace DiGi.ComputeSharp.Core.Classes
 {
-    public struct Bool
+    public readonly struct Bool
     {
         public readonly int Value = 0;
 
