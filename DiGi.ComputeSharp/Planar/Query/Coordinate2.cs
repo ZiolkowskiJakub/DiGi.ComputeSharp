@@ -1,5 +1,4 @@
 ﻿using DiGi.ComputeSharp.Planar.Classes;
-using System.Reflection.Metadata.Ecma335;
 
 namespace DiGi.ComputeSharp.Planar
 {
@@ -7,7 +6,7 @@ namespace DiGi.ComputeSharp.Planar
     {
         internal static Coordinate2 Coordinate2(ref Coordinate2 coordinate_1, ref Coordinate2 coordinate_2, ref Coordinate2 coordinate_3, ref Coordinate2 coordinate_4, ref Coordinate2 coordinate_5, ref Coordinate2 coordinate_6, int index)
         {
-            if(index == 1)
+            if (index == 1)
             {
                 return coordinate_1;
             }
@@ -40,6 +39,4 @@ namespace DiGi.ComputeSharp.Planar
             return new Coordinate2();
         }
     }
-
 }
-

@@ -8,7 +8,6 @@ using ComputeSharp;
 using DiGi.ComputeSharp.Core.Classes;
 using DiGi.ComputeSharp.Spatial.Classes;
 
-
 #region LEGACY
 
 //int threadsCount = 10;
@@ -40,7 +39,6 @@ using DiGi.ComputeSharp.Spatial.Classes;
 //    }
 //}
 
-
 //Line3 line = new Line3(new Point3(1, 10, 4), new Vector3(0, -1, 0));
 
 //List<Line3> lines = new List<Line3>();
@@ -49,7 +47,7 @@ using DiGi.ComputeSharp.Spatial.Classes;
 //    lines.Add(line);
 //}
 
-//List<Triangle3> triangles_Temp = 
+//List<Triangle3> triangles_Temp =
 //    [
 //        new Triangle3(new Point3(0, 0, 0), new Point3(10, 0, 0), new Point3(0, 0, 10)),
 //        new Triangle3(new Point3(0, 0, 0), new Point3(0, 0, 10), new Point3(10, 0, 10)),
@@ -106,7 +104,7 @@ using DiGi.ComputeSharp.Spatial.Classes;
 //dateTime = DateTime.Now;
 //lineIntersectionResults = Enumerable.Repeat(new LineIntersectionResult(), lines.Count).ToList();
 
-//Parallel.For(0, lines.Count, i => 
+//Parallel.For(0, lines.Count, i =>
 //{
 //    double distance_Min = double.MaxValue;
 
@@ -129,15 +127,12 @@ using DiGi.ComputeSharp.Spatial.Classes;
 
 //Console.WriteLine(string.Format("CPU intersection of {0} lines and {1} triangles -> Time: {2}s", lines.Count, triangles.Count, timeSpan.TotalSeconds));
 
-#endregion
-
+#endregion LEGACY
 
 //Line3 line_1 = new Line3(0, 0, 0, 10, 0, 0);
 //Line3 line_2 = new Line3(1, -1, 0, 1, 1, 0);
 
-
 //Line3Intersection line3Intersection = DiGi.ComputeSharp.Spatial.Create.Line3Intersection(line_1, line_2, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
-
 
 //Coordinate3 coordinate3 = line3Intersection.Point_1;
 
@@ -171,7 +166,6 @@ using DiGi.ComputeSharp.Spatial.Classes;
 //triangle3_2 = new Triangle3(true, 0, 5, 0, 5, 0, 0, 5, 5, 0);
 //triangle3Intersection = DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(triangle3_1, triangle3_2, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
 
-
 //Triangle3 triangle3 = new Triangle3(new Bool(true), 0, 0, 0, 0, 10, 0, 10, 0, 0);
 //Line3 line3 = new Line3(4, 4, 0, 11, 11, 0);
 
@@ -192,18 +186,8 @@ Triangle3 triangle3_2 = new Triangle3(new DiGi.ComputeSharp.Core.Classes.Bool(tr
 
 Coordinate3 coordinate3 = new Coordinate3(0, 0, 1);
 
-
 Triangle3Intersection triangle3Intersection = DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(triangle3_2, triangle3_1, coordinate3, true, false, DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
 
 //bool intersect = triangle3_1.Inside(new Coordinate3(5, 5, 0), DiGi.ComputeSharp.Core.Constans.Tolerance.Distance);
 
-
-Console.WriteLine(string.Format("Finished: {0}", true ));
-
-
-
-
-
-
-
-
+Console.WriteLine(string.Format("Finished: {0}", true));

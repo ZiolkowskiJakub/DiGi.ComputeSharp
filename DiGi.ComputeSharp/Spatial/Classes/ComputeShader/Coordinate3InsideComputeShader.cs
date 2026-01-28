@@ -52,7 +52,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Coordinate3 point = points[index];
             Result[index] = 0;
 
-            if(point.IsNaN())
+            if (point.IsNaN())
             {
                 return;
             }
@@ -61,7 +61,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             for (int i = 0; i < length; i++)
             {
                 Triangle3 triangle = triangles[i];
-                if(triangle.IsNaN())
+                if (triangle.IsNaN())
                 {
                     continue;
                 }

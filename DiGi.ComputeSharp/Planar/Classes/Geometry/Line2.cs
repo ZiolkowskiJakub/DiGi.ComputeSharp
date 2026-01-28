@@ -79,12 +79,12 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
             if (true)
             {
-                if(t > 1.0f)
+                if (t > 1.0f)
                 {
                     t = 1.0f;
                 }
 
-                if(t < 0.0f)
+                if (t < 0.0f)
                 {
                     t = 0.0f;
                 }
@@ -97,12 +97,12 @@ namespace DiGi.ComputeSharp.Planar.Classes
         {
             return new Coordinate2(Start, End).GetNormalized(tolerance);
         }
-        
+
         public Line2 GetInversed()
         {
             return new Line2(Bounded, End, Start);
         }
-        
+
         public Coordinate2 GetMax()
         {
             double x = Start.X;
@@ -149,7 +149,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public double GetSquaredLength()
         {
-            if(Bounded.ToBool())
+            if (Bounded.ToBool())
             {
                 return double.PositiveInfinity;
             }
@@ -161,7 +161,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
         {
             double squaredLength = GetSquaredLength();
 
-            if(!Core.Query.IsValid(squaredLength))
+            if (!Core.Query.IsValid(squaredLength))
             {
                 return squaredLength;
             }
@@ -225,7 +225,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
         {
             return Start.IsNaN() || End.IsNaN();
         }
-       
+
         public bool On(Coordinate2 point, double tolerance)
         {
             return GetSquaredDistance(point) <= tolerance;
@@ -235,12 +235,12 @@ namespace DiGi.ComputeSharp.Planar.Classes
         {
             return GetClosestPoint(point);
         }
-        
+
         public Line2 Project(Line2 line)
         {
             Coordinate2 start = GetClosestPoint(line.Start);
             Coordinate2 end = GetClosestPoint(line.Start);
-            if(start.Equals(end))
+            if (start.Equals(end))
             {
                 return new Line2();
             }

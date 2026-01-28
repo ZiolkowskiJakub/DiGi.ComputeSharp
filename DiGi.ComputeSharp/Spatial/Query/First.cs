@@ -34,6 +34,4 @@ namespace DiGi.ComputeSharp.Spatial
             return point_6;
         }
     }
-
 }
-

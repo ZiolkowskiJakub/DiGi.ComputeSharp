@@ -3,7 +3,6 @@ using DiGi.ComputeSharp.Spatial.Classes;
 using DiGi.Core;
 using DiGi.Geometry.Planar;
 using DiGi.Geometry.Planar.Classes;
-using DiGi.Geometry.Planar.Interfaces;
 using DiGi.Geometry.Spatial;
 using DiGi.Geometry.Spatial.Classes;
 using DiGi.Geometry.Spatial.Interfaces;
@@ -55,7 +54,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             graphicDevice.For(length, length, new Triangle3ShadingComputeShader(triangle3s, readWriteBuffer_Triangle3Intersection, direction.ToComputeSharp()));
 
             List<Triangle3Intersection>? triangle3Intersections = Core.Create.List(readWriteBuffer_Triangle3Intersection);
-            if(triangle3Intersections is null)
+            if (triangle3Intersections is null)
             {
                 return null;
             }
@@ -106,7 +105,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 
                 List<int> indexes = [];
                 int index = tuples.FindLastIndex(x => x.Item2 == i);
-                while(index != -1)
+                while (index != -1)
                 {
                     tuples.RemoveAt(index);
                     List<Triangle3D> triangle3Ds_Temp = triangle3DsList[index];
@@ -121,7 +120,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                     triangle3Ds.AddRange(triangle3Ds_Temp);
                 }
 
-                if(triangle3Ds == null || triangle3Ds.Count == 0)
+                if (triangle3Ds == null || triangle3Ds.Count == 0)
                 {
                     result.Add(null);
                     continue;
@@ -176,7 +175,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             int length = tuples.Count;
 
             List<Triangle3Intersection> triangle3Intersections = [];
-            for (int i =0; i < tuples.Count; i++)
+            for (int i = 0; i < tuples.Count; i++)
             {
                 for (int j = 0; j < tuples.Count; j++)
                 {
@@ -255,7 +254,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 
                 List<PolygonalFace2D>? polygonalFace2Ds = DiGi.Geometry.Planar.Create.PolygonalFace2Ds(polygon2Ds, tolerance);
 
-                result.Add(polygonalFace2Ds?.ConvertAll( plane.Convert).FilterNulls());
+                result.Add(polygonalFace2Ds?.ConvertAll(plane.Convert).FilterNulls());
             }
 
             result.Reverse();
@@ -263,6 +262,4 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             return result;
         }
     }
-
 }
-

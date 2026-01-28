@@ -1,5 +1,4 @@
 ﻿using ComputeSharp;
-using DiGi.ComputeSharp.Core.Interfaces;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
@@ -73,9 +72,9 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                     continue;
                 }
 
-                if(!includeStart)
+                if (!includeStart)
                 {
-                    if(!line3Intersection.Point_1.IsNaN() && line3Intersection.Point_1.AlmostEquals(line.Start, tolerance))
+                    if (!line3Intersection.Point_1.IsNaN() && line3Intersection.Point_1.AlmostEquals(line.Start, tolerance))
                     {
                         continue;
                     }

@@ -18,7 +18,7 @@
             while (Abs(result * result - value) > tolerance)
             {
                 double temp = (result + value / result) / 2f;
-                if(temp == result)
+                if (temp == result)
                 {
                     break;
                 }
@@ -29,6 +29,4 @@
             return result;
         }
     }
-
 }
-

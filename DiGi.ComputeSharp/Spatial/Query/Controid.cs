@@ -59,7 +59,7 @@ namespace DiGi.ComputeSharp.Spatial
                 }
             }
 
-            if(count == 0)
+            if (count == 0)
             {
                 return new Coordinate3();
             }
@@ -69,7 +69,7 @@ namespace DiGi.ComputeSharp.Spatial
 
         public static Coordinate3 Centroid(Triangle3Intersection triangle3Intersection)
         {
-            if(triangle3Intersection.IsNaN())
+            if (triangle3Intersection.IsNaN())
             {
                 return new Coordinate3();
             }
@@ -77,6 +77,4 @@ namespace DiGi.ComputeSharp.Spatial
             return Centroid(triangle3Intersection.Point_1, triangle3Intersection.Point_2, triangle3Intersection.Point_3, triangle3Intersection.Point_4, triangle3Intersection.Point_5, triangle3Intersection.Point_6);
         }
     }
-
 }
-

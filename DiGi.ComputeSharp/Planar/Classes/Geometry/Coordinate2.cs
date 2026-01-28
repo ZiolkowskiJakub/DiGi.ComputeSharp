@@ -3,8 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace DiGi.ComputeSharp.Planar.Classes
 {
-    unsafe
-    public readonly struct Coordinate2 : IGeometry2
+    public readonly unsafe struct Coordinate2 : IGeometry2
     {
         public readonly double X;
         public readonly double Y;
@@ -108,14 +107,14 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public override bool Equals([NotNullWhen(true)] object? obj)
         {
-            if(obj is Coordinate2 coordinate2)
+            if (obj is Coordinate2 coordinate2)
             {
                 return Equals(coordinate2);
             }
 
             return false;
         }
-        
+
         public double GetApproximateDistance(Coordinate2 point)
         {
             double dx = point.X - X;
@@ -144,7 +143,6 @@ namespace DiGi.ComputeSharp.Planar.Classes
                 min = dy;
             }
 
-
             return 0.96043387f * max + 0.39782473f * min;
         }
 
@@ -167,7 +165,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
         {
             return new Coordinate2(this, point).GetLength(tolerance);
         }
-        
+
         public Coordinate2 GetInversed()
         {
             return new Coordinate2(-X, -Y);
@@ -177,7 +175,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
         {
             return Core.Query.Sqrt(GetSquaredLength(), tolerance);
         }
-        
+
         public Coordinate2 GetMoved(Coordinate2 vector)
         {
             return Add(vector);
@@ -269,7 +267,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
         {
             return new Coordinate2(X - coordinate.X, Y - coordinate.Y);
         }
-        
+
         public override string ToString()
         {
             return string.Format("[X:{0};Y:{1}]", X, Y);
@@ -291,6 +289,3 @@ namespace DiGi.ComputeSharp.Planar.Classes
         }
     }
 }
-
-
-

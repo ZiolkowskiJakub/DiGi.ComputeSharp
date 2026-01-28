@@ -9,7 +9,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
     {
         private readonly double tolerance = Core.Constans.Tolerance.Distance;
         private readonly int threadsCount = -1;
-        
+
         private readonly Triangle3 triangle;
         private readonly ReadOnlyBuffer<Triangle3> triangles;
 

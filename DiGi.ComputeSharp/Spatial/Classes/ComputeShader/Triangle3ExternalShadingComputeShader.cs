@@ -9,8 +9,8 @@ namespace DiGi.ComputeSharp.Spatial.Classes
     {
         private readonly double tolerance = Core.Constans.Tolerance.Distance;
 
-        private readonly Coordinate3 vector = new ();
-        
+        private readonly Coordinate3 vector = new();
+
         private readonly ReadOnlyBuffer<Triangle3> triangles;
 
         private readonly ReadOnlyBuffer<Triangle3> externalTriangles;
@@ -65,7 +65,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             int index_1 = ThreadIds.X;
             int index_2 = ThreadIds.Y;
 
-            TriangleIntersections[(index_1 * triangles.Length) + index_2] = Create.Triangle3Intersection(triangles[index_1], externalTriangles[index_2], vector, true, false, tolerance);            
+            TriangleIntersections[(index_1 * triangles.Length) + index_2] = Create.Triangle3Intersection(triangles[index_1], externalTriangles[index_2], vector, true, false, tolerance);
         }
     }
 }

@@ -20,7 +20,7 @@
                 result++;
             }
 
-            if(value_4 == value)
+            if (value_4 == value)
             {
                 result++;
             }
@@ -39,4 +39,3 @@
         }
     }
 }
-

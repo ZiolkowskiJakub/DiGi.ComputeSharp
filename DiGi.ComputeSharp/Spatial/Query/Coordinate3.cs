@@ -39,6 +39,4 @@ namespace DiGi.ComputeSharp.Spatial
             return new Coordinate3();
         }
     }
-
 }
-

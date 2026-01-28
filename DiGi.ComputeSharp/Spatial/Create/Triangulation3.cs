@@ -5,15 +5,14 @@ namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Create
     {
-        
         public static Triangulation3 Triangulation3(Triangle3 triangle, Coordinate3 point, double tolerance)
         {
-            if(!triangle.InRange(point, tolerance))
+            if (!triangle.InRange(point, tolerance))
             {
                 return new Triangulation3();
             }
 
-            if(!triangle.Inside(point, tolerance))
+            if (!triangle.Inside(point, tolerance))
             {
                 return new Triangulation3();
             }
@@ -23,7 +22,7 @@ namespace DiGi.ComputeSharp.Spatial
             Line3 line = triangle.GetLine(0);
             if (line.On(point, tolerance))
             {
-                if(line.Start.AlmostEquals(point, tolerance) || line.End.AlmostEquals(point, tolerance))
+                if (line.Start.AlmostEquals(point, tolerance) || line.End.AlmostEquals(point, tolerance))
                 {
                     return new Triangulation3(triangle);
                 }
@@ -135,7 +134,6 @@ namespace DiGi.ComputeSharp.Spatial
                     triangle_2_1 = new Triangle3(triangle.Solid, lineIntersection.Point_2, lineIntersection.Point_2, triangle.Point_2);
                     triangle_2_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, lineIntersection.Point_1);
                     triangle_2_3 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_3, triangle.Point_1);
-
                 }
                 else if (on_2_1 && on_1_2)
                 {
@@ -166,7 +164,6 @@ namespace DiGi.ComputeSharp.Spatial
                     triangle_2_1 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_3, lineIntersection.Point_1);
                     triangle_2_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, triangle.Point_2);
                     triangle_2_3 = new Triangle3(triangle.Solid, lineIntersection.Point_2, lineIntersection.Point_1, triangle.Point_1);
-
                 }
                 else if (on_1_3 && on_2_1)
                 {
@@ -269,12 +266,11 @@ namespace DiGi.ComputeSharp.Spatial
             Line3 line_1_Temp, line_2_Temp;
             Line3Intersection lineIntersection_Temp;
 
-
             line_1_Temp = new Line3(new Bool(true), lineIntersection.Point_1, triangle.Point_1);
             line_2_Temp = new Line3(new Bool(true), lineIntersection.Point_2, triangle.Point_2);
 
             lineIntersection_Temp = Line3Intersection(line_1_Temp, line_2_Temp, tolerance);
-            if(!lineIntersection_Temp.IsNaN())
+            if (!lineIntersection_Temp.IsNaN())
             {
                 triangle_1 = new Triangle3(lineIntersection.Point_1, triangle.Point_3, triangle.Point_2);
                 triangle_2 = new Triangle3(lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_3);
@@ -285,7 +281,6 @@ namespace DiGi.ComputeSharp.Spatial
 
                 triangle_4_2 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_1, lineIntersection.Point_2);
                 triangle_5_2 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_2, triangle.Point_1);
-
             }
             else
             {
@@ -388,7 +383,6 @@ namespace DiGi.ComputeSharp.Spatial
             {
                 return new Triangulation3(triangle_1, triangle_2, triangle_3, triangle_4_2, triangle_5_2);
             }
-
         }
     }
 }

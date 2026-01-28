@@ -1,12 +1,10 @@
 ﻿using DiGi.ComputeSharp.Core.Classes;
 using DiGi.ComputeSharp.Spatial.Classes;
-using System.Numerics;
 
 namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Create
     {
-        
         public static Line3Intersection Line3Intersection(Line3 line_1, Line3 line_2, double tolerance)
         {
             if (!line_1.InRange(line_2, tolerance))
@@ -49,12 +47,12 @@ namespace DiGi.ComputeSharp.Spatial
 
                     if (squaredLength <= tolerance || Core.Query.Sqrt(squaredLength, tolerance) <= tolerance)
                     {
-                        if(!bounded_1 && !bounded_2)
+                        if (!bounded_1 && !bounded_2)
                         {
                             return new Line3Intersection(line_1);
                         }
 
-                        if(bounded_1 && bounded_2)
+                        if (bounded_1 && bounded_2)
                         {
                             Coordinate3 point_1 = new Coordinate3();
                             Coordinate3 point_2 = new Coordinate3();
@@ -84,7 +82,7 @@ namespace DiGi.ComputeSharp.Spatial
                                 return new Line3Intersection();
                             }
 
-                            if(point_2.IsNaN())
+                            if (point_2.IsNaN())
                             {
                                 return new Line3Intersection(point_1);
                             }
@@ -92,7 +90,7 @@ namespace DiGi.ComputeSharp.Spatial
                             return new Line3Intersection(new Line3(new Bool(true), point_1, point_2));
                         }
 
-                        if(bounded_1)
+                        if (bounded_1)
                         {
                             return new Line3Intersection(line_1);
                         }
@@ -102,8 +100,6 @@ namespace DiGi.ComputeSharp.Spatial
                             return new Line3Intersection(line_2);
                         }
                     }
-
-                    
                 }
 
                 // This case should ideally not be reached if determinant is near zero
@@ -128,11 +124,11 @@ namespace DiGi.ComputeSharp.Spatial
             if (squaredDistance <= tolerance || Core.Query.Sqrt(squaredDistance, tolerance) <= tolerance)
             {
                 Coordinate3 intersectionPoint = intersectionPoint_1.GetCentroid(intersectionPoint_2);
-                if((
+                if ((
                     !bounded_1 && !bounded_2) ||
                     (bounded_1 && bounded_2 && line_1.On(intersectionPoint, tolerance) && line_2.On(intersectionPoint, tolerance)) ||
                     (!bounded_2 && bounded_1 && line_1.On(intersectionPoint, tolerance)) ||
-                    (!bounded_1 && bounded_2 && line_2.On(intersectionPoint, tolerance) )
+                    (!bounded_1 && bounded_2 && line_2.On(intersectionPoint, tolerance))
                     )
                 {
                     return new Line3Intersection(intersectionPoint);
@@ -141,10 +137,10 @@ namespace DiGi.ComputeSharp.Spatial
 
             return new Line3Intersection();
         }
-        
+
         public static Line3Intersection Line3Intersection(Line3 line, Triangle3 triangle, double tolerance)
         {
-            if(!line.InRange(triangle, tolerance))
+            if (!line.InRange(triangle, tolerance))
             {
                 return new Line3Intersection();
             }
@@ -154,7 +150,7 @@ namespace DiGi.ComputeSharp.Spatial
 
             line3Intersection = Line3Intersection(line, triangle.GetLine(0), tolerance);
             line_Temp = new Line3();
-            if(!line3Intersection.Point_2.IsNaN())
+            if (!line3Intersection.Point_2.IsNaN())
             {
                 line_Temp = new Line3(line3Intersection.Point_1, line3Intersection.Point_2);
             }
@@ -165,7 +161,7 @@ namespace DiGi.ComputeSharp.Spatial
             }
 
             Coordinate3 point_1 = new Coordinate3();
-            if(!line3Intersection.Point_1.IsNaN())
+            if (!line3Intersection.Point_1.IsNaN())
             {
                 point_1 = line3Intersection.Point_1;
             }
@@ -183,7 +179,7 @@ namespace DiGi.ComputeSharp.Spatial
             }
 
             Coordinate3 point_2 = new Coordinate3();
-            if(!line3Intersection.Point_1.IsNaN())
+            if (!line3Intersection.Point_1.IsNaN())
             {
                 point_2 = line3Intersection.Point_1;
             }
@@ -201,7 +197,7 @@ namespace DiGi.ComputeSharp.Spatial
             }
 
             Coordinate3 point_3 = new Coordinate3();
-            if(!line3Intersection.Point_1.IsNaN())
+            if (!line3Intersection.Point_1.IsNaN())
             {
                 point_3 = line3Intersection.Point_1;
             }
@@ -232,7 +228,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Line3Intersection(triangle.Solid, point_3, point_1);
             }
 
-            if(!solid)
+            if (!solid)
             {
                 if (notNaN_1)
                 {
@@ -251,8 +247,6 @@ namespace DiGi.ComputeSharp.Spatial
 
                 return new Line3Intersection();
             }
-
-
 
             Coordinate3 vector_1 = new Coordinate3(triangle.Point_1, triangle.Point_2);
             Coordinate3 vector_2 = new Coordinate3(triangle.Point_1, triangle.Point_3);
@@ -321,7 +315,7 @@ namespace DiGi.ComputeSharp.Spatial
 
             double t = normal.DotProduct(triangle.Point_1.Substract(line.Start)) / denominator;
             Coordinate3 intersectionPoint = line.Start.Add(direction.Multiply(t));
-            if(!line.On(intersectionPoint, tolerance))
+            if (!line.On(intersectionPoint, tolerance))
             {
                 return new Line3Intersection();
             }
@@ -348,7 +342,7 @@ namespace DiGi.ComputeSharp.Spatial
             {
                 return new Line3Intersection(intersectionPoint);
             }
-          
+
             return new Line3Intersection();
         }
     }

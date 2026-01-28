@@ -1,7 +1,5 @@
 ﻿using DiGi.ComputeSharp.Core.Classes;
-using DiGi.ComputeSharp.Planar.Classes;
 using DiGi.ComputeSharp.Spatial.Interfaces;
-using System.Drawing;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
@@ -11,7 +9,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         public readonly Coordinate3 Point_2;
         public readonly Coordinate3 Point_3;
         public readonly Bool Solid;
-        
+
         public Triangle3()
         {
             Solid = new Bool(false);
@@ -218,7 +216,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             return Point_1.GetDistance(Point_2, tolerance) + Point_2.GetDistance(Point_3, tolerance) + Point_3.GetDistance(Point_1, tolerance);
         }
-        
+
         public Plane GetPlane(double tolerance)
         {
             return new Plane(Point_1, GetNormal(tolerance), tolerance);
@@ -241,7 +239,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public bool InRange(Coordinate3 point, double tolerance)
         {
-            if(point.IsNaN())
+            if (point.IsNaN())
             {
                 return false;
             }
@@ -328,8 +326,8 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             double dot12 = ac.DotProduct(ap); // AC . AP
 
             double invDenom = 1.0f / (dot00 * dot11 - dot01 * dot01); // 1 / (2 * Area_parallelogram)^2
-                                                                     // If denominator is zero or near-zero, it means the triangle is degenerate (collinear vertices),
-                                                                     // which should have been caught by the normalLength check above. However, for robustness:
+                                                                      // If denominator is zero or near-zero, it means the triangle is degenerate (collinear vertices),
+                                                                      // which should have been caught by the normalLength check above. However, for robustness:
             if (!Core.Query.IsValid(invDenom))
             {
                 // This case should ideally be handled by the normalLength check.
@@ -338,7 +336,6 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 double distSq = point.Substract(closestOnLine).GetSquaredLength();
                 return distSq <= tolerance;
             }
-
 
             double u = (dot11 * dot02 - dot01 * dot12) * invDenom;
             double v = (dot00 * dot12 - dot01 * dot02) * invDenom;
@@ -353,7 +350,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             return isInside2D;
         }
-        
+
         public bool IsNaN()
         {
             return Point_1.IsNaN() || Point_1.IsNaN() || Point_3.IsNaN();
@@ -361,8 +358,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public bool On(Coordinate3 point, double tolerance)
         {
-
-            if(Solid.ToBool())
+            if (Solid.ToBool())
             {
                 return Inside(point, tolerance);
             }
@@ -372,7 +368,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 {
                     return true;
                 }
-                
+
                 if (GetLine(1).On(point, tolerance))
                 {
                     return true;
@@ -386,7 +382,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             return false;
         }
-        
+
         public override string ToString()
         {
             return string.Format("P1:{0};P2:{1};P3:{2}", Point_1, Point_2, Point_3);

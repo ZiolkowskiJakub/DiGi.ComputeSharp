@@ -6,7 +6,7 @@ namespace DiGi.ComputeSharp.Spatial
     {
         public static bool SameHalf(Coordinate3 vector_1, Coordinate3 vector_2, double tolerance)
         {
-            if(vector_1.IsNaN() || vector_2.IsNaN())
+            if (vector_1.IsNaN() || vector_2.IsNaN())
             {
                 return false;
             }
@@ -17,6 +17,4 @@ namespace DiGi.ComputeSharp.Spatial
             return dotProduct > 0 - tolerance;
         }
     }
-
 }
-

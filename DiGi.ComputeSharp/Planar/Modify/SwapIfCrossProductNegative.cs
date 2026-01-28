@@ -33,6 +33,4 @@ namespace DiGi.ComputeSharp.Planar
             return false;
         }
     }
-
 }
-

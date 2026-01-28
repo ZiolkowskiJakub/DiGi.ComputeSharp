@@ -11,11 +11,10 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         private readonly int threadsCount = -1;
 
-        private readonly Line3 line = new ();
+        private readonly Line3 line = new();
         private readonly ReadOnlyBuffer<Line3> lines;
 
         public readonly ReadWriteBuffer<Line3Intersection> LineIntersections;
-
 
         public Line3IntersectionComputeShader(GraphicsDevice graphicsDevice, Line3 line, IEnumerable<Line3> lines)
         {

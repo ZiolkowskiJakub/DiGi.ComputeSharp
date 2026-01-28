@@ -5,7 +5,6 @@ namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Create
     {
-
         public static IEnumerable<Triangle3Intersection>? Triangle3Intersections(this Triangle3 triangle, IEnumerable<Triangle3> triangles, double tolerance)
         {
             if (triangle.IsNaN() || triangles == null || !triangles.Any())
@@ -21,12 +20,11 @@ namespace DiGi.ComputeSharp.Spatial
 
             int threadsCount = 1024;
 
-            Triangle3IntersectionComputeShader triangle3IntersectionComputeShader = new (graphicsDevice, triangle, triangles, tolerance, threadsCount);
+            Triangle3IntersectionComputeShader triangle3IntersectionComputeShader = new(graphicsDevice, triangle, triangles, tolerance, threadsCount);
 
             graphicsDevice.For(threadsCount, triangle3IntersectionComputeShader);
 
             return Core.Create.List(triangle3IntersectionComputeShader.TriangleIntersections, x => x is Triangle3Intersection triangle3Intersection && !triangle3Intersection.IsNaN());
-
         }
 
         public static IEnumerable<Triangle3Intersection>? Triangle3Intersections(this IEnumerable<Triangle3> triangles_1, IEnumerable<Triangle3> triangles_2, double tolerance)
@@ -49,7 +47,7 @@ namespace DiGi.ComputeSharp.Spatial
 
         public static IEnumerable<Triangle3Intersection>? Triangle3Intersections(this GraphicsDevice graphicsDevice, IEnumerable<Triangle3> triangles_1, ReadOnlyBuffer<Triangle3> triangles_2, double tolerance)
         {
-            if(graphicsDevice == null || triangles_1 == null || triangles_2 == null)
+            if (graphicsDevice == null || triangles_1 == null || triangles_2 == null)
             {
                 return null;
             }
@@ -61,7 +59,7 @@ namespace DiGi.ComputeSharp.Spatial
             List<Triangle3Intersection> result = [];
             foreach (Triangle3 triangle in triangles_1)
             {
-                Triangle3IntersectionComputeShader triangle3IntersectionComputeShader = new (triangle, triangles_2, triangleIntersections, tolerance, threadsCount);
+                Triangle3IntersectionComputeShader triangle3IntersectionComputeShader = new(triangle, triangles_2, triangleIntersections, tolerance, threadsCount);
                 graphicsDevice.For(threadsCount, triangle3IntersectionComputeShader);
 
                 List<Triangle3Intersection>? triangle3Intersections_Temp = Core.Create.List(triangle3IntersectionComputeShader.TriangleIntersections, x => x is Triangle3Intersection triangle3Intersection && !triangle3Intersection.IsNaN());

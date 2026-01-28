@@ -8,6 +8,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         public readonly Coordinate3 Point_1;
         public readonly Coordinate3 Point_2;
         public readonly Bool Solid;
+
         public Line3Intersection()
         {
             Solid = new Bool(false);
@@ -76,7 +77,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public Line3 GetLine()
         {
-            if(!Solid.ToBool() || Point_2.IsNaN())
+            if (!Solid.ToBool() || Point_2.IsNaN())
             {
                 return new Line3();
             }

@@ -9,7 +9,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
         public readonly Coordinate2 Point_2;
         public readonly Coordinate2 Point_3;
         public readonly Bool Solid;
-        
+
         public Triangle2()
         {
             Solid = new Bool(false);
@@ -178,8 +178,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public bool On(Coordinate2 point, double tolerance)
         {
-
-            if(Solid.ToBool())
+            if (Solid.ToBool())
             {
                 return Inside(point, tolerance);
             }
@@ -196,7 +195,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
             return false;
         }
-        
+
         public override string ToString()
         {
             return string.Format("P1:{0};P2:{1};P3:{2}", Point_1, Point_2, Point_3);

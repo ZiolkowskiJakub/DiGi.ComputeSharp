@@ -1,5 +1,5 @@
-﻿using DiGi.ComputeSharp.Spatial.Interfaces;
-using DiGi.ComputeSharp.Core.Classes;
+﻿using DiGi.ComputeSharp.Core.Classes;
+using DiGi.ComputeSharp.Spatial.Interfaces;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
@@ -79,12 +79,12 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             if (Bounded.ToBool())
             {
-                if(t > 1.0f)
+                if (t > 1.0f)
                 {
                     t = 1.0f;
                 }
 
-                if(t < 0.0f)
+                if (t < 0.0f)
                 {
                     t = 0.0f;
                 }
@@ -178,7 +178,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public double GetSquaredLength()
         {
-            if(!Bounded.ToBool())
+            if (!Bounded.ToBool())
             {
                 return double.PositiveInfinity;
             }
@@ -244,22 +244,22 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             return Start.IsNaN() || End.IsNaN();
         }
-       
+
         public bool On(Coordinate3 point, double tolerance)
         {
             return GetSquaredDistance(point) <= tolerance;
         }
-        
+
         public Coordinate3 Project(Coordinate3 point)
         {
             return GetClosestPoint(point);
         }
-        
+
         public Line3 Project(Line3 line)
         {
             Coordinate3 start = GetClosestPoint(line.Start);
             Coordinate3 end = GetClosestPoint(line.Start);
-            if(start.Equals(end))
+            if (start.Equals(end))
             {
                 return new Line3();
             }

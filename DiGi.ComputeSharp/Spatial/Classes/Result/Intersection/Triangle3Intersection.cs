@@ -1,6 +1,5 @@
 ﻿using DiGi.ComputeSharp.Core.Classes;
 using DiGi.ComputeSharp.Spatial.Interfaces;
-using System.Net.Http.Headers;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {

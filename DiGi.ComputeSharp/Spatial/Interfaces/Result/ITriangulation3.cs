@@ -2,6 +2,5 @@
 {
     public interface ITriangulation3 : Core.Interfaces.ITriangulation
     {
-
     }
 }

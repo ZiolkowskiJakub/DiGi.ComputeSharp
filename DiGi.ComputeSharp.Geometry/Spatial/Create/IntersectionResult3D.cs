@@ -15,16 +15,16 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             }
 
             List<Triangle3>? triangle3s_1 = mesh3D.ToComputeSharp(solid);
-            if(triangle3s_1 is null)
+            if (triangle3s_1 is null)
             {
                 return null;
             }
 
             List<Triangle3> triangle3s_2 = [];
-            foreach(Mesh3D mesh3D_Temp in mesh3Ds)
+            foreach (Mesh3D mesh3D_Temp in mesh3Ds)
             {
                 List<Triangle3>? triangle3s_Mesh3D = mesh3D_Temp?.ToComputeSharp(solid);
-                if(triangle3s_Mesh3D == null || triangle3s_Mesh3D.Count == 0)
+                if (triangle3s_Mesh3D == null || triangle3s_Mesh3D.Count == 0)
                 {
                     continue;
                 }
@@ -33,21 +33,21 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             }
 
             IEnumerable<Triangle3Intersection>? triangle3Intersections = ComputeSharp.Spatial.Create.Triangle3Intersections(triangle3s_1, triangle3s_2, tolerance);
-            if(triangle3Intersections == null)
+            if (triangle3Intersections == null)
             {
                 return null;
             }
 
             List<IGeometry3D> geometry3Ds = [];
-            foreach(Triangle3Intersection triangle3Intersection in triangle3Intersections)
+            foreach (Triangle3Intersection triangle3Intersection in triangle3Intersections)
             {
-                if(triangle3Intersection.IsNaN())
+                if (triangle3Intersection.IsNaN())
                 {
                     continue;
                 }
 
-                IGeometry3[]? geometry3s =triangle3Intersection.GetIntersectionGeometries();
-                if(geometry3s == null || geometry3s.Length == 0)
+                IGeometry3[]? geometry3s = triangle3Intersection.GetIntersectionGeometries();
+                if (geometry3s == null || geometry3s.Length == 0)
                 {
                     continue;
                 }
@@ -85,32 +85,31 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             }
 
             return new IntersectionResult3D(geometry3Ds);
-        
         }
 
         public static IntersectionResult3D? IntersectionResult3D_CPU(this Mesh3D? mesh3D, IEnumerable<Mesh3D>? mesh3Ds, bool solid, double tolerance = Core.Constans.Tolerance.Distance)
         {
-            if(mesh3D == null || mesh3Ds == null || !mesh3Ds.Any())
+            if (mesh3D == null || mesh3Ds == null || !mesh3Ds.Any())
             {
                 return null;
             }
 
             BoundingBox3D? boundingBox3D = mesh3D.GetBoundingBox();
-            if(boundingBox3D == null)
+            if (boundingBox3D == null)
             {
                 return null;
             }
 
             List<Mesh3D> mesh3Ds_Temp = [];
-            foreach(Mesh3D mesh3D_Temp in mesh3Ds)
+            foreach (Mesh3D mesh3D_Temp in mesh3Ds)
             {
                 BoundingBox3D? boundingBox3D_Temp = mesh3D_Temp?.GetBoundingBox();
-                if(boundingBox3D_Temp == null)
+                if (boundingBox3D_Temp == null)
                 {
                     continue;
                 }
 
-                if(!boundingBox3D.InRange(boundingBox3D_Temp, tolerance))
+                if (!boundingBox3D.InRange(boundingBox3D_Temp, tolerance))
                 {
                     continue;
                 }
@@ -118,13 +117,13 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 mesh3Ds_Temp.Add(mesh3D_Temp!);
             }
 
-            if(mesh3Ds_Temp == null || mesh3Ds_Temp.Count == 0)
+            if (mesh3Ds_Temp == null || mesh3Ds_Temp.Count == 0)
             {
                 return new IntersectionResult3D();
             }
 
             List<Triangle3>? triangle3s = mesh3D.GetTriangles()?.ConvertAll(x => x.ToComputeSharp(solid));
-            if(triangle3s is null)
+            if (triangle3s is null)
             {
                 return new IntersectionResult3D();
             }
@@ -134,23 +133,23 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             foreach (Mesh3D mesh3D_Temp in mesh3Ds_Temp)
             {
                 List<Triangle3>? triangle3s_Temp = mesh3D_Temp.GetTriangles()?.ConvertAll(x => x.ToComputeSharp(solid));
-                if(triangle3s_Temp is null)
+                if (triangle3s_Temp is null)
                 {
                     continue;
                 }
 
-                foreach(Triangle3 triangle3 in triangle3s)
+                foreach (Triangle3 triangle3 in triangle3s)
                 {
                     foreach (Triangle3 triangle3_Temp in triangle3s_Temp)
                     {
                         Triangle3Intersection triangle3Intersection = ComputeSharp.Spatial.Create.Triangle3Intersection(triangle3, triangle3_Temp, tolerance);
-                        if(triangle3Intersection.IsNaN())
+                        if (triangle3Intersection.IsNaN())
                         {
                             continue;
                         }
 
                         IGeometry3[]? geometry3s = triangle3Intersection.GetIntersectionGeometries();
-                        if(geometry3s == null || geometry3s.Length == 0)
+                        if (geometry3s == null || geometry3s.Length == 0)
                         {
                             continue;
                         }
@@ -190,8 +189,6 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             }
 
             return new IntersectionResult3D(geometry3Ds);
-
         }
     }
 }
-

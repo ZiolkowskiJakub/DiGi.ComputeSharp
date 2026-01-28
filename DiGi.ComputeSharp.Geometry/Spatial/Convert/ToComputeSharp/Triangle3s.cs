@@ -18,7 +18,6 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 result.Add(ToComputeSharp(triangle3D, solid));
             }
 
-
             return result;
         }
 
@@ -28,4 +27,3 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
         }
     }
 }
-

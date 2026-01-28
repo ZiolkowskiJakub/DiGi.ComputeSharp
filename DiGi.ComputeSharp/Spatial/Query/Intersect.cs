@@ -1,5 +1,4 @@
 ﻿using ComputeSharp;
-using DiGi.ComputeSharp.Planar.Classes;
 using DiGi.ComputeSharp.Spatial.Classes;
 
 namespace DiGi.ComputeSharp.Spatial
@@ -24,7 +23,7 @@ namespace DiGi.ComputeSharp.Spatial
         public static bool Intersect(this GraphicsDevice graphicDevice, Line3 line3, ReadOnlyBuffer<Triangle3> triangle3s, bool includeStart, bool includeEnd)
         {
             List<bool>? result = Intersect(graphicDevice, [line3], triangle3s, includeStart, includeEnd);
-            if(result == null || result.Count == 0)
+            if (result == null || result.Count == 0)
             {
                 return false;
             }
@@ -34,13 +33,13 @@ namespace DiGi.ComputeSharp.Spatial
 
         public static List<bool>? Intersect(IEnumerable<Line3>? line3s, IEnumerable<Triangle3>? triangle3s, bool includeStart, bool includeEnd)
         {
-            if(line3s == null || triangle3s == null)
+            if (line3s == null || triangle3s == null)
             {
                 return null;
             }
 
             GraphicsDevice graphicDevice = GraphicsDevice.GetDefault();
-            if(graphicDevice == null)
+            if (graphicDevice == null)
             {
                 return null;
             }
@@ -68,6 +67,4 @@ namespace DiGi.ComputeSharp.Spatial
             return Intersect(graphicDevice, line3, triangle3s_Temp, includeStart, includeEnd);
         }
     }
-
 }
-

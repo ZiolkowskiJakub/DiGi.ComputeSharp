@@ -7,6 +7,7 @@
         public readonly Triangle3 trinagle_3;
         public readonly Triangle3 trinagle_4;
         public readonly Triangle3 trinagle_5;
+
         public Triangulation3()
         {
             trinagle_1 = new Triangle3();

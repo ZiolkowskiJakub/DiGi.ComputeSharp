@@ -1,11 +1,9 @@
-﻿using DiGi.ComputeSharp.Planar.Classes;
-using DiGi.ComputeSharp.Spatial.Interfaces;
+﻿using DiGi.ComputeSharp.Spatial.Interfaces;
 using System.Diagnostics.CodeAnalysis;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
-    unsafe
-    public readonly struct Coordinate3 : IGeometry3
+    public readonly unsafe struct Coordinate3 : IGeometry3
     {
         public readonly double X;
         public readonly double Y;
@@ -135,14 +133,14 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public override bool Equals([NotNullWhen(true)] object? obj)
         {
-            if(obj is Coordinate3 coordinate3)
+            if (obj is Coordinate3 coordinate3)
             {
                 return Equals(coordinate3);
             }
 
             return false;
         }
-        
+
         public double GetApproximateDistance(Coordinate3 point)
         {
             double dx = point.X - X;
@@ -221,7 +219,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             return Core.Query.Sqrt(GetSquaredLength(), tolerance);
         }
-        
+
         public Coordinate3 GetMoved(Coordinate3 vector)
         {
             return Add(vector);
@@ -250,7 +248,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public bool InRange(Triangle3 triangle, double tolerance)
         {
-            if(IsNaN())
+            if (IsNaN())
             {
                 return false;
             }
@@ -311,7 +309,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             return new Coordinate3(X - coordinate.X, Y - coordinate.Y, Z - coordinate.Z);
         }
-        
+
         public override string ToString()
         {
             return string.Format("[X:{0};Y:{1};Z:{2}]", X, Y, Z);
@@ -333,6 +331,3 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         }
     }
 }
-
-
-

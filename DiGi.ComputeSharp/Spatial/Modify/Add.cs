@@ -6,17 +6,17 @@ namespace DiGi.ComputeSharp.Spatial
     {
         public static bool Add(ref Coordinate3 point_1, ref Coordinate3 point_2, Coordinate3 point, double tolerance)
         {
-            if(point.IsNaN())
+            if (point.IsNaN())
             {
                 return false;
             }
 
-            if(point_1.IsNaN())
+            if (point_1.IsNaN())
             {
                 point_1 = point;
                 return true;
             }
-            else if(point_1.AlmostEquals(point, tolerance))
+            else if (point_1.AlmostEquals(point, tolerance))
             {
                 return false;
             }
@@ -113,12 +113,12 @@ namespace DiGi.ComputeSharp.Spatial
 
             bool result = false;
 
-            if(Add(ref point_1, ref point_2, ref point_3, ref point_4, ref point_5, ref point_6, line3Intersection.Point_1, tolerance))
+            if (Add(ref point_1, ref point_2, ref point_3, ref point_4, ref point_5, ref point_6, line3Intersection.Point_1, tolerance))
             {
                 result = true;
             }
 
-            if(Add(ref point_1, ref point_2, ref point_3, ref point_4, ref point_5, ref point_6, line3Intersection.Point_2, tolerance))
+            if (Add(ref point_1, ref point_2, ref point_3, ref point_4, ref point_5, ref point_6, line3Intersection.Point_2, tolerance))
             {
                 result = true;
             }
@@ -126,6 +126,4 @@ namespace DiGi.ComputeSharp.Spatial
             return result;
         }
     }
-
 }
-

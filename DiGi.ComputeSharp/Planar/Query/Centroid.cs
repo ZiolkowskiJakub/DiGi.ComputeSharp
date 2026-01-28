@@ -13,12 +13,12 @@ namespace DiGi.ComputeSharp.Planar
 
             int count = 0;
 
-            if(!point_1.IsNaN())
+            if (!point_1.IsNaN())
             {
                 x += point_1.X;
                 y += point_1.Y;
                 isNaN = false;
-                
+
                 count++;
             }
 
@@ -27,7 +27,7 @@ namespace DiGi.ComputeSharp.Planar
                 x += point_2.X;
                 y += point_2.Y;
                 isNaN = false;
-                
+
                 count++;
             }
 
@@ -36,7 +36,7 @@ namespace DiGi.ComputeSharp.Planar
                 x += point_3.X;
                 y += point_3.Y;
                 isNaN = false;
-                
+
                 count++;
             }
 
@@ -67,7 +67,7 @@ namespace DiGi.ComputeSharp.Planar
                 count++;
             }
 
-            if(isNaN)
+            if (isNaN)
             {
                 return new Coordinate2();
             }
@@ -75,6 +75,4 @@ namespace DiGi.ComputeSharp.Planar
             return new Coordinate2(x / (double)count, y / (double)count);
         }
     }
-
 }
-

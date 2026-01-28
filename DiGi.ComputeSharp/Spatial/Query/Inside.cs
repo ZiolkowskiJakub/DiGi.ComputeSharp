@@ -23,7 +23,7 @@ namespace DiGi.ComputeSharp.Spatial
         public static int Inside(this GraphicsDevice graphicDevice, Coordinate3 point, ReadOnlyBuffer<Triangle3>? triangles)
         {
             List<int>? result = Inside(graphicDevice, [point], triangles);
-            if(result == null || result.Count == 0)
+            if (result == null || result.Count == 0)
             {
                 return -1;
             }
@@ -33,13 +33,13 @@ namespace DiGi.ComputeSharp.Spatial
 
         public static List<int>? Inside(IEnumerable<Coordinate3>? points, IEnumerable<Triangle3>? triangles)
         {
-            if(points == null || triangles == null)
+            if (points == null || triangles == null)
             {
                 return null;
             }
 
             GraphicsDevice graphicDevice = GraphicsDevice.GetDefault();
-            if(graphicDevice == null)
+            if (graphicDevice == null)
             {
                 return null;
             }
@@ -67,6 +67,4 @@ namespace DiGi.ComputeSharp.Spatial
             return Inside(graphicDevice, point, triangle3s_Temp);
         }
     }
-
 }
-

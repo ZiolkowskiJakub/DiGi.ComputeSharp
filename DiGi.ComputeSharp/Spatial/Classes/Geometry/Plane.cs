@@ -1,7 +1,5 @@
-﻿using DiGi.ComputeSharp.Core.Constans;
-using DiGi.ComputeSharp.Planar.Classes;
+﻿using DiGi.ComputeSharp.Planar.Classes;
 using DiGi.ComputeSharp.Spatial.Interfaces;
-using System.Numerics;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
@@ -31,7 +29,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Origin = origin;
 
             Coordinate3 axisX = new Coordinate3(normal.Y, -normal.X, 0);
-            if(normal.X == 0 && normal.Y == 0)
+            if (normal.X == 0 && normal.Y == 0)
             {
                 axisX = new Coordinate3(1, 0, 0);
             }
@@ -109,7 +107,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
             return new Coordinate3(u.X + v.X, u.Y + v.Y, u.Z + v.Z);
         }
-        
+
         public double GetApproximateDistance(Coordinate3 point)
         {
             return point.GetApproximateDistance(GetClosestPoint(point));
@@ -172,7 +170,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         public Triangle3 Project(Triangle3 triangle, Coordinate3 vector, double tolerance)
         {
             Coordinate3 point_1 = Project(triangle.Point_1, vector, tolerance);
-            if(point_1.IsNaN())
+            if (point_1.IsNaN())
             {
                 return new Triangle3();
             }
@@ -195,7 +193,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         public Line3 Project(Line3 line, Coordinate3 vector, double tolerance)
         {
             Coordinate3 start = Project(line.Start, vector, tolerance);
-            if(start.IsNaN())
+            if (start.IsNaN())
             {
                 return new Line3();
             }
@@ -233,7 +231,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             return new Plane(Project(plane.Origin), Normal.Project(plane.Normal).GetNormalized(tolerance), AxisY.Project(plane.AxisY).GetNormalized(tolerance));
         }
-        
+
         public override string ToString()
         {
             return string.Format("O:{0};N:{1};AY:{2}", Origin, Normal, AxisY);

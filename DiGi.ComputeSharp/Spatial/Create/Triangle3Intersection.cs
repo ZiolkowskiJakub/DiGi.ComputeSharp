@@ -1,5 +1,4 @@
 ﻿using DiGi.ComputeSharp.Spatial.Classes;
-using System;
 
 namespace DiGi.ComputeSharp.Spatial
 {
@@ -12,7 +11,7 @@ namespace DiGi.ComputeSharp.Spatial
 
         public static Triangle3Intersection Triangle3Intersection(Triangle3 triangle_1, Triangle3 triangle_2, double tolerance)
         {
-            if(!triangle_1.InRange(triangle_2, tolerance))
+            if (!triangle_1.InRange(triangle_2, tolerance))
             {
                 return new Triangle3Intersection();
             }
@@ -20,7 +19,7 @@ namespace DiGi.ComputeSharp.Spatial
             Line3Intersection line3Intersection_1 = Line3Intersection(triangle_1.GetLine(0), triangle_2, tolerance);
             Line3Intersection line3Intersection_2 = Line3Intersection(triangle_1.GetLine(1), triangle_2, tolerance);
             Line3Intersection line3Intersection_3 = Line3Intersection(triangle_1.GetLine(2), triangle_2, tolerance);
-            
+
             Line3Intersection line3Intersection_4 = Line3Intersection(triangle_2.GetLine(0), triangle_1, tolerance);
             Line3Intersection line3Intersection_5 = Line3Intersection(triangle_2.GetLine(1), triangle_1, tolerance);
             Line3Intersection line3Intersection_6 = Line3Intersection(triangle_2.GetLine(2), triangle_1, tolerance);
@@ -59,12 +58,12 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Triangle3Intersection(solid, pointIntersection_1, pointIntersection_2);
             }
 
-            Coordinate3 point_1 = new (),
-                point_2 = new (),
-                point_3 = new (),
-                point_4 = new (),
-                point_5 = new (),
-                point_6 = new ();
+            Coordinate3 point_1 = new(),
+                point_2 = new(),
+                point_3 = new(),
+                point_4 = new(),
+                point_5 = new(),
+                point_6 = new();
 
             Modify.Add(ref point_1, ref point_2, ref point_3, ref point_4, ref point_5, ref point_6, line3Intersection_1, tolerance);
             Modify.Add(ref point_1, ref point_2, ref point_3, ref point_4, ref point_5, ref point_6, line3Intersection_2, tolerance);
@@ -102,7 +101,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Triangle3Intersection();
             }
 
-            if(!frontSide && !backSide)
+            if (!frontSide && !backSide)
             {
                 return Triangle3Intersection(triangle_1, triangle_2, tolerance);
             }
@@ -125,7 +124,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Triangle3Intersection();
             }
 
-            if(frontSide && backSide)
+            if (frontSide && backSide)
             {
                 return triangle3Intersection;
             }
@@ -143,18 +142,18 @@ namespace DiGi.ComputeSharp.Spatial
             }
 
             Coordinate3 centroid_Projected = plane_2.Project(centroid);
-            if(centroid_Projected.IsNaN() || centroid.GetDistance(centroid_Projected, tolerance) < tolerance)
+            if (centroid_Projected.IsNaN() || centroid.GetDistance(centroid_Projected, tolerance) < tolerance)
             {
                 return new Triangle3Intersection();
             }
 
             bool sameHalf = Query.SameHalf(vector, new Coordinate3(centroid_Projected, centroid), tolerance);
 
-            if((sameHalf && frontSide) || (!sameHalf && backSide))
+            if ((sameHalf && frontSide) || (!sameHalf && backSide))
             {
                 return triangle3Intersection;
             }
-                
+
             return new Triangle3Intersection();
         }
     }

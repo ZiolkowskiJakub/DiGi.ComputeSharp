@@ -4,13 +4,13 @@ using DiGi.ComputeSharp.Spatial.Enums;
 namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Create
-    {        
+    {
         public static List<Coordinate3>? Coordinate3s(Line3 line, LineAlignment lineAlignment, double distance, bool includeShorter, double tolerance)
         {
             double length = line.GetLength(tolerance);
-            if(length < tolerance)
+            if (length < tolerance)
             {
-                if(includeShorter)
+                if (includeShorter)
                 {
                     return [line.Start, line.End];
                 }
@@ -28,19 +28,19 @@ namespace DiGi.ComputeSharp.Spatial
                 Coordinate3 point = line.Start;
 
                 result = [point];
-                
+
                 for (int i = 0; i < count; i++)
                 {
-                    point = point.GetMoved(vector);    
+                    point = point.GetMoved(vector);
                     result.Add(point);
                 }
 
-                if(includeShorter && point.GetDistance(line.End, tolerance) > tolerance)
+                if (includeShorter && point.GetDistance(line.End, tolerance) > tolerance)
                 {
                     result.Add(line.End);
                 }
             }
-            else if(lineAlignment == LineAlignment.End)
+            else if (lineAlignment == LineAlignment.End)
             {
                 Coordinate3 vector = line.GetDirection(tolerance).GetInversed().Multiply(distance);
                 Coordinate3 point = line.End;
@@ -86,7 +86,7 @@ namespace DiGi.ComputeSharp.Spatial
                     vector = vector.GetInversed();
                 }
 
-                if(includeShorter)
+                if (includeShorter)
                 {
                     if (point.GetDistance(result.First(), tolerance) > tolerance)
                     {
@@ -98,7 +98,6 @@ namespace DiGi.ComputeSharp.Spatial
                         result.Add(line.End);
                     }
                 }
-
             }
 
             return result;

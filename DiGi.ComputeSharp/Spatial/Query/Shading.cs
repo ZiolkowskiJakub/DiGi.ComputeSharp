@@ -18,13 +18,12 @@ namespace DiGi.ComputeSharp.Spatial
                 return [];
             }
 
-
             ReadWriteBuffer<Triangle3Intersection> readWriteBuffer_Triangle3Intersection = graphicDevice.AllocateReadWriteBuffer<Triangle3Intersection>(length * length);
 
             graphicDevice.For(length, length, new Triangle3ShadingComputeShader(triangle3s, readWriteBuffer_Triangle3Intersection, vector));
 
             List<Triangle3Intersection>? triangle3Intersections = Core.Create.List(readWriteBuffer_Triangle3Intersection);
-            if(triangle3Intersections is null)
+            if (triangle3Intersections is null)
             {
                 return [];
             }
@@ -62,6 +61,4 @@ namespace DiGi.ComputeSharp.Spatial
             return result;
         }
     }
-
 }
-
