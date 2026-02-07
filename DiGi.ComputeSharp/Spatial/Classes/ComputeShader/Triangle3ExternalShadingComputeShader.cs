@@ -7,7 +7,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
     [RequiresDoublePrecisionSupport]
     public readonly partial struct Triangle3ExternalShadingComputeShader : IComputeShader
     {
-        private readonly double tolerance = Core.Constans.Tolerance.Distance;
+        private readonly double tolerance = Core.Constants.Tolerance.Distance;
 
         private readonly Coordinate3 vector = new();
 

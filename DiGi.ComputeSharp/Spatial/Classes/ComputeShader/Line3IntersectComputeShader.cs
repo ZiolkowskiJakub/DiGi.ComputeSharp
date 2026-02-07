@@ -7,7 +7,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
     [RequiresDoublePrecisionSupport]
     public readonly partial struct Line3IntersectComputeShader : IComputeShader
     {
-        private readonly double tolerance = Core.Constans.Tolerance.Distance;
+        private readonly double tolerance = Core.Constants.Tolerance.Distance;
 
         private readonly bool includeStart = true;
         private readonly bool includeEnd = true;

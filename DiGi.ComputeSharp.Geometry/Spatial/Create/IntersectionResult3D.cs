@@ -7,7 +7,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Create
     {
-        public static IntersectionResult3D? IntersectionResult3D(this Mesh3D? mesh3D, IEnumerable<Mesh3D>? mesh3Ds, bool solid, double tolerance = Core.Constans.Tolerance.Distance)
+        public static IntersectionResult3D? IntersectionResult3D(this Mesh3D? mesh3D, IEnumerable<Mesh3D>? mesh3Ds, bool solid, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (mesh3D == null || mesh3Ds == null)
             {
@@ -87,7 +87,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             return new IntersectionResult3D(geometry3Ds);
         }
 
-        public static IntersectionResult3D? IntersectionResult3D_CPU(this Mesh3D? mesh3D, IEnumerable<Mesh3D>? mesh3Ds, bool solid, double tolerance = Core.Constans.Tolerance.Distance)
+        public static IntersectionResult3D? IntersectionResult3D_CPU(this Mesh3D? mesh3D, IEnumerable<Mesh3D>? mesh3Ds, bool solid, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (mesh3D == null || mesh3Ds == null || !mesh3Ds.Any())
             {

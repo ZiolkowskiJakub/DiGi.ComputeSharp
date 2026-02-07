@@ -7,7 +7,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
     [RequiresDoublePrecisionSupport]
     public readonly partial struct Triangle3IntersectionComputeShader : IComputeShader
     {
-        private readonly double tolerance = Core.Constans.Tolerance.Distance;
+        private readonly double tolerance = Core.Constants.Tolerance.Distance;
         private readonly int threadsCount = -1;
 
         private readonly Triangle3 triangle;

@@ -1,4 +1,4 @@
-﻿namespace DiGi.ComputeSharp.Core.Constans
+﻿namespace DiGi.ComputeSharp.Core.Constants
 {
     public static class Tolerance
     {

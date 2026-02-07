@@ -5,7 +5,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Convert
     {
-        public static Mesh3D? ToDiGi(this IEnumerable<Triangle3> triangle3s, double tolerance = DiGi.Core.Constans.Tolerance.Distance)
+        public static Mesh3D? ToDiGi(this IEnumerable<Triangle3> triangle3s, double tolerance = DiGi.Core.Constants.Tolerance.Distance)
         {
             if (triangle3s == null || triangle3s.Count() == 0)
             {
