@@ -4,8 +4,6 @@
 //using DiGi.ComputeSharp.Legacy.Classes;
 //using DiGi.ComputeSharp.Legacy.Classes.Result;
 //using DiGi.ComputeSharp.Legacy.Constants;
-using ComputeSharp;
-using DiGi.ComputeSharp.Core.Classes;
 using DiGi.ComputeSharp.Spatial.Classes;
 
 #region LEGACY
