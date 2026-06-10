@@ -1,14 +1,28 @@
-﻿using DiGi.ComputeSharp.Spatial.Classes;
+using DiGi.ComputeSharp.Spatial.Classes;
 
 namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Create
     {
+        /// <summary>
+        /// Calculates the intersection between a 3D triangle and a 3D line.
+        /// </summary>
+        /// <param name="triangle">The 3D triangle to intersect.</param>
+        /// <param name="line">The 3D line to intersect.</param>
+        /// <param name="tolerance">The tolerance value used for the intersection calculation.</param>
+        /// <returns>A <see cref="Triangle3Intersection"/> representing the result of the intersection.</returns>
         public static Triangle3Intersection Triangle3Intersection(Triangle3 triangle, Line3 line, double tolerance)
         {
             return new Triangle3Intersection(Line3Intersection(line, triangle, tolerance));
         }
 
+        /// <summary>
+        /// Calculates the intersection between two 3D triangles based on a specified tolerance.
+        /// </summary>
+        /// <param name="triangle_1">The first triangle.</param>
+        /// <param name="triangle_2">The second triangle.</param>
+        /// <param name="tolerance">The tolerance value used for precision calculations.</param>
+        /// <returns>A <see cref="Triangle3Intersection"/> object containing the intersection details.</returns>
         public static Triangle3Intersection Triangle3Intersection(Triangle3 triangle_1, Triangle3 triangle_2, double tolerance)
         {
             if (!triangle_1.InRange(triangle_2, tolerance))
@@ -94,6 +108,16 @@ namespace DiGi.ComputeSharp.Spatial
             return new Triangle3Intersection(solid, point_1, point_2, point_3, point_4, point_5, point_6);
         }
 
+        /// <summary>
+        /// Calculates the intersection between two 3D triangles based on a projection vector and specific side constraints.
+        /// </summary>
+        /// <param name="triangle_1">The first triangle.</param>
+        /// <param name="triangle_2">The second triangle.</param>
+        /// <param name="vector">The vector used for projecting the triangles.</param>
+        /// <param name="frontSide">Whether to consider intersections on the front side.</param>
+        /// <param name="backSide">Whether to consider intersections on the back side.</param>
+        /// <param name="tolerance">The tolerance value used for precision calculations.</param>
+        /// <returns>A <see cref="Triangle3Intersection"/> object containing the intersection details, or an empty instance if constraints are not met.</returns>
         public static Triangle3Intersection Triangle3Intersection(Triangle3 triangle_1, Triangle3 triangle_2, Coordinate3 vector, bool frontSide, bool backSide, double tolerance)
         {
             if (triangle_1.IsNaN() || triangle_2.IsNaN())

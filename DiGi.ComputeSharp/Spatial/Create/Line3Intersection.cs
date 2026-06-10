@@ -1,10 +1,17 @@
-﻿using DiGi.ComputeSharp.Core.Classes;
+using DiGi.ComputeSharp.Core.Classes;
 using DiGi.ComputeSharp.Spatial.Classes;
 
 namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Create
     {
+        /// <summary>
+        /// Calculates the intersection of two 3D lines within a specified tolerance.
+        /// </summary>
+        /// <param name="line_1">The first 3D line.</param>
+        /// <param name="line_2">The second 3D line.</param>
+        /// <param name="tolerance">The numerical tolerance used for geometric comparisons and proximity checks.</param>
+        /// <returns>A <see cref="Line3Intersection"/> object containing the intersection result, which may be empty, a single point, or a line segment in the case of coincident lines.</returns>
         public static Line3Intersection Line3Intersection(Line3 line_1, Line3 line_2, double tolerance)
         {
             if (!line_1.InRange(line_2, tolerance))
@@ -87,33 +94,32 @@ namespace DiGi.ComputeSharp.Spatial
                                 return new Line3Intersection(point_1);
                             }
 
-                            return new Line3Intersection(new Line3(new Bool(true), point_1, point_2));
+                            if (point_1.AlmostEquals(point_2, tolerance))
+                            {
+                                return new Line3Intersection(point_1);
+                            }
+
+                            return new Line3Intersection(point_1, point_2);
                         }
 
-                        if (bounded_1)
-                        {
-                            return new Line3Intersection(line_1);
-                        }
-
-                        if (bounded_2)
+                        if (!bounded_1 && bounded_2)
                         {
                             return new Line3Intersection(line_2);
+                        }
+
+                        if (bounded_1 && !bounded_2)
+                        {
+                            return new Line3Intersection(line_1);
                         }
                     }
                 }
 
-                // This case should ideally not be reached if determinant is near zero
-                // unless d1 or d2 is a zero vector (points are the same).
-                // If d1 or d2 is zero vector, they are not well-defined lines.
-                // We'll treat this as skew for simplicity, but a more robust solution
-                // might handle degenerate line cases explicitly.
                 return new Line3Intersection();
             }
 
-            // Calculate parameters s and t for the points of closest approach
-            // (Using s and t for the parameters to avoid confusion with the method parameters)
-            double s = (b * e - c * d) / denominator; // Parameter for Line 1
-            double t = (a * e - b * d) / denominator; // Parameter for Line 2 (Note: This is the 'u' in the formula)
+            // Calculate closest points coordinates on each line segment (using parameter representation)
+            double s = (b * e - c * d) / denominator;
+            double t = (a * e - b * d) / denominator;
 
             Coordinate3 intersectionPoint_1 = line_1.Start.Add(d1.Multiply(s));
             Coordinate3 intersectionPoint_2 = line_2.Start.Add(d2.Multiply(t));
@@ -138,6 +144,13 @@ namespace DiGi.ComputeSharp.Spatial
             return new Line3Intersection();
         }
 
+        /// <summary>
+        /// Calculates the intersection between a line and a triangle in 3D space based on a specified tolerance.
+        /// </summary>
+        /// <param name="line">The line to test for intersection.</param>
+        /// <param name="triangle">The triangle to test for intersection.</param>
+        /// <param name="tolerance">The tolerance value used for floating-point comparisons and proximity checks.</param>
+        /// <returns>A <see cref="Line3Intersection"/> object representing the intersection result (e.g., a point, a line segment, or no intersection).</returns>
         public static Line3Intersection Line3Intersection(Line3 line, Triangle3 triangle, double tolerance)
         {
             if (!line.InRange(triangle, tolerance))

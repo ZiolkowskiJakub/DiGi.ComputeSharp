@@ -1,14 +1,17 @@
-﻿namespace DiGi.ComputeSharp.Core.Constants
+namespace DiGi.ComputeSharp.Core.Constants
 {
+    /// <summary>
+    /// Provides tolerance constants used for numerical comparisons and geometric calculations.
+    /// </summary>
     public static class Tolerance
     {
         /// <summary>
-        /// Dictance tolerance.
+        /// Distance tolerance.
         /// </summary>
         public const double Distance = 1e-6;
 
         /// <summary>
-        /// Macro dictance tolerance.
+        /// Macro distance tolerance.
         /// </summary>
         public const double MacroDistance = 1e-3;
 

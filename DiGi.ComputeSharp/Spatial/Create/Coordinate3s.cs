@@ -1,10 +1,19 @@
-﻿using DiGi.ComputeSharp.Spatial.Classes;
+using DiGi.ComputeSharp.Spatial.Classes;
 using DiGi.ComputeSharp.Spatial.Enums;
 
 namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Create
     {
+        /// <summary>
+        /// Generates a sequence of 3D coordinates along a specified line based on the provided distance and alignment.
+        /// </summary>
+        /// <param name="line">The line along which to generate coordinates.</param>
+        /// <param name="lineAlignment">The alignment used to distribute the points (Start, End, or Centered).</param>
+        /// <param name="distance">The distance between each generated coordinate.</param>
+        /// <param name="includeShorter">Whether to include endpoints when the total length is not a perfect multiple of the distance.</param>
+        /// <param name="tolerance">The tolerance value used for geometric calculations and comparisons.</param>
+        /// <returns>A list of coordinates along the line, or <c>null</c> if the line is shorter than the tolerance and <paramref name="includeShorter"/> is false.</returns>
         public static List<Coordinate3>? Coordinate3s(Line3 line, LineAlignment lineAlignment, double distance, bool includeShorter, double tolerance)
         {
             double length = line.GetLength(tolerance);

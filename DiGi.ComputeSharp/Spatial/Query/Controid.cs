@@ -1,9 +1,19 @@
-﻿using DiGi.ComputeSharp.Spatial.Classes;
+using DiGi.ComputeSharp.Spatial.Classes;
 
 namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Query
     {
+        /// <summary>
+        /// Calculates the centroid of up to six 3D coordinates, ignoring any that are NaN.
+        /// </summary>
+        /// <param name="point_1">The first coordinate.</param>
+        /// <param name="point_2">The second coordinate.</param>
+        /// <param name="point_3">The third coordinate.</param>
+        /// <param name="point_4">The fourth coordinate.</param>
+        /// <param name="point_5">The fifth coordinate.</param>
+        /// <param name="point_6">The sixth coordinate.</param>
+        /// <returns>The calculated centroid as a Coordinate3, or a default Coordinate3 if no valid points are provided.</returns>
         public static Coordinate3 Centroid(Coordinate3 point_1, Coordinate3 point_2, Coordinate3 point_3, Coordinate3 point_4, Coordinate3 point_5, Coordinate3 point_6)
         {
             int count = 0;
@@ -67,6 +77,11 @@ namespace DiGi.ComputeSharp.Spatial
             return new Coordinate3(x / count, y / count, z / count);
         }
 
+        /// <summary>
+        /// Calculates the centroid of a triangle intersection.
+        /// </summary>
+        /// <param name="triangle3Intersection">The triangle intersection containing the points to evaluate.</param>
+        /// <returns>The calculated centroid as a Coordinate3, or a default Coordinate3 if the intersection is NaN.</returns>
         public static Coordinate3 Centroid(Triangle3Intersection triangle3Intersection)
         {
             if (triangle3Intersection.IsNaN())
