@@ -11,6 +11,13 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Query
     {
+        /// <summary>
+        /// Performs a shading analysis on a collection of polygonal faces based on a specified direction and tolerance.
+        /// </summary>
+        /// <param name="polygonalFace3Ds">The collection of polygonal faces to be analyzed for shading.</param>
+        /// <param name="direction">The vector representing the light source or projection direction.</param>
+        /// <param name="tolerance">The precision tolerance used for geometric calculations.</param>
+        /// <returns>A list containing groups of shaded polygonal faces, or null if the input collection is null.</returns>
         public static List<List<PolygonalFace3D>?>? Shading(this IEnumerable<IPolygonalFace3D>? polygonalFace3Ds, Vector3D? direction, double tolerance)
         {
             if (polygonalFace3Ds == null || direction == null)
@@ -138,6 +145,13 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             return result;
         }
 
+        /// <summary>
+        /// Calculates shading for a collection of polygonal faces based on a specified direction and tolerance using CPU processing.
+        /// </summary>
+        /// <param name="polygonalFace3Ds">The collection of polygonal faces to be processed.</param>
+        /// <param name="direction">The vector representing the light or view direction used for shading calculations.</param>
+        /// <param name="tolerance">The precision tolerance used for geometric comparisons.</param>
+        /// <returns>A nested list of shaded polygonal faces, or null if the operation cannot be completed.</returns>
         public static List<List<PolygonalFace3D>?>? Shading_CPU(this IEnumerable<IPolygonalFace3D>? polygonalFace3Ds, Vector3D? direction, double tolerance)
         {
             if (polygonalFace3Ds == null || direction == null)

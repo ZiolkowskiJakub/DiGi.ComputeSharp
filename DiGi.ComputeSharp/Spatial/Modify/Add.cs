@@ -4,6 +4,14 @@ namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Modify
     {
+        /// <summary>
+        /// Adds a point to the line segment defined by two points within the specified tolerance.
+        /// </summary>
+        /// <param name="point_1">The first endpoint of the line segment.</param>
+        /// <param name="point_2">The second endpoint of the line segment.</param>
+        /// <param name="point">The point to be added.</param>
+        /// <param name="tolerance">The tolerance value for the operation.</param>
+        /// <returns>True if the point was successfully added; otherwise, false.</returns>
         public static bool Add(ref Coordinate3 point_1, ref Coordinate3 point_2, Coordinate3 point, double tolerance)
         {
             if (point.IsNaN())
@@ -34,6 +42,18 @@ namespace DiGi.ComputeSharp.Spatial
             return false;
         }
 
+        /// <summary>
+        /// Adds a coordinate point based on six reference points and a specified tolerance.
+        /// </summary>
+        /// <param name="point_1">A reference to the first coordinate point.</param>
+        /// <param name="point_2">A reference to the second coordinate point.</param>
+        /// <param name="point_3">A reference to the third coordinate point.</param>
+        /// <param name="point_4">A reference to the fourth coordinate point.</param>
+        /// <param name="point_5">A reference to the fifth coordinate point.</param>
+        /// <param name="point_6">A reference to the sixth coordinate point.</param>
+        /// <param name="point">The coordinate point to be added.</param>
+        /// <param name="tolerance">The tolerance value for the operation.</param>
+        /// <returns>True if the point was successfully added; otherwise, false.</returns>
         public static bool Add(ref Coordinate3 point_1, ref Coordinate3 point_2, ref Coordinate3 point_3, ref Coordinate3 point_4, ref Coordinate3 point_5, ref Coordinate3 point_6, Coordinate3 point, double tolerance)
         {
             if (point.IsNaN())
@@ -104,6 +124,18 @@ namespace DiGi.ComputeSharp.Spatial
             return false;
         }
 
+        /// <summary>
+        /// Adds six coordinate points to calculate a 3D line intersection within the specified tolerance.
+        /// </summary>
+        /// <param name="point_1">A reference to the first coordinate point.</param>
+        /// <param name="point_2">A reference to the second coordinate point.</param>
+        /// <param name="point_3">A reference to the third coordinate point.</param>
+        /// <param name="point_4">A reference to the fourth coordinate point.</param>
+        /// <param name="point_5">A reference to the fifth coordinate point.</param>
+        /// <param name="point_6">A reference to the sixth coordinate point.</param>
+        /// <param name="line3Intersection">The Line3Intersection object used to store or evaluate the intersection result.</param>
+        /// <param name="tolerance">The precision tolerance for the intersection calculation.</param>
+        /// <returns>True if the operation was successful; otherwise, false.</returns>
         public static bool Add(ref Coordinate3 point_1, ref Coordinate3 point_2, ref Coordinate3 point_3, ref Coordinate3 point_4, ref Coordinate3 point_5, ref Coordinate3 point_6, Line3Intersection line3Intersection, double tolerance)
         {
             if (line3Intersection.Point_1.IsNaN())

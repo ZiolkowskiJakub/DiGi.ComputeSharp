@@ -11,7 +11,7 @@ namespace DiGi.ComputeSharp.Spatial
         /// <param name="line_1">The first 3D line.</param>
         /// <param name="line_2">The second 3D line.</param>
         /// <param name="tolerance">The numerical tolerance used for geometric comparisons and proximity checks.</param>
-        /// <returns>A <see cref="Line3Intersection"/> object containing the intersection result, which may be empty, a single point, or a line segment in the case of coincident lines.</returns>
+        /// <returns>A <see cref="Classes.Line3Intersection"/> object containing the intersection result, which may be empty, a single point, or a line segment in the case of coincident lines.</returns>
         public static Line3Intersection Line3Intersection(Line3 line_1, Line3 line_2, double tolerance)
         {
             if (!line_1.InRange(line_2, tolerance))
@@ -150,7 +150,7 @@ namespace DiGi.ComputeSharp.Spatial
         /// <param name="line">The line to test for intersection.</param>
         /// <param name="triangle">The triangle to test for intersection.</param>
         /// <param name="tolerance">The tolerance value used for floating-point comparisons and proximity checks.</param>
-        /// <returns>A <see cref="Line3Intersection"/> object representing the intersection result (e.g., a point, a line segment, or no intersection).</returns>
+        /// <returns>A <see cref="Classes.Line3Intersection"/> object representing the intersection result (e.g., a point, a line segment, or no intersection).</returns>
         public static Line3Intersection Line3Intersection(Line3 line, Triangle3 triangle, double tolerance)
         {
             if (!line.InRange(triangle, tolerance))

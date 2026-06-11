@@ -5,6 +5,13 @@ namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Query
     {
+        /// <summary>
+        /// Performs shading calculations on a collection of triangles based on a specified vector and graphics device.
+        /// </summary>
+        /// <param name="graphicDevice">The graphics device used to execute the shading operations.</param>
+        /// <param name="triangle3s">A read-only buffer containing the triangle data to be shaded.</param>
+        /// <param name="vector">The vector representing the light or view direction for the shading calculation.</param>
+        /// <returns>A nested list of triangles grouped by shading results, or null if the operation could not be completed.</returns>
         public static List<List<Triangle3>>? Shading(this GraphicsDevice graphicDevice, ReadOnlyBuffer<Triangle3> triangle3s, Coordinate3 vector)
         {
             if (triangle3s == null || graphicDevice == null)

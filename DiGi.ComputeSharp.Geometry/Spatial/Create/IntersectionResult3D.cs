@@ -7,6 +7,14 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 {
     public static partial class Create
     {
+        /// <summary>
+        /// Calculates the 3D intersection between a source mesh and a collection of other meshes.
+        /// </summary>
+        /// <param name="mesh3D">The source mesh to evaluate.</param>
+        /// <param name="mesh3Ds">The collection of meshes to intersect with the source mesh.</param>
+        /// <param name="solid">A boolean value indicating whether to perform a solid intersection operation.</param>
+        /// <param name="tolerance">The distance tolerance for the intersection calculation.</param>
+        /// <returns>An <see cref="IntersectionResult3D"/> containing the result of the intersection, or null if no valid intersection is found.</returns>
         public static IntersectionResult3D? IntersectionResult3D(this Mesh3D? mesh3D, IEnumerable<Mesh3D>? mesh3Ds, bool solid, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (mesh3D == null || mesh3Ds == null)
@@ -87,6 +95,14 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             return new IntersectionResult3D(geometry3Ds);
         }
 
+        /// <summary>
+        /// Computes the 3D intersection between a source mesh and a collection of other meshes using CPU processing.
+        /// </summary>
+        /// <param name="mesh3D">The source mesh to evaluate for intersections.</param>
+        /// <param name="mesh3Ds">The collection of target meshes to intersect with the source mesh.</param>
+        /// <param name="solid">Specifies whether to perform a solid intersection (volumetric) or a surface-based intersection.</param>
+        /// <param name="tolerance">The distance tolerance used for numerical precision during the intersection calculation.</param>
+        /// <returns>An <see cref="IntersectionResult3D"/> containing the intersection data if successful; otherwise, null.</returns>
         public static IntersectionResult3D? IntersectionResult3D_CPU(this Mesh3D? mesh3D, IEnumerable<Mesh3D>? mesh3Ds, bool solid, double tolerance = Core.Constants.Tolerance.Distance)
         {
             if (mesh3D == null || mesh3Ds == null || !mesh3Ds.Any())

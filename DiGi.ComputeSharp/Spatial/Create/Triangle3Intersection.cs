@@ -10,7 +10,7 @@ namespace DiGi.ComputeSharp.Spatial
         /// <param name="triangle">The 3D triangle to intersect.</param>
         /// <param name="line">The 3D line to intersect.</param>
         /// <param name="tolerance">The tolerance value used for the intersection calculation.</param>
-        /// <returns>A <see cref="Triangle3Intersection"/> representing the result of the intersection.</returns>
+        /// <returns>A <see cref="Classes.Triangle3Intersection"/> representing the result of the intersection.</returns>
         public static Triangle3Intersection Triangle3Intersection(Triangle3 triangle, Line3 line, double tolerance)
         {
             return new Triangle3Intersection(Line3Intersection(line, triangle, tolerance));
@@ -22,7 +22,7 @@ namespace DiGi.ComputeSharp.Spatial
         /// <param name="triangle_1">The first triangle.</param>
         /// <param name="triangle_2">The second triangle.</param>
         /// <param name="tolerance">The tolerance value used for precision calculations.</param>
-        /// <returns>A <see cref="Triangle3Intersection"/> object containing the intersection details.</returns>
+        /// <returns>A <see cref="Classes.Triangle3Intersection"/> object containing the intersection details.</returns>
         public static Triangle3Intersection Triangle3Intersection(Triangle3 triangle_1, Triangle3 triangle_2, double tolerance)
         {
             if (!triangle_1.InRange(triangle_2, tolerance))
@@ -117,7 +117,7 @@ namespace DiGi.ComputeSharp.Spatial
         /// <param name="frontSide">Whether to consider intersections on the front side.</param>
         /// <param name="backSide">Whether to consider intersections on the back side.</param>
         /// <param name="tolerance">The tolerance value used for precision calculations.</param>
-        /// <returns>A <see cref="Triangle3Intersection"/> object containing the intersection details, or an empty instance if constraints are not met.</returns>
+        /// <returns>A <see cref="Classes.Triangle3Intersection"/> object containing the intersection details, or an empty instance if constraints are not met.</returns>
         public static Triangle3Intersection Triangle3Intersection(Triangle3 triangle_1, Triangle3 triangle_2, Coordinate3 vector, bool frontSide, bool backSide, double tolerance)
         {
             if (triangle_1.IsNaN() || triangle_2.IsNaN())

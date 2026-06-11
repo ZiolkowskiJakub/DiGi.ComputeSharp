@@ -11,7 +11,7 @@ namespace DiGi.ComputeSharp.Spatial
         /// <param name="triangle">The source triangle to check for intersections.</param>
         /// <param name="triangles">The collection of triangles to intersect against.</param>
         /// <param name="tolerance">The numerical tolerance used for intersection calculations.</param>
-        /// <returns>A collection of <see cref="Triangle3Intersection"/> results, or <c>null</c> if the input is invalid or no graphics device is available.</returns>
+        /// <returns>A collection of <see cref="Classes.Triangle3Intersection"/> results, or <c>null</c> if the input is invalid or no graphics device is available.</returns>
         public static IEnumerable<Triangle3Intersection>? Triangle3Intersections(this Triangle3 triangle, IEnumerable<Triangle3> triangles, double tolerance)
         {
             if (triangle.IsNaN() || triangles == null || !triangles.Any())
@@ -40,7 +40,7 @@ namespace DiGi.ComputeSharp.Spatial
         /// <param name="triangles_1">The first collection of triangles.</param>
         /// <param name="triangles_2">The second collection of triangles.</param>
         /// <param name="tolerance">The numerical tolerance used for intersection calculations.</param>
-        /// <returns>A collection of <see cref="Triangle3Intersection"/> results, or <c>null</c> if either input collection is null or empty, or no graphics device is available.</returns>
+        /// <returns>A collection of <see cref="Classes.Triangle3Intersection"/> results, or <c>null</c> if either input collection is null or empty, or no graphics device is available.</returns>
         public static IEnumerable<Triangle3Intersection>? Triangle3Intersections(this IEnumerable<Triangle3> triangles_1, IEnumerable<Triangle3> triangles_2, double tolerance)
         {
             if (triangles_1 == null || !triangles_1.Any() || triangles_2 == null || !triangles_2.Any())
@@ -66,7 +66,7 @@ namespace DiGi.ComputeSharp.Spatial
         /// <param name="triangles_1">The first collection of triangles.</param>
         /// <param name="triangles_2">A read-only buffer containing the second collection of triangles.</param>
         /// <param name="tolerance">The numerical tolerance used for intersection calculations.</param>
-        /// <returns>A collection of <see cref="Triangle3Intersection"/> results, or <c>null</c> if any input parameters are null.</returns>
+        /// <returns>A collection of <see cref="Classes.Triangle3Intersection"/> results, or <c>null</c> if any input parameters are null.</returns>
         public static IEnumerable<Triangle3Intersection>? Triangle3Intersections(this GraphicsDevice graphicsDevice, IEnumerable<Triangle3> triangles_1, ReadOnlyBuffer<Triangle3> triangles_2, double tolerance)
         {
             if (graphicsDevice == null || triangles_1 == null || triangles_2 == null)
