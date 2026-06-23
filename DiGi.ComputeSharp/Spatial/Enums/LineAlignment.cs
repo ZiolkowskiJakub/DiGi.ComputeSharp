@@ -9,10 +9,12 @@
         /// Indicates the starting point or the initial state of the process.
         /// </summary>
         Start,
+
         /// <summary>
         /// Specifies that the position or alignment is centered.
         /// </summary>
         Center,
+
         /// <summary>
         /// Represents the end point or terminal value of the specified range, sequence, or geometric entity.
         /// </summary>

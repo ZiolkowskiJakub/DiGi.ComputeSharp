@@ -10,14 +10,19 @@ namespace DiGi.ComputeSharp.Spatial.Classes
     {
         /// <summary>The first coordinate of the intersection.</summary>
         public readonly Coordinate3 Point_1;
+
         /// <summary>The second coordinate of the intersection.</summary>
         public readonly Coordinate3 Point_2;
+
         /// <summary>The third coordinate of the intersection.</summary>
         public readonly Coordinate3 Point_3;
+
         /// <summary>The fourth coordinate of the intersection.</summary>
         public readonly Coordinate3 Point_4;
+
         /// <summary>The fifth coordinate of the intersection.</summary>
         public readonly Coordinate3 Point_5;
+
         /// <summary>The sixth coordinate of the intersection.</summary>
         public readonly Coordinate3 Point_6;
 

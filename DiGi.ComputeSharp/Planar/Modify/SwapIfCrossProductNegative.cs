@@ -5,7 +5,7 @@ namespace DiGi.ComputeSharp.Planar
     public static partial class Modify
     {
         /// <summary>
-        /// Swaps two provided indices if the cross product of the given vectors is negative, 
+        /// Swaps two provided indices if the cross product of the given vectors is negative,
         /// or if the first vector is NaN while the second is not.
         /// </summary>
         /// <param name="index_1">A reference to the first index to be potentially swapped.</param>
