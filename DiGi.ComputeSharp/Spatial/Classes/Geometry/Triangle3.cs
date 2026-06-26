@@ -1,4 +1,4 @@
-﻿using DiGi.ComputeSharp.Core.Classes;
+using DiGi.ComputeSharp.Core.Classes;
 using DiGi.ComputeSharp.Spatial.Interfaces;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
@@ -353,7 +353,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public bool IsNaN()
         {
-            return Point_1.IsNaN() || Point_1.IsNaN() || Point_3.IsNaN();
+            return Point_1.IsNaN() || Point_2.IsNaN() || Point_3.IsNaN();
         }
 
         public bool On(Coordinate3 point, double tolerance)

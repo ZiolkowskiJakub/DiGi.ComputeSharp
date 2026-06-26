@@ -1,4 +1,4 @@
-﻿using ComputeSharp;
+using ComputeSharp;
 using DiGi.ComputeSharp.Spatial.Classes;
 
 namespace DiGi.ComputeSharp.Spatial
@@ -21,8 +21,8 @@ namespace DiGi.ComputeSharp.Spatial
                 return null;
             }
 
-            ReadOnlyBuffer<Line3> line3s_Temp = graphicDevice.AllocateReadOnlyBuffer(line3s.ToArray());
-            ReadWriteBuffer<int> result = graphicDevice.AllocateReadWriteBuffer<int>(line3s_Temp.Length);
+            using ReadOnlyBuffer<Line3> line3s_Temp = graphicDevice.AllocateReadOnlyBuffer(line3s.ToArray());
+            using ReadWriteBuffer<int> result = graphicDevice.AllocateReadWriteBuffer<int>(line3s_Temp.Length);
 
             graphicDevice.For(line3s_Temp.Length, new Line3IntersectComputeShader(line3s_Temp, triangle3s, result, includeStart, includeEnd));
 
@@ -70,7 +70,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return null;
             }
 
-            ReadOnlyBuffer<Triangle3> triangle3s_Temp = graphicDevice.AllocateReadOnlyBuffer(triangle3s.ToArray());
+            using ReadOnlyBuffer<Triangle3> triangle3s_Temp = graphicDevice.AllocateReadOnlyBuffer(triangle3s.ToArray());
 
             return Intersect(graphicDevice, line3s, triangle3s_Temp, includeStart, includeEnd);
         }
@@ -96,7 +96,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return false;
             }
 
-            ReadOnlyBuffer<Triangle3> triangle3s_Temp = graphicDevice.AllocateReadOnlyBuffer(triangle3s.ToArray());
+            using ReadOnlyBuffer<Triangle3> triangle3s_Temp = graphicDevice.AllocateReadOnlyBuffer(triangle3s.ToArray());
 
             return Intersect(graphicDevice, line3, triangle3s_Temp, includeStart, includeEnd);
         }

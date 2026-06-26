@@ -27,11 +27,14 @@ namespace DiGi.ComputeSharp.Spatial
 
             int threadsCount = 1024;
 
-            Triangle3IntersectionComputeShader triangle3IntersectionComputeShader = new(graphicsDevice, triangle, triangles, tolerance, threadsCount);
+            using ReadOnlyBuffer<Triangle3> trianglesBuffer = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+            using ReadWriteBuffer<Triangle3Intersection> intersectionsBuffer = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[trianglesBuffer.Length]);
+
+            Triangle3IntersectionComputeShader triangle3IntersectionComputeShader = new(triangle, trianglesBuffer, intersectionsBuffer, tolerance, threadsCount);
 
             graphicsDevice.For(threadsCount, triangle3IntersectionComputeShader);
 
-            return Core.Create.List(triangle3IntersectionComputeShader.TriangleIntersections, x => x is Triangle3Intersection triangle3Intersection && !triangle3Intersection.IsNaN());
+            return Core.Create.List(intersectionsBuffer, x => x is Triangle3Intersection triangle3Intersection && !triangle3Intersection.IsNaN());
         }
 
         /// <summary>
@@ -54,7 +57,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return null;
             }
 
-            ReadOnlyBuffer<Triangle3> triangles_2_Temp = graphicsDevice.AllocateReadOnlyBuffer(triangles_2.ToArray());
+            using ReadOnlyBuffer<Triangle3> triangles_2_Temp = graphicsDevice.AllocateReadOnlyBuffer(triangles_2.ToArray());
 
             return Triangle3Intersections(graphicsDevice, triangles_1, triangles_2_Temp, tolerance);
         }
@@ -74,7 +77,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return null;
             }
 
-            ReadWriteBuffer<Triangle3Intersection> triangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[triangles_2.Length]);
+            using ReadWriteBuffer<Triangle3Intersection> triangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[triangles_2.Length]);
 
             int threadsCount = 1024;
 

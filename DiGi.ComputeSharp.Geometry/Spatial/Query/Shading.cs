@@ -1,4 +1,4 @@
-﻿using ComputeSharp;
+using ComputeSharp;
 using DiGi.ComputeSharp.Spatial.Classes;
 using DiGi.Core;
 using DiGi.Geometry.Planar;
@@ -25,7 +25,8 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 return null;
             }
 
-            int count = polygonalFace3Ds.Count();
+            IPolygonalFace3D[] polygonalFace3Ds_Array = polygonalFace3Ds.ToArray();
+            int count = polygonalFace3Ds_Array.Length;
             if (count == 0)
             {
                 return null;
@@ -34,7 +35,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             List<Tuple<Triangle3D, int>> tuples = [];
             for (int i = 0; i < count; i++)
             {
-                List<Triangle3D>? triangle3Ds = polygonalFace3Ds.ElementAt(i)?.Triangulate(tolerance);
+                List<Triangle3D>? triangle3Ds = polygonalFace3Ds_Array[i]?.Triangulate(tolerance);
                 if (triangle3Ds == null || triangle3Ds.Count == 0)
                 {
                     continue;
@@ -54,9 +55,8 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
 
             int length = tuples.Count;
 
-            ReadOnlyBuffer<Triangle3> triangle3s = graphicDevice.AllocateReadOnlyBuffer(tuples.ConvertAll(x => x.Item1.ToComputeSharp(true)).ToArray());
-
-            ReadWriteBuffer<Triangle3Intersection> readWriteBuffer_Triangle3Intersection = graphicDevice.AllocateReadWriteBuffer<Triangle3Intersection>(length * length);
+            using ReadOnlyBuffer<Triangle3> triangle3s = graphicDevice.AllocateReadOnlyBuffer(tuples.ConvertAll(x => x.Item1.ToComputeSharp(true)).ToArray());
+            using ReadWriteBuffer<Triangle3Intersection> readWriteBuffer_Triangle3Intersection = graphicDevice.AllocateReadWriteBuffer<Triangle3Intersection>(length * length);
 
             graphicDevice.For(length, length, new Triangle3ShadingComputeShader(triangle3s, readWriteBuffer_Triangle3Intersection, direction.ToComputeSharp()));
 
@@ -99,7 +99,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             List<List<PolygonalFace3D>?> result = [];
             for (int i = count - 1; i >= 0; i--)
             {
-                IPolygonalFace3D polygonalFace3D = polygonalFace3Ds.ElementAt(i);
+                IPolygonalFace3D polygonalFace3D = polygonalFace3Ds_Array[i];
 
                 DiGi.Geometry.Spatial.Classes.Plane? plane = polygonalFace3D?.Plane;
                 if (plane == null)
@@ -159,7 +159,8 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 return null;
             }
 
-            int count = polygonalFace3Ds.Count();
+            IPolygonalFace3D[] polygonalFace3Ds_Array = polygonalFace3Ds.ToArray();
+            int count = polygonalFace3Ds_Array.Length;
             if (count == 0)
             {
                 return null;
@@ -168,7 +169,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             List<Tuple<Triangle3D, int>> tuples = [];
             for (int i = 0; i < count; i++)
             {
-                List<Triangle3D>? triangle3Ds = polygonalFace3Ds.ElementAt(i)?.Triangulate(tolerance);
+                List<Triangle3D>? triangle3Ds = polygonalFace3Ds_Array[i]?.Triangulate(tolerance);
                 if (triangle3Ds == null || triangle3Ds.Count == 0)
                 {
                     continue;
@@ -230,7 +231,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
             List<List<PolygonalFace3D>?> result = [];
             for (int i = count - 1; i >= 0; i--)
             {
-                IPolygonalFace3D polygonalFace3D = polygonalFace3Ds.ElementAt(i);
+                IPolygonalFace3D polygonalFace3D = polygonalFace3Ds_Array[i];
 
                 DiGi.Geometry.Spatial.Classes.Plane? plane = polygonalFace3D?.Plane;
                 if (plane == null)

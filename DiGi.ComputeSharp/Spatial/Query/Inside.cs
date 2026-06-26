@@ -1,4 +1,4 @@
-﻿using ComputeSharp;
+using ComputeSharp;
 using DiGi.ComputeSharp.Spatial.Classes;
 
 namespace DiGi.ComputeSharp.Spatial
@@ -19,8 +19,8 @@ namespace DiGi.ComputeSharp.Spatial
                 return null;
             }
 
-            ReadOnlyBuffer<Coordinate3> points_Temp = graphicDevice.AllocateReadOnlyBuffer(points.ToArray());
-            ReadWriteBuffer<int> result = graphicDevice.AllocateReadWriteBuffer<int>(points_Temp.Length);
+            using ReadOnlyBuffer<Coordinate3> points_Temp = graphicDevice.AllocateReadOnlyBuffer(points.ToArray());
+            using ReadWriteBuffer<int> result = graphicDevice.AllocateReadWriteBuffer<int>(points_Temp.Length);
 
             graphicDevice.For(points_Temp.Length, new Coordinate3InsideComputeShader(points_Temp, triangles, result));
 
@@ -64,7 +64,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return null;
             }
 
-            ReadOnlyBuffer<Triangle3> triangle3s_Temp = graphicDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+            using ReadOnlyBuffer<Triangle3> triangle3s_Temp = graphicDevice.AllocateReadOnlyBuffer(triangles.ToArray());
 
             return Inside(graphicDevice, points, triangle3s_Temp);
         }
@@ -88,7 +88,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return -1;
             }
 
-            ReadOnlyBuffer<Triangle3> triangle3s_Temp = graphicDevice.AllocateReadOnlyBuffer(triangles.ToArray());
+            using ReadOnlyBuffer<Triangle3> triangle3s_Temp = graphicDevice.AllocateReadOnlyBuffer(triangles.ToArray());
 
             return Inside(graphicDevice, point, triangle3s_Temp);
         }

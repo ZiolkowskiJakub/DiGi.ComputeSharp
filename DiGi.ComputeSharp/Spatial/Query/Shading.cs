@@ -1,4 +1,4 @@
-﻿using ComputeSharp;
+using ComputeSharp;
 using DiGi.ComputeSharp.Spatial.Classes;
 
 namespace DiGi.ComputeSharp.Spatial
@@ -6,7 +6,7 @@ namespace DiGi.ComputeSharp.Spatial
     public static partial class Query
     {
         /// <summary>
-        /// Performs shading calculations on a collection of triangles based on a specified vector and graphics device.
+        /// Performs shading calculations on a collection of triangles grouped by shading results, using the specified graphics device.
         /// </summary>
         /// <param name="graphicDevice">The graphics device used to execute the shading operations.</param>
         /// <param name="triangle3s">A read-only buffer containing the triangle data to be shaded.</param>
@@ -25,7 +25,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return [];
             }
 
-            ReadWriteBuffer<Triangle3Intersection> readWriteBuffer_Triangle3Intersection = graphicDevice.AllocateReadWriteBuffer<Triangle3Intersection>(length * length);
+            using ReadWriteBuffer<Triangle3Intersection> readWriteBuffer_Triangle3Intersection = graphicDevice.AllocateReadWriteBuffer<Triangle3Intersection>(length * length);
 
             graphicDevice.For(length, length, new Triangle3ShadingComputeShader(triangle3s, readWriteBuffer_Triangle3Intersection, vector));
 

@@ -27,11 +27,14 @@ namespace DiGi.ComputeSharp.Spatial
 
             int threadsCount = 1024;
 
-            Line3IntersectionComputeShader line3IntersectionComputeShader = new(graphicsDevice, line, lines, tolerance, threadsCount);
+            using ReadOnlyBuffer<Line3> linesBuffer = graphicsDevice.AllocateReadOnlyBuffer(lines.ToArray());
+            using ReadWriteBuffer<Line3Intersection> intersectionsBuffer = graphicsDevice.AllocateReadWriteBuffer(new Line3Intersection[linesBuffer.Length]);
+
+            Line3IntersectionComputeShader line3IntersectionComputeShader = new(line, linesBuffer, intersectionsBuffer, tolerance, threadsCount);
 
             graphicsDevice.For(threadsCount, line3IntersectionComputeShader);
 
-            return Core.Create.List(line3IntersectionComputeShader.LineIntersections, x => x is Line3Intersection line3Intersection && line3Intersection.IsNaN());
+            return Core.Create.List(intersectionsBuffer, x => x is Line3Intersection line3Intersection && !line3Intersection.IsNaN());
         }
     }
 }
