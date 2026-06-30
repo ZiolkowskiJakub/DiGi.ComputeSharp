@@ -18,10 +18,18 @@ namespace DiGi.ComputeSharp.Spatial
                 return false;
             }
 
-            // Dot product > 0 means angle < 90°
-            double dotProduct = vector_1.GetNormalized(tolerance).DotProduct(vector_2.GetNormalized(tolerance));
+            // Same half-space when the angle is below ~90° (dot product positive within tolerance). The sign of
+            // the dot product is independent of normalisation, so comparing squared quantities reproduces the
+            // normalised "> -tolerance" test without the two square roots of GetNormalized.
+            double dotProduct = vector_1.DotProduct(vector_2);
+            if (dotProduct > 0)
+            {
+                return true;
+            }
 
-            return dotProduct > 0 - tolerance;
+            double squaredThreshold = tolerance * tolerance * vector_1.GetSquaredLength() * vector_2.GetSquaredLength();
+
+            return (dotProduct * dotProduct) < squaredThreshold;
         }
     }
 }

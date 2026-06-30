@@ -279,22 +279,22 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Coordinate3 crossProduct = ab.CrossProduct(ac);
             double squaredLength = crossProduct.GetSquaredLength();
 
-            //double squaredTolerance = tolerance * tolerance;
+            double squaredTolerance = tolerance * tolerance;
 
             // Handle degenerate triangles (area is zero, points are collinear)
-            if (squaredLength <= tolerance) // Use a small epsilon for robustness against near-zero length
+            if (squaredLength <= squaredTolerance) // Use a small epsilon for robustness against near-zero length
             {
                 // If the triangle is degenerate (a line or a point), check if the point lies on that line/point within tolerance.
                 // This is a simplified check for a 3D line.
                 // If the triangle is a point (A=B=C), check distance to A.
-                if (ab.GetSquaredLength() <= tolerance && ac.GetSquaredLength() <= tolerance)
+                if (ab.GetSquaredLength() <= squaredTolerance && ac.GetSquaredLength() <= squaredTolerance)
                 {
-                    return point.Substract(Point_1).GetSquaredLength() <= tolerance;
+                    return point.Substract(Point_1).GetSquaredLength() <= squaredTolerance;
                 }
                 // If the triangle is a line (A, B, C are collinear)
                 Coordinate3 closestOnLine = new Line3(new Bool(true), Point_1, Point_2).GetClosestPoint(point); // Assuming A-B defines the primary line
                 double distSq = point.Substract(closestOnLine).GetSquaredLength();
-                return distSq <= tolerance;
+                return distSq <= squaredTolerance;
             }
 
             // Normalize the normal vector
@@ -334,7 +334,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 // If it slips through, fall back to line check.
                 Coordinate3 closestOnLine = new Line3(new Bool(true), Point_1, Point_2).GetClosestPoint(point);
                 double distSq = point.Substract(closestOnLine).GetSquaredLength();
-                return distSq <= tolerance;
+                return distSq <= squaredTolerance;
             }
 
             double u = (dot11 * dot02 - dot01 * dot12) * invDenom;

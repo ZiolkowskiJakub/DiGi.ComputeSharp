@@ -100,7 +100,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
         /// </summary>
         /// <returns>The distance between start and end, or positive infinity if the line is unbounded.</returns>
         public double GetApproximateLength()
-        { if (Bounded.ToBool()) { return double.PositiveInfinity; } return Start.GetApproximateDistance(End); }
+        { if (!Bounded.ToBool()) { return double.PositiveInfinity; } return Start.GetApproximateDistance(End); }
 
         /// <summary>
         /// Calculates the centroid of the line.
@@ -115,7 +115,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
         /// <param name="point">The target point.</param>
         /// <returns>The coordinate on the line closest to the provided point.</returns>
         public Coordinate2 GetClosestPoint(Coordinate2 point)
-        { Coordinate2 lineVector = GetVector(); Coordinate2 pointToLineVector = point.Substract(Start); double lengthSquared = lineVector.GetSquaredLength(); if (lengthSquared == 0.0) { return Start; } double t = pointToLineVector.DotProduct(lineVector) / lengthSquared; if (true) { if (t > 1.0f) { t = 1.0f; } if (t < 0.0f) { t = 0.0f; } } return Start.Add(lineVector.Multiply(t)); }
+        { Coordinate2 lineVector = GetVector(); Coordinate2 pointToLineVector = point.Substract(Start); double lengthSquared = lineVector.GetSquaredLength(); if (lengthSquared == 0.0) { return Start; } double t = pointToLineVector.DotProduct(lineVector) / lengthSquared; if (Bounded.ToBool()) { if (t > 1.0f) { t = 1.0f; } if (t < 0.0f) { t = 0.0f; } } return Start.Add(lineVector.Multiply(t)); }
 
         /// <summary>
         /// Gets the normalized direction vector of the line.
@@ -167,7 +167,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
         /// </summary>
         /// <returns>The squared distance between start and end, or positive infinity if the line is unbounded.</returns>
         public double GetSquaredLength()
-        { if (Bounded.ToBool()) { return double.PositiveInfinity; } return Start.GetSquaredDistance(End); }
+        { if (!Bounded.ToBool()) { return double.PositiveInfinity; } return Start.GetSquaredDistance(End); }
 
         /// <summary>
         /// Calculates the actual length of the line using a specified tolerance for the square root operation.
@@ -225,7 +225,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
         /// <param name="tolerance">The squared distance tolerance.</param>
         /// <returns>True if the point is on the line; otherwise, false.</returns>
         public bool On(Coordinate2 point, double tolerance)
-        { return GetSquaredDistance(point) <= tolerance; }
+        { return GetSquaredDistance(point) <= tolerance * tolerance; }
 
         /// <summary>
         /// Projects a given point onto the line, returning the closest point on the line.
@@ -241,7 +241,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
         /// <param name="line">The line to project onto this line.</param>
         /// <returns>A new <see cref="Line2"/> representing the projected line, or a default <see cref="Line2"/> if the projection collapses to a point.</returns>
         public Line2 Project(Line2 line)
-        { Coordinate2 start = GetClosestPoint(line.Start); Coordinate2 end = GetClosestPoint(line.Start); if (start.Equals(end)) { return new Line2(); } return new Line2(line.Bounded, GetClosestPoint(line.Start), GetClosestPoint(line.End)); }
+        { Coordinate2 start = GetClosestPoint(line.Start); Coordinate2 end = GetClosestPoint(line.End); if (start.Equals(end)) { return new Line2(); } return new Line2(line.Bounded, start, end); }
 
         /// <summary>
         /// Returns a string representation of the line showing start and end coordinates.

@@ -1,4 +1,3 @@
-using DiGi.ComputeSharp.Core.Classes;
 using DiGi.ComputeSharp.Spatial.Classes;
 
 namespace DiGi.ComputeSharp.Spatial
@@ -24,42 +23,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Triangulation3();
             }
 
-            bool isSolid = triangle.Solid.ToBool();
-
-            Line3 line = triangle.GetLine(0);
-            if (line.On(point, tolerance))
-            {
-                if (line.Start.AlmostEquals(point, tolerance) || line.End.AlmostEquals(point, tolerance))
-                {
-                    return new Triangulation3(triangle);
-                }
-
-                return new Triangulation3(new Triangle3(point, triangle.Point_3, triangle.Point_1), new Triangle3(point, triangle.Point_2, triangle.Point_3));
-            }
-
-            line = triangle.GetLine(1);
-            if (line.On(point, tolerance))
-            {
-                if (line.Start.AlmostEquals(point, tolerance) || line.End.AlmostEquals(point, tolerance))
-                {
-                    return new Triangulation3(triangle);
-                }
-
-                return new Triangulation3(new Triangle3(point, triangle.Point_1, triangle.Point_2), new Triangle3(point, triangle.Point_3, triangle.Point_1));
-            }
-
-            line = triangle.GetLine(2);
-            if (line.On(point, tolerance))
-            {
-                if (line.Start.AlmostEquals(point, tolerance) || line.End.AlmostEquals(point, tolerance))
-                {
-                    return new Triangulation3(triangle);
-                }
-
-                return new Triangulation3(new Triangle3(point, triangle.Point_2, triangle.Point_3), new Triangle3(point, triangle.Point_1, triangle.Point_2));
-            }
-
-            return new Triangulation3(new Triangle3(triangle.Solid, triangle.Point_1, triangle.Point_2, point), new Triangle3(triangle.Solid, triangle.Point_2, triangle.Point_3, point), new Triangle3(triangle.Solid, triangle.Point_3, triangle.Point_1, point));
+            return ToTriangulation3(InsertPoint(triangle, point, tolerance));
         }
 
         /// <summary>
@@ -68,7 +32,7 @@ namespace DiGi.ComputeSharp.Spatial
         /// <param name="triangle">The original triangle to be triangulated.</param>
         /// <param name="line">The line segment used for splitting the triangle.</param>
         /// <param name="tolerance">The precision tolerance for intersection and boundary calculations.</param>
-        /// <returns>A <see cref="Classes.Triangulation3"/> object containing the optimized sub-triangles; returns an empty triangulation if no intersection occurs.</returns>
+        /// <returns>A <see cref="Classes.Triangulation3"/> object containing the sub-triangles; returns an empty triangulation if no intersection occurs.</returns>
         public static Triangulation3 Triangulation3(Triangle3 triangle, Line3 line, double tolerance)
         {
             if (!triangle.InRange(line, tolerance))
@@ -77,326 +41,108 @@ namespace DiGi.ComputeSharp.Spatial
             }
 
             Line3Intersection lineIntersection = Line3Intersection(line, triangle, tolerance);
-            if (lineIntersection.Point_1.IsNaN())
+
+            Coordinate3 point_1 = lineIntersection.Point_1;
+            if (point_1.IsNaN())
             {
                 return new Triangulation3();
             }
 
-            if (lineIntersection.Point_2.IsNaN())
+            Coordinate3 point_2 = lineIntersection.Point_2;
+
+            // A single intersection point (or a chord that collapses to a point) -> split at that point.
+            if (point_2.IsNaN() || point_1.AlmostEquals(point_2, tolerance))
             {
-                return Triangulation3(triangle, lineIntersection.Point_1, tolerance);
+                return Triangulation3(triangle, point_1, tolerance);
             }
 
-            Line3 line_1 = triangle.GetLine(0);
-            Line3 line_2 = triangle.GetLine(1);
-            Line3 line_3 = triangle.GetLine(2);
-
-            bool on_1_1 = line_1.On(lineIntersection.Point_1, tolerance);
-            bool on_2_1 = line_1.On(lineIntersection.Point_2, tolerance);
-            if (on_1_1 && on_2_1)
+            // A chord running along a single edge does not split the triangle.
+            for (int i = 0; i < 3; i++)
             {
-                return new Triangulation3(triangle);
+                Line3 edge = triangle.GetLine(i);
+                if (edge.On(point_1, tolerance) && edge.On(point_2, tolerance))
+                {
+                    return new Triangulation3(triangle);
+                }
             }
 
-            bool on_1_2 = line_2.On(lineIntersection.Point_1, tolerance);
-            bool on_2_2 = line_2.On(lineIntersection.Point_2, tolerance);
-            if (on_1_2 && on_2_2)
+            // Constrained triangulation. Inserting the first cut point yields sub-triangles that all share it
+            // as a vertex; splitting whichever of them contains the second cut point therefore guarantees the
+            // chord point_1-point_2 becomes an edge of the result.
+            List<Triangle3> triangles = InsertPoint(triangle, point_1, tolerance);
+
+            List<Triangle3> result = [];
+            bool inserted = false;
+            foreach (Triangle3 triangle_Temp in triangles)
             {
-                return new Triangulation3(triangle);
-            }
-
-            bool on_1_3 = line_3.On(lineIntersection.Point_1, tolerance);
-            bool on_2_3 = line_3.On(lineIntersection.Point_2, tolerance);
-            if (on_1_2 && on_2_2)
-            {
-                return new Triangulation3(triangle);
-            }
-
-            bool isSolid = triangle.Solid.ToBool();
-
-            if ((on_1_1 || on_1_2 || on_1_3) && (on_2_1 || on_2_2 || on_2_3))
-            {
-                if ((on_1_1 && on_1_2) || (on_2_1 && on_2_2))
+                if (!inserted && triangle_Temp.Inside(point_2, tolerance))
                 {
-                    return new Triangulation3(new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_1), new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_3));
-                }
-
-                if ((on_1_2 && on_1_3) || (on_2_2 && on_2_3))
-                {
-                    return new Triangulation3(new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_1), new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_2));
-                }
-
-                if ((on_1_1 && on_1_3) || (on_2_1 && on_2_3))
-                {
-                    return new Triangulation3(new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_2), new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_3));
-                }
-
-                Triangle3 triangle_1_1 = new Triangle3();
-                Triangle3 triangle_1_2 = new Triangle3();
-                Triangle3 triangle_1_3 = new Triangle3();
-
-                Triangle3 triangle_2_1 = new Triangle3();
-                Triangle3 triangle_2_2 = new Triangle3();
-                Triangle3 triangle_2_3 = new Triangle3();
-
-                if (on_1_1 && on_2_2)
-                {
-                    triangle_1_1 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_2, lineIntersection.Point_2);
-                    triangle_1_2 = new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_3);
-                    triangle_1_3 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_3, triangle.Point_1);
-
-                    triangle_2_1 = new Triangle3(triangle.Solid, lineIntersection.Point_2, lineIntersection.Point_2, triangle.Point_2);
-                    triangle_2_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, lineIntersection.Point_1);
-                    triangle_2_3 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_3, triangle.Point_1);
-                }
-                else if (on_2_1 && on_1_2)
-                {
-                    triangle_1_1 = new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_2);
-                    triangle_1_2 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_3, triangle.Point_1);
-                    triangle_1_3 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_1, lineIntersection.Point_2);
-
-                    triangle_2_1 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, lineIntersection.Point_1);
-                    triangle_2_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, triangle.Point_3);
-                    triangle_2_3 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_3, triangle.Point_1);
-                }
-                else if (on_1_2 && on_2_3)
-                {
-                    triangle_1_1 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_3, lineIntersection.Point_2);
-                    triangle_1_2 = new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_1);
-                    triangle_1_3 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_1, triangle.Point_2);
-
-                    triangle_2_1 = new Triangle3(triangle.Solid, lineIntersection.Point_2, lineIntersection.Point_1, triangle.Point_3);
-                    triangle_2_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, triangle.Point_2);
-                    triangle_2_3 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, lineIntersection.Point_1);
-                }
-                else if (on_2_2 && on_1_3)
-                {
-                    triangle_1_1 = new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_3);
-                    triangle_1_2 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_1, lineIntersection.Point_2);
-                    triangle_1_3 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_2, triangle.Point_2);
-
-                    triangle_2_1 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_3, lineIntersection.Point_1);
-                    triangle_2_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, triangle.Point_2);
-                    triangle_2_3 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, triangle.Point_1);
-                }
-                else if (on_1_3 && on_2_1)
-                {
-                    triangle_1_1 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_1, lineIntersection.Point_2);
-                    triangle_1_2 = new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_2);
-                    triangle_1_3 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_2, triangle.Point_3);
-
-                    triangle_2_1 = new Triangle3(triangle.Solid, lineIntersection.Point_2, lineIntersection.Point_1, triangle.Point_1);
-                    triangle_2_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_3, triangle.Point_1);
-                    triangle_2_3 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, triangle.Point_3);
-                }
-                else if (on_2_3 && on_1_1)
-                {
-                    triangle_1_1 = new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_1);
-                    triangle_1_2 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_3, lineIntersection.Point_2);
-                    triangle_1_3 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_2, triangle.Point_3);
-
-                    triangle_2_1 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, lineIntersection.Point_1);
-                    triangle_2_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, triangle.Point_2);
-                    triangle_2_3 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, triangle.Point_3);
-                }
-
-                double factor_Temp;
-
-                double factor_1 = triangle_1_2.GetEquilateralityFactor();
-                factor_Temp = triangle_1_3.GetEquilateralityFactor();
-                if (factor_1 > factor_Temp)
-                {
-                    factor_1 = factor_Temp;
-                }
-
-                double factor_2 = triangle_2_2.GetEquilateralityFactor();
-                factor_Temp = triangle_2_3.GetEquilateralityFactor();
-                if (factor_2 > factor_Temp)
-                {
-                    factor_2 = factor_Temp;
-                }
-
-                return factor_1 > factor_2 ? new Triangulation3(triangle_1_1, triangle_1_2, triangle_1_3) : new Triangulation3(triangle_2_1, triangle_2_2, triangle_2_3);
-            }
-
-            if (on_1_1 || on_1_2 || on_1_3)
-            {
-                if ((on_1_1 && on_1_2) || (on_1_2 && on_1_3) || (on_1_3 || on_1_1))
-                {
-                    return new Triangulation3(new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, triangle.Point_2), new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, triangle.Point_3), new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_3, triangle.Point_1));
-                }
-
-                if (on_1_1)
-                {
-                    return new Triangulation3(new Triangle3(triangle.Solid, lineIntersection.Point_2, lineIntersection.Point_1, triangle.Point_1), new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, lineIntersection.Point_1), new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, triangle.Point_3), new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_3, triangle.Point_1));
-                }
-
-                if (on_1_2)
-                {
-                    return new Triangulation3(new Triangle3(triangle.Solid, lineIntersection.Point_2, lineIntersection.Point_1, triangle.Point_2), new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_3, lineIntersection.Point_1), new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, triangle.Point_1), new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, triangle.Point_3));
-                }
-
-                if (on_1_3)
-                {
-                    return new Triangulation3(new Triangle3(triangle.Solid, lineIntersection.Point_2, lineIntersection.Point_1, triangle.Point_3), new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, triangle.Point_1), new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_3, triangle.Point_2), new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, triangle.Point_1));
-                }
-
-                return new Triangulation3();
-            }
-
-            if (on_2_1 || on_2_2 || on_2_3)
-            {
-                if ((on_2_1 && on_2_2) || (on_2_2 && on_2_3) || (on_2_3 || on_2_1))
-                {
-                    return new Triangulation3(new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_1, triangle.Point_2), new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_2, triangle.Point_3), new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_3, triangle.Point_1));
-                }
-
-                if (on_2_1)
-                {
-                    return new Triangulation3(new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_1), new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_2), new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_3), new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_3, triangle.Point_1));
-                }
-
-                if (on_2_2)
-                {
-                    return new Triangulation3(new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_2), new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_3), new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_1, triangle.Point_2), new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_3, triangle.Point_1));
-                }
-
-                if (on_2_3)
-                {
-                    return new Triangulation3(new Triangle3(triangle.Solid, lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_3), new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_1, triangle.Point_2), new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_3, triangle.Point_2), new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_2, triangle.Point_1));
-                }
-
-                return new Triangulation3();
-            }
-
-            Triangle3 triangle_1 = new Triangle3();
-            Triangle3 triangle_2 = new Triangle3();
-            Triangle3 triangle_3 = new Triangle3();
-            Triangle3 triangle_4_1 = new Triangle3();
-            Triangle3 triangle_4_2 = new Triangle3();
-            Triangle3 triangle_5_1 = new Triangle3();
-            Triangle3 triangle_5_2 = new Triangle3();
-
-            Line3 line_1_Temp, line_2_Temp;
-            Line3Intersection lineIntersection_Temp;
-
-            line_1_Temp = new Line3(new Bool(true), lineIntersection.Point_1, triangle.Point_1);
-            line_2_Temp = new Line3(new Bool(true), lineIntersection.Point_2, triangle.Point_2);
-
-            lineIntersection_Temp = Line3Intersection(line_1_Temp, line_2_Temp, tolerance);
-            if (!lineIntersection_Temp.IsNaN())
-            {
-                triangle_1 = new Triangle3(lineIntersection.Point_1, triangle.Point_3, triangle.Point_2);
-                triangle_2 = new Triangle3(lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_3);
-                triangle_3 = new Triangle3(lineIntersection.Point_2, triangle.Point_1, triangle.Point_3);
-
-                triangle_4_1 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, triangle.Point_1);
-                triangle_5_1 = new Triangle3(triangle.Solid, lineIntersection.Point_2, lineIntersection.Point_1, triangle.Point_2);
-
-                triangle_4_2 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_1, lineIntersection.Point_2);
-                triangle_5_2 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_2, triangle.Point_1);
-            }
-            else
-            {
-                line_1_Temp = new Line3(new Bool(true), lineIntersection.Point_1, triangle.Point_2);
-                line_2_Temp = new Line3(new Bool(true), lineIntersection.Point_2, triangle.Point_1);
-
-                lineIntersection_Temp = Line3Intersection(line_1_Temp, line_2_Temp, tolerance);
-                if (!lineIntersection_Temp.IsNaN())
-                {
-                    triangle_1 = new Triangle3(lineIntersection.Point_2, triangle.Point_3, triangle.Point_2);
-                    triangle_2 = new Triangle3(lineIntersection.Point_2, lineIntersection.Point_1, triangle.Point_3);
-                    triangle_3 = new Triangle3(lineIntersection.Point_1, triangle.Point_1, triangle.Point_3);
-
-                    triangle_4_1 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_2, triangle.Point_1);
-                    triangle_5_1 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_2, triangle.Point_2);
-
-                    triangle_4_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, lineIntersection.Point_1);
-                    triangle_5_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, triangle.Point_1);
+                    result.AddRange(InsertPoint(triangle_Temp, point_2, tolerance));
+                    inserted = true;
                 }
                 else
                 {
-                    line_1_Temp = new Line3(new Bool(true), lineIntersection.Point_1, triangle.Point_3);
-                    line_2_Temp = new Line3(new Bool(true), lineIntersection.Point_2, triangle.Point_2);
-
-                    lineIntersection_Temp = Line3Intersection(line_1_Temp, line_2_Temp, tolerance);
-                    if (!lineIntersection_Temp.IsNaN())
-                    {
-                        triangle_1 = new Triangle3(lineIntersection.Point_2, triangle.Point_1, triangle.Point_3);
-                        triangle_2 = new Triangle3(lineIntersection.Point_2, triangle.Point_1, triangle.Point_1);
-                        triangle_3 = new Triangle3(lineIntersection.Point_1, triangle.Point_2, triangle.Point_1);
-
-                        triangle_4_1 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_3, triangle.Point_2);
-                        triangle_5_1 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_2, triangle.Point_3);
-
-                        triangle_4_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_2, lineIntersection.Point_1);
-                        triangle_5_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_3, triangle.Point_2);
-                    }
-                    else
-                    {
-                        line_1_Temp = new Line3(new Bool(true), lineIntersection.Point_1, triangle.Point_1);
-                        line_2_Temp = new Line3(new Bool(true), lineIntersection.Point_2, triangle.Point_3);
-
-                        lineIntersection_Temp = Line3Intersection(line_1_Temp, line_2_Temp, tolerance);
-                        if (!lineIntersection_Temp.IsNaN())
-                        {
-                            triangle_1 = new Triangle3(lineIntersection.Point_2, triangle.Point_2, triangle.Point_1);
-                            triangle_2 = new Triangle3(lineIntersection.Point_2, lineIntersection.Point_1, triangle.Point_2);
-                            triangle_3 = new Triangle3(lineIntersection.Point_1, triangle.Point_3, triangle.Point_2);
-
-                            triangle_4_1 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_1, triangle.Point_3);
-                            triangle_5_1 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_2, triangle.Point_1);
-
-                            triangle_4_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_3, triangle.Point_1);
-                            triangle_5_2 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, triangle.Point_3);
-                        }
-                        else
-                        {
-                            line_1_Temp = new Line3(new Bool(true), lineIntersection.Point_1, triangle.Point_3);
-                            line_2_Temp = new Line3(new Bool(true), lineIntersection.Point_2, triangle.Point_1);
-
-                            lineIntersection_Temp = Line3Intersection(line_1_Temp, line_2_Temp, tolerance);
-                            if (!lineIntersection_Temp.IsNaN())
-                            {
-                                triangle_1 = new Triangle3(lineIntersection.Point_1, triangle.Point_2, triangle.Point_1);
-                                triangle_2 = new Triangle3(lineIntersection.Point_1, lineIntersection.Point_2, triangle.Point_2);
-                                triangle_3 = new Triangle3(lineIntersection.Point_2, triangle.Point_3, triangle.Point_2);
-
-                                triangle_4_1 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, triangle.Point_3);
-                                triangle_5_1 = new Triangle3(triangle.Solid, lineIntersection.Point_2, triangle.Point_1, triangle.Point_1);
-
-                                triangle_4_2 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_3, lineIntersection.Point_2);
-                                triangle_5_2 = new Triangle3(triangle.Solid, lineIntersection.Point_1, triangle.Point_1, triangle.Point_3);
-                            }
-                        }
-                    }
+                    result.Add(triangle_Temp);
                 }
             }
 
-            double factor_1_Temp = triangle_4_1.GetEquilateralityFactor();
-
-            double factor_Temp_Temp = triangle_5_1.GetEquilateralityFactor();
-            if (factor_1_Temp > factor_Temp_Temp)
+            // Numerical fallback: if the second point was not located inside any sub-triangle, split the first.
+            if (!inserted)
             {
-                factor_1_Temp = factor_Temp_Temp;
+                result = [.. InsertPoint(triangles[0], point_2, tolerance)];
+                for (int i = 1; i < triangles.Count; i++)
+                {
+                    result.Add(triangles[i]);
+                }
             }
 
-            double factor_2_Temp = triangle_4_2.GetEquilateralityFactor();
+            return ToTriangulation3(result);
+        }
 
-            factor_Temp_Temp = triangle_5_2.GetEquilateralityFactor();
-            if (factor_2_Temp > factor_Temp_Temp)
+        /// <summary>
+        /// Splits a single triangle at a point that lies at a vertex (no split), on an edge (two triangles),
+        /// or strictly inside it (three triangles). Every produced triangle inherits the source triangle's
+        /// <see cref="Triangle3.Solid"/> flag and includes the point as a vertex.
+        /// </summary>
+        private static List<Triangle3> InsertPoint(Triangle3 triangle, Coordinate3 point, double tolerance)
+        {
+            if (point.AlmostEquals(triangle.Point_1, tolerance) || point.AlmostEquals(triangle.Point_2, tolerance) || point.AlmostEquals(triangle.Point_3, tolerance))
             {
-                factor_2_Temp = factor_Temp_Temp;
+                return [triangle];
             }
 
-            if (factor_1_Temp > factor_2_Temp)
+            if (triangle.GetLine(0).On(point, tolerance))
             {
-                return new Triangulation3(triangle_1, triangle_2, triangle_3, triangle_4_1, triangle_5_1);
+                return [new Triangle3(triangle.Solid, point, triangle.Point_2, triangle.Point_3), new Triangle3(triangle.Solid, point, triangle.Point_3, triangle.Point_1)];
             }
-            else
+
+            if (triangle.GetLine(1).On(point, tolerance))
             {
-                return new Triangulation3(triangle_1, triangle_2, triangle_3, triangle_4_2, triangle_5_2);
+                return [new Triangle3(triangle.Solid, point, triangle.Point_3, triangle.Point_1), new Triangle3(triangle.Solid, point, triangle.Point_1, triangle.Point_2)];
             }
+
+            if (triangle.GetLine(2).On(point, tolerance))
+            {
+                return [new Triangle3(triangle.Solid, point, triangle.Point_1, triangle.Point_2), new Triangle3(triangle.Solid, point, triangle.Point_2, triangle.Point_3)];
+            }
+
+            return [new Triangle3(triangle.Solid, point, triangle.Point_1, triangle.Point_2), new Triangle3(triangle.Solid, point, triangle.Point_2, triangle.Point_3), new Triangle3(triangle.Solid, point, triangle.Point_3, triangle.Point_1)];
+        }
+
+        /// <summary>
+        /// Packs a list of up to five sub-triangles into a <see cref="Classes.Triangulation3"/>.
+        /// </summary>
+        private static Triangulation3 ToTriangulation3(List<Triangle3> triangles)
+        {
+            return triangles.Count switch
+            {
+                0 => new Triangulation3(),
+                1 => new Triangulation3(triangles[0]),
+                2 => new Triangulation3(triangles[0], triangles[1]),
+                3 => new Triangulation3(triangles[0], triangles[1], triangles[2]),
+                4 => new Triangulation3(triangles[0], triangles[1], triangles[2], triangles[3]),
+                _ => new Triangulation3(triangles[0], triangles[1], triangles[2], triangles[3], triangles[4]),
+            };
         }
     }
 }

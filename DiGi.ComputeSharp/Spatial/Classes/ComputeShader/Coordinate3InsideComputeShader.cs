@@ -50,7 +50,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             int index = ThreadIds.X;
 
             Coordinate3 point = points[index];
-            Result[index] = 0;
+            Result[index] = -1;
 
             if (point.IsNaN())
             {

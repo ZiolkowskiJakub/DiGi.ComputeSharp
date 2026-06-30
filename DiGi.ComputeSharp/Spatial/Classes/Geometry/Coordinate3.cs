@@ -300,7 +300,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         {
             double squaredLength = GetSquaredLength();
 
-            double scalarProjection = coordinate.DotProduct(X, Y, Z) * squaredLength;
+            double scalarProjection = coordinate.DotProduct(X, Y, Z) / squaredLength;
 
             return Multiply(scalarProjection);
         }

@@ -44,14 +44,14 @@ namespace DiGi.ComputeSharp.Spatial
 
                 double squaredLength = crossProduct.GetSquaredLength();
 
-                if (squaredLength <= tolerance || Core.Query.Sqrt(squaredLength, tolerance) <= tolerance)
+                if (squaredLength <= tolerance * tolerance)
                 {
                     // Lines are parallel. Now check if they are coincident.
                     // If r is parallel to d1 (and d2), then they are coincident.
 
                     squaredLength = r.CrossProduct(d1).GetSquaredLength();
 
-                    if (squaredLength <= tolerance || Core.Query.Sqrt(squaredLength, tolerance) <= tolerance)
+                    if (squaredLength <= tolerance * tolerance)
                     {
                         if (!bounded_1 && !bounded_2)
                         {
@@ -126,7 +126,7 @@ namespace DiGi.ComputeSharp.Spatial
             double squaredDistance = intersectionPoint_1.GetSquaredDistance(intersectionPoint_2);
 
             // Check if the lines actually intersect (distance between closest points is zero)
-            if (squaredDistance <= tolerance || Core.Query.Sqrt(squaredDistance, tolerance) <= tolerance)
+            if (squaredDistance <= tolerance * tolerance)
             {
                 Coordinate3 intersectionPoint = intersectionPoint_1.GetCentroid(intersectionPoint_2);
                 if ((

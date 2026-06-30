@@ -168,12 +168,40 @@ namespace DiGi.ComputeSharp.Planar.Classes
 
         public bool Inside(Coordinate2 point, double tolerance)
         {
-            throw new NotImplementedException();
+            if (IsNaN() || point.IsNaN())
+            {
+                return false;
+            }
+
+            Coordinate2 ab = Point_2.Substract(Point_1);
+            Coordinate2 ac = Point_3.Substract(Point_1);
+            Coordinate2 ap = point.Substract(Point_1);
+
+            double dot00 = ab.DotProduct(ab);
+            double dot01 = ab.DotProduct(ac);
+            double dot02 = ab.DotProduct(ap);
+            double dot11 = ac.DotProduct(ac);
+            double dot12 = ac.DotProduct(ap);
+
+            // |ab|^2 |ac|^2 - (ab.ac)^2 == (2 * area)^2; zero for a degenerate (collinear) triangle.
+            double denominator = (dot00 * dot11) - (dot01 * dot01);
+            if (!Core.Query.IsValid(denominator) || (denominator > -tolerance && denominator < tolerance))
+            {
+                return false;
+            }
+
+            double u = ((dot11 * dot02) - (dot01 * dot12)) / denominator;
+            double v = ((dot00 * dot12) - (dot01 * dot02)) / denominator;
+            double w = 1.0 - u - v;
+
+            return u >= -tolerance && u <= 1.0 + tolerance &&
+                   v >= -tolerance && v <= 1.0 + tolerance &&
+                   w >= -tolerance && w <= 1.0 + tolerance;
         }
 
         public bool IsNaN()
         {
-            return Point_1.IsNaN() || Point_1.IsNaN() || Point_3.IsNaN();
+            return Point_1.IsNaN() || Point_2.IsNaN() || Point_3.IsNaN();
         }
 
         public bool On(Coordinate2 point, double tolerance)

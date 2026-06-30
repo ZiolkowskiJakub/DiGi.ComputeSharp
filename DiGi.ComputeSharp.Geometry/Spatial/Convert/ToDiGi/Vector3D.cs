@@ -17,7 +17,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 return null;
             }
 
-            return new Vector3D(System.Convert.ToDouble(coordinate3.Value.X), System.Convert.ToDouble(coordinate3.Value.Y), System.Convert.ToDouble(coordinate3.Value.X));
+            return new Vector3D(System.Convert.ToDouble(coordinate3.Value.X), System.Convert.ToDouble(coordinate3.Value.Y), System.Convert.ToDouble(coordinate3.Value.Z));
         }
     }
 }

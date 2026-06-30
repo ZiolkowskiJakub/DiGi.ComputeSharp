@@ -247,7 +247,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public bool On(Coordinate3 point, double tolerance)
         {
-            return GetSquaredDistance(point) <= tolerance;
+            return GetSquaredDistance(point) <= tolerance * tolerance;
         }
 
         public Coordinate3 Project(Coordinate3 point)
@@ -258,13 +258,13 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         public Line3 Project(Line3 line)
         {
             Coordinate3 start = GetClosestPoint(line.Start);
-            Coordinate3 end = GetClosestPoint(line.Start);
+            Coordinate3 end = GetClosestPoint(line.End);
             if (start.Equals(end))
             {
                 return new Line3();
             }
 
-            return new Line3(line.Bounded, GetClosestPoint(line.Start), GetClosestPoint(line.End));
+            return new Line3(line.Bounded, start, end);
         }
 
         public override string ToString()

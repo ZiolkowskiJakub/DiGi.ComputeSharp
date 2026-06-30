@@ -25,14 +25,12 @@ namespace DiGi.ComputeSharp.Spatial
                 return null;
             }
 
-            int threadsCount = 1024;
-
             using ReadOnlyBuffer<Triangle3> trianglesBuffer = graphicsDevice.AllocateReadOnlyBuffer(triangles.ToArray());
             using ReadWriteBuffer<Triangle3Intersection> intersectionsBuffer = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[trianglesBuffer.Length]);
 
-            Triangle3IntersectionComputeShader triangle3IntersectionComputeShader = new(triangle, trianglesBuffer, intersectionsBuffer, tolerance, threadsCount);
+            Triangle3IntersectionComputeShader triangle3IntersectionComputeShader = new(triangle, trianglesBuffer, intersectionsBuffer, tolerance);
 
-            graphicsDevice.For(threadsCount, triangle3IntersectionComputeShader);
+            graphicsDevice.For(trianglesBuffer.Length, triangle3IntersectionComputeShader);
 
             return Core.Create.List(intersectionsBuffer, x => x is Triangle3Intersection triangle3Intersection && !triangle3Intersection.IsNaN());
         }
@@ -77,26 +75,25 @@ namespace DiGi.ComputeSharp.Spatial
                 return null;
             }
 
-            using ReadWriteBuffer<Triangle3Intersection> triangleIntersections = graphicsDevice.AllocateReadWriteBuffer(new Triangle3Intersection[triangles_2.Length]);
+            Triangle3[] triangles_1_Temp = triangles_1 as Triangle3[] ?? triangles_1.ToArray();
 
-            int threadsCount = 1024;
-
-            List<Triangle3Intersection> result = [];
-            foreach (Triangle3 triangle in triangles_1)
+            int count_1 = triangles_1_Temp.Length;
+            int count_2 = triangles_2.Length;
+            if (count_1 == 0 || count_2 == 0)
             {
-                Triangle3IntersectionComputeShader triangle3IntersectionComputeShader = new(triangle, triangles_2, triangleIntersections, tolerance, threadsCount);
-                graphicsDevice.For(threadsCount, triangle3IntersectionComputeShader);
-
-                List<Triangle3Intersection>? triangle3Intersections_Temp = Core.Create.List(triangle3IntersectionComputeShader.TriangleIntersections, x => x is Triangle3Intersection triangle3Intersection && !triangle3Intersection.IsNaN());
-                if (triangle3Intersections_Temp == null)
-                {
-                    continue;
-                }
-
-                result.AddRange(triangle3Intersections_Temp);
+                return [];
             }
 
-            return result;
+            // Single 2D dispatch over the full triangles_1 x triangles_2 grid (one kernel launch, one read-back),
+            // replacing the previous per-triangle dispatch + full buffer read-back loop. The output is laid out
+            // row-major (row = triangles_1 index, column = triangles_2 index), so filtering the read-back in
+            // buffer order yields the same row-major, non-NaN ordering as the previous implementation.
+            using ReadOnlyBuffer<Triangle3> triangles_1_Buffer = graphicsDevice.AllocateReadOnlyBuffer(triangles_1_Temp);
+            using ReadWriteBuffer<Triangle3Intersection> triangleIntersections = graphicsDevice.AllocateReadWriteBuffer<Triangle3Intersection>(count_1 * count_2);
+
+            graphicsDevice.For(count_1, count_2, new Triangle3IntersectionsComputeShader(triangles_1_Buffer, triangles_2, triangleIntersections, tolerance));
+
+            return Core.Create.List(triangleIntersections, x => x is Triangle3Intersection triangle3Intersection && !triangle3Intersection.IsNaN());
         }
     }
 }

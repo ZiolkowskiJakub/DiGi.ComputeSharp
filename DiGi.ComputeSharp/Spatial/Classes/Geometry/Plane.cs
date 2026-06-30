@@ -152,7 +152,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public bool On(Coordinate3 point, double tolerance)
         {
-            return GetSquaredDistance(point) <= tolerance;
+            return GetSquaredDistance(point) <= tolerance * tolerance;
         }
 
         public Coordinate3 Project(Coordinate3 point, Coordinate3 vector, double tolerance)

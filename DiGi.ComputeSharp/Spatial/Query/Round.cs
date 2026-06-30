@@ -12,7 +12,8 @@
         {
             double scaled = value / tolerance;
 
-            double roundedScaled = scaled >= 0 ? (int)(scaled + 0.5f) : (int)(scaled - 0.5f);
+            // Cast through long (not int) so large value/tolerance ratios do not overflow.
+            double roundedScaled = scaled >= 0 ? (long)(scaled + 0.5) : (long)(scaled - 0.5);
 
             return roundedScaled * tolerance;
         }

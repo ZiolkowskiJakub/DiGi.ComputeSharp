@@ -1,4 +1,4 @@
-﻿using ComputeSharp;
+using ComputeSharp;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
@@ -8,8 +8,6 @@ namespace DiGi.ComputeSharp.Spatial.Classes
     public readonly partial struct Line3IntersectionComputeShader : IComputeShader
     {
         private readonly double tolerance = Core.Constants.Tolerance.Distance;
-
-        private readonly int threadsCount = -1;
 
         private readonly Line3 line = new();
         private readonly ReadOnlyBuffer<Line3> lines;
@@ -23,9 +21,8 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             LineIntersections = graphicsDevice.AllocateReadWriteBuffer(new Line3Intersection[lines.Count()]);
         }
 
-        public Line3IntersectionComputeShader(GraphicsDevice graphicsDevice, Line3 line, IEnumerable<Line3> lines, double tolerance, int threadsCount = -1)
+        public Line3IntersectionComputeShader(GraphicsDevice graphicsDevice, Line3 line, IEnumerable<Line3> lines, double tolerance)
         {
-            this.threadsCount = threadsCount;
             this.tolerance = tolerance;
 
             this.line = line;
@@ -42,10 +39,9 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             LineIntersections = lineIntersections;
         }
 
-        public Line3IntersectionComputeShader(Line3 line, ReadOnlyBuffer<Line3> lines, ReadWriteBuffer<Line3Intersection> lineIntersections, double tolerance, int threadsCount = -1)
+        public Line3IntersectionComputeShader(Line3 line, ReadOnlyBuffer<Line3> lines, ReadWriteBuffer<Line3Intersection> lineIntersections, double tolerance)
         {
             this.tolerance = tolerance;
-            this.threadsCount = threadsCount;
 
             this.line = line;
             this.lines = lines;
@@ -55,29 +51,11 @@ namespace DiGi.ComputeSharp.Spatial.Classes
 
         public void Execute()
         {
-            int count = lines.Length;
+            // One thread per line. ComputeSharp bounds the dispatch to the requested count, so ThreadIds.X
+            // is always a valid index.
+            int index = ThreadIds.X;
 
-            int start;
-            int end;
-            if (threadsCount < 1)
-            {
-                start = 0;
-                end = count;
-            }
-            else
-            {
-                int length = (count / threadsCount) + 1;
-
-                int index = ThreadIds.X;
-
-                start = index * length;
-                end = index * length + length;
-            }
-
-            for (int i = start; i < end; i++)
-            {
-                LineIntersections[i] = Create.Line3Intersection(line, lines[i], tolerance);
-            }
+            LineIntersections[index] = Create.Line3Intersection(line, lines[index], tolerance);
         }
     }
 }

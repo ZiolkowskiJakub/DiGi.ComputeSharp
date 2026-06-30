@@ -409,7 +409,7 @@ namespace DiGi.ComputeSharp.Planar.Classes
         {
             double squaredLength = GetSquaredLength();
 
-            double scalarProjection = coordinate.DotProduct(this) * squaredLength;
+            double scalarProjection = coordinate.DotProduct(this) / squaredLength;
 
             return Multiply(scalarProjection);
         }
