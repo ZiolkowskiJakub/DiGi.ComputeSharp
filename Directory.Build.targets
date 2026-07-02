@@ -13,4 +13,12 @@
     <DefaultDocumentationGeneratedPages>Namespaces</DefaultDocumentationGeneratedPages>
     <DefaultDocumentationConfigurationFile>$(MSBuildThisFileDirectory)DefaultDocumentation.json</DefaultDocumentationConfigurationFile>
   </PropertyGroup>
+
+  <Target Name="FixSelfReferentialInheritdoc" BeforeTargets="DefaultDocumentation" Condition="'$(DocumentationFile)' != ''">
+    <PropertyGroup>
+      <_XmlDocFile>$([System.IO.Path]::GetFullPath($(DocumentationFile)))</_XmlDocFile>
+    </PropertyGroup>
+    <Message Importance="high" Text="[DiGi.Maintenance] Fixing self-referential inheritdoc elements in $(_XmlDocFile)..." Condition="Exists('$(_XmlDocFile)')" />
+    <Exec Command="powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;if (Test-Path '$(_XmlDocFile)') { $xml = New-Object System.Xml.XmlDocument; $xml.Load('$(_XmlDocFile)'); foreach ($member in $xml.SelectNodes('//member')) { $name = $member.GetAttribute('name'); if ($name.StartsWith('T:')) { $typeName = $name.Substring(2); $inheritdoc = $member.SelectSingleNode('inheritdoc'); if ($inheritdoc -and $inheritdoc.GetAttribute('cref') -eq ('T:' + $typeName)) { [void]$member.RemoveChild($inheritdoc) } } }; $xml.Save('$(_XmlDocFile)') }&quot;" Condition="Exists('$(_XmlDocFile)')" />
+  </Target>
 </Project>
