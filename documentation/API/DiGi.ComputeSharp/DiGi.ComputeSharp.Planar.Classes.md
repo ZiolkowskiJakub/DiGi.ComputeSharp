@@ -1328,3 +1328,227 @@ public override string ToString();
 #### Returns
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')  
 A formatted string containing the start and end coordinates\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection'></a>
+
+## Line2Intersection Struct
+
+Represents the result of an intersection operation in 2D space, which can be a single point, two points, or a line segment\.
+
+```csharp
+public readonly struct Line2Intersection : DiGi.ComputeSharp.Planar.Interfaces.IIntersection2, DiGi.ComputeSharp.Core.Interfaces.IIntersection, DiGi.ComputeSharp.Core.Interfaces.IResult
+```
+
+Implements [IIntersection2](DiGi.ComputeSharp.Planar.Interfaces.md#DiGi.ComputeSharp.Planar.Interfaces.IIntersection2 'DiGi\.ComputeSharp\.Planar\.Interfaces\.IIntersection2'), [IIntersection](DiGi.ComputeSharp.Core.Interfaces.md#DiGi.ComputeSharp.Core.Interfaces.IIntersection 'DiGi\.ComputeSharp\.Core\.Interfaces\.IIntersection'), [IResult](DiGi.ComputeSharp.Core.Interfaces.md#DiGi.ComputeSharp.Core.Interfaces.IResult 'DiGi\.ComputeSharp\.Core\.Interfaces\.IResult')
+### Constructors
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection()'></a>
+
+## Line2Intersection\(\) Constructor
+
+Initializes a new instance of the [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection') struct with default values\.
+
+```csharp
+public Line2Intersection();
+```
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Core.Classes.Bool,DiGi.ComputeSharp.Planar.Classes.Coordinate2)'></a>
+
+## Line2Intersection\(Bool, Coordinate2\) Constructor
+
+Initializes a new instance of the [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection') struct with specified solidity and the first point\.
+
+```csharp
+public Line2Intersection(DiGi.ComputeSharp.Core.Classes.Bool solid, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_1);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Core.Classes.Bool,DiGi.ComputeSharp.Planar.Classes.Coordinate2).solid'></a>
+
+`solid` [Bool](DiGi.ComputeSharp.Core.Classes.md#DiGi.ComputeSharp.Core.Classes.Bool 'DiGi\.ComputeSharp\.Core\.Classes\.Bool')
+
+The solidity flag for the intersection\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Core.Classes.Bool,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_1'></a>
+
+`point_1` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The first coordinate point\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Core.Classes.Bool,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2)'></a>
+
+## Line2Intersection\(Bool, Coordinate2, Coordinate2\) Constructor
+
+Initializes a new instance of the [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection') struct with specified solidity and two coordinate points\.
+
+```csharp
+public Line2Intersection(DiGi.ComputeSharp.Core.Classes.Bool solid, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_1, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_2);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Core.Classes.Bool,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).solid'></a>
+
+`solid` [Bool](DiGi.ComputeSharp.Core.Classes.md#DiGi.ComputeSharp.Core.Classes.Bool 'DiGi\.ComputeSharp\.Core\.Classes\.Bool')
+
+The solidity flag for the intersection\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Core.Classes.Bool,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_1'></a>
+
+`point_1` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The first coordinate point\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Core.Classes.Bool,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_2'></a>
+
+`point_2` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The second coordinate point\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Planar.Classes.Coordinate2)'></a>
+
+## Line2Intersection\(Coordinate2\) Constructor
+
+Initializes a new instance of the [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection') struct with the first point\.
+
+```csharp
+public Line2Intersection(DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_1);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_1'></a>
+
+`point_1` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The first coordinate point\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2)'></a>
+
+## Line2Intersection\(Coordinate2, Coordinate2\) Constructor
+
+Initializes a new instance of the [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection') struct with two coordinate points\.
+
+```csharp
+public Line2Intersection(DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_1, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_2);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_1'></a>
+
+`point_1` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The first coordinate point\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_2'></a>
+
+`point_2` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The second coordinate point\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Planar.Classes.Line2)'></a>
+
+## Line2Intersection\(Line2\) Constructor
+
+Initializes a new instance of the [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection') struct from an existing line\.
+
+```csharp
+public Line2Intersection(DiGi.ComputeSharp.Planar.Classes.Line2 line);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Line2Intersection(DiGi.ComputeSharp.Planar.Classes.Line2).line'></a>
+
+`line` [Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')
+
+The line to use for initialization\.
+### Fields
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Point_1'></a>
+
+## Line2Intersection\.Point\_1 Field
+
+The first coordinate point of the intersection\.
+
+```csharp
+public readonly Coordinate2 Point_1;
+```
+
+#### Field Value
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Point_2'></a>
+
+## Line2Intersection\.Point\_2 Field
+
+The second coordinate point of the intersection, used when the result is a line segment\.
+
+```csharp
+public readonly Coordinate2 Point_2;
+```
+
+#### Field Value
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.Solid'></a>
+
+## Line2Intersection\.Solid Field
+
+Indicates whether the intersection result is a solid line segment rather than discrete points\.
+
+```csharp
+public readonly Bool Solid;
+```
+
+#### Field Value
+[Bool](DiGi.ComputeSharp.Core.Classes.md#DiGi.ComputeSharp.Core.Classes.Bool 'DiGi\.ComputeSharp\.Core\.Classes\.Bool')
+### Methods
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.GetIntersectionGeometries(System.Nullable_bool_)'></a>
+
+## Line2Intersection\.GetIntersectionGeometries\(Nullable\<bool\>\) Method
+
+Retrieves the geometries resulting from the intersection, optionally overriding the solidity of the result\.
+
+```csharp
+public DiGi.ComputeSharp.Planar.Interfaces.IGeometry2[]? GetIntersectionGeometries(System.Nullable<bool> solid=null);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.GetIntersectionGeometries(System.Nullable_bool_).solid'></a>
+
+`solid` [System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')
+
+An optional override for whether the result should be treated as a solid geometry\.
+
+Implements [GetIntersectionGeometries\(Nullable&lt;bool&gt;\)](DiGi.ComputeSharp.Planar.Interfaces.md#DiGi.ComputeSharp.Planar.Interfaces.IIntersection2.GetIntersectionGeometries(System.Nullable_bool_) 'DiGi\.ComputeSharp\.Planar\.Interfaces\.IIntersection2\.GetIntersectionGeometries\(System\.Nullable\<bool\>\)')
+
+#### Returns
+[IGeometry2](DiGi.ComputeSharp.Planar.Interfaces.md#DiGi.ComputeSharp.Planar.Interfaces.IGeometry2 'DiGi\.ComputeSharp\.Planar\.Interfaces\.IGeometry2')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')  
+An array of [IGeometry2](DiGi.ComputeSharp.Planar.Interfaces.md#DiGi.ComputeSharp.Planar.Interfaces.IGeometry2 'DiGi\.ComputeSharp\.Planar\.Interfaces\.IGeometry2') objects representing the intersection, or null if the primary point is NaN\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.GetLine()'></a>
+
+## Line2Intersection\.GetLine\(\) Method
+
+Converts the intersection result into a line segment if it is marked as solid and contains valid points\.
+
+```csharp
+public DiGi.ComputeSharp.Planar.Classes.Line2 GetLine();
+```
+
+#### Returns
+[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')  
+A [Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2') representing the intersection line, or an empty line if not applicable\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection.IsNaN()'></a>
+
+## Line2Intersection\.IsNaN\(\) Method
+
+Determines whether the intersection result is Not\-a\-Number \(NaN\)\.
+
+```csharp
+public bool IsNaN();
+```
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the first point is NaN; otherwise, false\.

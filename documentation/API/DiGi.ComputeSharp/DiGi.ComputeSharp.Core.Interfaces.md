@@ -30,6 +30,8 @@ public interface IIntersection : DiGi.ComputeSharp.Core.Interfaces.IResult
 
 Derived  
 ↳ [IIntersection&lt;TGeometry&gt;](DiGi.ComputeSharp.Core.Interfaces.md#DiGi.ComputeSharp.Core.Interfaces.IIntersection_TGeometry_ 'DiGi\.ComputeSharp\.Core\.Interfaces\.IIntersection\<TGeometry\>')  
+↳ [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')  
+↳ [IIntersection2](DiGi.ComputeSharp.Planar.Interfaces.md#DiGi.ComputeSharp.Planar.Interfaces.IIntersection2 'DiGi\.ComputeSharp\.Planar\.Interfaces\.IIntersection2')  
 ↳ [Line3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3Intersection')  
 ↳ [Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')
 
@@ -69,6 +71,8 @@ Derived
 ↳ [IIntersection](DiGi.ComputeSharp.Core.Interfaces.md#DiGi.ComputeSharp.Core.Interfaces.IIntersection 'DiGi\.ComputeSharp\.Core\.Interfaces\.IIntersection')  
 ↳ [IIntersection&lt;TGeometry&gt;](DiGi.ComputeSharp.Core.Interfaces.md#DiGi.ComputeSharp.Core.Interfaces.IIntersection_TGeometry_ 'DiGi\.ComputeSharp\.Core\.Interfaces\.IIntersection\<TGeometry\>')  
 ↳ [ITriangulation](DiGi.ComputeSharp.Core.Interfaces.md#DiGi.ComputeSharp.Core.Interfaces.ITriangulation 'DiGi\.ComputeSharp\.Core\.Interfaces\.ITriangulation')  
+↳ [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')  
+↳ [IIntersection2](DiGi.ComputeSharp.Planar.Interfaces.md#DiGi.ComputeSharp.Planar.Interfaces.IIntersection2 'DiGi\.ComputeSharp\.Planar\.Interfaces\.IIntersection2')  
 ↳ [Line3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3Intersection')  
 ↳ [Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')
 

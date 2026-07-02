@@ -300,8 +300,20 @@ namespace DiGi.ComputeSharp.Spatial
                     end = point_3;
                 }
 
-                if (start.IsNaN())
+                if (end.IsNaN())
                 {
+                    // No edge crossing was found. If both endpoints lie inside the solid triangle the whole
+                    // segment is contained, so the intersection is the segment itself.
+                    if (triangle.Inside(line.Start, tolerance) && triangle.Inside(line.End, tolerance))
+                    {
+                        if (line.Start.AlmostEquals(line.End, tolerance))
+                        {
+                            return new Line3Intersection(triangle.Solid, line.Start.GetCentroid(line.End));
+                        }
+
+                        return new Line3Intersection(triangle.Solid, line.Start, line.End);
+                    }
+
                     return new Line3Intersection();
                 }
 
