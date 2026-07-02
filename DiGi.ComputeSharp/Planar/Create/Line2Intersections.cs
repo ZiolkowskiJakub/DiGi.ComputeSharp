@@ -55,8 +55,8 @@ namespace DiGi.ComputeSharp.Planar
                 return null;
             }
 
-            Line2[] lines_Temp = lines as Line2[] ?? lines.ToArray();
-            Triangle2[] triangles_Temp = triangles as Triangle2[] ?? triangles.ToArray();
+            Line2[] lines_Temp = lines as Line2[] ?? [.. lines];
+            Triangle2[] triangles_Temp = triangles as Triangle2[] ?? [.. triangles];
 
             int count_1 = lines_Temp.Length;
             int count_2 = triangles_Temp.Length;

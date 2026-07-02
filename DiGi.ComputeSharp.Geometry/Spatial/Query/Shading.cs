@@ -25,7 +25,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 return null;
             }
 
-            IPolygonalFace3D[] polygonalFace3Ds_Array = polygonalFace3Ds.ToArray();
+            IPolygonalFace3D[] polygonalFace3Ds_Array = [.. polygonalFace3Ds];
             int count = polygonalFace3Ds_Array.Length;
             if (count == 0)
             {
@@ -159,7 +159,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 return null;
             }
 
-            IPolygonalFace3D[] polygonalFace3Ds_Array = polygonalFace3Ds.ToArray();
+            IPolygonalFace3D[] polygonalFace3Ds_Array = [.. polygonalFace3Ds];
             int count = polygonalFace3Ds_Array.Length;
             if (count == 0)
             {

@@ -454,7 +454,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             }
 
             // Project P onto the triangle's plane to get the point Q (unless it's already very close)
-            Coordinate3 q = point.Substract(unitNormal).Multiply(signedDistance);
+            //Coordinate3 q = point.Substract(unitNormal).Multiply(signedDistance);
 
             // Now, check if Q is inside the 2D triangle (defined by A, B, C) using barycentric coordinates
             // We're working in the plane of the triangle, so we can flatten it to 2D for barycentric calculation if needed,

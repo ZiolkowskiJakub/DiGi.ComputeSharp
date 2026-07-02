@@ -46,8 +46,8 @@ namespace DiGi.ComputeSharp.Planar
 
                     if (bounded_1 && bounded_2)
                     {
-                        Coordinate2 point_1 = new Coordinate2();
-                        Coordinate2 point_2 = new Coordinate2();
+                        Coordinate2 point_1 = new ();
+                        Coordinate2 point_2 = new ();
 
                         if (line_2.On(line_1.Start, tolerance))
                         {

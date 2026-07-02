@@ -50,7 +50,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Triangle3Intersection();
             }
 
-            Core.Classes.Bool solid = new Core.Classes.Bool(triangle_1.Solid.ToBool() && triangle_2.Solid.ToBool());
+            Core.Classes.Bool solid = new(triangle_1.Solid.ToBool() && triangle_2.Solid.ToBool());
 
             int count = Core.Query.Count(true, notNaN_1, notNaN_2, notNaN_3, notNaN_4, notNaN_5, notNaN_6);
 

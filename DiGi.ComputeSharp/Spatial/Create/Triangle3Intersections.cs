@@ -75,7 +75,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return null;
             }
 
-            Triangle3[] triangles_1_Temp = triangles_1 as Triangle3[] ?? triangles_1.ToArray();
+            Triangle3[] triangles_1_Temp = triangles_1 as Triangle3[] ?? [.. triangles_1];
 
             int count_1 = triangles_1_Temp.Length;
             int count_2 = triangles_2.Length;

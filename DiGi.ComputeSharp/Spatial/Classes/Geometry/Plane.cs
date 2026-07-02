@@ -57,7 +57,7 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Normal = normal;
             Origin = origin;
 
-            Coordinate3 axisX = new Coordinate3(normal.Y, -normal.X, 0);
+            Coordinate3 axisX = new (normal.Y, -normal.X, 0);
             if (normal.X == 0 && normal.Y == 0)
             {
                 axisX = new Coordinate3(1, 0, 0);
