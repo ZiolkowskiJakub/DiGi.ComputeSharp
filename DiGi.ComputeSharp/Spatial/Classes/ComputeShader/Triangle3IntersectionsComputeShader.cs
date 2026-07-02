@@ -12,8 +12,17 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         private readonly ReadOnlyBuffer<Triangle3> triangles_1;
         private readonly ReadOnlyBuffer<Triangle3> triangles_2;
 
+        /// <summary>
+        /// Gets the writeable buffer containing the triangle-to-triangle intersection results.
+        /// </summary>
         public readonly ReadWriteBuffer<Triangle3Intersection> TriangleIntersections;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Triangle3IntersectionsComputeShader"/> struct.
+        /// </summary>
+        /// <param name="triangles_1">The read-only buffer of the first collection of 3D triangles.</param>
+        /// <param name="triangles_2">The read-only buffer of the second collection of 3D triangles.</param>
+        /// <param name="triangleIntersections">The read-write buffer for storing intersection results.</param>
         public Triangle3IntersectionsComputeShader(ReadOnlyBuffer<Triangle3> triangles_1, ReadOnlyBuffer<Triangle3> triangles_2, ReadWriteBuffer<Triangle3Intersection> triangleIntersections)
         {
             this.triangles_1 = triangles_1;
@@ -21,6 +30,13 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             TriangleIntersections = triangleIntersections;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Triangle3IntersectionsComputeShader"/> struct with a custom tolerance.
+        /// </summary>
+        /// <param name="triangles_1">The read-only buffer of the first collection of 3D triangles.</param>
+        /// <param name="triangles_2">The read-only buffer of the second collection of 3D triangles.</param>
+        /// <param name="triangleIntersections">The read-write buffer for storing intersection results.</param>
+        /// <param name="tolerance">The tolerance value used for geometric comparison.</param>
         public Triangle3IntersectionsComputeShader(ReadOnlyBuffer<Triangle3> triangles_1, ReadOnlyBuffer<Triangle3> triangles_2, ReadWriteBuffer<Triangle3Intersection> triangleIntersections, double tolerance)
         {
             this.triangles_1 = triangles_1;
@@ -29,6 +45,9 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             this.tolerance = tolerance;
         }
 
+        /// <summary>
+        /// Executes the compute shader operation over the designated range of threads.
+        /// </summary>
         public void Execute()
         {
             int index_1 = ThreadIds.X;

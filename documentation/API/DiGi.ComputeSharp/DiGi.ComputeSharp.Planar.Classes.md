@@ -554,7 +554,7 @@ public bool InRange(DiGi.ComputeSharp.Planar.Classes.Triangle2 triangle, double 
 
 <a name='DiGi.ComputeSharp.Planar.Classes.Coordinate2.InRange(DiGi.ComputeSharp.Planar.Classes.Triangle2,double).triangle'></a>
 
-`triangle` [DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.planar.classes.triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')
+`triangle` [Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')
 
 The triangle to check against\.
 
@@ -1218,7 +1218,7 @@ public bool InRange(DiGi.ComputeSharp.Planar.Classes.Triangle2 triangle, double 
 
 <a name='DiGi.ComputeSharp.Planar.Classes.Line2.InRange(DiGi.ComputeSharp.Planar.Classes.Triangle2,double).triangle'></a>
 
-`triangle` [DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.planar.classes.triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')
+`triangle` [Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')
 
 The triangle to check\.
 
@@ -1328,6 +1328,207 @@ public override string ToString();
 #### Returns
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')  
 A formatted string containing the start and end coordinates\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader'></a>
+
+## Line2IntersectComputeShader Struct
+
+```csharp
+public readonly struct Line2IntersectComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader>
+```
+
+Implements [ComputeSharp\.IComputeShader](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader 'ComputeSharp\.IComputeShader'), [ComputeSharp\.Descriptors\.IComputeShaderDescriptor&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.descriptors.icomputeshaderdescriptor-1 'ComputeSharp\.Descriptors\.IComputeShaderDescriptor\`1')[Line2IntersectComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectComputeShader')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.descriptors.icomputeshaderdescriptor-1 'ComputeSharp\.Descriptors\.IComputeShaderDescriptor\`1')
+### Constructors
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool)'></a>
+
+## Line2IntersectComputeShader\(GraphicsDevice, IEnumerable\<Line2\>, IEnumerable\<Triangle2\>, bool, bool\) Constructor
+
+Initializes a new instance of the [Line2IntersectComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectComputeShader') struct\.
+
+```csharp
+public Line2IntersectComputeShader(ComputeSharp.GraphicsDevice graphicsDevice, System.Collections.Generic.IEnumerable<DiGi.ComputeSharp.Planar.Classes.Line2> lines, System.Collections.Generic.IEnumerable<DiGi.ComputeSharp.Planar.Classes.Triangle2> triangles, bool includeStart, bool includeEnd);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool).graphicsDevice'></a>
+
+`graphicsDevice` [ComputeSharp\.GraphicsDevice](https://learn.microsoft.com/en-us/dotnet/api/computesharp.graphicsdevice 'ComputeSharp\.GraphicsDevice')
+
+The graphics device to use for allocating resources\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool).lines'></a>
+
+`lines` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The collection of 2D lines to check for intersections\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool).triangles'></a>
+
+`triangles` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The collection of 2D triangles to test against\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool).includeStart'></a>
+
+`includeStart` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+A value indicating whether to include the start point of each line in the intersection tests\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool).includeEnd'></a>
+
+`includeEnd` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+A value indicating whether to include the end point of each line in the intersection tests\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool,double)'></a>
+
+## Line2IntersectComputeShader\(GraphicsDevice, IEnumerable\<Line2\>, IEnumerable\<Triangle2\>, bool, bool, double\) Constructor
+
+Initializes a new instance of the [Line2IntersectComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectComputeShader') struct with a custom tolerance\.
+
+```csharp
+public Line2IntersectComputeShader(ComputeSharp.GraphicsDevice graphicsDevice, System.Collections.Generic.IEnumerable<DiGi.ComputeSharp.Planar.Classes.Line2> lines, System.Collections.Generic.IEnumerable<DiGi.ComputeSharp.Planar.Classes.Triangle2> triangles, bool includeStart, bool includeEnd, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool,double).graphicsDevice'></a>
+
+`graphicsDevice` [ComputeSharp\.GraphicsDevice](https://learn.microsoft.com/en-us/dotnet/api/computesharp.graphicsdevice 'ComputeSharp\.GraphicsDevice')
+
+The graphics device to use for allocating resources\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool,double).lines'></a>
+
+`lines` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The collection of 2D lines to check for intersections\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool,double).triangles'></a>
+
+`triangles` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The collection of 2D triangles to test against\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool,double).includeStart'></a>
+
+`includeStart` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+A value indicating whether to include the start point of each line in the intersection tests\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool,double).includeEnd'></a>
+
+`includeEnd` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+A value indicating whether to include the end point of each line in the intersection tests\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The tolerance value used for geometric comparison\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,bool,bool)'></a>
+
+## Line2IntersectComputeShader\(ReadOnlyBuffer\<Line2\>, ReadOnlyBuffer\<Triangle2\>, ReadWriteBuffer\<int\>, bool, bool\) Constructor
+
+Initializes a new instance of the [Line2IntersectComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectComputeShader') struct using pre\-allocated buffers\.
+
+```csharp
+public Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Planar.Classes.Line2> lines, ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Planar.Classes.Triangle2> triangles, ComputeSharp.ReadWriteBuffer<int> result, bool includeStart, bool includeEnd);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,bool,bool).lines'></a>
+
+`lines` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of 2D lines\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,bool,bool).triangles'></a>
+
+`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of 2D triangles\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,bool,bool).result'></a>
+
+`result` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The read\-write buffer for storing the intersection results\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,bool,bool).includeStart'></a>
+
+`includeStart` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+A value indicating whether to include the start point of each line in the intersection tests\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,bool,bool).includeEnd'></a>
+
+`includeEnd` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+A value indicating whether to include the end point of each line in the intersection tests\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,double,bool,bool)'></a>
+
+## Line2IntersectComputeShader\(ReadOnlyBuffer\<Line2\>, ReadOnlyBuffer\<Triangle2\>, ReadWriteBuffer\<int\>, double, bool, bool\) Constructor
+
+Initializes a new instance of the [Line2IntersectComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectComputeShader') struct using pre\-allocated buffers and a custom tolerance\.
+
+```csharp
+public Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Planar.Classes.Line2> lines, ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Planar.Classes.Triangle2> triangles, ComputeSharp.ReadWriteBuffer<int> result, double tolerance, bool includeStart, bool includeEnd);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,double,bool,bool).lines'></a>
+
+`lines` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of 2D lines\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,double,bool,bool).triangles'></a>
+
+`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of 2D triangles\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,double,bool,bool).result'></a>
+
+`result` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The read\-write buffer for storing the intersection results\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,double,bool,bool).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The tolerance value used for geometric comparison\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,double,bool,bool).includeStart'></a>
+
+`includeStart` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+A value indicating whether to include the start point of each line in the intersection tests\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Line2IntersectComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_int_,double,bool,bool).includeEnd'></a>
+
+`includeEnd` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
+
+A value indicating whether to include the end point of each line in the intersection tests\.
+### Fields
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader.Result'></a>
+
+## Line2IntersectComputeShader\.Result Field
+
+Gets the writeable buffer containing the index of the first intersecting triangle for each line, or \-1 if no intersection is found\.
+
+```csharp
+public readonly ReadWriteBuffer<int> Result;
+```
+
+#### Field Value
+[ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
 
 <a name='DiGi.ComputeSharp.Planar.Classes.Line2Intersection'></a>
 
@@ -1552,3 +1753,707 @@ public bool IsNaN();
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
 True if the first point is NaN; otherwise, false\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader'></a>
+
+## Line2IntersectionComputeShader Struct
+
+```csharp
+public readonly struct Line2IntersectionComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader>
+```
+
+Implements [ComputeSharp\.IComputeShader](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader 'ComputeSharp\.IComputeShader'), [ComputeSharp\.Descriptors\.IComputeShaderDescriptor&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.descriptors.icomputeshaderdescriptor-1 'ComputeSharp\.Descriptors\.IComputeShaderDescriptor\`1')[Line2IntersectionComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectionComputeShader')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.descriptors.icomputeshaderdescriptor-1 'ComputeSharp\.Descriptors\.IComputeShaderDescriptor\`1')
+### Constructors
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(ComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Planar.Classes.Line2,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_)'></a>
+
+## Line2IntersectionComputeShader\(GraphicsDevice, Line2, IEnumerable\<Line2\>\) Constructor
+
+Initializes a new instance of the [Line2IntersectionComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectionComputeShader') struct\.
+
+```csharp
+public Line2IntersectionComputeShader(ComputeSharp.GraphicsDevice graphicsDevice, DiGi.ComputeSharp.Planar.Classes.Line2 line, System.Collections.Generic.IEnumerable<DiGi.ComputeSharp.Planar.Classes.Line2> lines);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(ComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Planar.Classes.Line2,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_).graphicsDevice'></a>
+
+`graphicsDevice` [ComputeSharp\.GraphicsDevice](https://learn.microsoft.com/en-us/dotnet/api/computesharp.graphicsdevice 'ComputeSharp\.GraphicsDevice')
+
+The graphics device to use for allocating resources\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(ComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Planar.Classes.Line2,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_).line'></a>
+
+`line` [Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')
+
+The primary 2D line to intersect with other lines\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(ComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Planar.Classes.Line2,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_).lines'></a>
+
+`lines` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The collection of 2D lines to check against the primary line\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(ComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Planar.Classes.Line2,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,double)'></a>
+
+## Line2IntersectionComputeShader\(GraphicsDevice, Line2, IEnumerable\<Line2\>, double\) Constructor
+
+Initializes a new instance of the [Line2IntersectionComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectionComputeShader') struct with a custom tolerance\.
+
+```csharp
+public Line2IntersectionComputeShader(ComputeSharp.GraphicsDevice graphicsDevice, DiGi.ComputeSharp.Planar.Classes.Line2 line, System.Collections.Generic.IEnumerable<DiGi.ComputeSharp.Planar.Classes.Line2> lines, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(ComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Planar.Classes.Line2,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,double).graphicsDevice'></a>
+
+`graphicsDevice` [ComputeSharp\.GraphicsDevice](https://learn.microsoft.com/en-us/dotnet/api/computesharp.graphicsdevice 'ComputeSharp\.GraphicsDevice')
+
+The graphics device to use for allocating resources\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(ComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Planar.Classes.Line2,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,double).line'></a>
+
+`line` [Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')
+
+The primary 2D line to intersect with other lines\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(ComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Planar.Classes.Line2,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,double).lines'></a>
+
+`lines` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+
+The collection of 2D lines to check against the primary line\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(ComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Planar.Classes.Line2,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The tolerance value used for geometric comparison\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(DiGi.ComputeSharp.Planar.Classes.Line2,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_)'></a>
+
+## Line2IntersectionComputeShader\(Line2, ReadOnlyBuffer\<Line2\>, ReadWriteBuffer\<Line2Intersection\>\) Constructor
+
+Initializes a new instance of the [Line2IntersectionComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectionComputeShader') struct using pre\-allocated buffers\.
+
+```csharp
+public Line2IntersectionComputeShader(DiGi.ComputeSharp.Planar.Classes.Line2 line, ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Planar.Classes.Line2> lines, ComputeSharp.ReadWriteBuffer<DiGi.ComputeSharp.Planar.Classes.Line2Intersection> lineIntersections);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(DiGi.ComputeSharp.Planar.Classes.Line2,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_).line'></a>
+
+`line` [Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')
+
+The primary 2D line to intersect with other lines\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(DiGi.ComputeSharp.Planar.Classes.Line2,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_).lines'></a>
+
+`lines` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of 2D lines to check against\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(DiGi.ComputeSharp.Planar.Classes.Line2,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_).lineIntersections'></a>
+
+`lineIntersections` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The read\-write buffer for storing the intersection results\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(DiGi.ComputeSharp.Planar.Classes.Line2,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_,double)'></a>
+
+## Line2IntersectionComputeShader\(Line2, ReadOnlyBuffer\<Line2\>, ReadWriteBuffer\<Line2Intersection\>, double\) Constructor
+
+Initializes a new instance of the [Line2IntersectionComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectionComputeShader') struct using pre\-allocated buffers and a custom tolerance\.
+
+```csharp
+public Line2IntersectionComputeShader(DiGi.ComputeSharp.Planar.Classes.Line2 line, ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Planar.Classes.Line2> lines, ComputeSharp.ReadWriteBuffer<DiGi.ComputeSharp.Planar.Classes.Line2Intersection> lineIntersections, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(DiGi.ComputeSharp.Planar.Classes.Line2,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_,double).line'></a>
+
+`line` [Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')
+
+The primary 2D line to intersect with other lines\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(DiGi.ComputeSharp.Planar.Classes.Line2,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_,double).lines'></a>
+
+`lines` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of 2D lines to check against\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(DiGi.ComputeSharp.Planar.Classes.Line2,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_,double).lineIntersections'></a>
+
+`lineIntersections` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The read\-write buffer for storing the intersection results\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Line2IntersectionComputeShader(DiGi.ComputeSharp.Planar.Classes.Line2,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The tolerance value used for geometric comparison\.
+### Fields
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.LineIntersections'></a>
+
+## Line2IntersectionComputeShader\.LineIntersections Field
+
+Gets the writeable buffer containing the line intersection results\.
+
+```csharp
+public readonly ReadWriteBuffer<Line2Intersection> LineIntersections;
+```
+
+#### Field Value
+[ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+### Methods
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader.Execute()'></a>
+
+## Line2IntersectionComputeShader\.Execute\(\) Method
+
+Executes the compute shader operation over the designated range of threads\.
+
+```csharp
+public void Execute();
+```
+
+Implements [Execute\(\)](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader.execute 'ComputeSharp\.IComputeShader\.Execute')
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader'></a>
+
+## Line2IntersectionsComputeShader Struct
+
+```csharp
+public readonly struct Line2IntersectionsComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader>
+```
+
+Implements [ComputeSharp\.IComputeShader](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader 'ComputeSharp\.IComputeShader'), [ComputeSharp\.Descriptors\.IComputeShaderDescriptor&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.descriptors.icomputeshaderdescriptor-1 'ComputeSharp\.Descriptors\.IComputeShaderDescriptor\`1')[Line2IntersectionsComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectionsComputeShader')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.descriptors.icomputeshaderdescriptor-1 'ComputeSharp\.Descriptors\.IComputeShaderDescriptor\`1')
+### Constructors
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader.Line2IntersectionsComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_)'></a>
+
+## Line2IntersectionsComputeShader\(ReadOnlyBuffer\<Line2\>, ReadOnlyBuffer\<Triangle2\>, ReadWriteBuffer\<Line2Intersection\>\) Constructor
+
+Initializes a new instance of the [Line2IntersectionsComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectionsComputeShader') struct\.
+
+```csharp
+public Line2IntersectionsComputeShader(ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Planar.Classes.Line2> lines, ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Planar.Classes.Triangle2> triangles, ComputeSharp.ReadWriteBuffer<DiGi.ComputeSharp.Planar.Classes.Line2Intersection> lineIntersections);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader.Line2IntersectionsComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_).lines'></a>
+
+`lines` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of 2D lines\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader.Line2IntersectionsComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_).triangles'></a>
+
+`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of 2D triangles\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader.Line2IntersectionsComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_).lineIntersections'></a>
+
+`lineIntersections` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The read\-write buffer for storing the intersection results\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader.Line2IntersectionsComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_,double)'></a>
+
+## Line2IntersectionsComputeShader\(ReadOnlyBuffer\<Line2\>, ReadOnlyBuffer\<Triangle2\>, ReadWriteBuffer\<Line2Intersection\>, double\) Constructor
+
+Initializes a new instance of the [Line2IntersectionsComputeShader](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2IntersectionsComputeShader') struct with a custom tolerance\.
+
+```csharp
+public Line2IntersectionsComputeShader(ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Planar.Classes.Line2> lines, ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Planar.Classes.Triangle2> triangles, ComputeSharp.ReadWriteBuffer<DiGi.ComputeSharp.Planar.Classes.Line2Intersection> lineIntersections, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader.Line2IntersectionsComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_,double).lines'></a>
+
+`lines` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of 2D lines\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader.Line2IntersectionsComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_,double).triangles'></a>
+
+`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of 2D triangles\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader.Line2IntersectionsComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_,double).lineIntersections'></a>
+
+`lineIntersections` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The read\-write buffer for storing the intersection results\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader.Line2IntersectionsComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Planar.Classes.Line2Intersection_,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The tolerance value used for geometric comparison\.
+### Fields
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader.LineIntersections'></a>
+
+## Line2IntersectionsComputeShader\.LineIntersections Field
+
+Gets the writeable buffer containing the line\-to\-triangle intersection results\.
+
+```csharp
+public readonly ReadWriteBuffer<Line2Intersection> LineIntersections;
+```
+
+#### Field Value
+[ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+### Methods
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader.Execute()'></a>
+
+## Line2IntersectionsComputeShader\.Execute\(\) Method
+
+Executes the compute shader operation over the designated range of threads\.
+
+```csharp
+public void Execute();
+```
+
+Implements [Execute\(\)](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader.execute 'ComputeSharp\.IComputeShader\.Execute')
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2'></a>
+
+## Triangle2 Struct
+
+Represents a two\-dimensional triangle in a planar coordinate system\.
+
+```csharp
+public readonly struct Triangle2 : DiGi.ComputeSharp.Planar.Interfaces.IGeometry2, DiGi.ComputeSharp.Core.Interfaces.IGeometry
+```
+
+Implements [IGeometry2](DiGi.ComputeSharp.Planar.Interfaces.md#DiGi.ComputeSharp.Planar.Interfaces.IGeometry2 'DiGi\.ComputeSharp\.Planar\.Interfaces\.IGeometry2'), [IGeometry](DiGi.ComputeSharp.Core.Interfaces.md#DiGi.ComputeSharp.Core.Interfaces.IGeometry 'DiGi\.ComputeSharp\.Core\.Interfaces\.IGeometry')
+### Constructors
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Triangle2()'></a>
+
+## Triangle2\(\) Constructor
+
+Initializes a new instance of the [Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2') struct with default values \(NaN coordinates and not solid\)\.
+
+```csharp
+public Triangle2();
+```
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Triangle2(DiGi.ComputeSharp.Core.Classes.Bool,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2)'></a>
+
+## Triangle2\(Bool, Coordinate2, Coordinate2, Coordinate2\) Constructor
+
+Initializes a new instance of the [Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2') struct with the specified solid state and vertices\.
+
+```csharp
+public Triangle2(DiGi.ComputeSharp.Core.Classes.Bool solid, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_1, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_2, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_3);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Triangle2(DiGi.ComputeSharp.Core.Classes.Bool,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).solid'></a>
+
+`solid` [Bool](DiGi.ComputeSharp.Core.Classes.md#DiGi.ComputeSharp.Core.Classes.Bool 'DiGi\.ComputeSharp\.Core\.Classes\.Bool')
+
+A value indicating whether the triangle is solid\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Triangle2(DiGi.ComputeSharp.Core.Classes.Bool,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_1'></a>
+
+`point_1` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The first vertex\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Triangle2(DiGi.ComputeSharp.Core.Classes.Bool,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_2'></a>
+
+`point_2` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The second vertex\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Triangle2(DiGi.ComputeSharp.Core.Classes.Bool,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_3'></a>
+
+`point_3` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The third vertex\.
+### Fields
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Point_1'></a>
+
+## Triangle2\.Point\_1 Field
+
+The first vertex of the triangle\.
+
+```csharp
+public readonly Coordinate2 Point_1;
+```
+
+#### Field Value
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Point_2'></a>
+
+## Triangle2\.Point\_2 Field
+
+The second vertex of the triangle\.
+
+```csharp
+public readonly Coordinate2 Point_2;
+```
+
+#### Field Value
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Point_3'></a>
+
+## Triangle2\.Point\_3 Field
+
+The third vertex of the triangle\.
+
+```csharp
+public readonly Coordinate2 Point_3;
+```
+
+#### Field Value
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Solid'></a>
+
+## Triangle2\.Solid Field
+
+A value indicating whether the triangle is solid \(filled\) or boundary\-only\.
+
+```csharp
+public readonly Bool Solid;
+```
+
+#### Field Value
+[Bool](DiGi.ComputeSharp.Core.Classes.md#DiGi.ComputeSharp.Core.Classes.Bool 'DiGi\.ComputeSharp\.Core\.Classes\.Bool')
+### Methods
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetApproximatePerimeter()'></a>
+
+## Triangle2\.GetApproximatePerimeter\(\) Method
+
+Calculates the approximate perimeter of the triangle using fast distance calculations\.
+
+```csharp
+public double GetApproximatePerimeter();
+```
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The approximate perimeter of the triangle\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetArea()'></a>
+
+## Triangle2\.GetArea\(\) Method
+
+Calculates the signed area of the triangle\.
+
+```csharp
+public double GetArea();
+```
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The area of the triangle\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetCentroid()'></a>
+
+## Triangle2\.GetCentroid\(\) Method
+
+Gets the centroid \(geometric center\) of the triangle\.
+
+```csharp
+public DiGi.ComputeSharp.Planar.Classes.Coordinate2 GetCentroid();
+```
+
+#### Returns
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')  
+A [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2') representing the centroid of the triangle\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetInversed()'></a>
+
+## Triangle2\.GetInversed\(\) Method
+
+Gets a new triangle with inverted vertex order \(reversing winding direction\)\.
+
+```csharp
+public DiGi.ComputeSharp.Planar.Classes.Triangle2 GetInversed();
+```
+
+#### Returns
+[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')  
+An inverted [Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetLine(int)'></a>
+
+## Triangle2\.GetLine\(int\) Method
+
+Gets one of the boundary lines of the triangle by index\.
+
+```csharp
+public DiGi.ComputeSharp.Planar.Classes.Line2 GetLine(int index);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetLine(int).index'></a>
+
+`index` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The line index \(0, 1, or 2\)\.
+
+#### Returns
+[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')  
+The boundary [Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2') at the specified index\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetLines()'></a>
+
+## Triangle2\.GetLines\(\) Method
+
+Gets all boundary lines of the triangle\.
+
+```csharp
+public DiGi.ComputeSharp.Planar.Classes.Line2[] GetLines();
+```
+
+#### Returns
+[Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')  
+An array of three [Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2') objects representing the boundary lines\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetMax()'></a>
+
+## Triangle2\.GetMax\(\) Method
+
+Gets the maximum coordinate bounds of the triangle\.
+
+```csharp
+public DiGi.ComputeSharp.Planar.Classes.Coordinate2 GetMax();
+```
+
+#### Returns
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')  
+A [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2') representing the maximum X and Y coordinates\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetMin()'></a>
+
+## Triangle2\.GetMin\(\) Method
+
+Gets the minimum coordinate bounds of the triangle\.
+
+```csharp
+public DiGi.ComputeSharp.Planar.Classes.Coordinate2 GetMin();
+```
+
+#### Returns
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')  
+A [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2') representing the minimum X and Y coordinates\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetMoved(DiGi.ComputeSharp.Planar.Classes.Coordinate2)'></a>
+
+## Triangle2\.GetMoved\(Coordinate2\) Method
+
+Translates the triangle by the specified offset vector\.
+
+```csharp
+public DiGi.ComputeSharp.Planar.Classes.Triangle2 GetMoved(DiGi.ComputeSharp.Planar.Classes.Coordinate2 vector);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetMoved(DiGi.ComputeSharp.Planar.Classes.Coordinate2).vector'></a>
+
+`vector` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The translation vector\.
+
+#### Returns
+[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')  
+A translated [Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetPerimeter(double)'></a>
+
+## Triangle2\.GetPerimeter\(double\) Method
+
+Calculates the perimeter of the triangle with the specified tolerance\.
+
+```csharp
+public double GetPerimeter(double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.GetPerimeter(double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The tolerance used for distance calculations\.
+
+#### Returns
+[System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')  
+The perimeter of the triangle\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.InRange(DiGi.ComputeSharp.Planar.Classes.Coordinate2,double)'></a>
+
+## Triangle2\.InRange\(Coordinate2, double\) Method
+
+Checks if a point is within the bounding range of the triangle\.
+
+```csharp
+public bool InRange(DiGi.ComputeSharp.Planar.Classes.Coordinate2 point, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.InRange(DiGi.ComputeSharp.Planar.Classes.Coordinate2,double).point'></a>
+
+`point` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The point to check\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.InRange(DiGi.ComputeSharp.Planar.Classes.Coordinate2,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the point is within range; otherwise, false\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.InRange(DiGi.ComputeSharp.Planar.Classes.Line2,double)'></a>
+
+## Triangle2\.InRange\(Line2, double\) Method
+
+Checks if a line is within the bounding range of the triangle\.
+
+```csharp
+public bool InRange(DiGi.ComputeSharp.Planar.Classes.Line2 line, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.InRange(DiGi.ComputeSharp.Planar.Classes.Line2,double).line'></a>
+
+`line` [Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')
+
+The line to check\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.InRange(DiGi.ComputeSharp.Planar.Classes.Line2,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the line is within range; otherwise, false\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.InRange(DiGi.ComputeSharp.Planar.Classes.Triangle2,double)'></a>
+
+## Triangle2\.InRange\(Triangle2, double\) Method
+
+Checks if another triangle is within the bounding range of this triangle\.
+
+```csharp
+public bool InRange(DiGi.ComputeSharp.Planar.Classes.Triangle2 triangle, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.InRange(DiGi.ComputeSharp.Planar.Classes.Triangle2,double).triangle'></a>
+
+`triangle` [Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')
+
+The other triangle to check\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.InRange(DiGi.ComputeSharp.Planar.Classes.Triangle2,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The distance tolerance\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the triangles' bounding boxes overlap; otherwise, false\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Inside(DiGi.ComputeSharp.Planar.Classes.Coordinate2,double)'></a>
+
+## Triangle2\.Inside\(Coordinate2, double\) Method
+
+Determines whether a point lies inside the triangle using barycentric coordinates\.
+
+```csharp
+public bool Inside(DiGi.ComputeSharp.Planar.Classes.Coordinate2 point, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Inside(DiGi.ComputeSharp.Planar.Classes.Coordinate2,double).point'></a>
+
+`point` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The point to test\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.Inside(DiGi.ComputeSharp.Planar.Classes.Coordinate2,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The numerical tolerance value\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the point lies inside or on the boundary of the triangle; otherwise, false\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.IsNaN()'></a>
+
+## Triangle2\.IsNaN\(\) Method
+
+Checks if any of the triangle's vertices contain NaN coordinates\.
+
+```csharp
+public bool IsNaN();
+```
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if any vertex is NaN; otherwise, false\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.On(DiGi.ComputeSharp.Planar.Classes.Coordinate2,double)'></a>
+
+## Triangle2\.On\(Coordinate2, double\) Method
+
+Determines whether a point lies on the triangle \(inside if solid, or on boundary lines if not\)\.
+
+```csharp
+public bool On(DiGi.ComputeSharp.Planar.Classes.Coordinate2 point, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.On(DiGi.ComputeSharp.Planar.Classes.Coordinate2,double).point'></a>
+
+`point` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The point to test\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.On(DiGi.ComputeSharp.Planar.Classes.Coordinate2,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The tolerance value\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the point lies on the triangle; otherwise, false\.
+
+<a name='DiGi.ComputeSharp.Planar.Classes.Triangle2.ToString()'></a>
+
+## Triangle2\.ToString\(\) Method
+
+Returns a string representation of the current triangle\.
+
+```csharp
+public override string ToString();
+```
+
+#### Returns
+[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')  
+A formatted string describing the triangle vertices\.

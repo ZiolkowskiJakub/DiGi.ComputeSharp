@@ -14,3 +14,4 @@
 | [DiGi\.ComputeSharp\.Spatial](DiGi.ComputeSharp.Spatial.md 'DiGi\.ComputeSharp\.Spatial') | |
 | [DiGi\.ComputeSharp\.Spatial\.Classes](DiGi.ComputeSharp.Spatial.Classes.md 'DiGi\.ComputeSharp\.Spatial\.Classes') | |
 | [DiGi\.ComputeSharp\.Spatial\.Enums](DiGi.ComputeSharp.Spatial.Enums.md 'DiGi\.ComputeSharp\.Spatial\.Enums') | |
+| [DiGi\.ComputeSharp\.Spatial\.Interfaces](DiGi.ComputeSharp.Spatial.Interfaces.md 'DiGi\.ComputeSharp\.Spatial\.Interfaces') | |

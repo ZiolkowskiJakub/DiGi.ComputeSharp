@@ -1,9 +1,19 @@
-﻿using DiGi.ComputeSharp.Planar.Classes;
+using DiGi.ComputeSharp.Planar.Classes;
 
 namespace DiGi.ComputeSharp.Planar
 {
     public static partial class Query
     {
+        /// <summary>
+        /// Calculates the centroid of up to six 2D coordinates, ignoring any coordinates that are NaN.
+        /// </summary>
+        /// <param name="point_1">The first coordinate.</param>
+        /// <param name="point_2">The second coordinate.</param>
+        /// <param name="point_3">The third coordinate.</param>
+        /// <param name="point_4">The fourth coordinate.</param>
+        /// <param name="point_5">The fifth coordinate.</param>
+        /// <param name="point_6">The sixth coordinate.</param>
+        /// <returns>A new <see cref="Coordinate2"/> representing the centroid of the valid coordinates.</returns>
         internal static Coordinate2 Centroid(Coordinate2 point_1, Coordinate2 point_2, Coordinate2 point_3, Coordinate2 point_4, Coordinate2 point_5, Coordinate2 point_6)
         {
             double x = 0;

@@ -15,8 +15,19 @@ namespace DiGi.ComputeSharp.Planar.Classes
         private readonly ReadOnlyBuffer<Line2> lines;
         private readonly ReadOnlyBuffer<Triangle2> triangles;
 
+        /// <summary>
+        /// Gets the writeable buffer containing the index of the first intersecting triangle for each line, or -1 if no intersection is found.
+        /// </summary>
         public readonly ReadWriteBuffer<int> Result;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Line2IntersectComputeShader"/> struct.
+        /// </summary>
+        /// <param name="graphicsDevice">The graphics device to use for allocating resources.</param>
+        /// <param name="lines">The collection of 2D lines to check for intersections.</param>
+        /// <param name="triangles">The collection of 2D triangles to test against.</param>
+        /// <param name="includeStart">A value indicating whether to include the start point of each line in the intersection tests.</param>
+        /// <param name="includeEnd">A value indicating whether to include the end point of each line in the intersection tests.</param>
         public Line2IntersectComputeShader(GraphicsDevice graphicsDevice, IEnumerable<Line2> lines, IEnumerable<Triangle2> triangles, bool includeStart, bool includeEnd)
         {
             this.lines = graphicsDevice.AllocateReadOnlyBuffer(lines.ToArray());
@@ -26,6 +37,15 @@ namespace DiGi.ComputeSharp.Planar.Classes
             this.includeEnd = includeEnd;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Line2IntersectComputeShader"/> struct with a custom tolerance.
+        /// </summary>
+        /// <param name="graphicsDevice">The graphics device to use for allocating resources.</param>
+        /// <param name="lines">The collection of 2D lines to check for intersections.</param>
+        /// <param name="triangles">The collection of 2D triangles to test against.</param>
+        /// <param name="includeStart">A value indicating whether to include the start point of each line in the intersection tests.</param>
+        /// <param name="includeEnd">A value indicating whether to include the end point of each line in the intersection tests.</param>
+        /// <param name="tolerance">The tolerance value used for geometric comparison.</param>
         public Line2IntersectComputeShader(GraphicsDevice graphicsDevice, IEnumerable<Line2> lines, IEnumerable<Triangle2> triangles, bool includeStart, bool includeEnd, double tolerance)
         {
             this.tolerance = tolerance;
@@ -37,6 +57,14 @@ namespace DiGi.ComputeSharp.Planar.Classes
             this.includeEnd = includeEnd;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Line2IntersectComputeShader"/> struct using pre-allocated buffers.
+        /// </summary>
+        /// <param name="lines">The read-only buffer of 2D lines.</param>
+        /// <param name="triangles">The read-only buffer of 2D triangles.</param>
+        /// <param name="result">The read-write buffer for storing the intersection results.</param>
+        /// <param name="includeStart">A value indicating whether to include the start point of each line in the intersection tests.</param>
+        /// <param name="includeEnd">A value indicating whether to include the end point of each line in the intersection tests.</param>
         public Line2IntersectComputeShader(ReadOnlyBuffer<Line2> lines, ReadOnlyBuffer<Triangle2> triangles, ReadWriteBuffer<int> result, bool includeStart, bool includeEnd)
         {
             this.lines = lines;
@@ -46,6 +74,15 @@ namespace DiGi.ComputeSharp.Planar.Classes
             this.includeEnd = includeEnd;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Line2IntersectComputeShader"/> struct using pre-allocated buffers and a custom tolerance.
+        /// </summary>
+        /// <param name="lines">The read-only buffer of 2D lines.</param>
+        /// <param name="triangles">The read-only buffer of 2D triangles.</param>
+        /// <param name="result">The read-write buffer for storing the intersection results.</param>
+        /// <param name="tolerance">The tolerance value used for geometric comparison.</param>
+        /// <param name="includeStart">A value indicating whether to include the start point of each line in the intersection tests.</param>
+        /// <param name="includeEnd">A value indicating whether to include the end point of each line in the intersection tests.</param>
         public Line2IntersectComputeShader(ReadOnlyBuffer<Line2> lines, ReadOnlyBuffer<Triangle2> triangles, ReadWriteBuffer<int> result, double tolerance, bool includeStart, bool includeEnd)
         {
             this.lines = lines;

@@ -1,4 +1,4 @@
-﻿using ComputeSharp;
+using ComputeSharp;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
@@ -15,8 +15,19 @@ namespace DiGi.ComputeSharp.Spatial.Classes
         private readonly ReadOnlyBuffer<Line3> lines;
         private readonly ReadOnlyBuffer<Triangle3> triangles;
 
+        /// <summary>
+        /// Gets the writeable buffer containing the index of the first intersecting triangle for each line, or -1 if no intersection is found.
+        /// </summary>
         public readonly ReadWriteBuffer<int> Result;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Line3IntersectComputeShader"/> struct.
+        /// </summary>
+        /// <param name="graphicsDevice">The graphics device to use for allocating resources.</param>
+        /// <param name="lines">The collection of 3D lines to check for intersections.</param>
+        /// <param name="triangles">The collection of 3D triangles to test against.</param>
+        /// <param name="includeStart">A value indicating whether to include the start point of each line in the intersection tests.</param>
+        /// <param name="includeEnd">A value indicating whether to include the end point of each line in the intersection tests.</param>
         public Line3IntersectComputeShader(GraphicsDevice graphicsDevice, IEnumerable<Line3> lines, IEnumerable<Triangle3> triangles, bool includeStart, bool includeEnd)
         {
             this.lines = graphicsDevice.AllocateReadOnlyBuffer(lines.ToArray());
@@ -26,6 +37,15 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             this.includeEnd = includeEnd;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Line3IntersectComputeShader"/> struct with a custom tolerance.
+        /// </summary>
+        /// <param name="graphicsDevice">The graphics device to use for allocating resources.</param>
+        /// <param name="lines">The collection of 3D lines to check for intersections.</param>
+        /// <param name="triangles">The collection of 3D triangles to test against.</param>
+        /// <param name="includeStart">A value indicating whether to include the start point of each line in the intersection tests.</param>
+        /// <param name="includeEnd">A value indicating whether to include the end point of each line in the intersection tests.</param>
+        /// <param name="tolerance">The tolerance value used for geometric comparison.</param>
         public Line3IntersectComputeShader(GraphicsDevice graphicsDevice, IEnumerable<Line3> lines, IEnumerable<Triangle3> triangles, bool includeStart, bool includeEnd, double tolerance)
         {
             this.tolerance = tolerance;
@@ -37,6 +57,14 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             this.includeEnd = includeEnd;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Line3IntersectComputeShader"/> struct using pre-allocated buffers.
+        /// </summary>
+        /// <param name="lines">The read-only buffer of 3D lines.</param>
+        /// <param name="triangles">The read-only buffer of 3D triangles.</param>
+        /// <param name="result">The read-write buffer for storing the intersection results.</param>
+        /// <param name="includeStart">A value indicating whether to include the start point of each line in the intersection tests.</param>
+        /// <param name="includeEnd">A value indicating whether to include the end point of each line in the intersection tests.</param>
         public Line3IntersectComputeShader(ReadOnlyBuffer<Line3> lines, ReadOnlyBuffer<Triangle3> triangles, ReadWriteBuffer<int> result, bool includeStart, bool includeEnd)
         {
             this.lines = lines;
@@ -46,6 +74,15 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             this.includeEnd = includeEnd;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Line3IntersectComputeShader"/> struct using pre-allocated buffers and a custom tolerance.
+        /// </summary>
+        /// <param name="lines">The read-only buffer of 3D lines.</param>
+        /// <param name="triangles">The read-only buffer of 3D triangles.</param>
+        /// <param name="result">The read-write buffer for storing the intersection results.</param>
+        /// <param name="tolerance">The tolerance value used for geometric comparison.</param>
+        /// <param name="includeStart">A value indicating whether to include the start point of each line in the intersection tests.</param>
+        /// <param name="includeEnd">A value indicating whether to include the end point of each line in the intersection tests.</param>
         public Line3IntersectComputeShader(ReadOnlyBuffer<Line3> lines, ReadOnlyBuffer<Triangle3> triangles, ReadWriteBuffer<int> result, double tolerance, bool includeStart, bool includeEnd)
         {
             this.lines = lines;

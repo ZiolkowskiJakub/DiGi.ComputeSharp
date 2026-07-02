@@ -66,7 +66,7 @@ The line to test for intersection\.
 
 <a name='DiGi.ComputeSharp.Planar.Create.Line2Intersection(DiGi.ComputeSharp.Planar.Classes.Line2,DiGi.ComputeSharp.Planar.Classes.Triangle2,double).triangle'></a>
 
-`triangle` [DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.planar.classes.triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')
+`triangle` [Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')
 
 The triangle to test for intersection\.
 
@@ -132,7 +132,7 @@ The collection of lines to test\.
 
 <a name='DiGi.ComputeSharp.Planar.Create.Line2Intersections(System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,double).triangles'></a>
 
-`triangles` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.planar.classes.triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`triangles` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The collection of triangles to intersect against\.
 
@@ -247,6 +247,114 @@ public static class Query
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → Query
 ### Methods
 
+<a name='DiGi.ComputeSharp.Planar.Query.Centroid(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2)'></a>
+
+## Query\.Centroid\(Coordinate2, Coordinate2, Coordinate2, Coordinate2, Coordinate2, Coordinate2\) Method
+
+Calculates the centroid of up to six 2D coordinates, ignoring any coordinates that are NaN\.
+
+```csharp
+internal static DiGi.ComputeSharp.Planar.Classes.Coordinate2 Centroid(DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_1, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_2, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_3, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_4, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_5, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_6);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Query.Centroid(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_1'></a>
+
+`point_1` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The first coordinate\.
+
+<a name='DiGi.ComputeSharp.Planar.Query.Centroid(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_2'></a>
+
+`point_2` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The second coordinate\.
+
+<a name='DiGi.ComputeSharp.Planar.Query.Centroid(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_3'></a>
+
+`point_3` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The third coordinate\.
+
+<a name='DiGi.ComputeSharp.Planar.Query.Centroid(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_4'></a>
+
+`point_4` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The fourth coordinate\.
+
+<a name='DiGi.ComputeSharp.Planar.Query.Centroid(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_5'></a>
+
+`point_5` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The fifth coordinate\.
+
+<a name='DiGi.ComputeSharp.Planar.Query.Centroid(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).point_6'></a>
+
+`point_6` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The sixth coordinate\.
+
+#### Returns
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')  
+A new [Coordinate2\(Coordinate2, Coordinate2, Coordinate2, Coordinate2, Coordinate2, Coordinate2, int\)](DiGi.ComputeSharp.Planar.md#DiGi.ComputeSharp.Planar.Query.Coordinate2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int) 'DiGi\.ComputeSharp\.Planar\.Query\.Coordinate2\(DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, int\)') representing the centroid of the valid coordinates\.
+
+<a name='DiGi.ComputeSharp.Planar.Query.Coordinate2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int)'></a>
+
+## Query\.Coordinate2\(Coordinate2, Coordinate2, Coordinate2, Coordinate2, Coordinate2, Coordinate2, int\) Method
+
+Selects one of the six 2D coordinates by its index \(1\-based\)\.
+
+```csharp
+internal static DiGi.ComputeSharp.Planar.Classes.Coordinate2 Coordinate2(ref DiGi.ComputeSharp.Planar.Classes.Coordinate2 coordinate_1, ref DiGi.ComputeSharp.Planar.Classes.Coordinate2 coordinate_2, ref DiGi.ComputeSharp.Planar.Classes.Coordinate2 coordinate_3, ref DiGi.ComputeSharp.Planar.Classes.Coordinate2 coordinate_4, ref DiGi.ComputeSharp.Planar.Classes.Coordinate2 coordinate_5, ref DiGi.ComputeSharp.Planar.Classes.Coordinate2 coordinate_6, int index);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Planar.Query.Coordinate2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int).coordinate_1'></a>
+
+`coordinate_1` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The first coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Planar.Query.Coordinate2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int).coordinate_2'></a>
+
+`coordinate_2` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The second coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Planar.Query.Coordinate2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int).coordinate_3'></a>
+
+`coordinate_3` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The third coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Planar.Query.Coordinate2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int).coordinate_4'></a>
+
+`coordinate_4` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The fourth coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Planar.Query.Coordinate2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int).coordinate_5'></a>
+
+`coordinate_5` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The fifth coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Planar.Query.Coordinate2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int).coordinate_6'></a>
+
+`coordinate_6` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The sixth coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Planar.Query.Coordinate2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int).index'></a>
+
+`index` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The 1\-based index of the coordinate to select\.
+
+#### Returns
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')  
+The selected [Coordinate2\(Coordinate2, Coordinate2, Coordinate2, Coordinate2, Coordinate2, Coordinate2, int\)](DiGi.ComputeSharp.Planar.md#DiGi.ComputeSharp.Planar.Query.Coordinate2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int) 'DiGi\.ComputeSharp\.Planar\.Query\.Coordinate2\(DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, int\)'), or a default coordinate if index is out of bounds\.
+
 <a name='DiGi.ComputeSharp.Planar.Query.Intersect(DiGi.ComputeSharp.Planar.Classes.Line2,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool)'></a>
 
 ## Query\.Intersect\(Line2, IEnumerable\<Triangle2\>, bool, bool\) Method
@@ -266,7 +374,7 @@ The line segment to evaluate for intersection\.
 
 <a name='DiGi.ComputeSharp.Planar.Query.Intersect(DiGi.ComputeSharp.Planar.Classes.Line2,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool).triangle2s'></a>
 
-`triangle2s` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.planar.classes.triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`triangle2s` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 A collection of triangles to check against the line segment\.
 
@@ -305,7 +413,7 @@ The collection of 2D lines to evaluate for intersections\.
 
 <a name='DiGi.ComputeSharp.Planar.Query.Intersect(System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool).triangle2s'></a>
 
-`triangle2s` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.planar.classes.triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`triangle2s` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The collection of 2D triangles to test against\.
 
@@ -350,7 +458,7 @@ The 2D line to test for intersection\.
 
 <a name='DiGi.ComputeSharp.Planar.Query.Intersect(thisComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Planar.Classes.Line2,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool).triangle2s'></a>
 
-`triangle2s` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.planar.classes.triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+`triangle2s` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
 
 A read\-only buffer containing the triangles to be tested against the line\.
 
@@ -395,7 +503,7 @@ An enumerable collection of 2D lines to be tested for intersections\.
 
 <a name='DiGi.ComputeSharp.Planar.Query.Intersect(thisComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool).triangle2s'></a>
 
-`triangle2s` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.planar.classes.triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+`triangle2s` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
 
 A read\-only buffer containing the 2D triangles to test against\.
 

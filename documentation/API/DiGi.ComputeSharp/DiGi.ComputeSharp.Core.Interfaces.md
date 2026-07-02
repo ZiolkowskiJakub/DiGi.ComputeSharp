@@ -16,7 +16,13 @@ public interface IGeometry
 Derived  
 ↳ [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')  
 ↳ [Line2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2')  
-↳ [IGeometry2](DiGi.ComputeSharp.Planar.Interfaces.md#DiGi.ComputeSharp.Planar.Interfaces.IGeometry2 'DiGi\.ComputeSharp\.Planar\.Interfaces\.IGeometry2')
+↳ [Triangle2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Triangle2 'DiGi\.ComputeSharp\.Planar\.Classes\.Triangle2')  
+↳ [IGeometry2](DiGi.ComputeSharp.Planar.Interfaces.md#DiGi.ComputeSharp.Planar.Interfaces.IGeometry2 'DiGi\.ComputeSharp\.Planar\.Interfaces\.IGeometry2')  
+↳ [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')  
+↳ [Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')  
+↳ [Plane](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Plane 'DiGi\.ComputeSharp\.Spatial\.Classes\.Plane')  
+↳ [Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')  
+↳ [IGeometry3](DiGi.ComputeSharp.Spatial.Interfaces.md#DiGi.ComputeSharp.Spatial.Interfaces.IGeometry3 'DiGi\.ComputeSharp\.Spatial\.Interfaces\.IGeometry3')
 
 <a name='DiGi.ComputeSharp.Core.Interfaces.IIntersection'></a>
 
@@ -33,7 +39,8 @@ Derived
 ↳ [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')  
 ↳ [IIntersection2](DiGi.ComputeSharp.Planar.Interfaces.md#DiGi.ComputeSharp.Planar.Interfaces.IIntersection2 'DiGi\.ComputeSharp\.Planar\.Interfaces\.IIntersection2')  
 ↳ [Line3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3Intersection')  
-↳ [Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')
+↳ [Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')  
+↳ [IIntersection3](DiGi.ComputeSharp.Spatial.Interfaces.md#DiGi.ComputeSharp.Spatial.Interfaces.IIntersection3 'DiGi\.ComputeSharp\.Spatial\.Interfaces\.IIntersection3')
 
 Implements [IResult](DiGi.ComputeSharp.Core.Interfaces.md#DiGi.ComputeSharp.Core.Interfaces.IResult 'DiGi\.ComputeSharp\.Core\.Interfaces\.IResult')
 
@@ -74,7 +81,9 @@ Derived
 ↳ [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')  
 ↳ [IIntersection2](DiGi.ComputeSharp.Planar.Interfaces.md#DiGi.ComputeSharp.Planar.Interfaces.IIntersection2 'DiGi\.ComputeSharp\.Planar\.Interfaces\.IIntersection2')  
 ↳ [Line3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3Intersection')  
-↳ [Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')
+↳ [Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')  
+↳ [IIntersection3](DiGi.ComputeSharp.Spatial.Interfaces.md#DiGi.ComputeSharp.Spatial.Interfaces.IIntersection3 'DiGi\.ComputeSharp\.Spatial\.Interfaces\.IIntersection3')  
+↳ [ITriangulation3](DiGi.ComputeSharp.Spatial.Interfaces.md#DiGi.ComputeSharp.Spatial.Interfaces.ITriangulation3 'DiGi\.ComputeSharp\.Spatial\.Interfaces\.ITriangulation3')
 
 <a name='DiGi.ComputeSharp.Core.Interfaces.ITriangulation'></a>
 
@@ -85,5 +94,8 @@ Defines the contract for a triangulation result, extending the base result funct
 ```csharp
 public interface ITriangulation : DiGi.ComputeSharp.Core.Interfaces.IResult
 ```
+
+Derived  
+↳ [ITriangulation3](DiGi.ComputeSharp.Spatial.Interfaces.md#DiGi.ComputeSharp.Spatial.Interfaces.ITriangulation3 'DiGi\.ComputeSharp\.Spatial\.Interfaces\.ITriangulation3')
 
 Implements [IResult](DiGi.ComputeSharp.Core.Interfaces.md#DiGi.ComputeSharp.Core.Interfaces.IResult 'DiGi\.ComputeSharp\.Core\.Interfaces\.IResult')

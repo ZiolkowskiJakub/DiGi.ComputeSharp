@@ -27,7 +27,7 @@ public static System.Collections.Generic.List<DiGi.ComputeSharp.Spatial.Classes.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Coordinate3s(DiGi.ComputeSharp.Spatial.Classes.Line3,DiGi.ComputeSharp.Spatial.Enums.LineAlignment,double,bool,double).line'></a>
 
-`line` [DiGi\.ComputeSharp\.Spatial\.Classes\.Line3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
+`line` [Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
 
 The line along which to generate coordinates\.
 
@@ -56,7 +56,7 @@ Whether to include endpoints when the total length is not a perfect multiple of 
 The tolerance value used for geometric calculations and comparisons\.
 
 #### Returns
-[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
 A list of coordinates along the line, or `null` if the line is shorter than the tolerance and [includeShorter](DiGi.ComputeSharp.Spatial.md#DiGi.ComputeSharp.Spatial.Create.Coordinate3s(DiGi.ComputeSharp.Spatial.Classes.Line3,DiGi.ComputeSharp.Spatial.Enums.LineAlignment,double,bool,double).includeShorter 'DiGi\.ComputeSharp\.Spatial\.Create\.Coordinate3s\(DiGi\.ComputeSharp\.Spatial\.Classes\.Line3, DiGi\.ComputeSharp\.Spatial\.Enums\.LineAlignment, double, bool, double\)\.includeShorter') is false\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.InsertPoint(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double)'></a>
@@ -65,7 +65,7 @@ A list of coordinates along the line, or `null` if the line is shorter than the 
 
 Splits a single triangle at a point that lies at a vertex \(no split\), on an edge \(two triangles\),
 or strictly inside it \(three triangles\)\. Every produced triangle inherits the source triangle's
-[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\.Solid](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3.solid 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\.Solid') flag and includes the point as a vertex\.
+[Solid](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3.Solid 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\.Solid') flag and includes the point as a vertex\.
 
 ```csharp
 private static System.Collections.Generic.List<DiGi.ComputeSharp.Spatial.Classes.Triangle3> InsertPoint(DiGi.ComputeSharp.Spatial.Classes.Triangle3 triangle, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point, double tolerance);
@@ -74,18 +74,18 @@ private static System.Collections.Generic.List<DiGi.ComputeSharp.Spatial.Classes
 
 <a name='DiGi.ComputeSharp.Spatial.Create.InsertPoint(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).triangle'></a>
 
-`triangle` [DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
+`triangle` [Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
 
 <a name='DiGi.ComputeSharp.Spatial.Create.InsertPoint(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point'></a>
 
-`point` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 <a name='DiGi.ComputeSharp.Spatial.Create.InsertPoint(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).tolerance'></a>
 
 `tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 #### Returns
-[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Line3Intersection(DiGi.ComputeSharp.Spatial.Classes.Line3,DiGi.ComputeSharp.Spatial.Classes.Line3,double)'></a>
 
@@ -100,13 +100,13 @@ public static DiGi.ComputeSharp.Spatial.Classes.Line3Intersection Line3Intersect
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Line3Intersection(DiGi.ComputeSharp.Spatial.Classes.Line3,DiGi.ComputeSharp.Spatial.Classes.Line3,double).line_1'></a>
 
-`line_1` [DiGi\.ComputeSharp\.Spatial\.Classes\.Line3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
+`line_1` [Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
 
 The first 3D line\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Line3Intersection(DiGi.ComputeSharp.Spatial.Classes.Line3,DiGi.ComputeSharp.Spatial.Classes.Line3,double).line_2'></a>
 
-`line_2` [DiGi\.ComputeSharp\.Spatial\.Classes\.Line3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
+`line_2` [Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
 
 The second 3D line\.
 
@@ -133,13 +133,13 @@ public static DiGi.ComputeSharp.Spatial.Classes.Line3Intersection Line3Intersect
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Line3Intersection(DiGi.ComputeSharp.Spatial.Classes.Line3,DiGi.ComputeSharp.Spatial.Classes.Triangle3,double).line'></a>
 
-`line` [DiGi\.ComputeSharp\.Spatial\.Classes\.Line3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
+`line` [Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
 
 The line to test for intersection\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Line3Intersection(DiGi.ComputeSharp.Spatial.Classes.Line3,DiGi.ComputeSharp.Spatial.Classes.Triangle3,double).triangle'></a>
 
-`triangle` [DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
+`triangle` [Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
 
 The triangle to test for intersection\.
 
@@ -166,13 +166,13 @@ public static System.Collections.Generic.IEnumerable<DiGi.ComputeSharp.Spatial.C
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Line3Intersections(DiGi.ComputeSharp.Spatial.Classes.Line3,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Line3_,double).line'></a>
 
-`line` [DiGi\.ComputeSharp\.Spatial\.Classes\.Line3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
+`line` [Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
 
 The primary line to check for intersections\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Line3Intersections(DiGi.ComputeSharp.Spatial.Classes.Line3,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Line3_,double).lines'></a>
 
-`lines` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Line3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`lines` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The collection of lines to test against the primary line\.
 
@@ -199,7 +199,7 @@ private static DiGi.ComputeSharp.Spatial.Classes.Triangulation3 ToTriangulation3
 
 <a name='DiGi.ComputeSharp.Spatial.Create.ToTriangulation3(System.Collections.Generic.List_DiGi.ComputeSharp.Spatial.Classes.Triangle3_).triangles'></a>
 
-`triangles` [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')
+`triangles` [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')
 
 #### Returns
 [Triangulation3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangulation3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangulation3')
@@ -217,13 +217,13 @@ public static DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection Triangle3I
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Line3,double).triangle'></a>
 
-`triangle` [DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
+`triangle` [Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
 
 The 3D triangle to intersect\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Line3,double).line'></a>
 
-`line` [DiGi\.ComputeSharp\.Spatial\.Classes\.Line3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
+`line` [Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
 
 The 3D line to intersect\.
 
@@ -250,19 +250,19 @@ public static DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection Triangle3I
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,bool,bool,double).triangle_1'></a>
 
-`triangle_1` [DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
+`triangle_1` [Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
 
 The first triangle\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,bool,bool,double).triangle_2'></a>
 
-`triangle_2` [DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
+`triangle_2` [Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
 
 The second triangle\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,bool,bool,double).vector'></a>
 
-`vector` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`vector` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The vector used for projecting the triangles\.
 
@@ -301,13 +301,13 @@ public static DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection Triangle3I
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Triangle3,double).triangle_1'></a>
 
-`triangle_1` [DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
+`triangle_1` [Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
 
 The first triangle\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersection(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Triangle3,double).triangle_2'></a>
 
-`triangle_2` [DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
+`triangle_2` [Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
 
 The second triangle\.
 
@@ -340,13 +340,13 @@ The [ComputeSharp\.GraphicsDevice](https://learn.microsoft.com/en-us/dotnet/api/
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersections(thisComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,double).triangles_1'></a>
 
-`triangles_1` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`triangles_1` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The first collection of triangles\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersections(thisComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,double).triangles_2'></a>
 
-`triangles_2` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+`triangles_2` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
 
 A read\-only buffer containing the second collection of triangles\.
 
@@ -373,13 +373,13 @@ public static System.Collections.Generic.IEnumerable<DiGi.ComputeSharp.Spatial.C
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersections(thisDiGi.ComputeSharp.Spatial.Classes.Triangle3,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,double).triangle'></a>
 
-`triangle` [DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
+`triangle` [Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
 
 The source triangle to check for intersections\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersections(thisDiGi.ComputeSharp.Spatial.Classes.Triangle3,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,double).triangles'></a>
 
-`triangles` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`triangles` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The collection of triangles to intersect against\.
 
@@ -406,13 +406,13 @@ public static System.Collections.Generic.IEnumerable<DiGi.ComputeSharp.Spatial.C
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersections(thisSystem.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,double).triangles_1'></a>
 
-`triangles_1` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`triangles_1` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The first collection of triangles\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersections(thisSystem.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,double).triangles_2'></a>
 
-`triangles_2` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`triangles_2` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The second collection of triangles\.
 
@@ -439,13 +439,13 @@ public static DiGi.ComputeSharp.Spatial.Classes.Triangulation3 Triangulation3(Di
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangulation3(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).triangle'></a>
 
-`triangle` [DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
+`triangle` [Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
 
 The original triangle to be triangulated\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangulation3(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point'></a>
 
-`point` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The coordinate point used for splitting the triangle\.
 
@@ -472,13 +472,13 @@ public static DiGi.ComputeSharp.Spatial.Classes.Triangulation3 Triangulation3(Di
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangulation3(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Line3,double).triangle'></a>
 
-`triangle` [DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
+`triangle` [Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')
 
 The original triangle to be triangulated\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangulation3(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Line3,double).line'></a>
 
-`line` [DiGi\.ComputeSharp\.Spatial\.Classes\.Line3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
+`line` [Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
 
 The line segment used for splitting the triangle\.
 
@@ -516,43 +516,43 @@ public static bool Add(ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point_1
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_1'></a>
 
-`point_1` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_1` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 A reference to the first coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_2'></a>
 
-`point_2` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_2` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 A reference to the second coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_3'></a>
 
-`point_3` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_3` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 A reference to the third coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_4'></a>
 
-`point_4` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_4` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 A reference to the fourth coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_5'></a>
 
-`point_5` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_5` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 A reference to the fifth coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_6'></a>
 
-`point_6` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_6` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 A reference to the sixth coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point'></a>
 
-`point` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The coordinate point to be added\.
 
@@ -579,37 +579,37 @@ public static bool Add(ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point_1
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Line3Intersection,double).point_1'></a>
 
-`point_1` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_1` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 A reference to the first coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Line3Intersection,double).point_2'></a>
 
-`point_2` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_2` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 A reference to the second coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Line3Intersection,double).point_3'></a>
 
-`point_3` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_3` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 A reference to the third coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Line3Intersection,double).point_4'></a>
 
-`point_4` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_4` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 A reference to the fourth coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Line3Intersection,double).point_5'></a>
 
-`point_5` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_5` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 A reference to the fifth coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Line3Intersection,double).point_6'></a>
 
-`point_6` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_6` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 A reference to the sixth coordinate point\.
 
@@ -642,19 +642,19 @@ public static bool Add(ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point_1
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_1'></a>
 
-`point_1` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_1` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The first endpoint of the line segment\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_2'></a>
 
-`point_2` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_2` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The second endpoint of the line segment\.
 
 <a name='DiGi.ComputeSharp.Spatial.Modify.Add(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point'></a>
 
-`point` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The point to be added\.
 
@@ -692,42 +692,42 @@ public static DiGi.ComputeSharp.Spatial.Classes.Coordinate3 Centroid(DiGi.Comput
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Centroid(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point_1'></a>
 
-`point_1` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_1` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The first coordinate\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Centroid(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point_2'></a>
 
-`point_2` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_2` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The second coordinate\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Centroid(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point_3'></a>
 
-`point_3` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_3` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The third coordinate\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Centroid(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point_4'></a>
 
-`point_4` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_4` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The fourth coordinate\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Centroid(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point_5'></a>
 
-`point_5` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_5` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The fifth coordinate\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Centroid(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point_6'></a>
 
-`point_6` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_6` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The sixth coordinate\.
 
 #### Returns
-[DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')  
+[Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')  
 The calculated centroid as a Coordinate3, or a default Coordinate3 if no valid points are provided\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Centroid(DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection)'></a>
@@ -748,8 +748,41 @@ public static DiGi.ComputeSharp.Spatial.Classes.Coordinate3 Centroid(DiGi.Comput
 The triangle intersection containing the points to evaluate\.
 
 #### Returns
-[DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')  
+[Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')  
 The calculated centroid as a Coordinate3, or a default Coordinate3 if the intersection is NaN\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.CompareClockwise(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2)'></a>
+
+## Query\.CompareClockwise\(Coordinate2, Coordinate2, Coordinate2\) Method
+
+Compares two coordinates to determine their clockwise relationship with respect to a center point\.
+
+```csharp
+internal static int CompareClockwise(DiGi.ComputeSharp.Planar.Classes.Coordinate2 a, DiGi.ComputeSharp.Planar.Classes.Coordinate2 b, DiGi.ComputeSharp.Planar.Classes.Coordinate2 c);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Query.CompareClockwise(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).a'></a>
+
+`a` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The first coordinate\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.CompareClockwise(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).b'></a>
+
+`b` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The second coordinate\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.CompareClockwise(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).c'></a>
+
+`c` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The center point\.
+
+#### Returns
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
+\-1 if a is clockwise from b, 1 if a is counter\-clockwise, or 0 if they are collinear\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Coordinate3(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int)'></a>
 
@@ -764,37 +797,37 @@ public static DiGi.ComputeSharp.Spatial.Classes.Coordinate3 Coordinate3(ref DiGi
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Coordinate3(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).coordinate_1'></a>
 
-`coordinate_1` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`coordinate_1` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The first coordinate\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Coordinate3(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).coordinate_2'></a>
 
-`coordinate_2` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`coordinate_2` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The second coordinate\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Coordinate3(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).coordinate_3'></a>
 
-`coordinate_3` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`coordinate_3` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The third coordinate\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Coordinate3(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).coordinate_4'></a>
 
-`coordinate_4` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`coordinate_4` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The fourth coordinate\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Coordinate3(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).coordinate_5'></a>
 
-`coordinate_5` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`coordinate_5` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The fifth coordinate\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Coordinate3(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).coordinate_6'></a>
 
-`coordinate_6` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`coordinate_6` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The sixth coordinate\.
 
@@ -805,7 +838,7 @@ The sixth coordinate\.
 The index of the coordinate to retrieve \(1\-6\)\.
 
 #### Returns
-[DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')  
+[Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')  
 The Coordinate3 corresponding to the specified index, or a new default Coordinate3 if the index is out of range\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.First(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3)'></a>
@@ -821,42 +854,42 @@ public static DiGi.ComputeSharp.Spatial.Classes.Coordinate3 First(DiGi.ComputeSh
 
 <a name='DiGi.ComputeSharp.Spatial.Query.First(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point_1'></a>
 
-`point_1` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_1` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The first coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.First(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point_2'></a>
 
-`point_2` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_2` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The second coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.First(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point_3'></a>
 
-`point_3` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_3` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The third coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.First(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point_4'></a>
 
-`point_4` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_4` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The fourth coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.First(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point_5'></a>
 
-`point_5` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_5` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The fifth coordinate point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.First(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point_6'></a>
 
-`point_6` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point_6` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The sixth coordinate point\.
 
 #### Returns
-[DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')  
+[Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')  
 The resulting Coordinate3 point\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Inside(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_)'></a>
@@ -872,13 +905,13 @@ public static int Inside(DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point, Sy
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Inside(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_).point'></a>
 
-`point` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The coordinate of the point to test\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Inside(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_).triangles'></a>
 
-`triangles` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`triangles` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The collection of triangles that define the boundary of the volume\.
 
@@ -899,13 +932,13 @@ public static System.Collections.Generic.List<int>? Inside(System.Collections.Ge
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Inside(System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Coordinate3_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_).points'></a>
 
-`points` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`points` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The collection of 3D coordinates to be tested for containment\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Inside(System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Coordinate3_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_).triangles'></a>
 
-`triangles` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`triangles` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The collection of triangles defining the boundary of the volume\.
 
@@ -932,13 +965,13 @@ The graphics device used for the operation\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Inside(thisComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_).point'></a>
 
-`point` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`point` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The 3D coordinate to test\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Inside(thisComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_).triangles'></a>
 
-`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
 
 A read\-only buffer containing the triangles that define the boundary of the volume\.
 
@@ -965,13 +998,13 @@ The graphics device used to perform the spatial computation\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Inside(thisComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Coordinate3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_).points'></a>
 
-`points` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`points` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The collection of 3D coordinates to evaluate\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Inside(thisComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Coordinate3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_).triangles'></a>
 
-`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
 
 The read\-only buffer containing the triangles that define the boundary of the volume\.
 
@@ -992,13 +1025,13 @@ public static bool Intersect(DiGi.ComputeSharp.Spatial.Classes.Line3 line3, Syst
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Intersect(DiGi.ComputeSharp.Spatial.Classes.Line3,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,bool,bool).line3'></a>
 
-`line3` [DiGi\.ComputeSharp\.Spatial\.Classes\.Line3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
+`line3` [Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
 
 The line segment to evaluate for intersection\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Intersect(DiGi.ComputeSharp.Spatial.Classes.Line3,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,bool,bool).triangle3s'></a>
 
-`triangle3s` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`triangle3s` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 A collection of triangles to check against the line segment\.
 
@@ -1031,13 +1064,13 @@ public static System.Collections.Generic.List<bool>? Intersect(System.Collection
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Intersect(System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Line3_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,bool,bool).line3s'></a>
 
-`line3s` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Line3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`line3s` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The collection of 3D lines to evaluate for intersections\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Intersect(System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Line3_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,bool,bool).triangle3s'></a>
 
-`triangle3s` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`triangle3s` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 The collection of 3D triangles to test against\.
 
@@ -1076,13 +1109,13 @@ The graphics device used to perform the intersection calculation\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Intersect(thisComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Spatial.Classes.Line3,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,bool,bool).line3'></a>
 
-`line3` [DiGi\.ComputeSharp\.Spatial\.Classes\.Line3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
+`line3` [Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')
 
 The 3D line to test for intersection\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Intersect(thisComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Spatial.Classes.Line3,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,bool,bool).triangle3s'></a>
 
-`triangle3s` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+`triangle3s` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
 
 A read\-only buffer containing the triangles to be tested against the line\.
 
@@ -1121,13 +1154,13 @@ The graphics device used to perform the intersection calculations\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Intersect(thisComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Line3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,bool,bool).line3s'></a>
 
-`line3s` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Line3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
+`line3s` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 An enumerable collection of 3D lines to be tested for intersections\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Intersect(thisComputeSharp.GraphicsDevice,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Line3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,bool,bool).triangle3s'></a>
 
-`triangle3s` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+`triangle3s` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
 
 A read\-only buffer containing the 3D triangles to test against\.
 
@@ -1187,13 +1220,13 @@ public static bool SameHalf(DiGi.ComputeSharp.Spatial.Classes.Coordinate3 vector
 
 <a name='DiGi.ComputeSharp.Spatial.Query.SameHalf(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).vector_1'></a>
 
-`vector_1` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`vector_1` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The first coordinate vector to evaluate\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.SameHalf(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).vector_2'></a>
 
-`vector_2` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`vector_2` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The second coordinate vector to evaluate\.
 
@@ -1226,16 +1259,116 @@ The graphics device used to execute the shading operations\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Shading(thisComputeSharp.GraphicsDevice,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).triangle3s'></a>
 
-`triangle3s` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+`triangle3s` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
 
 A read\-only buffer containing the triangle data to be shaded\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Shading(thisComputeSharp.GraphicsDevice,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).vector'></a>
 
-`vector` [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+`vector` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
 
 The vector representing the light or view direction for the shading calculation\.
 
 #### Returns
-[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
+[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
 A nested list of triangles grouped by shading results, or null if the operation could not be completed\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Sort(DiGi.ComputeSharp.Spatial.Classes.Plane,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double)'></a>
+
+## Query\.Sort\(Plane, Coordinate3, Coordinate3, Coordinate3, Coordinate3, Coordinate3, Coordinate3, double\) Method
+
+Sorts six 3D points clockwise relative to their projected centroid on the specified plane\.
+
+```csharp
+internal static void Sort(DiGi.ComputeSharp.Spatial.Classes.Plane plane, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point_1, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point_2, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point_3, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point_4, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point_5, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point_6, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Sort(DiGi.ComputeSharp.Spatial.Classes.Plane,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).plane'></a>
+
+`plane` [Plane](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Plane 'DiGi\.ComputeSharp\.Spatial\.Classes\.Plane')
+
+The projection plane\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Sort(DiGi.ComputeSharp.Spatial.Classes.Plane,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_1'></a>
+
+`point_1` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The first coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Sort(DiGi.ComputeSharp.Spatial.Classes.Plane,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_2'></a>
+
+`point_2` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The second coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Sort(DiGi.ComputeSharp.Spatial.Classes.Plane,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_3'></a>
+
+`point_3` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The third coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Sort(DiGi.ComputeSharp.Spatial.Classes.Plane,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_4'></a>
+
+`point_4` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The fourth coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Sort(DiGi.ComputeSharp.Spatial.Classes.Plane,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_5'></a>
+
+`point_5` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The fifth coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Sort(DiGi.ComputeSharp.Spatial.Classes.Plane,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).point_6'></a>
+
+`point_6` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The sixth coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Sort(DiGi.ComputeSharp.Spatial.Classes.Plane,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The tolerance used for calculations\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Swap(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int)'></a>
+
+## Query\.Swap\(Coordinate2, Coordinate2, Coordinate2, int, int\) Method
+
+Swaps two coordinates and their corresponding indices if they are not in clockwise order with respect to the center point\.
+
+```csharp
+internal static void Swap(DiGi.ComputeSharp.Planar.Classes.Coordinate2 point, ref DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_1, ref DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_2, ref int index_1, ref int index_2);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Swap(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int).point'></a>
+
+`point` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The center point\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Swap(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int).point_1'></a>
+
+`point_1` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The first coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Swap(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int).point_2'></a>
+
+`point_2` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The second coordinate reference\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Swap(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int).index_1'></a>
+
+`index_1` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The first index reference\.
+
+<a name='DiGi.ComputeSharp.Spatial.Query.Swap(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int).index_2'></a>
+
+`index_2` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The second index reference\.

@@ -3,13 +3,34 @@ using DiGi.ComputeSharp.Spatial.Interfaces;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
+    /// <summary>
+    /// Represents a three-dimensional triangle in a spatial coordinate system.
+    /// </summary>
     public readonly struct Triangle3 : IGeometry3
     {
+        /// <summary>
+        /// The first vertex of the triangle.
+        /// </summary>
         public readonly Coordinate3 Point_1;
+
+        /// <summary>
+        /// The second vertex of the triangle.
+        /// </summary>
         public readonly Coordinate3 Point_2;
+
+        /// <summary>
+        /// The third vertex of the triangle.
+        /// </summary>
         public readonly Coordinate3 Point_3;
+
+        /// <summary>
+        /// A value indicating whether the triangle is solid (filled) or boundary-only.
+        /// </summary>
         public readonly Bool Solid;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Triangle3"/> struct with default values (NaN coordinates and not solid).
+        /// </summary>
         public Triangle3()
         {
             Solid = new Bool(false);
@@ -18,6 +39,12 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Point_3 = new Coordinate3();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Triangle3"/> struct with the specified vertices.
+        /// </summary>
+        /// <param name="point_1">The first vertex.</param>
+        /// <param name="point_2">The second vertex.</param>
+        /// <param name="point_3">The third vertex.</param>
         public Triangle3(Coordinate3 point_1, Coordinate3 point_2, Coordinate3 point_3)
         {
             Point_1 = point_1;
@@ -25,6 +52,10 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Point_3 = point_3;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Triangle3"/> struct by copying an existing triangle.
+        /// </summary>
+        /// <param name="triangle3">The source triangle to copy.</param>
         public Triangle3(Triangle3 triangle3)
         {
             Solid = triangle3.Solid;
@@ -33,6 +64,13 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Point_3 = triangle3.Point_3;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Triangle3"/> struct with specified solid state and vertices.
+        /// </summary>
+        /// <param name="solid">A value indicating whether the triangle is solid.</param>
+        /// <param name="point_1">The first vertex.</param>
+        /// <param name="point_2">The second vertex.</param>
+        /// <param name="point_3">The third vertex.</param>
         public Triangle3(Bool solid, Coordinate3 point_1, Coordinate3 point_2, Coordinate3 point_3)
         {
             Solid = solid;
@@ -41,6 +79,19 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Point_3 = point_3;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Triangle3"/> struct with specified solid state and coordinates.
+        /// </summary>
+        /// <param name="solid">A value indicating whether the triangle is solid.</param>
+        /// <param name="x_1">The X component of the first point.</param>
+        /// <param name="y_1">The Y component of the first point.</param>
+        /// <param name="z_1">The Z component of the first point.</param>
+        /// <param name="x_2">The X component of the second point.</param>
+        /// <param name="y_2">The Y component of the second point.</param>
+        /// <param name="z_2">The Z component of the second point.</param>
+        /// <param name="x_3">The X component of the third point.</param>
+        /// <param name="y_3">The Y component of the third point.</param>
+        /// <param name="z_3">The Z component of the third point.</param>
         public Triangle3(Bool solid, double x_1, double y_1, double z_1, double x_2, double y_2, double z_2, double x_3, double y_3, double z_3)
         {
             Solid = solid;
@@ -49,11 +100,20 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             Point_3 = new Coordinate3(x_3, y_3, z_3);
         }
 
+        /// <summary>
+        /// Calculates the approximate perimeter of the triangle using fast distance calculations.
+        /// </summary>
+        /// <returns>The approximate perimeter of the triangle.</returns>
         public double GetApproximatePerimeter()
         {
             return Point_1.GetApproximateDistance(Point_2) + Point_2.GetApproximateDistance(Point_3) + Point_3.GetApproximateDistance(Point_1);
         }
 
+        /// <summary>
+        /// Calculates the area of the 3D triangle with the specified tolerance.
+        /// </summary>
+        /// <param name="tolerance">The tolerance used for distance and projection calculations.</param>
+        /// <returns>The area of the triangle, or NaN if any component is NaN.</returns>
         public double GetArea(double tolerance)
         {
             if (IsNaN())
@@ -64,6 +124,10 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return GetPlane(tolerance).Convert_Triangle(this, tolerance).GetArea();
         }
 
+        /// <summary>
+        /// Gets the centroid (geometric center) of the 3D triangle.
+        /// </summary>
+        /// <returns>A <see cref="Coordinate3"/> representing the centroid of the triangle.</returns>
         public Coordinate3 GetCentroid()
         {
             double centroidX = (Point_1.X + Point_2.X + Point_3.X) / 3.0f;
@@ -73,6 +137,10 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate3(centroidX, centroidY, centroidZ);
         }
 
+        /// <summary>
+        /// Calculates the equilaterality factor of the triangle, indicating how close it is to an equilateral triangle.
+        /// </summary>
+        /// <returns>The equilaterality factor (0 to 1, where 1 is perfectly equilateral).</returns>
         public double GetEquilateralityFactor()
         {
             if (IsNaN())
@@ -101,11 +169,20 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return length / mean;
         }
 
+        /// <summary>
+        /// Gets a new triangle with inverted winding order (reversing normal direction).
+        /// </summary>
+        /// <returns>An inverted <see cref="Triangle3"/>.</returns>
         public Triangle3 GetInversed()
         {
             return new Triangle3(Point_3, Point_2, Point_1);
         }
 
+        /// <summary>
+        /// Gets one of the boundary lines of the triangle by index.
+        /// </summary>
+        /// <param name="index">The line index (0, 1, or 2).</param>
+        /// <returns>The boundary <see cref="Line3"/> at the specified index.</returns>
         public Line3 GetLine(int index)
         {
             switch (index)
@@ -123,11 +200,19 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Line3();
         }
 
+        /// <summary>
+        /// Gets all boundary lines of the triangle.
+        /// </summary>
+        /// <returns>An array of three <see cref="Line3"/> objects representing the boundary lines.</returns>
         public Line3[] GetLines()
         {
             return [GetLine(0), GetLine(1), GetLine(2)];
         }
 
+        /// <summary>
+        /// Gets the maximum coordinate bounds of the triangle.
+        /// </summary>
+        /// <returns>A <see cref="Coordinate3"/> representing the maximum X, Y, and Z coordinates.</returns>
         public Coordinate3 GetMax()
         {
             double x = Point_1.X;
@@ -165,6 +250,10 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate3(x, y, z);
         }
 
+        /// <summary>
+        /// Gets the minimum coordinate bounds of the triangle.
+        /// </summary>
+        /// <returns>A <see cref="Coordinate3"/> representing the minimum X, Y, and Z coordinates.</returns>
         public Coordinate3 GetMin()
         {
             double x = Point_1.X;
@@ -202,26 +291,54 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return new Coordinate3(x, y, z);
         }
 
+        /// <summary>
+        /// Translates the triangle by the specified offset vector.
+        /// </summary>
+        /// <param name="vector">The translation vector.</param>
+        /// <returns>A translated <see cref="Triangle3"/>.</returns>
         public Triangle3 GetMoved(Coordinate3 vector)
         {
             return new Triangle3(Point_1.GetMoved(vector), Point_2.GetMoved(vector), Point_3.GetMoved(vector));
         }
 
+        /// <summary>
+        /// Calculates the normal vector of the triangle.
+        /// </summary>
+        /// <param name="tolerance">The tolerance value used for vector normalization.</param>
+        /// <returns>The normalized normal vector.</returns>
         public Coordinate3 GetNormal(double tolerance)
         {
             return new Coordinate3(Point_1, Point_2).CrossProduct(new Coordinate3(Point_1, Point_3)).GetNormalized(tolerance);
         }
 
+        /// <summary>
+        /// Calculates the perimeter of the triangle with the specified tolerance.
+        /// </summary>
+        /// <param name="tolerance">The tolerance used for distance calculations.</param>
+        /// <returns>The perimeter of the triangle.</returns>
         public double GetPerimeter(double tolerance)
         {
             return Point_1.GetDistance(Point_2, tolerance) + Point_2.GetDistance(Point_3, tolerance) + Point_3.GetDistance(Point_1, tolerance);
         }
 
+        /// <summary>
+        /// Gets the plane defined by the triangle's vertices and its normal vector.
+        /// </summary>
+        /// <param name="tolerance">The tolerance value used for normal calculation.</param>
+        /// <returns>The <see cref="Plane"/> on which the triangle lies.</returns>
         public Plane GetPlane(double tolerance)
         {
             return new Plane(Point_1, GetNormal(tolerance), tolerance);
         }
 
+        /// <summary>
+        /// Checks if a set of coordinates is within the bounding box of the triangle expanded by a tolerance.
+        /// </summary>
+        /// <param name="x">The X component of the point.</param>
+        /// <param name="y">The Y component of the point.</param>
+        /// <param name="z">The Z component of the point.</param>
+        /// <param name="tolerance">The distance used to expand the bounding box.</param>
+        /// <returns>True if the coordinates are within the expanded bounding box; otherwise, false.</returns>
         public bool InRange(double x, double y, double z, double tolerance)
         {
             if (IsNaN())
@@ -237,6 +354,12 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                 z - tolerance <= max.Z && z + tolerance >= min.Z;
         }
 
+        /// <summary>
+        /// Checks if a point is within the range of the triangle's bounding box expanded by a tolerance.
+        /// </summary>
+        /// <param name="point">The point to check.</param>
+        /// <param name="tolerance">The distance used to expand the bounding box.</param>
+        /// <returns>True if the point is within range; otherwise, false.</returns>
         public bool InRange(Coordinate3 point, double tolerance)
         {
             if (point.IsNaN())
@@ -247,11 +370,23 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return InRange(point.X, point.Y, point.Z, tolerance);
         }
 
+        /// <summary>
+        /// Checks if a line is within the bounding range of the triangle.
+        /// </summary>
+        /// <param name="line3">The line to check.</param>
+        /// <param name="tolerance">The tolerance value.</param>
+        /// <returns>True if the bounding boxes overlap; otherwise, false.</returns>
         public bool InRange(Line3 line3, double tolerance)
         {
             return line3.InRange(this, tolerance);
         }
 
+        /// <summary>
+        /// Checks if another triangle is within the bounding range of this triangle.
+        /// </summary>
+        /// <param name="triangle3">The other triangle to check.</param>
+        /// <param name="tolerance">The distance tolerance.</param>
+        /// <returns>True if the triangles' bounding boxes overlap; otherwise, false.</returns>
         public bool InRange(Triangle3 triangle3, double tolerance)
         {
             if (IsNaN() || triangle3.IsNaN())
@@ -269,6 +404,12 @@ namespace DiGi.ComputeSharp.Spatial.Classes
                     (minA.Z - tolerance <= maxB.Z && maxA.Z + tolerance >= minB.Z);
         }
 
+        /// <summary>
+        /// Determines whether a point lies inside the triangle using barycentric coordinates in 3D.
+        /// </summary>
+        /// <param name="point">The point to test.</param>
+        /// <param name="tolerance">The numerical tolerance value.</param>
+        /// <returns>True if the point lies inside or on the boundary of the triangle; otherwise, false.</returns>
         public bool Inside(Coordinate3 point, double tolerance)
         {
             // Vectors forming two sides of the triangle
@@ -351,11 +492,21 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return isInside2D;
         }
 
+        /// <summary>
+        /// Checks if any of the triangle's vertices contain NaN coordinates.
+        /// </summary>
+        /// <returns>True if any vertex is NaN; otherwise, false.</returns>
         public bool IsNaN()
         {
             return Point_1.IsNaN() || Point_2.IsNaN() || Point_3.IsNaN();
         }
 
+        /// <summary>
+        /// Determines whether a point lies on the triangle (inside if solid, or on boundary lines if not).
+        /// </summary>
+        /// <param name="point">The point to test.</param>
+        /// <param name="tolerance">The tolerance value.</param>
+        /// <returns>True if the point lies on the triangle; otherwise, false.</returns>
         public bool On(Coordinate3 point, double tolerance)
         {
             if (Solid.ToBool())
@@ -383,6 +534,10 @@ namespace DiGi.ComputeSharp.Spatial.Classes
             return false;
         }
 
+        /// <summary>
+        /// Returns a string representation of the current triangle.
+        /// </summary>
+        /// <returns>A formatted string describing the triangle vertices.</returns>
         public override string ToString()
         {
             return string.Format("P1:{0};P2:{1};P3:{2}", Point_1, Point_2, Point_3);

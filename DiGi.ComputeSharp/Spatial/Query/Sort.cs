@@ -5,6 +5,17 @@ namespace DiGi.ComputeSharp.Spatial
 {
     public static partial class Query
     {
+        /// <summary>
+        /// Sorts six 3D points clockwise relative to their projected centroid on the specified plane.
+        /// </summary>
+        /// <param name="plane">The projection plane.</param>
+        /// <param name="point_1">The first coordinate reference.</param>
+        /// <param name="point_2">The second coordinate reference.</param>
+        /// <param name="point_3">The third coordinate reference.</param>
+        /// <param name="point_4">The fourth coordinate reference.</param>
+        /// <param name="point_5">The fifth coordinate reference.</param>
+        /// <param name="point_6">The sixth coordinate reference.</param>
+        /// <param name="tolerance">The tolerance used for calculations.</param>
         internal static void Sort(Plane plane, ref Coordinate3 point_1, ref Coordinate3 point_2, ref Coordinate3 point_3, ref Coordinate3 point_4, ref Coordinate3 point_5, ref Coordinate3 point_6, double tolerance)
         {
             Coordinate2 point2D_1 = plane.Convert_Point(point_1, tolerance),
@@ -58,6 +69,14 @@ namespace DiGi.ComputeSharp.Spatial
             point_6 = Coordinate3(ref point_1_Temp, ref point_2_Temp, ref point_3_Temp, ref point_4_Temp, ref point_5_Temp, ref point_6_Temp, index_6);
         }
 
+        /// <summary>
+        /// Swaps two coordinates and their corresponding indices if they are not in clockwise order with respect to the center point.
+        /// </summary>
+        /// <param name="point">The center point.</param>
+        /// <param name="point_1">The first coordinate reference.</param>
+        /// <param name="point_2">The second coordinate reference.</param>
+        /// <param name="index_1">The first index reference.</param>
+        /// <param name="index_2">The second index reference.</param>
         internal static void Swap(Coordinate2 point, ref Coordinate2 point_1, ref Coordinate2 point_2, ref int index_1, ref int index_2)
         {
             if (CompareClockwise(point_1, point_2, point) >= 0)
@@ -74,6 +93,13 @@ namespace DiGi.ComputeSharp.Spatial
             point_2 = point_Temp;
         }
 
+        /// <summary>
+        /// Compares two coordinates to determine their clockwise relationship with respect to a center point.
+        /// </summary>
+        /// <param name="a">The first coordinate.</param>
+        /// <param name="b">The second coordinate.</param>
+        /// <param name="c">The center point.</param>
+        /// <returns>-1 if a is clockwise from b, 1 if a is counter-clockwise, or 0 if they are collinear.</returns>
         internal static int CompareClockwise(Coordinate2 a, Coordinate2 b, Coordinate2 c)
         {
             double ax = a.X - c.X;
