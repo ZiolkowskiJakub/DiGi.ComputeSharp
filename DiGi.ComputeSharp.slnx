@@ -12,9 +12,6 @@
   <Project Path="DiGi.ComputeSharp.Geometry/DiGi.ComputeSharp.Geometry.csproj">
     <Platform Solution="*|x64" Project="x64" />
   </Project>
-  <Project Path="../DiGi.Test/DiGi.ComputeSharp.xUnit/DiGi.ComputeSharp.xUnit.csproj">
-    <Platform Solution="*|x64" Project="x64" />
-  </Project>
   <Project Path="DiGi.ComputeSharp/DiGi.ComputeSharp.csproj">
     <Platform Solution="*|x64" Project="x64" />
   </Project>
