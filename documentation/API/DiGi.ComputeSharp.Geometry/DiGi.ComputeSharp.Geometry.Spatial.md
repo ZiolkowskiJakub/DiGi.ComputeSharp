@@ -1,3 +1,5 @@
+#### [DiGi\.ComputeSharp\.Geometry](DiGi.ComputeSharp.Geometry.Overview.md 'DiGi\.ComputeSharp\.Geometry\.Overview')
+
 ## DiGi\.ComputeSharp\.Geometry\.Spatial Namespace
 ### Classes
 

@@ -1,4 +1,4 @@
-#### [DiGi\.ComputeSharp](index.md 'index')
+#### [DiGi\.ComputeSharp](DiGi.ComputeSharp.Overview.md 'DiGi\.ComputeSharp\.Overview')
 
 ## DiGi\.ComputeSharp\.Core\.Constants Namespace
 ### Classes
