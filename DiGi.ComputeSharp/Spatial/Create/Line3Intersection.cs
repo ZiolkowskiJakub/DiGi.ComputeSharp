@@ -60,8 +60,8 @@ namespace DiGi.ComputeSharp.Spatial
 
                         if (bounded_1 && bounded_2)
                         {
-                            Coordinate3 point_1 = new Coordinate3();
-                            Coordinate3 point_2 = new Coordinate3();
+                            Coordinate3 point_1 = new ();
+                            Coordinate3 point_2 = new ();
 
                             if (line_2.On(line_1.Start, tolerance))
                             {

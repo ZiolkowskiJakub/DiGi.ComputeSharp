@@ -103,7 +103,7 @@ namespace DiGi.ComputeSharp.Planar
 
             // Non-parallel infinite lines always cross at exactly one point; solve the parameter on line_1.
             // Because the crossing is exact there is no closest-point distance gate as in the 3D (skew) case.
-            Coordinate2 startToStart = new Coordinate2(line_1.Start, line_2.Start);
+            Coordinate2 startToStart = new (line_1.Start, line_2.Start);
             double t = startToStart.CrossProduct(d2) / denominator;
 
             Coordinate2 intersectionPoint = line_1.Start.Add(d1.Multiply(t));
