@@ -60,8 +60,8 @@ namespace DiGi.ComputeSharp.Spatial
 
                         if (bounded_1 && bounded_2)
                         {
-                            Coordinate3 point_1 = new ();
-                            Coordinate3 point_2 = new ();
+                            Coordinate3 point_1 = new();
+                            Coordinate3 point_2 = new();
 
                             if (line_2.On(line_1.Start, tolerance))
                             {
@@ -172,7 +172,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Line3Intersection(line_Temp);
             }
 
-            Coordinate3 point_1 = new ();
+            Coordinate3 point_1 = new();
             if (!line3Intersection.Point_1.IsNaN())
             {
                 point_1 = line3Intersection.Point_1;
@@ -190,7 +190,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Line3Intersection(line_Temp);
             }
 
-            Coordinate3 point_2 = new ();
+            Coordinate3 point_2 = new();
             if (!line3Intersection.Point_1.IsNaN())
             {
                 point_2 = line3Intersection.Point_1;
@@ -208,7 +208,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Line3Intersection(line_Temp);
             }
 
-            Coordinate3 point_3 = new ();
+            Coordinate3 point_3 = new();
             if (!line3Intersection.Point_1.IsNaN())
             {
                 point_3 = line3Intersection.Point_1;
@@ -260,8 +260,8 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Line3Intersection();
             }
 
-            Coordinate3 vector_1 = new (triangle.Point_1, triangle.Point_2);
-            Coordinate3 vector_2 = new (triangle.Point_1, triangle.Point_3);
+            Coordinate3 vector_1 = new(triangle.Point_1, triangle.Point_2);
+            Coordinate3 vector_2 = new(triangle.Point_1, triangle.Point_3);
 
             Coordinate3 direction = line.GetDirection(tolerance);
 
@@ -271,7 +271,7 @@ namespace DiGi.ComputeSharp.Spatial
 
             if (factor >= -tolerance && factor <= tolerance)
             {
-                Coordinate3 start = new ();
+                Coordinate3 start = new();
                 if (triangle.Inside(line.Start, tolerance))
                 {
                     start = line.Start;
@@ -286,7 +286,7 @@ namespace DiGi.ComputeSharp.Spatial
                     return new Line3Intersection();
                 }
 
-                Coordinate3 end = new ();
+                Coordinate3 end = new();
                 if (notNaN_1)
                 {
                     end = point_1;
@@ -325,8 +325,8 @@ namespace DiGi.ComputeSharp.Spatial
                 return new Line3Intersection(triangle.Solid, start, end);
             }
 
-            Coordinate3 ab = new (triangle.Point_1, triangle.Point_2);
-            Coordinate3 ac = new (triangle.Point_1, triangle.Point_3);
+            Coordinate3 ab = new(triangle.Point_1, triangle.Point_2);
+            Coordinate3 ac = new(triangle.Point_1, triangle.Point_3);
             Coordinate3 normal = ab.CrossProduct(ac);
 
             double denominator = normal.DotProduct(direction);
@@ -345,7 +345,7 @@ namespace DiGi.ComputeSharp.Spatial
             }
 
             // Barycentric coordinate check
-            Coordinate3 ap = new (triangle.Point_1, intersectionPoint);
+            Coordinate3 ap = new(triangle.Point_1, intersectionPoint);
 
             double d00 = ab.DotProduct(ab);
             double d01 = ab.DotProduct(ac);

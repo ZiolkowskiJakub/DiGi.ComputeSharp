@@ -46,8 +46,8 @@ namespace DiGi.ComputeSharp.Planar
 
                     if (bounded_1 && bounded_2)
                     {
-                        Coordinate2 point_1 = new ();
-                        Coordinate2 point_2 = new ();
+                        Coordinate2 point_1 = new();
+                        Coordinate2 point_2 = new();
 
                         if (line_2.On(line_1.Start, tolerance))
                         {
@@ -103,7 +103,7 @@ namespace DiGi.ComputeSharp.Planar
 
             // Non-parallel infinite lines always cross at exactly one point; solve the parameter on line_1.
             // Because the crossing is exact there is no closest-point distance gate as in the 3D (skew) case.
-            Coordinate2 startToStart = new (line_1.Start, line_2.Start);
+            Coordinate2 startToStart = new(line_1.Start, line_2.Start);
             double t = startToStart.CrossProduct(d2) / denominator;
 
             Coordinate2 intersectionPoint = line_1.Start.Add(d1.Multiply(t));
