@@ -838,8 +838,6 @@ True if the coordinates are not equal; otherwise, false\.
 
 ## Coordinate3InsideComputeShader Struct
 
-Represents a compute shader used to determine if a 3D coordinate is inside a set of triangles\.
-
 ```csharp
 public readonly struct Coordinate3InsideComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Spatial.Classes.Coordinate3InsideComputeShader>
 ```
