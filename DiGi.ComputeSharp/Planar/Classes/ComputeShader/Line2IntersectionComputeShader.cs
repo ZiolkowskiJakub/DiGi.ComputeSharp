@@ -2,6 +2,9 @@ using ComputeSharp;
 
 namespace DiGi.ComputeSharp.Planar.Classes
 {
+    /// <summary>
+    /// Represents a compute shader used to calculate intersections between a 2D line and a collection of 2D lines.
+    /// </summary>
     [ThreadGroupSize(DefaultThreadGroupSizes.X)]
     [GeneratedComputeShaderDescriptor]
     [RequiresDoublePrecisionSupport]

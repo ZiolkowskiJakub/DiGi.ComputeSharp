@@ -16,4 +16,67 @@
          more than one assembly, every assembly's index.md collides in the GitHub wiki's flat page sidebar. -->
     <DefaultDocumentationAssemblyPageName>$(AssemblyName).Overview</DefaultDocumentationAssemblyPageName>
   </PropertyGroup>
+
+  <UsingTask TaskName="_RemoveSelfReferencingInheritDoc" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll" Condition="'$(IsTestProject)' != 'true' And '$(MSBuildProjectExtension)' == '.csproj'">
+    <ParameterGroup>
+      <DocumentationFilePath Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" />
+      <Using Namespace="System.IO" />
+      <Using Namespace="System.Linq" />
+      <Using Namespace="System.Xml.Linq" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+          try
+          {
+              string path = Path.IsPathRooted(DocumentationFilePath) ? DocumentationFilePath : Path.Combine(Environment.CurrentDirectory, DocumentationFilePath);
+              if (File.Exists(path))
+              {
+                  XDocument doc = XDocument.Load(path);
+                  var members = doc.Root?.Element("members")?.Elements("member");
+                  if (members != null)
+                  {
+                      bool modified = false;
+                      foreach (var member in members)
+                      {
+                          string name = member.Attribute("name")?.Value;
+                          if (string.IsNullOrEmpty(name))
+                          {
+                              continue;
+                          }
+
+                          var inheritDocs = member.Elements("inheritdoc").ToList();
+                          foreach (var inheritDoc in inheritDocs)
+                          {
+                              string cref = inheritDoc.Attribute("cref")?.Value;
+                              if (cref == name)
+                              {
+                                  inheritDoc.Remove();
+                                  modified = true;
+                              }
+                          }
+                      }
+                      if (modified)
+                      {
+                          doc.Save(path);
+                      }
+                  }
+              }
+          }
+          catch
+          {
+          }
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+
+  <Target Name="_FixInheritDocCyclesBeforeDefaultDocumentation" BeforeTargets="DefaultDocumentation" Condition="'$(IsTestProject)' != 'true' And '$(MSBuildProjectExtension)' == '.csproj' And '$(DocumentationFile)' != '' And '$(DisableDefaultDocumentation)' != 'true'">
+    <PropertyGroup>
+      <_DocFilePath Condition="'$(MSBuildProjectExtension)' != '.vbproj'">$([System.IO.Path]::GetFullPath($(DocumentationFile)))</_DocFilePath>
+      <_DocFilePath Condition="'$(MSBuildProjectExtension)' == '.vbproj'">$([System.IO.Path]::GetFullPath($(IntermediateOutputPath)$(DocumentationFile)))</_DocFilePath>
+    </PropertyGroup>
+    <_RemoveSelfReferencingInheritDoc DocumentationFilePath="$(_DocFilePath)" />
+  </Target>
 </Project>

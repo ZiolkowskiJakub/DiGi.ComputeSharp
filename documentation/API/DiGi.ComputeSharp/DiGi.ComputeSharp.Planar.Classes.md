@@ -1333,6 +1333,8 @@ A formatted string containing the start and end coordinates\.
 
 ## Line2IntersectComputeShader Struct
 
+Represents a compute shader used to determine if 2D lines intersect with a collection of 2D triangles\.
+
 ```csharp
 public readonly struct Line2IntersectComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Planar.Classes.Line2IntersectComputeShader>
 ```
@@ -1758,6 +1760,8 @@ True if the first point is NaN; otherwise, false\.
 
 ## Line2IntersectionComputeShader Struct
 
+Represents a compute shader used to calculate intersections between a 2D line and a collection of 2D lines\.
+
 ```csharp
 public readonly struct Line2IntersectionComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Planar.Classes.Line2IntersectionComputeShader>
 ```
@@ -1923,6 +1927,8 @@ Implements [Execute\(\)](https://learn.microsoft.com/en-us/dotnet/api/computesha
 <a name='DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader'></a>
 
 ## Line2IntersectionsComputeShader Struct
+
+Represents a compute shader used to calculate intersections between collections of 2D lines and 2D triangles\.
 
 ```csharp
 public readonly struct Line2IntersectionsComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Planar.Classes.Line2IntersectionsComputeShader>

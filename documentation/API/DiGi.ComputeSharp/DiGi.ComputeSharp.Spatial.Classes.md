@@ -838,6 +838,8 @@ True if the coordinates are not equal; otherwise, false\.
 
 ## Coordinate3InsideComputeShader Struct
 
+Represents a compute shader used to determine if a 3D coordinate is inside a set of triangles\.
+
 ```csharp
 public readonly struct Coordinate3InsideComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Spatial.Classes.Coordinate3InsideComputeShader>
 ```
@@ -1636,6 +1638,8 @@ A formatted string containing the start and end coordinates\.
 
 ## Line3IntersectComputeShader Struct
 
+Represents a compute shader used to determine if 3D lines intersect with a collection of 3D triangles\.
+
 ```csharp
 public readonly struct Line3IntersectComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Spatial.Classes.Line3IntersectComputeShader>
 ```
@@ -2060,6 +2064,8 @@ True if the first point is NaN; otherwise, false\.
 <a name='DiGi.ComputeSharp.Spatial.Classes.Line3IntersectionComputeShader'></a>
 
 ## Line3IntersectionComputeShader Struct
+
+Represents a compute shader used to calculate intersections between a 3D line and a collection of 3D lines\.
 
 ```csharp
 public readonly struct Line3IntersectionComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Spatial.Classes.Line3IntersectionComputeShader>
@@ -3643,6 +3649,8 @@ A formatted string describing the triangle vertices\.
 
 ## Triangle3ExternalShadingComputeShader Struct
 
+Represents a compute shader used to calculate external shading intersections between two collections of 3D triangles along a direction vector\.
+
 ```csharp
 public readonly struct Triangle3ExternalShadingComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingComputeShader>
 ```
@@ -4160,6 +4168,8 @@ True if the first point is NaN; otherwise, false\.
 
 ## Triangle3IntersectionComputeShader Struct
 
+Represents a compute shader used to calculate intersections between a primary 3D triangle and a collection of 3D triangles\.
+
 ```csharp
 public readonly struct Triangle3IntersectionComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Spatial.Classes.Triangle3IntersectionComputeShader>
 ```
@@ -4326,6 +4336,8 @@ Implements [Execute\(\)](https://learn.microsoft.com/en-us/dotnet/api/computesha
 
 ## Triangle3IntersectionsComputeShader Struct
 
+Represents a compute shader used to calculate pairwise intersections between two collections of 3D triangles\.
+
 ```csharp
 public readonly struct Triangle3IntersectionsComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Spatial.Classes.Triangle3IntersectionsComputeShader>
 ```
@@ -4427,6 +4439,8 @@ Implements [Execute\(\)](https://learn.microsoft.com/en-us/dotnet/api/computesha
 <a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingComputeShader'></a>
 
 ## Triangle3ShadingComputeShader Struct
+
+Represents a compute shader used to calculate self\-shading intersections among a collection of 3D triangles along a direction vector\.
 
 ```csharp
 public readonly struct Triangle3ShadingComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingComputeShader>

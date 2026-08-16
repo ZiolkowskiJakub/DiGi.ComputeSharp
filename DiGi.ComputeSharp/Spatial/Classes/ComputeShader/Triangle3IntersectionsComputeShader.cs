@@ -2,6 +2,9 @@ using ComputeSharp;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
+    /// <summary>
+    /// Represents a compute shader used to calculate pairwise intersections between two collections of 3D triangles.
+    /// </summary>
     [ThreadGroupSize(DefaultThreadGroupSizes.XY)]
     [GeneratedComputeShaderDescriptor]
     [RequiresDoublePrecisionSupport]

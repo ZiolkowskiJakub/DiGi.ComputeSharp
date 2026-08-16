@@ -2,6 +2,9 @@ using ComputeSharp;
 
 namespace DiGi.ComputeSharp.Planar.Classes
 {
+    /// <summary>
+    /// Represents a compute shader used to determine if 2D lines intersect with a collection of 2D triangles.
+    /// </summary>
     [ThreadGroupSize(DefaultThreadGroupSizes.X)]
     [GeneratedComputeShaderDescriptor]
     [RequiresDoublePrecisionSupport]

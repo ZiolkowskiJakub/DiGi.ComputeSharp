@@ -2,6 +2,9 @@ using ComputeSharp;
 
 namespace DiGi.ComputeSharp.Spatial.Classes
 {
+    /// <summary>
+    /// Represents a compute shader used to calculate self-shading intersections among a collection of 3D triangles along a direction vector.
+    /// </summary>
     [ThreadGroupSize(DefaultThreadGroupSizes.XY)]
     [GeneratedComputeShaderDescriptor]
     [RequiresDoublePrecisionSupport]
