@@ -14,6 +14,26 @@ public static class Create
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') → Create
 ### Methods
 
+<a name='DiGi.ComputeSharp.Core.Create.GraphicsDevice()'></a>
+
+## Create\.GraphicsDevice\(\) Method
+
+Gets the ComputeSharp default graphics device when the DiGi\.ComputeSharp shaders can run on it\.
+
+Only a device passing [IsSupported\(this GraphicsDevice\)](DiGi.ComputeSharp.Core.md#DiGi.ComputeSharp.Core.Query.IsSupported(thisComputeSharp.GraphicsDevice) 'DiGi\.ComputeSharp\.Core\.Query\.IsSupported\(this ComputeSharp\.GraphicsDevice\)') is returned: hardware-accelerated and supporting double precision.
+            The WARP software device, which ComputeSharp returns as the default on a machine without a hardware adapter, is never returned.
+
+The returned device is shared by ComputeSharp and must not be disposed by the caller: disposing it resets ComputeSharp's default device cache
+            and invalidates the device held by every other caller in the process (ZiolkowskiJakub/DiGi.ComputeSharp#2).
+
+```csharp
+public static ComputeSharp.GraphicsDevice? GraphicsDevice();
+```
+
+#### Returns
+[ComputeSharp\.GraphicsDevice](https://learn.microsoft.com/en-us/dotnet/api/computesharp.graphicsdevice 'ComputeSharp\.GraphicsDevice')  
+The ComputeSharp default device; [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') when no device can be created or the default device is not supported\.
+
 <a name='DiGi.ComputeSharp.Core.Create.List_T_(thisComputeSharp.Resources.Buffer_T_,System.Func_System.Nullable_T_,bool_)'></a>
 
 ## Create\.List\<T\>\(this Buffer\<T\>, Func\<Nullable\<T\>,bool\>\) Method
@@ -138,6 +158,30 @@ The sixth boolean value to evaluate\.
 #### Returns
 [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
 The number of values among the six provided that are equal to the target value\.
+
+<a name='DiGi.ComputeSharp.Core.Query.IsSupported(thisComputeSharp.GraphicsDevice)'></a>
+
+## Query\.IsSupported\(this GraphicsDevice\) Method
+
+Determines whether the DiGi\.ComputeSharp shaders can run on the specified graphics device: the device must be hardware\-accelerated and support double precision\.
+
+Every shader in this library requires double precision, which many GPUs (for example many arm64 GPUs) lack. The WARP software device is rejected even though it reports double precision as available:
+            it loses shadows cast between buildings and needs about 16 minutes to create a shading pipeline (ZiolkowskiJakub/DiGi.Solar#10).
+
+```csharp
+public static bool IsSupported(this ComputeSharp.GraphicsDevice? graphicsDevice);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Core.Query.IsSupported(thisComputeSharp.GraphicsDevice).graphicsDevice'></a>
+
+`graphicsDevice` [ComputeSharp\.GraphicsDevice](https://learn.microsoft.com/en-us/dotnet/api/computesharp.graphicsdevice 'ComputeSharp\.GraphicsDevice')
+
+The graphics device to check\.
+
+#### Returns
+[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
+True if the device is hardware\-accelerated and supports double precision; otherwise, false \(including for a null device\)\.
 
 <a name='DiGi.ComputeSharp.Core.Query.IsValid(double)'></a>
 

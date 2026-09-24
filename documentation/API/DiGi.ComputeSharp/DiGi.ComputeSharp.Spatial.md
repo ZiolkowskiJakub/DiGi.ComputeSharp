@@ -184,7 +184,7 @@ The distance tolerance used to determine if two lines are intersecting\.
 
 #### Returns
 [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Line3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')  
-A collection of [Line3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3Intersection') results, or `null` if the input line is invalid, the lines collection is empty/null, or the graphics device is unavailable\.
+A collection of [Line3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3Intersection') results, or `null` if the input line is invalid, the lines collection is empty/null, or no supported \(hardware\-accelerated, double\-precision\) graphics device is available\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.ToTriangulation3(System.Collections.Generic.List_DiGi.ComputeSharp.Spatial.Classes.Triangle3_)'></a>
 
@@ -391,7 +391,7 @@ The numerical tolerance used for intersection calculations\.
 
 #### Returns
 [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')  
-A collection of [Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection') results, or `null` if the input is invalid or no graphics device is available\.
+A collection of [Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection') results, or `null` if the input is invalid or no supported \(hardware\-accelerated, double\-precision\) graphics device is available\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangle3Intersections(thisSystem.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,double)'></a>
 
@@ -424,7 +424,7 @@ The numerical tolerance used for intersection calculations\.
 
 #### Returns
 [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')  
-A collection of [Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection') results, or `null` if either input collection is null or empty, or no graphics device is available\.
+A collection of [Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection') results, or `null` if either input collection is null or empty, or no supported \(hardware\-accelerated, double\-precision\) graphics device is available\.
 
 <a name='DiGi.ComputeSharp.Spatial.Create.Triangulation3(DiGi.ComputeSharp.Spatial.Classes.Triangle3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double)'></a>
 
@@ -917,7 +917,7 @@ The collection of triangles that define the boundary of the volume\.
 
 #### Returns
 [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')  
-An integer indicating the containment status of the point relative to the volume\.
+An integer indicating the containment status of the point relative to the volume; \-1 if the point is invalid, the triangles are null or no supported \(hardware\-accelerated, double\-precision\) graphics device is available\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Inside(System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Coordinate3_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_)'></a>
 
@@ -944,7 +944,7 @@ The collection of triangles defining the boundary of the volume\.
 
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
-A list containing the indices of the points that are inside the volume, or null if the operation cannot be performed\.
+A list containing the indices of the points that are inside the volume, or null if the operation cannot be performed, including when no supported \(hardware\-accelerated, double\-precision\) graphics device is available\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Inside(thisComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_)'></a>
 
@@ -1049,7 +1049,7 @@ Indicates whether the end point of the line should be included in the intersecti
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
-True if an intersection is found; otherwise, false\.
+True if an intersection is found; otherwise, false \(also when no supported \(hardware\-accelerated, double\-precision\) graphics device is available\)\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Intersect(System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Line3_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,bool,bool)'></a>
 
@@ -1088,7 +1088,7 @@ If set to `true`, the end point of the line is included in the intersection calc
 
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
-A list of boolean values indicating the intersection result for each input line, or `null` if the input collections are null\.
+A list of boolean values indicating the intersection result for each input line, or `null` if the input collections are null or no supported \(hardware\-accelerated, double\-precision\) graphics device is available\.
 
 <a name='DiGi.ComputeSharp.Spatial.Query.Intersect(thisComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Spatial.Classes.Line3,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,bool,bool)'></a>
 

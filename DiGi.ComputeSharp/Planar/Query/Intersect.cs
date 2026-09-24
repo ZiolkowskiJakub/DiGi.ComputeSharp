@@ -56,7 +56,7 @@ namespace DiGi.ComputeSharp.Planar
         /// <param name="triangle2s">The collection of 2D triangles to test against.</param>
         /// <param name="includeStart">If set to <c>true</c>, the start point of the line is included in the intersection calculation.</param>
         /// <param name="includeEnd">If set to <c>true</c>, the end point of the line is included in the intersection calculation.</param>
-        /// <returns>A list of boolean values indicating the intersection result for each input line, or <c>null</c> if the input collections are null.</returns>
+        /// <returns>A list of boolean values indicating the intersection result for each input line, or <c>null</c> if the input collections are null or no supported (hardware-accelerated, double-precision) graphics device is available.</returns>
         public static List<bool>? Intersect(IEnumerable<Line2>? line2s, IEnumerable<Triangle2>? triangle2s, bool includeStart, bool includeEnd)
         {
             if (line2s == null || triangle2s == null)
@@ -64,7 +64,7 @@ namespace DiGi.ComputeSharp.Planar
                 return null;
             }
 
-            GraphicsDevice graphicDevice = GraphicsDevice.GetDefault();
+            GraphicsDevice? graphicDevice = Core.Create.GraphicsDevice();
             if (graphicDevice == null)
             {
                 return null;
@@ -82,7 +82,7 @@ namespace DiGi.ComputeSharp.Planar
         /// <param name="triangle2s">A collection of triangles to check against the line segment.</param>
         /// <param name="includeStart">Indicates whether the start point of the line should be included in the intersection test.</param>
         /// <param name="includeEnd">Indicates whether the end point of the line should be included in the intersection test.</param>
-        /// <returns>True if an intersection is found; otherwise, false.</returns>
+        /// <returns>True if an intersection is found; otherwise, false (also when no supported (hardware-accelerated, double-precision) graphics device is available).</returns>
         public static bool Intersect(Line2 line2, IEnumerable<Triangle2>? triangle2s, bool includeStart, bool includeEnd)
         {
             if (line2.IsNaN() || triangle2s == null)
@@ -90,7 +90,7 @@ namespace DiGi.ComputeSharp.Planar
                 return false;
             }
 
-            GraphicsDevice graphicDevice = GraphicsDevice.GetDefault();
+            GraphicsDevice? graphicDevice = Core.Create.GraphicsDevice();
             if (graphicDevice == null)
             {
                 return false;

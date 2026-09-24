@@ -111,7 +111,7 @@ The distance tolerance used to determine if two lines are intersecting\.
 
 #### Returns
 [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')  
-A collection of [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection') results, or `null` if the input line is invalid, the lines collection is empty/null, or the graphics device is unavailable\.
+A collection of [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection') results, or `null` if the input line is invalid, the lines collection is empty/null, or no supported \(hardware\-accelerated, double\-precision\) graphics device is available\.
 
 <a name='DiGi.ComputeSharp.Planar.Create.Line2Intersections(System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,double)'></a>
 
@@ -144,7 +144,7 @@ The distance tolerance used to determine intersections\.
 
 #### Returns
 [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')  
-A collection of [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection') results laid out row\-major \(row = line index, column = triangle index\) with NaN results filtered out, or `null` if either input collection is null/empty or the graphics device is unavailable\.
+A collection of [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection') results laid out row\-major \(row = line index, column = triangle index\) with NaN results filtered out, or `null` if either input collection is null/empty or no supported \(hardware\-accelerated, double\-precision\) graphics device is available\.
 
 <a name='DiGi.ComputeSharp.Planar.Modify'></a>
 
@@ -392,7 +392,7 @@ Indicates whether the end point of the line should be included in the intersecti
 
 #### Returns
 [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')  
-True if an intersection is found; otherwise, false\.
+True if an intersection is found; otherwise, false \(also when no supported \(hardware\-accelerated, double\-precision\) graphics device is available\)\.
 
 <a name='DiGi.ComputeSharp.Planar.Query.Intersect(System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Line2_,System.Collections.Generic.IEnumerable_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool)'></a>
 
@@ -431,7 +431,7 @@ If set to `true`, the end point of the line is included in the intersection calc
 
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
-A list of boolean values indicating the intersection result for each input line, or `null` if the input collections are null\.
+A list of boolean values indicating the intersection result for each input line, or `null` if the input collections are null or no supported \(hardware\-accelerated, double\-precision\) graphics device is available\.
 
 <a name='DiGi.ComputeSharp.Planar.Query.Intersect(thisComputeSharp.GraphicsDevice,DiGi.ComputeSharp.Planar.Classes.Line2,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Planar.Classes.Triangle2_,bool,bool)'></a>
 

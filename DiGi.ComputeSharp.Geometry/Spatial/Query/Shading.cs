@@ -17,7 +17,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
         /// <param name="polygonalFace3Ds">The collection of polygonal faces to be analyzed for shading.</param>
         /// <param name="direction">The vector representing the light source or projection direction.</param>
         /// <param name="tolerance">The precision tolerance used for geometric calculations.</param>
-        /// <returns>A list containing groups of shaded polygonal faces, or null if the input collection is null.</returns>
+        /// <returns>A list containing groups of shaded polygonal faces, or null if the input collection is null or no supported (hardware-accelerated, double-precision) graphics device is available.</returns>
         public static List<List<PolygonalFace3D>?>? Shading(this IEnumerable<IPolygonalFace3D>? polygonalFace3Ds, Vector3D? direction, double tolerance)
         {
             if (polygonalFace3Ds == null || direction == null)
@@ -47,7 +47,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 }
             }
 
-            GraphicsDevice graphicDevice = GraphicsDevice.GetDefault();
+            GraphicsDevice? graphicDevice = DiGi.ComputeSharp.Core.Create.GraphicsDevice();
             if (graphicDevice == null)
             {
                 return null;
@@ -151,7 +151,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
         /// <param name="polygonalFace3Ds">The collection of polygonal faces to be processed.</param>
         /// <param name="direction">The vector representing the light or view direction used for shading calculations.</param>
         /// <param name="tolerance">The precision tolerance used for geometric comparisons.</param>
-        /// <returns>A nested list of shaded polygonal faces, or null if the operation cannot be completed.</returns>
+        /// <returns>A nested list of shaded polygonal faces, or null if the operation cannot be completed, including when no supported (hardware-accelerated, double-precision) graphics device is available.</returns>
         public static List<List<PolygonalFace3D>?>? Shading_CPU(this IEnumerable<IPolygonalFace3D>? polygonalFace3Ds, Vector3D? direction, double tolerance)
         {
             if (polygonalFace3Ds == null || direction == null)
@@ -181,7 +181,7 @@ namespace DiGi.ComputeSharp.Geometry.Spatial
                 }
             }
 
-            GraphicsDevice graphicDevice = GraphicsDevice.GetDefault();
+            GraphicsDevice? graphicDevice = DiGi.ComputeSharp.Core.Create.GraphicsDevice();
             if (graphicDevice == null)
             {
                 return null;

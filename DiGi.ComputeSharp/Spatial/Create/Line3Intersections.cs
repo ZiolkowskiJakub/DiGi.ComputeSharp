@@ -11,7 +11,7 @@ namespace DiGi.ComputeSharp.Spatial
         /// <param name="line">The primary line to check for intersections.</param>
         /// <param name="lines">The collection of lines to test against the primary line.</param>
         /// <param name="tolerance">The distance tolerance used to determine if two lines are intersecting.</param>
-        /// <returns>A collection of <see cref="Classes.Line3Intersection"/> results, or <c>null</c> if the input line is invalid, the lines collection is empty/null, or the graphics device is unavailable.</returns>
+        /// <returns>A collection of <see cref="Classes.Line3Intersection"/> results, or <c>null</c> if the input line is invalid, the lines collection is empty/null, or no supported (hardware-accelerated, double-precision) graphics device is available.</returns>
         public static IEnumerable<Line3Intersection>? Line3Intersections(Line3 line, IEnumerable<Line3>? lines, double tolerance)
         {
             if (line.IsNaN() || lines == null || !lines.Any())
@@ -19,7 +19,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return null;
             }
 
-            using GraphicsDevice graphicsDevice = GraphicsDevice.GetDefault();
+            GraphicsDevice? graphicsDevice = Core.Create.GraphicsDevice();
             if (graphicsDevice == null)
             {
                 return null;

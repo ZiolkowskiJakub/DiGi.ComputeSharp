@@ -11,7 +11,7 @@ namespace DiGi.ComputeSharp.Planar
         /// <param name="line">The primary line to check for intersections.</param>
         /// <param name="lines">The collection of lines to test against the primary line.</param>
         /// <param name="tolerance">The distance tolerance used to determine if two lines are intersecting.</param>
-        /// <returns>A collection of <see cref="Classes.Line2Intersection"/> results, or <c>null</c> if the input line is invalid, the lines collection is empty/null, or the graphics device is unavailable.</returns>
+        /// <returns>A collection of <see cref="Classes.Line2Intersection"/> results, or <c>null</c> if the input line is invalid, the lines collection is empty/null, or no supported (hardware-accelerated, double-precision) graphics device is available.</returns>
         public static IEnumerable<Line2Intersection>? Line2Intersections(Line2 line, IEnumerable<Line2>? lines, double tolerance)
         {
             if (line.IsNaN() || lines == null || !lines.Any())
@@ -19,7 +19,7 @@ namespace DiGi.ComputeSharp.Planar
                 return null;
             }
 
-            using GraphicsDevice graphicsDevice = GraphicsDevice.GetDefault();
+            GraphicsDevice? graphicsDevice = Core.Create.GraphicsDevice();
             if (graphicsDevice == null)
             {
                 return null;
@@ -41,7 +41,7 @@ namespace DiGi.ComputeSharp.Planar
         /// <param name="lines">The collection of lines to test.</param>
         /// <param name="triangles">The collection of triangles to intersect against.</param>
         /// <param name="tolerance">The distance tolerance used to determine intersections.</param>
-        /// <returns>A collection of <see cref="Classes.Line2Intersection"/> results laid out row-major (row = line index, column = triangle index) with NaN results filtered out, or <c>null</c> if either input collection is null/empty or the graphics device is unavailable.</returns>
+        /// <returns>A collection of <see cref="Classes.Line2Intersection"/> results laid out row-major (row = line index, column = triangle index) with NaN results filtered out, or <c>null</c> if either input collection is null/empty or no supported (hardware-accelerated, double-precision) graphics device is available.</returns>
         public static IEnumerable<Line2Intersection>? Line2Intersections(IEnumerable<Line2>? lines, IEnumerable<Triangle2>? triangles, double tolerance)
         {
             if (lines == null || !lines.Any() || triangles == null || !triangles.Any())
@@ -49,7 +49,7 @@ namespace DiGi.ComputeSharp.Planar
                 return null;
             }
 
-            using GraphicsDevice graphicsDevice = GraphicsDevice.GetDefault();
+            GraphicsDevice? graphicsDevice = Core.Create.GraphicsDevice();
             if (graphicsDevice == null)
             {
                 return null;

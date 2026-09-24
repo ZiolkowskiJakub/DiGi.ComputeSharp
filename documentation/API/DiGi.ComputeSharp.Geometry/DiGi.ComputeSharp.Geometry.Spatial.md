@@ -400,7 +400,7 @@ The precision tolerance used for geometric calculations\.
 
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.Geometry\.Spatial\.Classes\.PolygonalFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.polygonalface3d 'DiGi\.Geometry\.Spatial\.Classes\.PolygonalFace3D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
-A list containing groups of shaded polygonal faces, or null if the input collection is null\.
+A list containing groups of shaded polygonal faces, or null if the input collection is null or no supported \(hardware\-accelerated, double\-precision\) graphics device is available\.
 
 <a name='DiGi.ComputeSharp.Geometry.Spatial.Query.Shading_CPU(thisSystem.Collections.Generic.IEnumerable_DiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D_,DiGi.Geometry.Spatial.Classes.Vector3D,double)'></a>
 
@@ -433,4 +433,4 @@ The precision tolerance used for geometric comparisons\.
 
 #### Returns
 [System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[System\.Collections\.Generic\.List&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[DiGi\.Geometry\.Spatial\.Classes\.PolygonalFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.classes.polygonalface3d 'DiGi\.Geometry\.Spatial\.Classes\.PolygonalFace3D')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1 'System\.Collections\.Generic\.List\`1')  
-A nested list of shaded polygonal faces, or null if the operation cannot be completed\.
+A nested list of shaded polygonal faces, or null if the operation cannot be completed, including when no supported \(hardware\-accelerated, double\-precision\) graphics device is available\.

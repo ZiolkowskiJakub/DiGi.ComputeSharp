@@ -50,7 +50,7 @@ namespace DiGi.ComputeSharp.Spatial
         /// </summary>
         /// <param name="points">The collection of 3D coordinates to be tested for containment.</param>
         /// <param name="triangles">The collection of triangles defining the boundary of the volume.</param>
-        /// <returns>A list containing the indices of the points that are inside the volume, or null if the operation cannot be performed.</returns>
+        /// <returns>A list containing the indices of the points that are inside the volume, or null if the operation cannot be performed, including when no supported (hardware-accelerated, double-precision) graphics device is available.</returns>
         public static List<int>? Inside(IEnumerable<Coordinate3>? points, IEnumerable<Triangle3>? triangles)
         {
             if (points == null || triangles == null)
@@ -58,7 +58,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return null;
             }
 
-            GraphicsDevice graphicDevice = GraphicsDevice.GetDefault();
+            GraphicsDevice? graphicDevice = Core.Create.GraphicsDevice();
             if (graphicDevice == null)
             {
                 return null;
@@ -74,7 +74,7 @@ namespace DiGi.ComputeSharp.Spatial
         /// </summary>
         /// <param name="point">The coordinate of the point to test.</param>
         /// <param name="triangles">The collection of triangles that define the boundary of the volume.</param>
-        /// <returns>An integer indicating the containment status of the point relative to the volume.</returns>
+        /// <returns>An integer indicating the containment status of the point relative to the volume; -1 if the point is invalid, the triangles are null or no supported (hardware-accelerated, double-precision) graphics device is available.</returns>
         public static int Inside(Coordinate3 point, IEnumerable<Triangle3>? triangles)
         {
             if (point.IsNaN() || triangles == null)
@@ -82,7 +82,7 @@ namespace DiGi.ComputeSharp.Spatial
                 return -1;
             }
 
-            GraphicsDevice graphicDevice = GraphicsDevice.GetDefault();
+            GraphicsDevice? graphicDevice = Core.Create.GraphicsDevice();
             if (graphicDevice == null)
             {
                 return -1;
