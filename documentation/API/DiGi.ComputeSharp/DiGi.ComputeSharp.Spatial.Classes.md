@@ -3837,6 +3837,146 @@ public void Execute();
 
 Implements [Execute\(\)](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader.execute 'ComputeSharp\.IComputeShader\.Execute')
 
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader'></a>
+
+## Triangle3ExternalShadingRowOffsetComputeShader Struct
+
+Represents a compute shader used to calculate external shading intersections between two collections of 3D triangles along a direction vector, starting from a row offset\.
+
+The shader processes a horizontal slice of the full intersection matrix so that the output buffer only holds the processed rows instead of the full `triangles.Length x externalTriangles.Length` matrix. The concatenation of successive row-offset dispatches reproduces the layout of a single full dispatch of [Triangle3ExternalShadingComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ExternalShadingComputeShader').
+
+The `rowOffset` field is intentionally declared first: it fills the 4 bytes reserved in the constant buffer's second row, so the buffer keeps the exact 48-byte layout of [Triangle3ExternalShadingComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ExternalShadingComputeShader'). Appending the field instead would grow the buffer, and on some drivers the grown buffer combined with the second structured buffer resource causes every intersection result to be discarded.
+
+```csharp
+public readonly struct Triangle3ExternalShadingRowOffsetComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader>
+```
+
+Implements [ComputeSharp\.IComputeShader](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader 'ComputeSharp\.IComputeShader'), [ComputeSharp\.Descriptors\.IComputeShaderDescriptor&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.descriptors.icomputeshaderdescriptor-1 'ComputeSharp\.Descriptors\.IComputeShaderDescriptor\`1')[Triangle3ExternalShadingRowOffsetComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ExternalShadingRowOffsetComputeShader')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.descriptors.icomputeshaderdescriptor-1 'ComputeSharp\.Descriptors\.IComputeShaderDescriptor\`1')
+### Constructors
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int)'></a>
+
+## Triangle3ExternalShadingRowOffsetComputeShader\(ReadOnlyBuffer\<Triangle3\>, ReadOnlyBuffer\<Triangle3\>, ReadWriteBuffer\<Triangle3Intersection\>, Coordinate3, int\) Constructor
+
+Initializes a new instance of the [Triangle3ExternalShadingRowOffsetComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ExternalShadingRowOffsetComputeShader') struct using pre\-allocated buffers and a row offset\.
+
+The shader processes a horizontal slice of the full intersection matrix: the input triangle of a thread is `triangles[rowOffset + ThreadIds.X]`, the external triangle is `externalTriangles[ThreadIds.Y]`, and the output cell is `(ThreadIds.X * externalTriangles.Length) + ThreadIds.Y` of [triangleIntersections](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).triangleIntersections 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ExternalShadingRowOffsetComputeShader\.Triangle3ExternalShadingRowOffsetComputeShader\(ComputeSharp\.ReadOnlyBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\>, ComputeSharp\.ReadOnlyBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\>, ComputeSharp\.ReadWriteBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection\>, DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3, int\)\.triangleIntersections'), so the row stride stays `externalTriangles.Length` (the full column count) and the concatenation of successive row-offset dispatches reproduces the layout of a single full dispatch of [Triangle3ExternalShadingComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ExternalShadingComputeShader').
+
+Buffer-size contract: dispatch over `rowCount x externalTriangles.Length` threads (`graphicsDevice.For(rowCount, externalTriangles.Length, shader)`) and provide a [triangleIntersections](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).triangleIntersections 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ExternalShadingRowOffsetComputeShader\.Triangle3ExternalShadingRowOffsetComputeShader\(ComputeSharp\.ReadOnlyBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\>, ComputeSharp\.ReadOnlyBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\>, ComputeSharp\.ReadWriteBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection\>, DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3, int\)\.triangleIntersections') buffer holding at least `rowCount x externalTriangles.Length` elements. Threads with `rowOffset + ThreadIds.X >= triangles.Length` are ignored, so the last partial block of a tiled dispatch is safe.
+
+```csharp
+public Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Spatial.Classes.Triangle3> triangles, ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Spatial.Classes.Triangle3> externalTriangles, ComputeSharp.ReadWriteBuffer<DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection> triangleIntersections, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 vector, int rowOffset);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).triangles'></a>
+
+`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of target 3D triangles \(the rows of the full matrix\)\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).externalTriangles'></a>
+
+`externalTriangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of external 3D shading triangles \(the columns\)\. Its length is the output row stride\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).triangleIntersections'></a>
+
+`triangleIntersections` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The read\-write buffer for storing intersection results\. Must hold at least `rowCount x externalTriangles.Length` elements, where `rowCount` is the dispatch width\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).vector'></a>
+
+`vector` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The direction vector for the shading calculation\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).rowOffset'></a>
+
+`rowOffset` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The zero\-based index of the first target triangle row to process\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double)'></a>
+
+## Triangle3ExternalShadingRowOffsetComputeShader\(ReadOnlyBuffer\<Triangle3\>, ReadOnlyBuffer\<Triangle3\>, ReadWriteBuffer\<Triangle3Intersection\>, Coordinate3, int, double\) Constructor
+
+Initializes a new instance of the [Triangle3ExternalShadingRowOffsetComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ExternalShadingRowOffsetComputeShader') struct using pre\-allocated buffers, a row offset, and a custom tolerance\.
+
+The shader processes a horizontal slice of the full intersection matrix: the input triangle of a thread is `triangles[rowOffset + ThreadIds.X]`, the external triangle is `externalTriangles[ThreadIds.Y]`, and the output cell is `(ThreadIds.X * externalTriangles.Length) + ThreadIds.Y` of [triangleIntersections](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).triangleIntersections 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ExternalShadingRowOffsetComputeShader\.Triangle3ExternalShadingRowOffsetComputeShader\(ComputeSharp\.ReadOnlyBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\>, ComputeSharp\.ReadOnlyBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\>, ComputeSharp\.ReadWriteBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection\>, DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3, int, double\)\.triangleIntersections'), so the row stride stays `externalTriangles.Length` (the full column count) and the concatenation of successive row-offset dispatches reproduces the layout of a single full dispatch of [Triangle3ExternalShadingComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ExternalShadingComputeShader').
+
+Buffer-size contract: dispatch over `rowCount x externalTriangles.Length` threads (`graphicsDevice.For(rowCount, externalTriangles.Length, shader)`) and provide a [triangleIntersections](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).triangleIntersections 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ExternalShadingRowOffsetComputeShader\.Triangle3ExternalShadingRowOffsetComputeShader\(ComputeSharp\.ReadOnlyBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\>, ComputeSharp\.ReadOnlyBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\>, ComputeSharp\.ReadWriteBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection\>, DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3, int, double\)\.triangleIntersections') buffer holding at least `rowCount x externalTriangles.Length` elements. Threads with `rowOffset + ThreadIds.X >= triangles.Length` are ignored, so the last partial block of a tiled dispatch is safe.
+
+```csharp
+public Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Spatial.Classes.Triangle3> triangles, ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Spatial.Classes.Triangle3> externalTriangles, ComputeSharp.ReadWriteBuffer<DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection> triangleIntersections, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 vector, int rowOffset, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).triangles'></a>
+
+`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of target 3D triangles \(the rows of the full matrix\)\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).externalTriangles'></a>
+
+`externalTriangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of external 3D shading triangles \(the columns\)\. Its length is the output row stride\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).triangleIntersections'></a>
+
+`triangleIntersections` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The read\-write buffer for storing intersection results\. Must hold at least `rowCount x externalTriangles.Length` elements, where `rowCount` is the dispatch width\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).vector'></a>
+
+`vector` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The direction vector for the shading calculation\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).rowOffset'></a>
+
+`rowOffset` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The zero\-based index of the first target triangle row to process\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Triangle3ExternalShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The tolerance value used for geometric comparison\.
+### Fields
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.TriangleIntersections'></a>
+
+## Triangle3ExternalShadingRowOffsetComputeShader\.TriangleIntersections Field
+
+Gets the writeable buffer containing the triangle intersection results\.
+
+```csharp
+public readonly ReadWriteBuffer<Triangle3Intersection> TriangleIntersections;
+```
+
+#### Field Value
+[ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+### Methods
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader.Execute()'></a>
+
+## Triangle3ExternalShadingRowOffsetComputeShader\.Execute\(\) Method
+
+Executes the compute shader operation over the designated range of threads\.
+
+```csharp
+public void Execute();
+```
+
+Implements [Execute\(\)](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader.execute 'ComputeSharp\.IComputeShader\.Execute')
+
 <a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection'></a>
 
 ## Triangle3Intersection Struct
@@ -4595,6 +4735,134 @@ public readonly ReadWriteBuffer<Triangle3Intersection> TriangleIntersections;
 <a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingComputeShader.Execute()'></a>
 
 ## Triangle3ShadingComputeShader\.Execute\(\) Method
+
+Executes the compute shader operation over the designated range of threads\.
+
+```csharp
+public void Execute();
+```
+
+Implements [Execute\(\)](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader.execute 'ComputeSharp\.IComputeShader\.Execute')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader'></a>
+
+## Triangle3ShadingRowOffsetComputeShader Struct
+
+Represents a compute shader used to calculate self\-shading intersections among a collection of 3D triangles along a direction vector, starting from a row offset\.
+
+The shader processes a horizontal slice of the full intersection matrix so that the output buffer only holds the processed rows instead of the full `triangles.Length x triangles.Length` matrix. The concatenation of successive row-offset dispatches reproduces the layout of a single full dispatch of [Triangle3ShadingComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadingComputeShader').
+
+The `rowOffset` field is intentionally declared first: it fills the 4 bytes reserved in the constant buffer's second row, so the buffer keeps the exact 48-byte layout of [Triangle3ShadingComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadingComputeShader'), matching the layout choice of [Triangle3ExternalShadingRowOffsetComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ExternalShadingRowOffsetComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ExternalShadingRowOffsetComputeShader').
+
+```csharp
+public readonly struct Triangle3ShadingRowOffsetComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader>
+```
+
+Implements [ComputeSharp\.IComputeShader](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader 'ComputeSharp\.IComputeShader'), [ComputeSharp\.Descriptors\.IComputeShaderDescriptor&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.descriptors.icomputeshaderdescriptor-1 'ComputeSharp\.Descriptors\.IComputeShaderDescriptor\`1')[Triangle3ShadingRowOffsetComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadingRowOffsetComputeShader')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.descriptors.icomputeshaderdescriptor-1 'ComputeSharp\.Descriptors\.IComputeShaderDescriptor\`1')
+### Constructors
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int)'></a>
+
+## Triangle3ShadingRowOffsetComputeShader\(ReadOnlyBuffer\<Triangle3\>, ReadWriteBuffer\<Triangle3Intersection\>, Coordinate3, int\) Constructor
+
+Initializes a new instance of the [Triangle3ShadingRowOffsetComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadingRowOffsetComputeShader') struct using pre\-allocated buffers and a row offset\.
+
+The shader processes a horizontal slice of the full intersection matrix: the input triangle of a thread is `triangles[rowOffset + ThreadIds.X]` and the output cell is `(ThreadIds.X * triangles.Length) + ThreadIds.Y` of [triangleIntersections](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).triangleIntersections 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadingRowOffsetComputeShader\.Triangle3ShadingRowOffsetComputeShader\(ComputeSharp\.ReadOnlyBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\>, ComputeSharp\.ReadWriteBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection\>, DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3, int\)\.triangleIntersections'), so the row stride stays `triangles.Length` (the full column count) and the concatenation of successive row-offset dispatches reproduces the layout of a single full dispatch of [Triangle3ShadingComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadingComputeShader').
+
+Buffer-size contract: dispatch over `rowCount x triangles.Length` threads (`graphicsDevice.For(rowCount, triangles.Length, shader)`) and provide a [triangleIntersections](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).triangleIntersections 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadingRowOffsetComputeShader\.Triangle3ShadingRowOffsetComputeShader\(ComputeSharp\.ReadOnlyBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\>, ComputeSharp\.ReadWriteBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection\>, DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3, int\)\.triangleIntersections') buffer holding at least `rowCount x triangles.Length` elements. Threads with `rowOffset + ThreadIds.X >= triangles.Length` are ignored, so the last partial block of a tiled dispatch is safe.
+
+```csharp
+public Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Spatial.Classes.Triangle3> triangles, ComputeSharp.ReadWriteBuffer<DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection> triangleIntersections, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 vector, int rowOffset);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).triangles'></a>
+
+`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of 3D triangles to test against each other\. Its length is the output row stride \(column count\)\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).triangleIntersections'></a>
+
+`triangleIntersections` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The read\-write buffer for storing shading results\. Must hold at least `rowCount x triangles.Length` elements, where `rowCount` is the dispatch width\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).vector'></a>
+
+`vector` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The direction vector for the shading calculation\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).rowOffset'></a>
+
+`rowOffset` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The zero\-based index of the first input triangle row to process\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double)'></a>
+
+## Triangle3ShadingRowOffsetComputeShader\(ReadOnlyBuffer\<Triangle3\>, ReadWriteBuffer\<Triangle3Intersection\>, Coordinate3, int, double\) Constructor
+
+Initializes a new instance of the [Triangle3ShadingRowOffsetComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadingRowOffsetComputeShader') struct using pre\-allocated buffers, a row offset, and a custom tolerance\.
+
+The shader processes a horizontal slice of the full intersection matrix: the input triangle of a thread is `triangles[rowOffset + ThreadIds.X]` and the output cell is `(ThreadIds.X * triangles.Length) + ThreadIds.Y` of [triangleIntersections](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).triangleIntersections 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadingRowOffsetComputeShader\.Triangle3ShadingRowOffsetComputeShader\(ComputeSharp\.ReadOnlyBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\>, ComputeSharp\.ReadWriteBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection\>, DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3, int, double\)\.triangleIntersections'), so the row stride stays `triangles.Length` (the full column count) and the concatenation of successive row-offset dispatches reproduces the layout of a single full dispatch of [Triangle3ShadingComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadingComputeShader').
+
+Buffer-size contract: dispatch over `rowCount x triangles.Length` threads (`graphicsDevice.For(rowCount, triangles.Length, shader)`) and provide a [triangleIntersections](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).triangleIntersections 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadingRowOffsetComputeShader\.Triangle3ShadingRowOffsetComputeShader\(ComputeSharp\.ReadOnlyBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3\>, ComputeSharp\.ReadWriteBuffer\<DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection\>, DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3, int, double\)\.triangleIntersections') buffer holding at least `rowCount x triangles.Length` elements. Threads with `rowOffset + ThreadIds.X >= triangles.Length` are ignored, so the last partial block of a tiled dispatch is safe.
+
+```csharp
+public Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Spatial.Classes.Triangle3> triangles, ComputeSharp.ReadWriteBuffer<DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection> triangleIntersections, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 vector, int rowOffset, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).triangles'></a>
+
+`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The read\-only buffer of 3D triangles to test against each other\. Its length is the output row stride \(column count\)\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).triangleIntersections'></a>
+
+`triangleIntersections` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The read\-write buffer for storing shading results\. Must hold at least `rowCount x triangles.Length` elements, where `rowCount` is the dispatch width\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).vector'></a>
+
+`vector` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The direction vector for the shading calculation\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).rowOffset'></a>
+
+`rowOffset` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The zero\-based index of the first input triangle row to process\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Triangle3ShadingRowOffsetComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The tolerance value used for geometric comparison\.
+### Fields
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.TriangleIntersections'></a>
+
+## Triangle3ShadingRowOffsetComputeShader\.TriangleIntersections Field
+
+Gets the writeable buffer containing the triangle shading intersection results\.
+
+```csharp
+public readonly ReadWriteBuffer<Triangle3Intersection> TriangleIntersections;
+```
+
+#### Field Value
+[ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+### Methods
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadingRowOffsetComputeShader.Execute()'></a>
+
+## Triangle3ShadingRowOffsetComputeShader\.Execute\(\) Method
 
 Executes the compute shader operation over the designated range of threads\.
 
