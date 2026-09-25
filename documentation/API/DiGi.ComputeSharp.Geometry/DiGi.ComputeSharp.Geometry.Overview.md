@@ -4,4 +4,5 @@
 
 | Namespaces | |
 | :--- | :--- |
+| [DiGi\.ComputeSharp\.Geometry\.Planar](DiGi.ComputeSharp.Geometry.Planar.md 'DiGi\.ComputeSharp\.Geometry\.Planar') | |
 | [DiGi\.ComputeSharp\.Geometry\.Spatial](DiGi.ComputeSharp.Geometry.Spatial.md 'DiGi\.ComputeSharp\.Geometry\.Spatial') | |

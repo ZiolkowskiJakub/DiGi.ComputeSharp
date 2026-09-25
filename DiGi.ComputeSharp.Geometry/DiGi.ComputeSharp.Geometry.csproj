@@ -20,11 +20,6 @@
 		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 	</PropertyGroup>
 	
-		<ItemGroup>
-		  <Compile Remove="Planar\**" />
-		  <EmbeddedResource Remove="Planar\**" />
-		  <None Remove="Planar\**" />
-		</ItemGroup>
 	<ItemGroup>
 		<!-- Prevent duplicate 'Compile' inclusion of the generated AssemblyAttributes.cs -->
 		<Compile Remove="$(IntermediateOutputPath)$(MSBuildProjectName).AssemblyAttributes.cs" />

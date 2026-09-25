@@ -21,6 +21,7 @@ Derived
 ↳ [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')  
 ↳ [Line3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3')  
 ↳ [Plane](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Plane 'DiGi\.ComputeSharp\.Spatial\.Classes\.Plane')  
+↳ [ShadowReceiver](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowReceiver')  
 ↳ [Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')  
 ↳ [IGeometry3](DiGi.ComputeSharp.Spatial.Interfaces.md#DiGi.ComputeSharp.Spatial.Interfaces.IGeometry3 'DiGi\.ComputeSharp\.Spatial\.Interfaces\.IGeometry3')
 
@@ -81,6 +82,7 @@ Derived
 ↳ [Line2Intersection](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Line2Intersection 'DiGi\.ComputeSharp\.Planar\.Classes\.Line2Intersection')  
 ↳ [IIntersection2](DiGi.ComputeSharp.Planar.Interfaces.md#DiGi.ComputeSharp.Planar.Interfaces.IIntersection2 'DiGi\.ComputeSharp\.Planar\.Interfaces\.IIntersection2')  
 ↳ [Line3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Line3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Line3Intersection')  
+↳ [ShadowPolygon2](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowPolygon2')  
 ↳ [Triangle3Intersection](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3Intersection 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3Intersection')  
 ↳ [IIntersection3](DiGi.ComputeSharp.Spatial.Interfaces.md#DiGi.ComputeSharp.Spatial.Interfaces.IIntersection3 'DiGi\.ComputeSharp\.Spatial\.Interfaces\.IIntersection3')  
 ↳ [ITriangulation3](DiGi.ComputeSharp.Spatial.Interfaces.md#DiGi.ComputeSharp.Spatial.Interfaces.ITriangulation3 'DiGi\.ComputeSharp\.Spatial\.Interfaces\.ITriangulation3')

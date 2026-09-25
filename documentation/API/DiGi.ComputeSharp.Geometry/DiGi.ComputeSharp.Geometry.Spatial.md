@@ -110,6 +110,29 @@ The vector to convert\.
 [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')  
 The equivalent [DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3'), or a default instance if the input is null\.
 
+<a name='DiGi.ComputeSharp.Geometry.Spatial.Convert.ToComputeSharp(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D)'></a>
+
+## Convert\.ToComputeSharp\(this IPolygonalFace3D\) Method
+
+Converts an [DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.ipolygonalface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D') to a ComputeSharp [DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowReceiver](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.shadowreceiver 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowReceiver')\.
+
+The plane frame (origin, normal and both axes) comes from [DiGi\.Geometry\.Spatial\.Interfaces\.IPlanar\.Plane](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.iplanar.plane 'DiGi\.Geometry\.Spatial\.Interfaces\.IPlanar\.Plane') and the bounding box from the face's 2D geometry, so projected plane coordinates match that geometry.
+
+```csharp
+public static System.Nullable<DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver> ToComputeSharp(this DiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D? polygonalFace3D);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Geometry.Spatial.Convert.ToComputeSharp(thisDiGi.Geometry.Spatial.Interfaces.IPolygonalFace3D).polygonalFace3D'></a>
+
+`polygonalFace3D` [DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D](https://learn.microsoft.com/en-us/dotnet/api/digi.geometry.spatial.interfaces.ipolygonalface3d 'DiGi\.Geometry\.Spatial\.Interfaces\.IPolygonalFace3D')
+
+The source face\.
+
+#### Returns
+[System\.Nullable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')[DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowReceiver](https://learn.microsoft.com/en-us/dotnet/api/digi.computesharp.spatial.classes.shadowreceiver 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowReceiver')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.nullable-1 'System\.Nullable\`1')  
+The receiver, or [null](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null 'https://docs\.microsoft\.com/en\-us/dotnet/csharp/language\-reference/keywords/null') when the face, its plane, its 2D geometry or its bounding box is missing\.
+
 <a name='DiGi.ComputeSharp.Geometry.Spatial.Convert.ToComputeSharp(thisSystem.Collections.Generic.IEnumerable_DiGi.Geometry.Spatial.Classes.Triangle3D_,bool)'></a>
 
 ## Convert\.ToComputeSharp\(this IEnumerable\<Triangle3D\>, bool\) Method

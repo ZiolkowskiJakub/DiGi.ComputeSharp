@@ -2990,6 +2990,327 @@ public override string ToString();
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')  
 A formatted string containing the origin, normal, and local Y\-axis coordinates\.
 
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2'></a>
+
+## ShadowPolygon2 Struct
+
+Represents one shadow polygon cast by a caster triangle on a receiver face, in the receiver's plane coordinates\.
+
+The polygon has 3 or 4 points ([Count](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.Count 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowPolygon2\.Count')); unused points are NaN. The doubles are declared first, so the struct's 8-byte alignment pads it to 80 bytes.
+
+```csharp
+public readonly struct ShadowPolygon2 : DiGi.ComputeSharp.Core.Interfaces.IResult
+```
+
+Implements [IResult](DiGi.ComputeSharp.Core.Interfaces.md#DiGi.ComputeSharp.Core.Interfaces.IResult 'DiGi\.ComputeSharp\.Core\.Interfaces\.IResult')
+### Constructors
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.ShadowPolygon2()'></a>
+
+## ShadowPolygon2\(\) Constructor
+
+Initializes a new instance of the [ShadowPolygon2](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowPolygon2') struct with NaN points and no valid point\.
+
+```csharp
+public ShadowPolygon2();
+```
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.ShadowPolygon2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int,int)'></a>
+
+## ShadowPolygon2\(Coordinate2, Coordinate2, Coordinate2, Coordinate2, int, int, int\) Constructor
+
+Initializes a new instance of the [ShadowPolygon2](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowPolygon2') struct with the specified points and indexes\.
+
+```csharp
+public ShadowPolygon2(DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_1, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_2, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_3, DiGi.ComputeSharp.Planar.Classes.Coordinate2 point_4, int receiverIndex, int triangleIndex, int count);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.ShadowPolygon2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int,int).point_1'></a>
+
+`point_1` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The first point\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.ShadowPolygon2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int,int).point_2'></a>
+
+`point_2` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The second point\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.ShadowPolygon2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int,int).point_3'></a>
+
+`point_3` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The third point\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.ShadowPolygon2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int,int).point_4'></a>
+
+`point_4` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The fourth point, NaN when [count](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.ShadowPolygon2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int,int).count 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowPolygon2\.ShadowPolygon2\(DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2, int, int, int\)\.count') is 3\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.ShadowPolygon2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int,int).receiverIndex'></a>
+
+`receiverIndex` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The index of the receiver\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.ShadowPolygon2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int,int).triangleIndex'></a>
+
+`triangleIndex` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The index of the caster triangle\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.ShadowPolygon2(DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2,int,int,int).count'></a>
+
+`count` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The number of valid points \(3 or 4\)\.
+### Fields
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.Count'></a>
+
+## ShadowPolygon2\.Count Field
+
+The number of valid points \(3 or 4\)\.
+
+```csharp
+public readonly int Count;
+```
+
+#### Field Value
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.Point_1'></a>
+
+## ShadowPolygon2\.Point\_1 Field
+
+The first point of the polygon\.
+
+```csharp
+public readonly Coordinate2 Point_1;
+```
+
+#### Field Value
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.Point_2'></a>
+
+## ShadowPolygon2\.Point\_2 Field
+
+The second point of the polygon\.
+
+```csharp
+public readonly Coordinate2 Point_2;
+```
+
+#### Field Value
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.Point_3'></a>
+
+## ShadowPolygon2\.Point\_3 Field
+
+The third point of the polygon\.
+
+```csharp
+public readonly Coordinate2 Point_3;
+```
+
+#### Field Value
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.Point_4'></a>
+
+## ShadowPolygon2\.Point\_4 Field
+
+The fourth point of the polygon, NaN when [Count](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.Count 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowPolygon2\.Count') is 3\.
+
+```csharp
+public readonly Coordinate2 Point_4;
+```
+
+#### Field Value
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.ReceiverIndex'></a>
+
+## ShadowPolygon2\.ReceiverIndex Field
+
+The index of the receiver the polygon lies on\.
+
+```csharp
+public readonly int ReceiverIndex;
+```
+
+#### Field Value
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.TriangleIndex'></a>
+
+## ShadowPolygon2\.TriangleIndex Field
+
+The index of the caster triangle that casts the polygon\.
+
+```csharp
+public readonly int TriangleIndex;
+```
+
+#### Field Value
+[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver'></a>
+
+## ShadowReceiver Struct
+
+Represents a planar receiver face of a shadow projection: the plane's local frame and the face's 2D bounding box in that frame\.
+
+[AxisX](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.AxisX 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowReceiver\.AxisX') is carried explicitly rather than derived (as [GetAxisX\(double\)](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Plane.GetAxisX(double) 'DiGi\.ComputeSharp\.Spatial\.Classes\.Plane\.GetAxisX\(double\)') does), so that projected plane coordinates match the receiver's own 2D geometry exactly.
+
+```csharp
+public readonly struct ShadowReceiver : DiGi.ComputeSharp.Spatial.Interfaces.IGeometry3, DiGi.ComputeSharp.Core.Interfaces.IGeometry
+```
+
+Implements [IGeometry3](DiGi.ComputeSharp.Spatial.Interfaces.md#DiGi.ComputeSharp.Spatial.Interfaces.IGeometry3 'DiGi\.ComputeSharp\.Spatial\.Interfaces\.IGeometry3'), [IGeometry](DiGi.ComputeSharp.Core.Interfaces.md#DiGi.ComputeSharp.Core.Interfaces.IGeometry 'DiGi\.ComputeSharp\.Core\.Interfaces\.IGeometry')
+### Constructors
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.ShadowReceiver()'></a>
+
+## ShadowReceiver\(\) Constructor
+
+Initializes a new instance of the [ShadowReceiver](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowReceiver') struct with NaN values\.
+
+```csharp
+public ShadowReceiver();
+```
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.ShadowReceiver(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2)'></a>
+
+## ShadowReceiver\(Coordinate3, Coordinate3, Coordinate3, Coordinate3, Coordinate2, Coordinate2\) Constructor
+
+Initializes a new instance of the [ShadowReceiver](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowReceiver') struct with the specified plane frame and bounding box\.
+
+```csharp
+public ShadowReceiver(DiGi.ComputeSharp.Spatial.Classes.Coordinate3 origin, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 normal, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 axisX, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 axisY, DiGi.ComputeSharp.Planar.Classes.Coordinate2 min, DiGi.ComputeSharp.Planar.Classes.Coordinate2 max);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.ShadowReceiver(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).origin'></a>
+
+`origin` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The origin of the receiver's plane\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.ShadowReceiver(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).normal'></a>
+
+`normal` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The unit normal of the receiver's plane\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.ShadowReceiver(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).axisX'></a>
+
+`axisX` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The local X axis of the receiver's plane\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.ShadowReceiver(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).axisY'></a>
+
+`axisY` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The local Y axis of the receiver's plane\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.ShadowReceiver(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).min'></a>
+
+`min` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The minimum corner of the face's 2D bounding box in plane coordinates\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.ShadowReceiver(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Planar.Classes.Coordinate2,DiGi.ComputeSharp.Planar.Classes.Coordinate2).max'></a>
+
+`max` [Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+The maximum corner of the face's 2D bounding box in plane coordinates\.
+### Fields
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.AxisX'></a>
+
+## ShadowReceiver\.AxisX Field
+
+The local X axis of the receiver's plane\.
+
+```csharp
+public readonly Coordinate3 AxisX;
+```
+
+#### Field Value
+[Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.AxisY'></a>
+
+## ShadowReceiver\.AxisY Field
+
+The local Y axis of the receiver's plane\.
+
+```csharp
+public readonly Coordinate3 AxisY;
+```
+
+#### Field Value
+[Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.Max'></a>
+
+## ShadowReceiver\.Max Field
+
+The maximum corner of the face's 2D bounding box in plane coordinates\.
+
+```csharp
+public readonly Coordinate2 Max;
+```
+
+#### Field Value
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.Min'></a>
+
+## ShadowReceiver\.Min Field
+
+The minimum corner of the face's 2D bounding box in plane coordinates\.
+
+```csharp
+public readonly Coordinate2 Min;
+```
+
+#### Field Value
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.Normal'></a>
+
+## ShadowReceiver\.Normal Field
+
+The unit normal of the receiver's plane\.
+
+```csharp
+public readonly Coordinate3 Normal;
+```
+
+#### Field Value
+[Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver.Origin'></a>
+
+## ShadowReceiver\.Origin Field
+
+The origin of the receiver's plane\.
+
+```csharp
+public readonly Coordinate3 Origin;
+```
+
+#### Field Value
+[Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
 <a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3'></a>
 
 ## Triangle3 Struct
@@ -4871,6 +5192,341 @@ public void Execute();
 ```
 
 Implements [Execute\(\)](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader.execute 'ComputeSharp\.IComputeShader\.Execute')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader'></a>
+
+## Triangle3ShadowProjectionComputeShader Struct
+
+Represents a compute shader that clips each caster triangle to the sun side of a receiver's plane, projects it along the sun direction onto the plane and appends only the resulting shadow polygons\.
+
+Thread `(x, y)` handles receiver `rowOffset + x` and triangle `y`. Dispatch over `rowCount x triangles.Length` threads (`graphicsDevice.For(rowCount, triangles.Length, shader)`); threads with `rowOffset + x >= receivers.Length` are ignored.
+
+Hits are appended through `counter[0]`, which must be 0 before the dispatch. The counter always ends at the true hit count, while records are written only below `polygons.Length`; a counter above the capacity means the buffer overflowed and the dispatch must be repeated with a larger buffer. Record order is not deterministic: sort by [ReceiverIndex](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.ReceiverIndex 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowPolygon2\.ReceiverIndex') and [TriangleIndex](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2.TriangleIndex 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowPolygon2\.TriangleIndex').
+
+The `rowOffset` field is intentionally declared first: it lands at byte offset 12 of the constant buffer, after the `__x`/`__y`/`__z` dispatch header, so the buffer is 56 bytes (14 root constants, even), with `tolerance` at offset 16 and `vector` at offsets 32 to 55. With five bound resources an odd root constant count would trigger the driver defect of ZiolkowskiJakub/DiGi.ComputeSharp#3.
+
+```csharp
+public readonly struct Triangle3ShadowProjectionComputeShader : ComputeSharp.IComputeShader, ComputeSharp.Descriptors.IComputeShaderDescriptor<DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader>
+```
+
+Implements [ComputeSharp\.IComputeShader](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader 'ComputeSharp\.IComputeShader'), [ComputeSharp\.Descriptors\.IComputeShaderDescriptor&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.descriptors.icomputeshaderdescriptor-1 'ComputeSharp\.Descriptors\.IComputeShaderDescriptor\`1')[Triangle3ShadowProjectionComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadowProjectionComputeShader')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.descriptors.icomputeshaderdescriptor-1 'ComputeSharp\.Descriptors\.IComputeShaderDescriptor\`1')
+### Constructors
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int)'></a>
+
+## Triangle3ShadowProjectionComputeShader\(ReadOnlyBuffer\<ShadowReceiver\>, ReadOnlyBuffer\<Triangle3\>, ReadOnlyBuffer\<int\>, ReadWriteBuffer\<ShadowPolygon2\>, ReadWriteBuffer\<int\>, Coordinate3, int\) Constructor
+
+Initializes a new instance of the [Triangle3ShadowProjectionComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadowProjectionComputeShader') struct\.
+
+```csharp
+public Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver> receivers, ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Spatial.Classes.Triangle3> triangles, ComputeSharp.ReadOnlyBuffer<int> elementIndexes, ComputeSharp.ReadWriteBuffer<DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2> polygons, ComputeSharp.ReadWriteBuffer<int> counter, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 vector, int rowOffset);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).receivers'></a>
+
+`receivers` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[ShadowReceiver](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowReceiver')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The receiver faces\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).triangles'></a>
+
+`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The caster triangles\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).elementIndexes'></a>
+
+`elementIndexes` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+For each caster triangle, the index of the receiver it belongs to, or \-1 for a shading\-only triangle; a receiver never shades itself\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).polygons'></a>
+
+`polygons` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[ShadowPolygon2](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowPolygon2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The output buffer of shadow polygons\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).counter'></a>
+
+`counter` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The single\-element append counter, 0 before the dispatch\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).vector'></a>
+
+`vector` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The sun propagation direction\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int).rowOffset'></a>
+
+`rowOffset` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The zero\-based index of the first receiver to process\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double)'></a>
+
+## Triangle3ShadowProjectionComputeShader\(ReadOnlyBuffer\<ShadowReceiver\>, ReadOnlyBuffer\<Triangle3\>, ReadOnlyBuffer\<int\>, ReadWriteBuffer\<ShadowPolygon2\>, ReadWriteBuffer\<int\>, Coordinate3, int, double\) Constructor
+
+Initializes a new instance of the [Triangle3ShadowProjectionComputeShader](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3ShadowProjectionComputeShader') struct with a custom tolerance\.
+
+```csharp
+public Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver> receivers, ComputeSharp.ReadOnlyBuffer<DiGi.ComputeSharp.Spatial.Classes.Triangle3> triangles, ComputeSharp.ReadOnlyBuffer<int> elementIndexes, ComputeSharp.ReadWriteBuffer<DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2> polygons, ComputeSharp.ReadWriteBuffer<int> counter, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 vector, int rowOffset, double tolerance);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).receivers'></a>
+
+`receivers` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[ShadowReceiver](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowReceiver')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The receiver faces\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).triangles'></a>
+
+`triangles` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[Triangle3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Triangle3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Triangle3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+The caster triangles\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).elementIndexes'></a>
+
+`elementIndexes` [ComputeSharp\.ReadOnlyBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readonlybuffer-1 'ComputeSharp\.ReadOnlyBuffer\`1')
+
+For each caster triangle, the index of the receiver it belongs to, or \-1 for a shading\-only triangle; a receiver never shades itself\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).polygons'></a>
+
+`polygons` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[ShadowPolygon2](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowPolygon2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The output buffer of shadow polygons\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).counter'></a>
+
+`counter` [ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+The single\-element append counter, 0 before the dispatch\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).vector'></a>
+
+`vector` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+The sun propagation direction\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).rowOffset'></a>
+
+`rowOffset` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+The zero\-based index of the first receiver to process\.
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Triangle3ShadowProjectionComputeShader(ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowReceiver_,ComputeSharp.ReadOnlyBuffer_DiGi.ComputeSharp.Spatial.Classes.Triangle3_,ComputeSharp.ReadOnlyBuffer_int_,ComputeSharp.ReadWriteBuffer_DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2_,ComputeSharp.ReadWriteBuffer_int_,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,int,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+The tolerance value used for geometric comparison\.
+### Fields
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Counter'></a>
+
+## Triangle3ShadowProjectionComputeShader\.Counter Field
+
+Gets the writeable single\-element buffer holding the append counter \(the total hit count after the dispatch\)\.
+
+```csharp
+public readonly ReadWriteBuffer<int> Counter;
+```
+
+#### Field Value
+[ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Polygons'></a>
+
+## Triangle3ShadowProjectionComputeShader\.Polygons Field
+
+Gets the writeable buffer receiving the appended shadow polygons\.
+
+```csharp
+public readonly ReadWriteBuffer<ShadowPolygon2> Polygons;
+```
+
+#### Field Value
+[ComputeSharp\.ReadWriteBuffer&lt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')[ShadowPolygon2](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.ShadowPolygon2 'DiGi\.ComputeSharp\.Spatial\.Classes\.ShadowPolygon2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/computesharp.readwritebuffer-1 'ComputeSharp\.ReadWriteBuffer\`1')
+### Methods
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double)'></a>
+
+## Triangle3ShadowProjectionComputeShader\.ClipEdge\(Coordinate3, Coordinate3, double, double, double, double, int, Coordinate3, Coordinate3, Coordinate3, Coordinate3, double, double, double, double\) Method
+
+Processes one edge of the Sutherland\-Hodgman clip against the upstream half\-space, appending up to two points\.
+
+```csharp
+private static void ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point_1, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point_2, double s_1, double s_2, double sign, double tolerance, ref int count, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 clip_1, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 clip_2, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 clip_3, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 clip_4, ref double clipS_1, ref double clipS_2, ref double clipS_3, ref double clipS_4);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).point_1'></a>
+
+`point_1` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).point_2'></a>
+
+`point_2` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).s_1'></a>
+
+`s_1` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).s_2'></a>
+
+`s_2` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).sign'></a>
+
+`sign` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).tolerance'></a>
+
+`tolerance` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).count'></a>
+
+`count` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clip_1'></a>
+
+`clip_1` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clip_2'></a>
+
+`clip_2` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clip_3'></a>
+
+`clip_3` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clip_4'></a>
+
+`clip_4` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clipS_1'></a>
+
+`clipS_1` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clipS_2'></a>
+
+`clipS_2` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clipS_3'></a>
+
+`clipS_3` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.ClipEdge(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clipS_4'></a>
+
+`clipS_4` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Execute()'></a>
+
+## Triangle3ShadowProjectionComputeShader\.Execute\(\) Method
+
+Executes the compute shader operation over the designated range of threads\.
+
+```csharp
+public void Execute();
+```
+
+Implements [Execute\(\)](https://learn.microsoft.com/en-us/dotnet/api/computesharp.icomputeshader.execute 'ComputeSharp\.IComputeShader\.Execute')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Project(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3)'></a>
+
+## Triangle3ShadowProjectionComputeShader\.Project\(Coordinate3, double, double, Coordinate3, Coordinate3, Coordinate3\) Method
+
+Projects a point along the sun direction onto the receiver's plane and returns its plane coordinates\.
+
+```csharp
+private static DiGi.ComputeSharp.Planar.Classes.Coordinate2 Project(DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point, double s, double dotProduct, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 vector, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 axisX, DiGi.ComputeSharp.Spatial.Classes.Coordinate3 axisY);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Project(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).point'></a>
+
+`point` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Project(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).s'></a>
+
+`s` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Project(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).dotProduct'></a>
+
+`dotProduct` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Project(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).vector'></a>
+
+`vector` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Project(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).axisX'></a>
+
+`axisX` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Project(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3).axisY'></a>
+
+`axisY` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+#### Returns
+[Coordinate2](DiGi.ComputeSharp.Planar.Classes.md#DiGi.ComputeSharp.Planar.Classes.Coordinate2 'DiGi\.ComputeSharp\.Planar\.Classes\.Coordinate2')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double)'></a>
+
+## Triangle3ShadowProjectionComputeShader\.Store\(Coordinate3, double, int, Coordinate3, Coordinate3, Coordinate3, Coordinate3, double, double, double, double\) Method
+
+Stores a clipped point and its signed plane distance in the next free slot\.
+
+```csharp
+private static void Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3 point, double s, ref int count, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 clip_1, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 clip_2, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 clip_3, ref DiGi.ComputeSharp.Spatial.Classes.Coordinate3 clip_4, ref double clipS_1, ref double clipS_2, ref double clipS_3, ref double clipS_4);
+```
+#### Parameters
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).point'></a>
+
+`point` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).s'></a>
+
+`s` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).count'></a>
+
+`count` [System\.Int32](https://learn.microsoft.com/en-us/dotnet/api/system.int32 'System\.Int32')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clip_1'></a>
+
+`clip_1` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clip_2'></a>
+
+`clip_2` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clip_3'></a>
+
+`clip_3` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clip_4'></a>
+
+`clip_4` [Coordinate3](DiGi.ComputeSharp.Spatial.Classes.md#DiGi.ComputeSharp.Spatial.Classes.Coordinate3 'DiGi\.ComputeSharp\.Spatial\.Classes\.Coordinate3')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clipS_1'></a>
+
+`clipS_1` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clipS_2'></a>
+
+`clipS_2` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clipS_3'></a>
+
+`clipS_3` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
+
+<a name='DiGi.ComputeSharp.Spatial.Classes.Triangle3ShadowProjectionComputeShader.Store(DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,int,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,DiGi.ComputeSharp.Spatial.Classes.Coordinate3,double,double,double,double).clipS_4'></a>
+
+`clipS_4` [System\.Double](https://learn.microsoft.com/en-us/dotnet/api/system.double 'System\.Double')
 
 <a name='DiGi.ComputeSharp.Spatial.Classes.Triangulation3'></a>
 
